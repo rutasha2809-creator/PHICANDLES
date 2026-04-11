@@ -252,163 +252,33 @@
         </div>
     </div>
 
-   <section id="home" class="page-section active bg-white">
-        <div class="flex flex-col md:flex-row-reverse items-stretch min-h-[60vh]">
-            
-            <div class="md:w-1/2 relative overflow-hidden">
-                <img src="hero.png" alt="PHICANDLES" class="w-full h-full object-cover">
+   <section id="home" class="page-section active">
+    
+    <div class="container mx-auto px-4 py-10">
+        <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+            <div class="w-full md:w-1/2">
+                <img src="hero.png" class="w-full rounded-lg shadow-2xl" alt="PHICANDLES">
             </div>
-
-            <div class="md:w-1/2 flex items-center justify-center p-8 md:p-16 lg:p-24 bg-white">
-                <div class="max-w-xl">
-                    <h2 class="text-2xl md:text-3xl font-playfair mb-8 text-gray-800 uppercase tracking-[0.3em]">
-                        О нас
-                    </h2>
-                    
-                    <div class="space-y-6 text-gray-600 font-light leading-relaxed text-sm md:text-base">
-                        <p>
-                            <span class="font-semibold text-gray-800">PHICANDLES</span> — это бренд ароматических свечей ручной работы, созданных с любовью и вниманием к каждой детали. Мы используем только натуральные материалы высочайшего качества, чтобы создавать уникальные изделия, которые наполнят ваш дом теплом и изысканным ароматом.
-                        </p>
-                        
-                        <p>
-                            Наша миссия — создавать не просто свечи, а настоящие произведения искусства, которые станут стильным акцентом в вашем интерьере и принесут радость в повседневную жизнь. Каждая свеча — это результат кропотливой работы, в которую вложена частичка души.
-                        </p>
-
-                        <p>
-                            Мы предлагаем широкий ассортимент форм и ароматов: от классики до изысканных цветочных композиций. В нашей коллекции есть всё, чтобы удовлетворить самый взыскательный вкус и стать особенным подарком для вас и ваших близких.
-                        </p>
-                    </div>
-
-                    <div class="mt-12 h-[1px] w-20 bg-bronze/30"></div>
-                </div>
+            <div class="w-full md:w-1/2">
+                <h1 class="text-4xl font-playfair mb-6">PHICANDLES</h1>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    Ваш текст про бренд и миссию...
+                </p>
             </div>
-<div id="collections" class="py-16 bg-white">
+        </div>
+    </div> <div id="collections" class="py-16 bg-white border-t">
         <div class="container mx-auto px-4 max-w-6xl">
             <h2 class="text-2xl md:text-3xl font-playfair text-center mb-12 uppercase tracking-[0.3em] text-gray-800">Коллекции</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-                <div class="absolute inset-0 flex flex-col justify-end p-8">
-                    <h3 class="text-white text-xl font-playfair tracking-widest uppercase mb-3">Цветы</h3>
-                    <div class="h-[1px] w-full bg-white/40 mb-4 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                    <span class="text-white text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                        Смотреть коллекцию
-                    </span>
                 </div>
-            </a>
-
-            <a href="#classic" class="group relative block overflow-hidden aspect-[3/4] collection-link" data-section="classic">
-                <img src="covers/cover_classic.png" alt="Коллекция Классик" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-                <div class="absolute inset-0 flex flex-col justify-end p-8">
-                    <h3 class="text-white text-xl font-playfair tracking-widest uppercase mb-3">Классик</h3>
-                    <div class="h-[1px] w-full bg-white/40 mb-4 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                    <span class="text-white text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                        Смотреть коллекцию
-                    </span>
-                </div>
-            </a>
-
-            <a href="#decor" class="group relative block overflow-hidden aspect-[3/4] collection-link" data-section="decor">
-                <img src="covers/cover_decor.png" alt="Коллекция Декор" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-                <div class="absolute inset-0 flex flex-col justify-end p-8">
-                    <h3 class="text-white text-xl font-playfair tracking-widest uppercase mb-3">Декор</h3>
-                    <div class="h-[1px] w-full bg-white/40 mb-4 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                    <span class="text-white text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                        Смотреть коллекцию
-                    </span>
-                </div>
-            </a>
-
-            <a href="#mini" class="group relative block overflow-hidden aspect-[3/4] collection-link" data-section="mini">
-                <img src="covers/cover_mini.png" alt="Коллекция Мини" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-                <div class="absolute inset-0 flex flex-col justify-end p-8">
-                    <h3 class="text-white text-xl font-playfair tracking-widest uppercase mb-3">Мини</h3>
-                    <div class="h-[1px] w-full bg-white/40 mb-4 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                    <span class="text-white text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                        Смотреть коллекцию
-                    </span>
-                </div>
-            </a>
-
-            <a href="#melts" class="group relative block overflow-hidden aspect-[3/4] collection-link" data-section="melts">
-                <img src="covers/cover_melts.jpg" alt="Ароматы для дома" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-                <div class="absolute inset-0 flex flex-col justify-end p-8">
-                    <h3 class="text-white text-xl font-playfair tracking-widest uppercase mb-3">Ароматы для дома</h3>
-                    <div class="h-[1px] w-full bg-white/40 mb-4 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                    <span class="text-white text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                        Смотреть коллекцию
-                    </span>
-                </div>
-            </a>
-
-            <a href="#easter" class="group relative block overflow-hidden aspect-[3/4] collection-link" data-section="easter">
-                <img src="covers/cover_easter.png" alt="Пасхальная коллекция" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-                <div class="absolute inset-0 flex flex-col justify-end p-8">
-                    <h3 class="text-white text-xl font-playfair tracking-widest uppercase mb-3">Пасха</h3>
-                    <div class="h-[1px] w-full bg-white/40 mb-4 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                    <span class="text-white text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                        Смотреть коллекцию
-                    </span>
-                </div>
-            </a>
-
         </div>
-    </div>
-</div>
-        <section id="fragrances" class="py-10 bg-white"> <div class="container mx-auto px-4 max-w-6xl">
-        <h2 class="text-2xl md:text-3xl font-playfair text-center mb-12 uppercase tracking-[0.3em] text-gray-800">
-            Палитра ароматов
-        </h2>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-10">
-            
-            <div class="flex flex-col items-center md:items-start">
-                <h3 class="text-xs uppercase tracking-[0.3em] text-bronze mb-6 border-b border-bronze/10 pb-2 w-full text-center md:text-left">Цветочные</h3>
-                <ul class="space-y-3 text-base text-gray-700 font-light tracking-wide text-center md:text-left">
-                    <li class="hover:text-bronze transition-colors cursor-default">Французская сирень</li>
-                    <li class="hover:text-bronze transition-colors cursor-default">Лесной ландыш</li>
-                    <li class="hover:text-bronze transition-colors cursor-default">Лаванда</li>
-                    <li class="hover:text-bronze transition-colors cursor-default">Богемская роза</li>
-                </ul>
-            </div>
-
-            <div class="flex flex-col items-center md:items-start">
-                <h3 class="text-xs uppercase tracking-[0.3em] text-bronze mb-6 border-b border-bronze/10 pb-2 w-full text-center md:text-left">Гурманские</h3>
-                <ul class="space-y-3 text-base text-gray-700 font-light tracking-wide text-center md:text-left">
-                    <li class="hover:text-bronze transition-colors cursor-default">Горячий яблочный пирог</li>
-                    <li class="hover:text-bronze transition-colors cursor-default">Пряный апельсин</li>
-                    <li class="hover:text-bronze transition-colors cursor-default">Ваниль</li>
-                    <li class="hover:text-bronze transition-colors cursor-default">Кашемировая тыква</li>
-                    <li class="hover:text-bronze transition-colors cursor-default">Фисташковое безе</li>
-                </ul>
-            </div>
-
-            <div class="flex flex-col items-center md:items-start">
-                <h3 class="text-xs uppercase tracking-[0.3em] text-bronze mb-6 border-b border-bronze/10 pb-2 w-full text-center md:text-left">Интерьерные</h3>
-                <ul class="space-y-3 text-base text-gray-700 font-light tracking-wide text-center md:text-left">
-                    <li class="hover:text-bronze transition-colors cursor-default">Сандаловое дерево</li>
-                    <li class="hover:text-bronze transition-colors cursor-default">Кашемировый мускус</li>
-                    <li class="hover:text-bronze transition-colors cursor-default">Хлопок</li>
-                    <li class="hover:text-bronze transition-colors cursor-default">Сахарный личи и замша</li>
-                </ul>
-            </div>
-
-            <div class="flex flex-col items-center md:items-start">
-                <h3 class="text-xs uppercase tracking-[0.3em] text-bronze mb-6 border-b border-bronze/10 pb-2 w-full text-center md:text-left">Свежие</h3>
-                <ul class="space-y-3 text-base text-gray-700 font-light tracking-wide text-center md:text-left">
-                    <li class="hover:text-bronze transition-colors cursor-default">Кактусовая вода</li>
-                </ul>
-            </div>
-
-     </div>
-  </div>
-    </div>
-</section>
-</section>
+    </div> <div id="fragrances" class="py-16 bg-white border-t">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <h2 class="text-2xl md:text-3xl font-playfair text-center mb-12 uppercase tracking-[0.3em] text-gray-800">Палитра ароматов</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-10">
+                </div>
+        </div>
+    </div> </section> <section id="flowers" class="page-section">
 <section id="flowers" class="page-section">
     <img src="covers/cover_flowers.png" alt="Коллекция Цветы" class="w-full h-[60vh] object-cover">                <div class="text-center text-white px-4">
                     <h1 class="text-4xl md:text-5xl font-bold mb-4 font-playfair">Коллекция Цветы</h1>
