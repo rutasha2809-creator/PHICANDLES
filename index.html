@@ -207,41 +207,127 @@
                     </div>
                     <div>
                         <label for="orderEmail" class="block text-sm font-medium text-dark-gray mb-1">Email</label>
-                        <input type="email" id="orderEmail" name="email"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-bronze focus:border-bronze">
-                    </div>
-                    <div>
-                        <label for="orderAddress" class="block text-sm font-medium text-dark-gray mb-1">Адрес
-                            доставки*</label>
-                        <textarea id="orderAddress" name="address" rows="2" required
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-bronze focus:border-bronze"></textarea>
-                    </div>
-                    <div>
-                        <label for="orderComment" class="block text-sm font-medium text-dark-gray mb-1">Комментарий к
-                            заказу</label>
-                        <textarea id="orderComment" name="comment" rows="2"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-bronze focus:border-bronze"></textarea>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-dark-gray mb-1">Способ оплаты*</label>
-                        <div class="space-y-2">
-                            <div class="flex items-center">
-                                <input type="radio" id="paymentCard" name="payment" value="card" required
-                                    class="h-4 w-4 text-bronze focus:ring-bronze">
-                                <label for="paymentCard" class="ml-2 text-dark-gray">Банковская карта</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input type="radio" id="paymentCash" name="payment" value="cash" required
-                                    class="h-4 w-4 text-bronze focus:ring-bronze">
-                                <label for="paymentCash" class="ml-2 text-dark-gray">Наличными при получении</label>
-                            </div>
+                  <section id="home" class="page-section active">
+        <div class="container mx-auto px-4 py-10">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                <div class="w-full md:w-1/2">
+                    <img src="hero.png" class="w-full rounded-lg shadow-2xl" alt="PHICANDLES">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h1 class="text-4xl font-playfair mb-6">PHICANDLES</h1>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        PHICANDLES — это бренд ароматических свечей ручной работы, созданных с любовью и вниманием к каждой детали. Мы используем только натуральные материалы высочайшего качества, чтобы создавать уникальные изделия, которые наполнят ваш дом теплом и изысканным ароматом.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        Наша миссия — создавать не просто свечи, а настоящие произведения искусства, которые станут стильным акцентом в вашем интерьере и принесут радость в повседневную жизнь. Каждая свеча — это результат кропотливой работы, в которую вложена частичка души.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="collections" class="py-16 bg-white border-t border-gray-100">
+            <div class="container mx-auto px-4 max-w-6xl">
+                <h2 class="text-2xl md:text-3xl font-playfair text-center mb-12 uppercase tracking-[0.3em] text-gray-800">Коллекции</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <a href="#flowers" class="group relative block overflow-hidden aspect-[3/4] collection-link" data-section="flowers">
+                        <img src="covers/cover_flowers.png" alt="Коллекция Цветы" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-8">
+                            <h3 class="text-white text-xl font-playfair tracking-widest uppercase mb-3">Цветы</h3>
+                            <span class="text-white text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all duration-500">Смотреть коллекцию</span>
                         </div>
-                    </div>
-                    <div class="pt-4 border-t border-gray-200">
-                        <div class="flex justify-between mb-2">
-                            <span class="text-dark-gray font-medium">Итого:</span>
-                            <span id="modalCartTotal" class="text-bronze font-bold">0 ₽</span>
+                    </a>
+
+                    <a href="#classic" class="group relative block overflow-hidden aspect-[3/4] collection-link" data-section="classic">
+                        <img src="covers/cover_classic.png" alt="Коллекция Классик" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-8">
+                            <h3 class="text-white text-xl font-playfair tracking-widest uppercase mb-3">Классик</h3>
+                            <span class="text-white text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all duration-500">Смотреть коллекцию</span>
                         </div>
+                    </a>
+
+                    <a href="#decor" class="group relative block overflow-hidden aspect-[3/4] collection-link" data-section="decor">
+                        <img src="covers/cover_decor.png" alt="Коллекция Декор" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-8">
+                            <h3 class="text-white text-xl font-playfair tracking-widest uppercase mb-3">Декор</h3>
+                            <span class="text-white text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all duration-500">Смотреть коллекцию</span>
+                        </div>
+                    </a>
+
+                    <a href="#mini" class="group relative block overflow-hidden aspect-[3/4] collection-link" data-section="mini">
+                        <img src="covers/cover_mini.png" alt="Коллекция Мини" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-8">
+                            <h3 class="text-white text-xl font-playfair tracking-widest uppercase mb-3">Мини</h3>
+                            <span class="text-white text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all duration-500">Смотреть коллекцию</span>
+                        </div>
+                    </a>
+
+                    <a href="#melts" class="group relative block overflow-hidden aspect-[3/4] collection-link" data-section="melts">
+                        <img src="covers/cover_melts.jpg" alt="Ароматы для дома" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-8">
+                            <h3 class="text-white text-xl font-playfair tracking-widest uppercase mb-3">Для дома</h3>
+                            <span class="text-white text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all duration-500">Смотреть коллекцию</span>
+                        </div>
+                    </a>
+
+                    <a href="#easter" class="group relative block overflow-hidden aspect-[3/4] collection-link" data-section="easter">
+                        <img src="covers/cover_easter.png" alt="Пасха" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-8">
+                            <h3 class="text-white text-xl font-playfair tracking-widest uppercase mb-3">Пасха</h3>
+                            <span class="text-white text-[10px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all duration-500">Смотреть коллекцию</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="fragrances" class="py-16 bg-white border-t border-gray-100">
+            <div class="container mx-auto px-4 max-w-6xl">
+                <h2 class="text-2xl md:text-3xl font-playfair text-center mb-12 uppercase tracking-[0.3em] text-gray-800">Палитра ароматов</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12">
+                    <div>
+                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-bronze mb-4 border-b pb-2">Цветочные</h3>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>Французская сирень</li>
+                            <li>Лесной ландыш</li>
+                            <li>Лаванда</li>
+                            <li>Богемская роза</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-bronze mb-4 border-b pb-2">Гурманские</h3>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>Горячий яблочный пирог</li>
+                            <li>Пряный апельсин</li>
+                            <li>Ваниль</li>
+                            <li>Фисташковое безе</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-bronze mb-4 border-b pb-2">Интерьерные</h3>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>Сандаловое дерево</li>
+                            <li>Кашемировый мускус</li>
+                            <li>Хлопок</li>
+                            <li>Сахарный личи</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-[10px] uppercase tracking-[0.2em] text-bronze mb-4 border-b pb-2">Свежие</h3>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li>Кактусовая вода</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
                         <button type="submit"
                             class="w-full bg-bronze hover:bg-opacity-90 text-white font-medium py-2 px-4 rounded-md transition duration-300">
                             Подтвердить заказ
