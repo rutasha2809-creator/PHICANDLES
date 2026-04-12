@@ -2455,9 +2455,9 @@
 
                     // Получаем выбранный цвет или аромат, если есть
                     let variant = '';
-                    const productCard = this.closest('.rounded-lg');
-                    const hasColorSelect = !!colorSelect;
-                    const hasAromaSelect = !!aromaSelect;
+                    const productCard = this.closest('.p-4');
+                    const colorSelect = productCard?.querySelector('select[id^="color-"]');
+                    const aromaSelect = productCard?.querySelector('select[id^="aroma-"]');
                     
                     // Проверяем наличие селектов и их значений
                     const hasColorSelect = colorSelect !== null;
