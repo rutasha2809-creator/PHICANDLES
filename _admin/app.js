@@ -101,8 +101,11 @@
     if (!data.store || !Array.isArray(data.categories) || !Array.isArray(data.products)) {
       throw new Error('Ожидаются поля store, categories (массив) и products (массив)');
     }
-    if (!data.colorSwatches || typeof data.colorSwatches !== 'object') {
+    if (!data.colorSwatches || typeof data.colorSwatches !== 'object' || Array.isArray(data.colorSwatches)) {
       data.colorSwatches = {};
+    }
+    if (!Array.isArray(data.aromas)) {
+      data.aromas = [];
     }
     return data;
   }
@@ -144,6 +147,7 @@
         updatedAt: new Date().toISOString().slice(0, 10),
       },
       categories: [],
+      aromas: [],
       colorSwatches: {},
       products: [],
     };
@@ -167,7 +171,8 @@
     renderCategories();
     renderProductList();
     renderProductEditor();
-    syncSwatchesTextarea();
+    renderAromas();
+    renderSwatches();
     syncRawJsonTextarea();
   }
 
@@ -239,6 +244,104 @@
     renderCategories();
   }
 
+  function renderAromas() {
+    const tbody = $('#aromas-body');
+    if (!tbody || !catalog) return;
+    const list = Array.isArray(catalog.aromas) ? catalog.aromas : [];
+    tbody.innerHTML = list
+      .map(
+        (a, i) => `
+      <tr data-aroma-index="${i}">
+        <td><input type="text" data-aroma-field="id" value="${esc(a.id || '')}" aria-label="id аромата ${i + 1}"></td>
+        <td><input type="text" data-aroma-field="name" value="${esc(a.name || '')}" aria-label="название"></td>
+        <td><input type="text" data-aroma-field="description" value="${esc(a.description || '')}" aria-label="описание"></td>
+        <td><button type="button" class="icon-del" data-aroma-del="${i}">Удалить</button></td>
+      </tr>`,
+      )
+      .join('');
+  }
+
+  function onAromaInput(e) {
+    if (!catalog?.aromas) return;
+    const t = e.target;
+    if (!(t instanceof HTMLInputElement) || !t.dataset.aromaField) return;
+    const tr = t.closest('tr[data-aroma-index]');
+    if (!tr) return;
+    const i = Number(tr.dataset.aromaIndex);
+    const field = t.dataset.aromaField;
+    if (!catalog.aromas[i]) return;
+    catalog.aromas[i][field] = t.value;
+  }
+
+  function onAromaClick(e) {
+    if (!catalog?.aromas) return;
+    const t = e.target;
+    if (!(t instanceof HTMLElement) || t.dataset.aromaDel == null) return;
+    const i = Number(t.dataset.aromaDel);
+    catalog.aromas.splice(i, 1);
+    renderAromas();
+  }
+
+  function safeHexForCss(raw) {
+    const s = String(raw ?? '').trim();
+    if (/^#[0-9A-Fa-f]{3}$/i.test(s) || /^#[0-9A-Fa-f]{6}$/i.test(s) || /^#[0-9A-Fa-f]{8}$/i.test(s)) return s;
+    return '#cccccc';
+  }
+
+  function syncColorSwatchesFromTable() {
+    if (!catalog) return;
+    const tbody = $('#swatches-body');
+    if (!tbody) return;
+    const next = {};
+    tbody.querySelectorAll('tr[data-swatch-row]').forEach((tr) => {
+      const name = tr.querySelector('[data-swatch-field="name"]')?.value?.trim() ?? '';
+      const hex = tr.querySelector('[data-swatch-field="hex"]')?.value?.trim() ?? '';
+      if (!name) return;
+      next[name] = hex || '#cccccc';
+    });
+    catalog.colorSwatches = next;
+  }
+
+  function renderSwatches() {
+    const tbody = $('#swatches-body');
+    if (!tbody || !catalog) return;
+    const obj = catalog.colorSwatches && typeof catalog.colorSwatches === 'object' ? catalog.colorSwatches : {};
+    const keys = Object.keys(obj).sort((a, b) => a.localeCompare(b, 'ru'));
+    tbody.innerHTML = keys
+      .map((name, i) => {
+        const hex = obj[name] ?? '';
+        const sample = safeHexForCss(hex);
+        return `<tr data-swatch-row="${i}">
+        <td><span class="swatch-sample" style="background:${sample}" aria-hidden="true"></span></td>
+        <td><input type="text" data-swatch-field="name" value="${esc(name)}" aria-label="ключ цвета ${i + 1}"></td>
+        <td><input type="text" data-swatch-field="hex" value="${esc(hex)}" aria-label="hex" spellcheck="false"></td>
+        <td><button type="button" class="icon-del" data-swatch-del="${i}">Удалить</button></td>
+      </tr>`;
+      })
+      .join('');
+  }
+
+  function onSwatchInput(e) {
+    const t = e.target;
+    if (!(t instanceof HTMLInputElement) || !t.dataset.swatchField) return;
+    syncColorSwatchesFromTable();
+    if (t.dataset.swatchField === 'hex') {
+      const tr = t.closest('tr[data-swatch-row]');
+      const sample = tr?.querySelector('.swatch-sample');
+      if (sample) sample.style.background = safeHexForCss(t.value);
+    }
+  }
+
+  function onSwatchClick(e) {
+    if (!catalog?.colorSwatches) return;
+    const t = e.target;
+    if (!(t instanceof HTMLElement) || t.dataset.swatchDel == null) return;
+    const tr = t.closest('tr[data-swatch-row]');
+    if (!tr) return;
+    const name = tr.querySelector('[data-swatch-field="name"]')?.value?.trim();
+    if (name && catalog.colorSwatches) delete catalog.colorSwatches[name];
+    renderSwatches();
+  }
 
   function filteredProductIndices() {
     const q = productFilter.trim().toLowerCase();
@@ -319,7 +422,7 @@
       <div class="field"><label>dimensions</label><input type="text" data-p="dimensions" value="${esc(p.dimensions || '')}"></div>
       <div class="field"><label>burnTime</label><input type="text" data-p="burnTime" value="${esc(p.burnTime || '')}"></div>
       <div class="field"><label>materials (строка на позицию)</label><textarea data-p-materials>${esc(materials)}</textarea></div>
-      <div class="field"><label>options.aroma (строка на позицию)</label><textarea data-p-aroma>${esc(aroma)}</textarea></div>
+      <div class="field"><label>options.aroma (id из блока aromas в catalog.json, по одному на строку)</label><textarea data-p-aroma>${esc(aroma)}</textarea></div>
       <div class="field"><label>options.color (строка на позицию)</label><textarea data-p-color>${esc(color)}</textarea></div>
       <div class="field"><label>image</label><input type="text" data-p="image" value="${esc(p.image || '')}"></div>
       <div class="field"><label>imageAlt</label><input type="text" data-p="imageAlt" value="${esc(p.imageAlt || '')}"></div>
@@ -444,28 +547,11 @@
     setStatus('Добавлен черновик товара');
   });
 
-  function syncSwatchesTextarea() {
-    const ta = $('#swatches-json');
-    if (!ta || !catalog) return;
-    ta.value = JSON.stringify(catalog.colorSwatches || {}, null, 2);
-  }
-
   function syncRawJsonTextarea() {
     const ta = $('#raw-json');
     if (!ta || !catalog) return;
     ta.value = JSON.stringify(catalog, null, 2);
   }
-
-  $('#btn-apply-swatches').addEventListener('click', () => {
-    try {
-      const obj = JSON.parse($('#swatches-json').value || '{}');
-      if (typeof obj !== 'object' || obj === null || Array.isArray(obj)) throw new Error('Нужен объект ключ → hex');
-      catalog.colorSwatches = obj;
-      setStatus('Цвета обновлены');
-    } catch (e) {
-      setStatus(String(e.message || e), true);
-    }
-  });
 
   $('#btn-apply-raw').addEventListener('click', () => {
     try {
@@ -591,7 +677,6 @@
       });
       $$('.panel').forEach((p) => p.classList.toggle('is-active', p.id === `panel-${name}`));
       if (name === 'json') syncRawJsonTextarea();
-      if (name === 'swatches') syncSwatchesTextarea();
     });
   });
 
@@ -608,6 +693,12 @@
   $('#panel-categories').addEventListener('input', onCategoryInput, { passive: true });
   $('#panel-categories').addEventListener('click', onCategoryClick);
 
+  $('#panel-aromas').addEventListener('input', onAromaInput, { passive: true });
+  $('#panel-aromas').addEventListener('click', onAromaClick);
+
+  $('#panel-swatches').addEventListener('input', onSwatchInput, { passive: true });
+  $('#panel-swatches').addEventListener('click', onSwatchClick);
+
   $('#btn-add-category').addEventListener('click', () => {
     if (!catalog) return;
     catalog.categories.push({
@@ -616,6 +707,34 @@
       description: '',
     });
     renderCategories();
+  });
+
+  $('#btn-add-aroma').addEventListener('click', () => {
+    if (!catalog) return;
+    if (!Array.isArray(catalog.aromas)) catalog.aromas = [];
+    catalog.aromas.push({
+      id: `aroma-new-${Date.now()}`,
+      name: 'Новый аромат',
+      description: '',
+    });
+    renderAromas();
+    setStatus('Добавлен аромат');
+  });
+
+  $('#btn-add-swatch').addEventListener('click', () => {
+    if (!catalog) return;
+    if (!catalog.colorSwatches || typeof catalog.colorSwatches !== 'object' || Array.isArray(catalog.colorSwatches)) {
+      catalog.colorSwatches = {};
+    }
+    const base = 'новый цвет';
+    let k = base;
+    let n = 2;
+    while (Object.prototype.hasOwnProperty.call(catalog.colorSwatches, k)) {
+      k = `${base} ${n++}`;
+    }
+    catalog.colorSwatches[k] = '#e8e8e8';
+    renderSwatches();
+    setStatus('Добавлен цвет');
   });
 
   async function bootstrap() {

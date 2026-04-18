@@ -86,10 +86,10 @@ function renderSpecCards(product) {
   return cards.join('');
 }
 
-function setupAromaControls(aromaWrap, aromaSelect, product) {
-  const aromas = product.options?.aroma || [];
+function setupAromaControls(aromaWrap, aromaSelect, product, aromaMap) {
+  const aromaIds = product.options?.aroma || [];
   aromaSelect.innerHTML = '';
-  if (!aromas.length) {
+  if (!aromaIds.length) {
     aromaWrap.classList.add('hidden');
     return;
   }
@@ -98,15 +98,19 @@ function setupAromaControls(aromaWrap, aromaSelect, product) {
   const chipHost = aromaWrap.querySelector('[data-option-aroma-chips]');
   const selectWrap = aromaWrap.querySelector('[data-option-aroma-select-wrap]');
 
+  const labelFor = (id) => aromaDisplayName(aromaMap, id);
+
   // Если ароматов много, используем select; иначе — чипы.
-  const useNative = aromas.length > AROMA_CHIP_MAX;
+  const useNative = aromaIds.length > AROMA_CHIP_MAX;
   if (useNative) {
     chipHost?.classList.add('hidden');
     selectWrap?.classList.remove('hidden');
     aromaSelect.classList.remove('hidden');
     aromaSelect.removeAttribute('aria-hidden');
     aromaSelect.tabIndex = 0;
-    aromaSelect.innerHTML = aromas.map((item) => `<option value="${escapeAttr(item)}">${escapeHtml(item)}</option>`).join('');
+    aromaSelect.innerHTML = aromaIds
+      .map((id) => `<option value="${escapeAttr(id)}">${escapeHtml(labelFor(id))}</option>`)
+      .join('');
     return;
   }
 
@@ -114,10 +118,10 @@ function setupAromaControls(aromaWrap, aromaSelect, product) {
   chipHost?.classList.remove('hidden');
   if (!chipHost) return;
 
-  chipHost.innerHTML = aromas
+  chipHost.innerHTML = aromaIds
     .map(
-      (item, i) => `
-    <button type="button" class="option-chip${i === 0 ? ' is-active' : ''}" data-aroma-chip value="${escapeAttr(item)}">${escapeHtml(item)}</button>`,
+      (id, i) => `
+    <button type="button" class="option-chip${i === 0 ? ' is-active' : ''}" data-aroma-chip value="${escapeAttr(id)}">${escapeHtml(labelFor(id))}</button>`,
     )
     .join('');
 
@@ -132,8 +136,10 @@ function setupAromaControls(aromaWrap, aromaSelect, product) {
     btn.addEventListener('click', () => setActive(btn.value));
   });
 
-  aromaSelect.innerHTML = aromas.map((item) => `<option value="${escapeAttr(item)}">${escapeHtml(item)}</option>`).join('');
-  setActive(aromas[0]);
+  aromaSelect.innerHTML = aromaIds
+    .map((id) => `<option value="${escapeAttr(id)}">${escapeHtml(labelFor(id))}</option>`)
+    .join('');
+  setActive(aromaIds[0]);
   aromaSelect.classList.add('hidden');
   aromaSelect.setAttribute('aria-hidden', 'true');
   aromaSelect.tabIndex = -1;
@@ -317,7 +323,8 @@ async function initProductPage() {
   const colorWrap = document.querySelector('[data-option-color-wrap]');
   const aromaSelect = document.querySelector('[data-option-aroma]');
   const colorSelect = document.querySelector('[data-option-color]');
-  setupAromaControls(aromaWrap, aromaSelect, product);
+  const aromaMap = buildAromaMap(catalog);
+  setupAromaControls(aromaWrap, aromaSelect, product, aromaMap);
   const colorSwatchMap = buildColorSwatchMap(catalog);
   setupColorControls(colorWrap, colorSelect, product, colorSwatchMap);
 

@@ -36,6 +36,7 @@
       <button type="button" class="is-active" role="tab" aria-selected="true" data-tab="store">Магазин</button>
       <button type="button" role="tab" aria-selected="false" data-tab="categories">Категории</button>
       <button type="button" role="tab" aria-selected="false" data-tab="products">Товары</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="aromas">Ароматы</button>
       <button type="button" role="tab" aria-selected="false" data-tab="swatches">Цвета (swatches)</button>
       <button type="button" role="tab" aria-selected="false" data-tab="json">Сырой JSON</button>
     </div>
@@ -78,13 +79,40 @@
       </div>
     </section>
 
-    <section class="panel" id="panel-swatches" role="tabpanel">
-      <p class="hint">Объект «цвет → hex». Редактируйте как JSON.</p>
-      <div class="field">
-        <label for="swatches-json">colorSwatches</label>
-        <textarea id="swatches-json" class="tall" spellcheck="false"></textarea>
+    <section class="panel" id="panel-aromas" role="tabpanel">
+      <p class="hint">Справочник ароматов. В товарах в <code>options.aroma</code> указываются <strong>id</strong> из этой таблицы.</p>
+      <table class="cat-table" id="aromas-table">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Название</th>
+            <th>Описание</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="aromas-body"></tbody>
+      </table>
+      <div class="row-actions">
+        <button type="button" id="btn-add-aroma">Добавить аромат</button>
       </div>
-      <button type="button" id="btn-apply-swatches">Применить к данным</button>
+    </section>
+
+    <section class="panel" id="panel-swatches" role="tabpanel">
+      <p class="hint">Цвета для карточек товара: ключ (как в <code>options.color</code>) и hex для образца в интерфейсе.</p>
+      <table class="cat-table cat-table--swatches" id="swatches-table">
+        <thead>
+          <tr>
+            <th class="cat-table__sample"></th>
+            <th>Название (ключ)</th>
+            <th>Hex</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="swatches-body"></tbody>
+      </table>
+      <div class="row-actions">
+        <button type="button" id="btn-add-swatch">Добавить цвет</button>
+      </div>
     </section>
 
     <section class="panel" id="panel-json" role="tabpanel">

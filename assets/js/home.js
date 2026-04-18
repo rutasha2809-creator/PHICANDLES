@@ -151,7 +151,7 @@ function getOrderHistoryFromLocalStorage() {
   }
 }
 
-function buildOrderMessage(cart, productsMap, formData, totalRub, orderNumber) {
+function buildOrderMessage(cart, productsMap, formData, totalRub, orderNumber, aromaMap) {
   const lines = [
     'Новый заказ PHICANDLES',
     `Номер заказа: ${orderNumber}`,
@@ -171,7 +171,13 @@ function buildOrderMessage(cart, productsMap, formData, totalRub, orderNumber) {
     const product = productsMap.get(item.productId);
     if (!product) return;
     const options = Object.entries(item.selectedOptions || {}).filter(([, value]) => value);
-    const optionText = options.length ? ` (${options.map(([key, value]) => `${key}: ${value}`).join(', ')})` : '';
+    const optionText = options.length
+      ? ` (${options
+          .map(([key, value]) =>
+            `${optionLabel(key)}: ${key === 'aroma' ? aromaDisplayName(aromaMap, value) : value}`,
+          )
+          .join(', ')})`
+      : '';
     const lineTotal = item.price * item.quantity;
     lines.push(`${index + 1}. ${product.name}${optionText}`);
     lines.push(`   ${item.quantity} × ${formatPrice(item.price)} = ${formatPrice(lineTotal)}`);
@@ -182,7 +188,7 @@ function buildOrderMessage(cart, productsMap, formData, totalRub, orderNumber) {
   return lines.join('\n');
 }
 
-function openCheckoutModal({ cart, productsMap, totalRub, telegramUrl }) {
+function openCheckoutModal({ cart, productsMap, totalRub, telegramUrl, aromaMap }) {
   const orderNumber = generateOrderNumber();
   const backdrop = document.createElement('div');
   backdrop.className = 'checkout-modal-backdrop';
@@ -250,7 +256,7 @@ function openCheckoutModal({ cart, productsMap, totalRub, telegramUrl }) {
       return;
     }
     error.classList.add('hidden');
-    const message = buildOrderMessage(cart, productsMap, formData, totalRub, orderNumber);
+    const message = buildOrderMessage(cart, productsMap, formData, totalRub, orderNumber, aromaMap);
     const telegramOrderUrl = buildTelegramOrderUrl(telegramUrl, message);
     const createdAt = new Date().toISOString();
     const orderItems = [];
@@ -505,6 +511,7 @@ function renderCart(catalog) {
   const lastOrderPreview = document.querySelector('[data-home-last-order]');
   const orderHistoryRoot = document.querySelector('[data-order-history]');
   const productsMap = new Map(catalog.products.map((product) => [product.id, product]));
+  const aromaMap = buildAromaMap(catalog);
 
   const paintHeroPreview = (cart, totalRub, qtySum) => {
     if (!heroPreview || !heroMeta) return;
@@ -527,7 +534,13 @@ function renderCart(catalog) {
       if (!product) return '';
       const img = product.image || item.image || './assets/img/image-placeholder.svg';
       const options = Object.entries(item.selectedOptions || {}).filter(([, value]) => value);
-      const optionText = options.length ? options.map(([key, value]) => `${optionLabel(key)}: ${value}`).join(' · ') : '';
+      const optionText = options.length
+        ? options
+            .map(([key, value]) =>
+              `${optionLabel(key)}: ${key === 'aroma' ? aromaDisplayName(aromaMap, value) : value}`,
+            )
+            .join(' · ')
+        : '';
       const productUrl = product.slug ? `./products/${product.slug}/index.html` : '#';
       return `
         <div class="home-cart-preview-row">
@@ -638,7 +651,13 @@ function renderCart(catalog) {
       const product = productsMap.get(item.productId);
       if (!product) return '';
       const options = Object.entries(item.selectedOptions || {}).filter(([, value]) => value);
-      const optionText = options.length ? options.map(([key, value]) => `${optionLabel(key)}: ${value}`).join(' · ') : '';
+      const optionText = options.length
+        ? options
+            .map(([key, value]) =>
+              `${optionLabel(key)}: ${key === 'aroma' ? aromaDisplayName(aromaMap, value) : value}`,
+            )
+            .join(' · ')
+        : '';
       const productUrl = product.slug ? `./products/${product.slug}/index.html` : '#';
       return `
         <div class="cart-item">
@@ -731,6 +750,7 @@ function renderCart(catalog) {
           productsMap,
           totalRub: total,
           telegramUrl: catalog.store.telegram,
+          aromaMap,
         });
       }
     });

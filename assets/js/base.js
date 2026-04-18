@@ -28,6 +28,25 @@ function formatPrice(price) {
   return new Intl.NumberFormat('ru-RU').format(price) + ' ₽';
 }
 
+/** id аромата → отображаемое имя (как в catalog.aromas). */
+function buildAromaMap(catalog) {
+  const map = new Map();
+  const list = catalog?.aromas;
+  if (!Array.isArray(list)) return map;
+  for (const a of list) {
+    if (a && a.id != null) map.set(String(a.id).trim(), a.name != null ? String(a.name) : String(a.id));
+  }
+  return map;
+}
+
+/** По id из корзины/опций; если id неизвестен — возвращаем строку как есть (старые данные). */
+function aromaDisplayName(aromaMap, storedValue) {
+  const key = String(storedValue ?? '').trim();
+  if (!key) return '';
+  if (aromaMap.has(key)) return aromaMap.get(key);
+  return key;
+}
+
 function getProductGalleryImages(product) {
   const fallback = 'assets/img/image-placeholder.svg';
   const base = ((product.image || '') || fallback).replace(/^\.\//, '');

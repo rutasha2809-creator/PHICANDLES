@@ -41,6 +41,78 @@
       "description": ""
     }
   ],
+  "aromas": [
+    {
+      "id": "aroma-francuzskaya-siren",
+      "name": "Французская сирень",
+      "description": ""
+    },
+    {
+      "id": "aroma-lesnoy-landysh",
+      "name": "Лесной ландыш",
+      "description": ""
+    },
+    {
+      "id": "aroma-goryachiy-yablochnyy-pirog",
+      "name": "Горячий яблочный пирог",
+      "description": ""
+    },
+    {
+      "id": "aroma-sakharniy-lichi-i-zamsha",
+      "name": "Сахарный личи и замша",
+      "description": ""
+    },
+    {
+      "id": "aroma-sandalovoe-derevo",
+      "name": "Сандаловое дерево",
+      "description": ""
+    },
+    {
+      "id": "aroma-pryanyy-apelsin",
+      "name": "Пряный апельсин",
+      "description": ""
+    },
+    {
+      "id": "aroma-kashemirovyy-muskus",
+      "name": "Кашемировый мускус",
+      "description": ""
+    },
+    {
+      "id": "aroma-khlopok",
+      "name": "Хлопок",
+      "description": ""
+    },
+    {
+      "id": "aroma-vanil",
+      "name": "Ваниль",
+      "description": ""
+    },
+    {
+      "id": "aroma-lavanda",
+      "name": "Лаванда",
+      "description": ""
+    },
+    {
+      "id": "aroma-kaktusovaya-voda",
+      "name": "Кактусовая вода",
+      "description": ""
+    },
+    {
+      "id": "aroma-fistashkovoe-beze",
+      "name": "Фисташковое безе",
+      "description": ""
+    },
+    {
+      "id": "aroma-kashemirovaya-tykva",
+      "name": "Кашемировая тыква",
+      "description": ""
+    },
+    {
+      "id": "aroma-bogemskaya-roza",
+      "name": "Богемская роза",
+      "description": ""
+    }
+  ],
   "colorSwatches": {
     "белый": "#f7f4f0",
     "пудровый": "#ddc8c0",
@@ -160,20 +232,20 @@
       "burnTime": "до 28 часов",
       "options": {
         "aroma": [
-          "Французская сирень",
-          "Лесной ландыш",
-          "Горячий яблочный пирог",
-          "Сахарный личи и замша",
-          "Сандаловое дерево",
-          "Пряный апельсин",
-          "Кашемировый мускус",
-          "Хлопок",
-          "Ваниль",
-          "Лаванда",
-          "Кактусовая вода",
-          "Фисташковое безе",
-          "Кашемировая тыква",
-          "Богемская роза"
+          "aroma-francuzskaya-siren",
+          "aroma-lesnoy-landysh",
+          "aroma-goryachiy-yablochnyy-pirog",
+          "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-sandalovoe-derevo",
+          "aroma-pryanyy-apelsin",
+          "aroma-kashemirovyy-muskus",
+          "aroma-khlopok",
+          "aroma-vanil",
+          "aroma-lavanda",
+          "aroma-kaktusovaya-voda",
+          "aroma-fistashkovoe-beze",
+          "aroma-kashemirovaya-tykva",
+          "aroma-bogemskaya-roza"
         ],
         "color": []
       },
@@ -217,20 +289,20 @@
       "burnTime": "до 28 часов",
       "options": {
         "aroma": [
-          "Французская сирень",
-          "Лесной ландыш",
-          "Горячий яблочный пирог",
-          "Сахарный личи и замша",
-          "Сандаловое дерево",
-          "Пряный апельсин",
-          "Кашемировый мускус",
-          "Хлопок",
-          "Ваниль",
-          "Лаванда",
-          "Кактусовая вода",
-          "Фисташковое безе",
-          "Кашемировая тыква",
-          "Богемская роза"
+          "aroma-francuzskaya-siren",
+          "aroma-lesnoy-landysh",
+          "aroma-goryachiy-yablochnyy-pirog",
+          "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-sandalovoe-derevo",
+          "aroma-pryanyy-apelsin",
+          "aroma-kashemirovyy-muskus",
+          "aroma-khlopok",
+          "aroma-vanil",
+          "aroma-lavanda",
+          "aroma-kaktusovaya-voda",
+          "aroma-fistashkovoe-beze",
+          "aroma-kashemirovaya-tykva",
+          "aroma-bogemskaya-roza"
         ],
         "color": []
       },
@@ -261,20 +333,20 @@
       "burnTime": "до 22 часов",
       "options": {
         "aroma": [
-          "Французская сирень",
-          "Лесной ландыш",
-          "Горячий яблочный пирог",
-          "Сахарный личи и замша",
-          "Сандаловое дерево",
-          "Пряный апельсин",
-          "Кашемировый мускус",
-          "Хлопок",
-          "Ваниль",
-          "Лаванда",
-          "Кактусовая вода",
-          "Фисташковое безе",
-          "Кашемировая тыква",
-          "Богемская роза"
+          "aroma-francuzskaya-siren",
+          "aroma-lesnoy-landysh",
+          "aroma-goryachiy-yablochnyy-pirog",
+          "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-sandalovoe-derevo",
+          "aroma-pryanyy-apelsin",
+          "aroma-kashemirovyy-muskus",
+          "aroma-khlopok",
+          "aroma-vanil",
+          "aroma-lavanda",
+          "aroma-kaktusovaya-voda",
+          "aroma-fistashkovoe-beze",
+          "aroma-kashemirovaya-tykva",
+          "aroma-bogemskaya-roza"
         ],
         "color": []
       },
@@ -425,20 +497,19 @@
       "burnTime": "до 32 часов",
       "options": {
         "aroma": [
-          "Французская сирень",
-          "Лесной ландыш",
-          "Горячий яблочный пирог",
-          "Сахарный личи и замша",
-          "Сандаловое дерево",
-          "Пряный апельсин",
-          "Кашемировый мускус",
-          "Хлопок",
-          "Ваниль",
-          "Лаванда",
-          "Кактусовая вода",
-          "Фисташковое безе",
-          "Кашемировая тыква",
-          "Богемская роза"
+          "aroma-francuzskaya-siren",
+          "aroma-lesnoy-landysh",
+          "aroma-goryachiy-yablochnyy-pirog",
+          "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-sandalovoe-derevo",
+          "aroma-pryanyy-apelsin",
+          "aroma-khlopok",
+          "aroma-vanil",
+          "aroma-lavanda",
+          "aroma-kaktusovaya-voda",
+          "aroma-fistashkovoe-beze",
+          "aroma-kashemirovaya-tykva",
+          "aroma-bogemskaya-roza"
         ],
         "color": []
       },
@@ -476,20 +547,20 @@
       "burnTime": "до 28 часов",
       "options": {
         "aroma": [
-          "Французская сирень",
-          "Лесной ландыш",
-          "Горячий яблочный пирог",
-          "Сахарный личи и замша",
-          "Сандаловое дерево",
-          "Пряный апельсин",
-          "Кашемировый мускус",
-          "Хлопок",
-          "Ваниль",
-          "Лаванда",
-          "Кактусовая вода",
-          "Фисташковое безе",
-          "Кашемировая тыква",
-          "Богемская роза"
+          "aroma-francuzskaya-siren",
+          "aroma-lesnoy-landysh",
+          "aroma-goryachiy-yablochnyy-pirog",
+          "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-sandalovoe-derevo",
+          "aroma-pryanyy-apelsin",
+          "aroma-kashemirovyy-muskus",
+          "aroma-khlopok",
+          "aroma-vanil",
+          "aroma-lavanda",
+          "aroma-kaktusovaya-voda",
+          "aroma-fistashkovoe-beze",
+          "aroma-kashemirovaya-tykva",
+          "aroma-bogemskaya-roza"
         ],
         "color": []
       },
@@ -520,20 +591,20 @@
       "burnTime": "до 26 часов",
       "options": {
         "aroma": [
-          "Французская сирень",
-          "Лесной ландыш",
-          "Горячий яблочный пирог",
-          "Сахарный личи и замша",
-          "Сандаловое дерево",
-          "Пряный апельсин",
-          "Кашемировый мускус",
-          "Хлопок",
-          "Ваниль",
-          "Лаванда",
-          "Кактусовая вода",
-          "Фисташковое безе",
-          "Кашемировая тыква",
-          "Богемская роза"
+          "aroma-francuzskaya-siren",
+          "aroma-lesnoy-landysh",
+          "aroma-goryachiy-yablochnyy-pirog",
+          "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-sandalovoe-derevo",
+          "aroma-pryanyy-apelsin",
+          "aroma-kashemirovyy-muskus",
+          "aroma-khlopok",
+          "aroma-vanil",
+          "aroma-lavanda",
+          "aroma-kaktusovaya-voda",
+          "aroma-fistashkovoe-beze",
+          "aroma-kashemirovaya-tykva",
+          "aroma-bogemskaya-roza"
         ],
         "color": []
       },
@@ -563,20 +634,20 @@
       "burnTime": "до 36 часов суммарно",
       "options": {
         "aroma": [
-          "Французская сирень",
-          "Лесной ландыш",
-          "Горячий яблочный пирог",
-          "Сахарный личи и замша",
-          "Сандаловое дерево",
-          "Пряный апельсин",
-          "Кашемировый мускус",
-          "Хлопок",
-          "Ваниль",
-          "Лаванда",
-          "Кактусовая вода",
-          "Фисташковое безе",
-          "Кашемировая тыква",
-          "Богемская роза"
+          "aroma-francuzskaya-siren",
+          "aroma-lesnoy-landysh",
+          "aroma-goryachiy-yablochnyy-pirog",
+          "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-sandalovoe-derevo",
+          "aroma-pryanyy-apelsin",
+          "aroma-kashemirovyy-muskus",
+          "aroma-khlopok",
+          "aroma-vanil",
+          "aroma-lavanda",
+          "aroma-kaktusovaya-voda",
+          "aroma-fistashkovoe-beze",
+          "aroma-kashemirovaya-tykva",
+          "aroma-bogemskaya-roza"
         ],
         "color": []
       },
@@ -717,10 +788,10 @@
       "burnTime": "до 20 сеансов",
       "options": {
         "aroma": [
-          "Французская сирень",
-          "Лесной ландыш",
-          "Горячий яблочный пирог",
-          "Сахарный личи и замша"
+          "aroma-francuzskaya-siren",
+          "aroma-lesnoy-landysh",
+          "aroma-goryachiy-yablochnyy-pirog",
+          "aroma-sakharniy-lichi-i-zamsha"
         ],
         "color": []
       },
@@ -758,10 +829,10 @@
       "burnTime": "до 40 сеансов",
       "options": {
         "aroma": [
-          "Сандаловое дерево",
-          "Пряный апельсин",
-          "Ваниль",
-          "Лаванда"
+          "aroma-sandalovoe-derevo",
+          "aroma-pryanyy-apelsin",
+          "aroma-vanil",
+          "aroma-lavanda"
         ],
         "color": []
       },
@@ -827,9 +898,9 @@
       "burnTime": "до 6 недель аромата",
       "options": {
         "aroma": [
-          "Хлопок",
-          "Ваниль",
-          "Фисташковое безе"
+          "aroma-khlopok",
+          "aroma-vanil",
+          "aroma-fistashkovoe-beze"
         ],
         "color": []
       },
@@ -928,10 +999,10 @@
       "burnTime": "до 30 часов",
       "options": {
         "aroma": [
-          "Французская сирень",
-          "Лесной ландыш",
-          "Горячий яблочный пирог",
-          "Сахарный личи и замша"
+          "aroma-francuzskaya-siren",
+          "aroma-lesnoy-landysh",
+          "aroma-goryachiy-yablochnyy-pirog",
+          "aroma-sakharniy-lichi-i-zamsha"
         ],
         "color": [
           "Бежевый",
