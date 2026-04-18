@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  <meta name="description" content="{description}">
+  <link rel="canonical" href="{canonical}">
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <script type="application/ld+json">{jsonld}</script>
+</head>
+<body data-catalog-path="../../data/catalog.json" data-root-path="../../" data-product-slug="{slug}">
+{header_html}
+
+  <main class="section" data-product-root>
+    <div class="container article-shell">
+      <nav class="breadcrumbs breadcrumbs--guide" aria-label="Хлебные крошки">
+        <a href="../../index.html#catalog">Главная</a>
+        <span aria-hidden="true">•</span>
+        <a href="../../index.html#catalog" data-breadcrumb-catalog>Каталог</a>
+        <span aria-hidden="true">•</span>
+        <span class="breadcrumbs-current" data-product-breadcrumb-name></span>
+      </nav>
+      <section class="product-layout">
+      <div class="product-media-stack">
+        <div class="product-media product-panel">
+          <div class="product-gallery" data-product-gallery>
+            <div class="product-gallery-main">
+              <img class="product-page-image" data-product-image src="{image_src}" alt="{image_alt}" onerror="this.onerror=null;this.src='../../assets/img/image-placeholder.svg';">
+            </div>
+            <div class="product-gallery-thumbs" data-product-gallery-thumbs hidden></div>
+          </div>
+        </div>
+        <section class="product-reviews-aside" data-reviews-section id="product-reviews" aria-labelledby="product-reviews-heading">
+          <h2 id="product-reviews-heading" class="product-reviews-aside__title">Отзывы</h2>
+          <div class="home-reviews-list" data-reviews-grid></div>
+        </section>
+      </div>
+      <div class="product-content product-panel">
+        <div class="product-collection-badge"><span class="badge badge--collection" data-product-collection-badge></span></div>
+        <h1 class="product-title product-title--page" data-product-name></h1>
+        <div class="product-story-inline">
+          <h2 class="product-story-inline__title">О свече</h2>
+          <p class="product-story-inline__text" data-product-short></p>
+          <p class="product-story-inline__tagline muted">Настроение, аромат и идея — всё, что важно знать перед заказом.</p>
+          <p class="product-story-inline__text" data-product-description></p>
+        </div>
+        <div class="product-price-hero">
+          <div class="product-price-hero__amount" data-product-price></div>
+          <div class="product-price-hero__meta">
+            <span class="product-price-hero__rating" data-product-rating-line></span>
+            <span class="product-price-hero__sep" data-meta-sep-a aria-hidden="true">·</span>
+            <a class="product-price-hero__reviews" href="#product-reviews" data-product-reviews-link hidden>Отзывы</a>
+            <span class="product-price-hero__sep" data-meta-sep-b aria-hidden="true">·</span>
+            <strong class="product-price-hero__stock" data-product-stock></strong>
+          </div>
+        </div>
+        <div class="option-field" data-option-aroma-wrap>
+          <span class="option-field__label" id="option-aroma-label">Аромат</span>
+          <div class="option-chips-scroll" data-option-aroma-chips hidden></div>
+          <div class="select-wrap" data-option-aroma-select-wrap>
+            <select id="option-aroma" class="select select--premium" data-option-aroma aria-labelledby="option-aroma-label"></select>
+          </div>
+        </div>
+        <div class="option-field" data-option-color-wrap>
+          <span class="option-field__label" id="option-color-label">Цвет</span>
+          <div class="color-swatches" data-option-color-swatches hidden></div>
+          <div class="select-wrap" data-option-color-select-wrap>
+            <select id="option-color" class="select select--premium" data-option-color aria-labelledby="option-color-label"></select>
+          </div>
+        </div>
+        <div class="product-specs-section" data-product-specs-section>
+          <span class="product-specs-section__label">Ключевые характеристики</span>
+          <div class="spec-grid" data-product-specs></div>
+        </div>
+        <div class="materials-block">
+          <span class="materials-block__label">Материалы</span>
+          <ul class="materials-list" data-product-materials></ul>
+        </div>
+        <div class="product-cta-row">
+          <button class="button button--cta-primary" type="button" data-add-product>Добавить в корзину</button>
+          <a class="button-secondary button-secondary--cart" href="../../index.html#cart">Перейти в корзину</a>
+        </div>
+        <div class="trust-strip" aria-label="Условия заказа">
+          <div class="trust-strip__item"><strong>Надёжная упаковка</strong><span>Бережно готовим к отправке</span></div>
+          <div class="trust-strip__item"><strong>Доставка по России</strong><span>Удобные способы получения</span></div>
+          <div class="trust-strip__item"><strong>Для подарка</strong><span>Эстетичный презентабельный вид</span></div>
+          <div class="trust-strip__item"><strong>Ручная работа</strong><span>Внимание к деталям</span></div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <section class="section">
+      <div class="container">
+      <div class="section-header">
+        <div>
+          <h2>Похожие товары</h2>
+        </div>
+      </div>
+      <div class="grid" data-related-grid></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong class="brand-mark">{store_name}</strong>
+        <p>{store_description}</p>
+      </div>
+      <div>
+        <strong>Контакты</strong>
+        <p>{email}<br>{phones}</p>
+      </div>
+      <div>
+        <strong>Соцсети</strong>
+        <p><a href="{telegram}">Telegram</a><br><a href="{instagram}">Instagram</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script id="phicandles-catalog-json" type="application/json">{catalog_json}</script>
+  <script src="../../assets/js/base.js"></script>
+  <script src="../../assets/js/product.js"></script>
+</body>
+</html>

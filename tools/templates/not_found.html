@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
+  <title>{title}</title>
+  <meta name="description" content="{description}">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="{canonical}">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body data-catalog-path="./data/catalog.json" data-root-path="./">
+{header_html}
+
+  <main>
+    <div class="container">
+      <section class="not-found-card">
+        <h1 style="margin-top:0">Страница не найдена</h1>
+        <p class="not-found-card__lead">Возможно, ссылка изменилась или товар уже недоступен.</p>
+        <div class="card-actions" style="max-width:420px">
+          <a class="button" href="./index.html">Перейти на главную</a>
+          <a class="button-secondary" href="./index.html#catalog">Открыть каталог</a>
+        </div>
+      </section>
+    </div>
+
+{popular_section}
+  </main>
+
+  <script id="phicandles-catalog-json" type="application/json">{catalog_json}</script>
+  <script src="./assets/js/base.js"></script>
+  <script src="./assets/js/not-found.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <title>{title}</title>
+  <meta name="description" content="{description}">
+  <link rel="canonical" href="{canonical}">
+  <meta property="og:title" content="{og_title}">
+  <meta property="og:description" content="{og_description}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{og_url}">
+  <meta property="og:site_name" content="{og_site_name}">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script type="application/ld+json">{jsonld}</script>
+</head>
+<body class="guide-page faq-page" data-root-path="../" data-catalog-path="../data/catalog.json">
+  <!-- Шапка ниже подставляется из tools/templates/home_header.html при запуске tools/rebuild_from_catalog.py (не править вручную). -->
+{header_html}
+
+  <main class="section">
+    <div class="container article-shell">
+      <nav class="breadcrumbs breadcrumbs--guide" aria-label="Хлебные крошки">
+        <a href="../index.html">Главная</a>
+        <span aria-hidden="true">•</span>
+        <span class="breadcrumbs-current">Вопросы и заказ</span>
+      </nav>
+
+      <header class="card card--pad faq-intro">
+        <span class="eyebrow">{eyebrow}</span>
+        <h1>{h1}</h1>
+        {intro_html}
+      </header>
+
+      <div class="faq-accordion">
+{faq_items_html}
+      </div>
+
+      <section class="faq-cta" aria-labelledby="faq-cta-heading">
+        <h2 id="faq-cta-heading">{cta_title}</h2>
+        {cta_body_html}
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong class="brand-mark">{store_name}</strong>
+        <p>{store_description}</p>
+      </div>
+      <div>
+        <strong>Контакты</strong>
+        <p>{email}<br>{phones}</p>
+      </div>
+      <div>
+        <strong>Соцсети</strong>
+        <p><a href="{telegram}">Telegram</a><br><a href="{instagram}">Instagram</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/base.js"></script>
+</body>
+</html>

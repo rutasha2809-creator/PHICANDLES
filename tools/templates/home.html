@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
+  <title>{title}</title>
+  <meta name="description" content="{description}">
+  <link rel="canonical" href="{canonical}">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <script type="application/ld+json">{jsonld}</script>
+</head>
+<body data-catalog-path="./data/catalog.json" data-root-path="./">
+{header_html}
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card hero-card--about">
+          <div class="hero-about-inner">
+            <h1>О нас</h1>
+            <p><span class="text-brand-inline">PHICANDLES</span>&nbsp;— это бренд ароматических свечей ручной работы, созданных с любовью и вниманием к каждой детали. Мы используем только натуральные материалы высочайшего качества, чтобы создавать уникальные изделия, которые наполнят ваш дом теплом и изысканным ароматом.</p>
+            <p>Наша миссия&nbsp;— создавать не просто свечи, а настоящие произведения искусства, которые станут стильным акцентом в вашем интерьере и принесут радость в повседневную жизнь. Каждая свеча&nbsp;— это результат кропотливой работы, в которую вложена частичка души.</p>
+            <p>Мы предлагаем широкий ассортимент форм и ароматов: от классики до изысканных цветочных композиций. В нашей коллекции есть всё, чтобы удовлетворить самый взыскательный вкус и стать особенным подарком для вас и ваших близких.</p>
+            <div class="hero-meta">
+              <span class="badge">Натуральные материалы</span>
+              <span class="badge">Ручная работа</span>
+              <span class="badge">Коллекции для интерьера</span>
+              <span class="badge">Подарки с душой</span>
+            </div>
+          </div>
+          <div class="hero-about-bg" role="img" aria-label="Коллекция ароматических свечей PHICANDLES: столбы, цветочные композиции из воска и подарочная упаковка"></div>
+        </div>
+        <div class="hero-side">
+          <div class="summary-card summary-card--cart-preview">
+            <h3>Корзина</h3>
+            <p class="home-cart-preview-meta muted" data-home-cart-meta></p>
+            <div class="home-cart-preview-scroll" data-home-cart-preview></div>
+            <div class="home-cart-preview-actions">
+              <a class="button home-cart-preview-cta" href="#catalog">К каталогу</a>
+              <a class="button-secondary home-cart-preview-cta" data-home-cart-secondary-cta href="./guides/kak-vybrat-svechu/index.html">Как выбрать свечу</a>
+            </div>
+          </div>
+          <div class="summary-card summary-card--last-order">
+            <h3>Последний заказ</h3>
+            <div data-home-last-order></div>
+          </div>
+          <div class="summary-card summary-card--reviews">
+            <h3>Отзывы</h3>
+            <div class="home-reviews-list" data-home-reviews></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{popular_section}
+
+    <section class="section" id="guides">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Гид по свечам</h2>
+            <p class="muted">Коротко о воске, выборе свечи для дома и подарка — без перегруза терминами.</p>
+          </div>
+          <a class="pill" href="./guides/index.html">Все статьи</a>
+        </div>
+        <div class="guide-grid">
+          <a class="guide-card card" href="./guides/vidy-svechnogo-voska/index.html">
+            <div class="guide-card__image"><img src="./assets/img/guides/wax-types.jpg" alt=""></div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title">Виды свечного воска</h3>
+              <p class="guide-card__text">Соевый, пчелиный, кокосовый и парафин в одном сравнении.</p>
+              <div class="guide-card__meta">Читать</div>
+            </div>
+          </a>
+          <a class="guide-card card" href="./guides/soevyy-ili-pchelinyy-vosk/index.html">
+            <div class="guide-card__image"><img src="./assets/img/guides/soy-vs-beeswax.jpg" alt=""></div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title">Соевый или пчелиный?</h3>
+              <p class="guide-card__text">Два популярных натуральных варианта простым языком.</p>
+              <div class="guide-card__meta">Сравнить</div>
+            </div>
+          </a>
+          <a class="guide-card card" href="./guides/kak-vybrat-svechu/index.html">
+            <div class="guide-card__image"><img src="./assets/img/guides/choose-candle.jpg" alt=""></div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title">Как выбрать свечу</h3>
+              <p class="guide-card__text">Спальня, подарок, декор и вечерний ритуал.</p>
+              <div class="guide-card__meta">Подобрать</div>
+            </div>
+          </a>
+          <a class="guide-card card" href="./guides/naturalnyy-vosk-i-parafin/index.html">
+            <div class="guide-card__image"><img src="./assets/img/guides/natural-vs-paraffin.jpg" alt=""></div>
+            <div class="guide-card__body">
+              <h3 class="guide-card__title">Натуральный воск и парафин</h3>
+              <p class="guide-card__text">Где разница реально заметна покупателю.</p>
+              <div class="guide-card__meta">Разобраться</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="catalog">
+      <div class="container">
+        <div class="section-header section-header--filters-below">
+          <div>
+            <h2>Все товары</h2>
+          </div>
+          <div class="filters" data-category-filters>{filters_html}</div>
+        </div>
+        <div class="grid" data-product-grid>{products_html}</div>
+      </div>
+    </section>
+
+    <section class="section" id="cart">
+      <div class="container cart-history-layout" data-cart-root>
+        <div class="panel">
+          <div class="section-header section-header--cart-toolbar">
+            <div>
+              <h2>Корзина</h2>
+            </div>
+            <div class="cart-toolbar">
+              <span class="cart-status" data-cart-status>0 товаров</span>
+              <button type="button" class="button-secondary cart-clear-btn" data-clear-cart hidden>Очистить корзину</button>
+            </div>
+          </div>
+          <div class="cart-items" data-cart-items></div>
+          <div class="cart-checkout-block">
+            <h3 class="panel-title">Оформление</h3>
+            <div data-cart-summary></div>
+          </div>
+        </div>
+        <aside class="panel cart-history-panel" id="order-history">
+          <h3 class="panel-title">История заказов</h3>
+          <div data-order-history></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong class="brand-mark">{store_name}</strong>
+        <p>{store_description}</p>
+      </div>
+      <div>
+        <strong>Контакты</strong>
+        <p>{email}<br>{phones}</p>
+      </div>
+      <div>
+        <strong>Соцсети</strong>
+        <p><a href="{telegram}">Telegram</a><br><a href="{instagram}">Instagram</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script id="phicandles-catalog-json" type="application/json">{catalog_json}</script>
+  <script src="./assets/js/base.js"></script>
+  <script src="./assets/js/home.js"></script>
+</body>
+</html>

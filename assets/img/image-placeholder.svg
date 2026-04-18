@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-label="PHICANDLES">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7efe9"/>
+      <stop offset="50%" stop-color="#efe1db"/>
+      <stop offset="100%" stop-color="#e2cdc3"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)" rx="48"/>
+  <circle cx="600" cy="420" r="210" fill="#ffffff" fill-opacity="0.68"/>
+  <circle cx="600" cy="420" r="150" fill="#f4ddd6" fill-opacity="0.85"/>
+  <rect x="365" y="640" width="470" height="140" rx="24" fill="#fffaf7" fill-opacity="0.9"/>
+  <text x="600" y="690" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700" fill="#4b342d">PHICANDLES</text>
+  <text x="600" y="748" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#6a5047">Ароматические свечи ручной работы</text>
+  <text x="600" y="1120" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#6a5047">PHICANDLES — placeholder image</text>
+</svg>

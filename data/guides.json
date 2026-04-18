@@ -1,0 +1,35 @@
+{
+  "updatedAt": "2026-04-12",
+  "index": "https://phicandles.ru/guides/",
+  "description": "Покупательский гид PHICANDLES: виды воска, сравнение материалов и практические советы по выбору свечи.",
+  "articles": [
+    {
+      "slug": "vidy-svechnogo-voska",
+      "url": "https://phicandles.ru/guides/vidy-svechnogo-voska/",
+      "headline": "Виды свечного воска: чем они отличаются",
+      "description": "Понятное сравнение видов свечного воска для покупателей: аромат, горение, внешний вид и как выбрать подходящую свечу.",
+      "image": "https://phicandles.ru/assets/img/guides/wax-types.jpg"
+    },
+    {
+      "slug": "soevyy-ili-pchelinyy-vosk",
+      "url": "https://phicandles.ru/guides/soevyy-ili-pchelinyy-vosk/",
+      "headline": "Соевый или пчелиный воск: что выбрать",
+      "description": "Сравниваем соевый и пчелиный воск простым языком: аромат, внешний вид, настроение свечи и кому что подойдёт.",
+      "image": "https://phicandles.ru/assets/img/guides/soy-vs-beeswax.jpg"
+    },
+    {
+      "slug": "kak-vybrat-svechu",
+      "url": "https://phicandles.ru/guides/kak-vybrat-svechu/",
+      "headline": "Как выбрать свечу для дома, подарка и декора",
+      "description": "Практический гид по выбору свечи: для спальни, гостиной, подарка, декора и разного настроения дома.",
+      "image": "https://phicandles.ru/assets/img/guides/choose-candle.jpg"
+    },
+    {
+      "slug": "naturalnyy-vosk-i-parafin",
+      "url": "https://phicandles.ru/guides/naturalnyy-vosk-i-parafin/",
+      "headline": "Натуральный воск и парафин: что важно знать покупателю",
+      "description": "Понятно объясняем разницу между натуральным воском и парафином: где это ощущается на практике, а где нет.",
+      "image": "https://phicandles.ru/assets/img/guides/natural-vs-paraffin.jpg"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Каталог — админка</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page">
+    <header class="page-head">
+      <h1>Админка каталога</h1>
+      <p>Редактирование структуры как у <code>data/catalog.json</code>. Для автозагрузки каталога запускайте через локальный сервер; в остальных случаях используйте кнопку «Загрузить JSON…». Подробнее: <code>_admin/README.md</code>.</p>
+    </header>
+
+    <div class="toolbar">
+      <button type="button" class="primary" id="btn-download">Скачать catalog.json</button>
+      <label class="file-btn">Загрузить JSON…
+        <input type="file" id="file-import" accept=".json,application/json" />
+      </label>
+      <button type="button" id="btn-reload">Перезагрузить с сервера</button>
+      <button type="button" id="btn-updated">Обновить дату в store.updatedAt</button>
+      <span class="grow"></span>
+      <span class="status" id="status-line">Не загружено</span>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Разделы">
+      <button type="button" class="is-active" role="tab" aria-selected="true" data-tab="store">Магазин</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="categories">Категории</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="products">Товары</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="swatches">Цвета (swatches)</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="json">Сырой JSON</button>
+    </div>
+
+    <section class="panel is-active" id="panel-store" role="tabpanel">
+      <div class="field-grid" id="store-fields"></div>
+    </section>
+
+    <section class="panel" id="panel-categories" role="tabpanel">
+      <p class="hint">Категории используются в <code>categoryId</code> у товаров.</p>
+      <table class="cat-table" id="categories-table">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Название</th>
+            <th>Описание</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="categories-body"></tbody>
+      </table>
+      <div class="row-actions">
+        <button type="button" id="btn-add-category">Добавить категорию</button>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-products" role="tabpanel">
+      <div class="split">
+        <div>
+          <div class="field">
+            <label for="product-search">Поиск</label>
+            <input type="text" id="product-search" placeholder="Имя или slug…" autocomplete="off">
+          </div>
+          <div class="product-list" id="product-list" role="listbox" aria-label="Список товаров"></div>
+          <div class="row-actions">
+            <button type="button" id="btn-add-product">Новый товар (черновик)</button>
+          </div>
+        </div>
+        <div id="product-editor" class="field-grid"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-swatches" role="tabpanel">
+      <p class="hint">Объект «цвет → hex». Редактируйте как JSON.</p>
+      <div class="field">
+        <label for="swatches-json">colorSwatches</label>
+        <textarea id="swatches-json" class="tall" spellcheck="false"></textarea>
+      </div>
+      <button type="button" id="btn-apply-swatches">Применить к данным</button>
+    </section>
+
+    <section class="panel" id="panel-json" role="tabpanel">
+      <p class="hint">Полный каталог. «Применить» заменяет данные в памяти (проверьте JSON).</p>
+      <div class="field">
+        <label for="raw-json">catalog.json</label>
+        <textarea id="raw-json" class="tall" spellcheck="false"></textarea>
+      </div>
+      <div class="row-actions">
+        <button type="button" id="btn-apply-raw">Применить JSON</button>
+        <button type="button" id="btn-format-raw">Форматировать</button>
+      </div>
+    </section>
+  </div>
+  <script src="./app.js" defer></script>
+</body>
+</html>
