@@ -109,8 +109,16 @@ button, select, input {
 }
 .header-actions {
   display: flex;
-  gap: 10px;
+  flex-wrap: nowrap;
+  gap: 8px;
   align-items: center;
+  justify-content: flex-start;
+}
+.header-actions .pill,
+.header-actions .cart-toggle {
+  white-space: nowrap;
+  padding: 8px 13px;
+  font-size: 0.875rem;
 }
 .pill,
 .button,
@@ -523,6 +531,12 @@ button, select, input {
 .card-actions > * {
   flex: 1;
   text-align: center;
+}
+/* Как кнопки в шапке: компактные «Подробнее» и «В корзину» на карточках */
+.product-card .card-actions .button,
+.product-card .card-actions .button-secondary {
+  padding: 8px 13px;
+  font-size: 0.875rem;
 }
 .notice {
   padding: 14px 16px;

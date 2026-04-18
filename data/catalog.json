@@ -16,34 +16,29 @@
   },
   "categories": [
     {
-      "id": "flowers",
-      "name": "Цветы",
-      "description": "Свечи-цветы и композиции с цветочным декором."
+      "id": "conteiner",
+      "name": "Контейнерные свечи",
+      "description": ""
     },
     {
-      "id": "classic",
-      "name": "Классик",
-      "description": "Классические свечи и формы для интерьера."
+      "id": "forming",
+      "name": "Формовые свечи",
+      "description": ""
     },
     {
-      "id": "decor",
-      "name": "Декор",
-      "description": "Интерьерные наборы и декоративные свечи."
+      "id": "interier",
+      "name": "Интерьерные свечи",
+      "description": ""
     },
     {
-      "id": "mini",
-      "name": "Мини",
-      "description": "Миниатюрные свечи и небольшие подарочные наборы."
-    },
-    {
-      "id": "home-fragrance",
+      "id": "aroma",
       "name": "Ароматы для дома",
-      "description": "Мэлтсы, аромалампы и ароматические саше."
+      "description": ""
     },
     {
-      "id": "easter",
-      "name": "Пасхальная коллекция",
-      "description": "Сезонные пасхальные свечи и декор."
+      "id": "seson",
+      "name": "Сезонные коллекции",
+      "description": ""
     }
   ],
   "colorSwatches": {
@@ -72,7 +67,7 @@
       "id": "prod-pistachio-rose",
       "slug": "fistashkovaya-roza",
       "name": "Фисташковая роза",
-      "categoryId": "flowers",
+      "categoryId": "forming",
       "price": 2500,
       "salePrice": null,
       "description": "Изысканное сочетание декора и аромата. Композиция выполнена в чаше из акрилового гипса ручной работы и украшена детально проработанными свечами в форме роз и пионов в белых и фисташковых оттенках.",
@@ -115,7 +110,7 @@
       "id": "prod-zephyr-rose",
       "slug": "zefirnaya-roza",
       "name": "Зефирная роза",
-      "categoryId": "flowers",
+      "categoryId": "forming",
       "price": 3400,
       "salePrice": null,
       "description": "Изысканная композиция в чаше из акрилового гипса ручной работы с розами и пионами в белых и розовых оттенках. Подходит для подарка и интерьерного декора.",
@@ -151,7 +146,7 @@
       "id": "prod-pion-glass",
       "slug": "pion-v-stakane",
       "name": "Пион",
-      "categoryId": "flowers",
+      "categoryId": "forming",
       "price": 1500,
       "salePrice": null,
       "description": "Элегантная свеча в стеклянном стакане с вручную выполненным пионом. Совмещает лаконичную форму и роскошь цветочного декора.",
@@ -296,7 +291,10 @@
         }
       ],
       "assetImage": "assets/img/products/kuvshinka.png",
-      "gallery": ["https://phicandles.ru/assets/img/products/kuvshinka.png", "https://phicandles.ru/assets/img/products/kuvshinka.png"],
+      "gallery": [
+        "https://phicandles.ru/assets/img/products/kuvshinka.png",
+        "https://phicandles.ru/assets/img/products/kuvshinka.png"
+      ],
       "absoluteImage": "https://phicandles.ru/assets/img/products/kuvshinka.png",
       "url": "https://phicandles.ru/products/kuvshinka/"
     },
@@ -306,7 +304,7 @@
       "name": "Грани свечения Макси",
       "categoryId": "classic",
       "price": 1500,
-      "salePrice": 1300,
+      "salePrice": null,
       "description": "Архитектурная свеча цилиндрической формы с рельефным дизайном, создающим благородную игру света и тени.",
       "shortDescription": "Крупная рельефная свеча-цилиндр для акцентного декора.",
       "dimensions": "Высота: 21 см, диаметр: 7 см",

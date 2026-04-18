@@ -65,22 +65,87 @@ function generateOrderNumber(now = new Date()) {
 
 const ORDER_HISTORY_STORAGE_KEY = 'phicandles-order-history-v1';
 
-function saveOrderToLocalStorage(orderPayload) {
-  let history = [];
-  try {
-    history = JSON.parse(localStorage.getItem(ORDER_HISTORY_STORAGE_KEY)) || [];
-    if (!Array.isArray(history)) history = [];
-  } catch {
-    history = [];
-  }
-  history.unshift(orderPayload);
-  localStorage.setItem(ORDER_HISTORY_STORAGE_KEY, JSON.stringify(history));
+function normalizeStoredOrder(order) {
+  if (!order || typeof order !== 'object') return null;
+  const num = order.orderNumber != null ? String(order.orderNumber).trim() : '';
+  const at = order.createdAt != null ? String(order.createdAt).trim() : '';
+
+  const items = Array.isArray(order.items)
+    ? order.items
+        .map((line) => {
+          if (!line || typeof line !== 'object') return null;
+          const quantity = Math.max(1, Math.min(99, Math.trunc(Number(line.quantity) || 1)));
+          const price = Number(line.price) || 0;
+          const lineTotalRaw = Number(line.lineTotalRub);
+          const lineTotalRub = Number.isFinite(lineTotalRaw) ? lineTotalRaw : price * quantity;
+          return {
+            productId: line.productId != null ? String(line.productId) : '',
+            productName: line.productName != null ? String(line.productName) : 'Товар',
+            slug: line.slug != null ? String(line.slug) : '',
+            quantity,
+            price,
+            lineTotalRub,
+            selectedOptions:
+              line.selectedOptions && typeof line.selectedOptions === 'object' ? line.selectedOptions : {},
+          };
+        })
+        .filter(Boolean)
+    : [];
+
+  const totalRaw = Number(order.totalRub);
+  const totalFromLines = items.reduce((s, i) => s + i.lineTotalRub, 0);
+  const totalRub =
+    items.length > 0 ? totalFromLines : Number.isFinite(totalRaw) ? totalRaw : totalFromLines;
+
+  const totalPiecesRaw = Number(order.totalPieces);
+  const totalPieces = Number.isFinite(totalPiecesRaw)
+    ? Math.max(0, Math.trunc(totalPiecesRaw))
+    : items.reduce((s, i) => s + i.quantity, 0);
+
+  const hasMeta = Boolean(num || at);
+  const hasMoney = totalRub > 0;
+  const hasLines = items.length > 0;
+  if (!hasMeta && !hasLines && !hasMoney) return null;
+
+  return {
+    orderNumber: num || 'Без номера',
+    createdAt: at || new Date().toISOString(),
+    items,
+    totalRub,
+    totalPieces,
+  };
 }
 
+function saveOrderToLocalStorage(orderPayload) {
+  const minimal = normalizeStoredOrder(orderPayload);
+  if (!minimal) return;
+  try {
+    let history = [];
+    try {
+      history = JSON.parse(localStorage.getItem(ORDER_HISTORY_STORAGE_KEY) || '[]') || [];
+      if (!Array.isArray(history)) history = [];
+    } catch {
+      history = [];
+    }
+    history.unshift(minimal);
+    localStorage.setItem(ORDER_HISTORY_STORAGE_KEY, JSON.stringify(history));
+  } catch (e) {
+    console.warn('Не удалось сохранить историю заказа в localStorage', e);
+  }
+}
+
+/** В localStorage: номер, дата, состав (items), сумма (totalRub); лишние поля срезаются при чтении. */
 function getOrderHistoryFromLocalStorage() {
   try {
-    const history = JSON.parse(localStorage.getItem(ORDER_HISTORY_STORAGE_KEY)) || [];
-    return Array.isArray(history) ? history : [];
+    const raw = localStorage.getItem(ORDER_HISTORY_STORAGE_KEY);
+    const history = JSON.parse(raw || '[]') || [];
+    if (!Array.isArray(history)) return [];
+    const normalized = history.map(normalizeStoredOrder).filter(Boolean);
+    const next = JSON.stringify(normalized);
+    if (next !== (raw || '[]')) {
+      localStorage.setItem(ORDER_HISTORY_STORAGE_KEY, next);
+    }
+    return normalized;
   } catch {
     return [];
   }
@@ -187,25 +252,34 @@ function openCheckoutModal({ cart, productsMap, totalRub, telegramUrl }) {
     error.classList.add('hidden');
     const message = buildOrderMessage(cart, productsMap, formData, totalRub, orderNumber);
     const telegramOrderUrl = buildTelegramOrderUrl(telegramUrl, message);
-    const orderItems = cart.map((item) => {
+    const createdAt = new Date().toISOString();
+    const orderItems = [];
+    let sumRub = 0;
+    let totalPieces = 0;
+    cart.forEach((item) => {
+      if (!productsMap.has(item.productId)) return;
       const product = productsMap.get(item.productId);
-      return {
-        productId: item.productId,
-        productName: product?.name || item.name,
+      const qty = Math.max(1, Math.min(99, Math.trunc(Number(item.quantity) || 1)));
+      const price = Number(item.price) || 0;
+      const lineTotalRub = price * qty;
+      sumRub += lineTotalRub;
+      totalPieces += qty;
+      orderItems.push({
+        productId: item.productId != null ? String(item.productId) : '',
+        productName: product?.name || item.name || 'Товар',
         slug: product?.slug || item.slug || '',
-        quantity: item.quantity,
-        price: item.price,
-        selectedOptions: item.selectedOptions || {},
-      };
+        quantity: qty,
+        price,
+        lineTotalRub,
+        selectedOptions: item.selectedOptions && typeof item.selectedOptions === 'object' ? item.selectedOptions : {},
+      });
     });
     saveOrderToLocalStorage({
       orderNumber,
-      createdAt: new Date().toISOString(),
-      totalRub,
+      createdAt,
+      totalRub: sumRub,
+      totalPieces,
       items: orderItems,
-      customer: formData,
-      telegramOrderUrl,
-      telegramMessage: message,
     });
     console.log('[Checkout debug] Telegram payload', {
       orderNumber,
@@ -478,13 +552,17 @@ function renderCart(catalog) {
       lastOrderPreview.innerHTML = '<p class="muted">История заказов пока пуста.</p>';
       return;
     }
-    const itemsCount = (lastOrder.items || []).reduce((sum, item) => sum + (item.quantity || 0), 0);
+    const itemsCount =
+      lastOrder.totalPieces != null && Number.isFinite(Number(lastOrder.totalPieces))
+        ? Math.max(0, Math.trunc(Number(lastOrder.totalPieces)))
+        : (lastOrder.items || []).reduce((sum, item) => sum + (item.quantity || 0), 0);
     const itemsPreview = (lastOrder.items || [])
       .slice(0, 2)
       .map((item) => `${item.productName} × ${item.quantity}`)
       .join(' · ');
     lastOrderPreview.innerHTML = `
       <p><strong>${lastOrder.orderNumber || 'Без номера'}</strong></p>
+      <p class="muted">${new Date(lastOrder.createdAt).toLocaleString('ru-RU')}</p>
       <p class="muted">${itemsCount} шт. · ${formatPrice(lastOrder.totalRub || 0)}</p>
       ${itemsPreview ? `<p class="muted">${itemsPreview}</p>` : ''}
       <a class="button-secondary home-cart-preview-cta" href="#order-history">К истории заказов</a>
@@ -508,7 +586,15 @@ function renderCart(catalog) {
             <p class="muted order-history-card__meta">${new Date(order.createdAt).toLocaleString('ru-RU')}</p>
             <p>Итого: <strong>${formatPrice(order.totalRub || 0)}</strong></p>
             <ol class="order-history-card__items">
-              ${(order.items || []).map((item) => `<li>${item.productName} × ${item.quantity}</li>`).join('')}
+              ${(order.items || [])
+                .map((item) => {
+                  const line =
+                    item.lineTotalRub != null && Number.isFinite(Number(item.lineTotalRub))
+                      ? Number(item.lineTotalRub)
+                      : (Number(item.price) || 0) * (item.quantity || 0);
+                  return `<li>${item.productName} × ${item.quantity} — ${formatPrice(line)}</li>`;
+                })
+                .join('')}
             </ol>
           </article>
         `).join('')}

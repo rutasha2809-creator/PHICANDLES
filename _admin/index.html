@@ -7,19 +7,26 @@
   <meta name="robots" content="noindex,nofollow">
   <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
+<body data-catalog-path="../data/catalog.json">
   <div class="page">
     <header class="page-head">
       <h1>Админка каталога</h1>
-      <p>Редактирование структуры как у <code>data/catalog.json</code>. Для автозагрузки каталога запускайте через локальный сервер; в остальных случаях используйте кнопку «Загрузить JSON…». Подробнее: <code>_admin/README.md</code>.</p>
+      <p>Каталог всегда читается только из <code>data/catalog.json</code> через локальный сервер (из корня проекта: <code>python -m http.server …</code>, затем <code>/_admin/</code>). В режиме <code>file://</code> браузер не может загрузить JSON с диска — используйте «Загрузить JSON…». Подробнее: <code>_admin/README.md</code>.</p>
     </header>
+
+    <div id="disk-newer-banner" class="disk-banner is-hidden" role="status" aria-live="polite">
+      <span>Файл <code>data/catalog.json</code> на диске изменился (или отличается от открытой в админке версии).</span>
+      <button type="button" class="primary" id="btn-pull-disk">Подгрузить с диска</button>
+      <button type="button" id="btn-dismiss-disk">Не сейчас</button>
+    </div>
 
     <div class="toolbar">
       <button type="button" class="primary" id="btn-download">Скачать catalog.json</button>
+      <button type="button" id="btn-save-file" title="В Chrome/Edge с localhost: выбрать data/catalog.json и перезаписать">Записать в файл…</button>
       <label class="file-btn">Загрузить JSON…
         <input type="file" id="file-import" accept=".json,application/json" />
       </label>
-      <button type="button" id="btn-reload">Перезагрузить с сервера</button>
+      <button type="button" id="btn-reload">Обновить из data</button>
       <button type="button" id="btn-updated">Обновить дату в store.updatedAt</button>
       <span class="grow"></span>
       <span class="status" id="status-line">Не загружено</span>

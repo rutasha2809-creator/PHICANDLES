@@ -1,5 +1,66 @@
 (() => {
-  const CATALOG_URL = '../data/catalog.json';
+  function catalogUrl() {
+    return document.body?.dataset?.catalogPath || '../data/catalog.json';
+  }
+
+  /** URL к catalog.json: уникальный при каждом вызове, чтобы обойти кэш браузера и прокси. */
+  function catalogFetchUrl() {
+    const u = new URL(catalogUrl(), location.href);
+    u.searchParams.set('_', String(Date.now()));
+    u.searchParams.set('r', String(Math.random()).slice(2, 12));
+    return u.href;
+  }
+
+  /** Снимок содержимого для сравнения «файл на диске ↔ последняя подгрузка». */
+  function snapshotMin(jsonText) {
+    return JSON.stringify(JSON.parse(jsonText));
+  }
+
+  /** Последняя версия data/catalog.json, с которой совпадала админка (после загрузки/импорта). */
+  let lastFetchedSnap = null;
+  /** Версия на диске, которую пользователь отклонил в баннере «Подгрузить». */
+  let ignoredDiskSnap = null;
+
+  let diskPollStarted = false;
+
+  async function fetchCatalogTextFromDisk() {
+    const res = await fetch(catalogFetchUrl(), {
+      cache: 'reload',
+      headers: {
+        Accept: 'application/json',
+        'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate',
+        Pragma: 'no-cache',
+      },
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.text();
+  }
+
+  function hideDiskBanner() {
+    document.getElementById('disk-newer-banner')?.classList.add('is-hidden');
+  }
+
+  async function pollDiskChanges() {
+    if (location.protocol === 'file:' || lastFetchedSnap === null) return;
+    try {
+      const text = await fetchCatalogTextFromDisk();
+      const snap = snapshotMin(text);
+      if (snap !== lastFetchedSnap && snap !== ignoredDiskSnap) {
+        document.getElementById('disk-newer-banner')?.classList.remove('is-hidden');
+      }
+    } catch {
+      /* офлайн или сервер недоступен */
+    }
+  }
+
+  function startDiskPolling() {
+    if (location.protocol === 'file:' || diskPollStarted) return;
+    diskPollStarted = true;
+    setInterval(pollDiskChanges, 4000);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') pollDiskChanges();
+    });
+  }
 
   /** @type {any} */
   let catalog = null;
@@ -10,6 +71,20 @@
 
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+  function getCatalogJsonText() {
+    return JSON.stringify(catalog, null, 2);
+  }
+
+  function triggerCatalogDownload() {
+    const text = getCatalogJsonText();
+    const blob = new Blob([text], { type: 'application/json;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'catalog.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
 
   function setStatus(text, isError = false) {
     const el = $('#status-line');
@@ -23,8 +98,8 @@
 
   function ensureCatalogShape(data) {
     if (!data || typeof data !== 'object') throw new Error('Некорректный JSON');
-    if (!data.store || !data.categories || !Array.isArray(data.products)) {
-      throw new Error('Ожидаются поля store, categories и массив products');
+    if (!data.store || !Array.isArray(data.categories) || !Array.isArray(data.products)) {
+      throw new Error('Ожидаются поля store, categories (массив) и products (массив)');
     }
     if (!data.colorSwatches || typeof data.colorSwatches !== 'object') {
       data.colorSwatches = {};
@@ -40,13 +115,18 @@
 
   async function loadFromServer() {
     setStatus('Загрузка…');
-    const res = await fetch(CATALOG_URL, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = ensureCatalogShape(await res.json());
+    const text = await fetchCatalogTextFromDisk();
+    const snap = snapshotMin(text);
+    lastFetchedSnap = snap;
+    ignoredDiskSnap = null;
+    hideDiskBanner();
+    const raw = JSON.parse(text);
+    const data = ensureCatalogShape(deepClone(raw));
     catalog = data;
     selectedProductIndex = 0;
-    setStatus('Загружено с сервера');
+    setStatus('Актуальный каталог загружен из data/catalog.json');
     renderAll();
+    startDiskPolling();
   }
 
   function emptyCatalogShell() {
@@ -73,10 +153,11 @@
     const btn = $('#btn-reload');
     if (location.protocol === 'file:') {
       btn.textContent = 'Перезагрузить страницу';
-      btn.title = 'В file:// автозагрузка недоступна, используйте «Загрузить JSON…»';
+      btn.title =
+        'При file:// каталог с сервера не загружается — откройте админку через http://localhost (см. текст выше) или «Загрузить JSON…»';
     } else {
-      btn.textContent = 'Перезагрузить с сервера';
-      btn.title = '';
+      btn.textContent = 'Обновить из data';
+      btn.title = 'Снова загрузить data/catalog.json с диска (нужен локальный сервер)';
     }
   }
 
@@ -410,15 +491,41 @@
 
   $('#btn-download').addEventListener('click', () => {
     try {
-      const text = JSON.stringify(catalog, null, 2);
-      const blob = new Blob([text], { type: 'application/json;charset=utf-8' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'catalog.json';
-      a.click();
-      URL.revokeObjectURL(a.href);
-      setStatus('Файл скачан — замените data/catalog.json в проекте');
+      if (!catalog) return;
+      triggerCatalogDownload();
+      setStatus('Скачан catalog.json — положите в data/catalog.json в проекте');
     } catch (e) {
+      setStatus(String(e.message || e), true);
+    }
+  });
+
+  $('#btn-save-file').addEventListener('click', async () => {
+    if (!catalog) return;
+    const text = getCatalogJsonText();
+    if (typeof window.showSaveFilePicker !== 'function') {
+      triggerCatalogDownload();
+      setStatus('Запись на диск недоступна в этом браузере — скачан catalog.json');
+      return;
+    }
+    try {
+      const handle = await window.showSaveFilePicker({
+        suggestedName: 'catalog.json',
+        types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }],
+      });
+      const writable = await handle.createWritable();
+      await writable.write(new Blob([text], { type: 'application/json;charset=utf-8' }));
+      await writable.close();
+      try {
+        const verify = await fetchCatalogTextFromDisk();
+        lastFetchedSnap = snapshotMin(verify);
+        ignoredDiskSnap = null;
+        hideDiskBanner();
+      } catch {
+        lastFetchedSnap = snapshotMin(text);
+      }
+      setStatus('Файл catalog.json записан.');
+    } catch (e) {
+      if (e && e.name === 'AbortError') return;
       setStatus(String(e.message || e), true);
     }
   });
@@ -430,9 +537,13 @@
     const reader = new FileReader();
     reader.onload = () => {
       try {
-        const parsed = ensureCatalogShape(JSON.parse(String(reader.result || '{}')));
+        const rawText = String(reader.result || '{}');
+        const parsed = ensureCatalogShape(JSON.parse(rawText));
         catalog = deepClone(parsed);
         selectedProductIndex = 0;
+        lastFetchedSnap = snapshotMin(rawText);
+        ignoredDiskSnap = null;
+        hideDiskBanner();
         renderAll();
         setStatus(`Импортировано из файла «${file.name}»`);
       } catch (err) {
@@ -448,6 +559,19 @@
       return;
     }
     loadFromServer().catch((e) => setStatus(String(e.message || e), true));
+  });
+
+  $('#btn-pull-disk').addEventListener('click', () => {
+    loadFromServer().catch((e) => setStatus(String(e.message || e), true));
+  });
+
+  $('#btn-dismiss-disk').addEventListener('click', () => {
+    fetchCatalogTextFromDisk()
+      .then((t) => {
+        ignoredDiskSnap = snapshotMin(t);
+        hideDiskBanner();
+      })
+      .catch(() => hideDiskBanner());
   });
 
   $('#btn-updated').addEventListener('click', () => {
@@ -494,12 +618,12 @@
     renderCategories();
   });
 
-  function bootstrap() {
+  async function bootstrap() {
     syncReloadButtonLabel();
 
     if (location.protocol === 'file:') {
       setStatus(
-        'Режим file://: автозагрузка отключена. Используйте «Загрузить JSON…» или запустите локальный сервер.',
+        'Режим file://: откройте админку через локальный сервер (http://127.0.0.1:PORT/_admin/) или загрузите data/catalog.json кнопкой «Загрузить JSON…».',
         true,
       );
       catalog = ensureCatalogShape(emptyCatalogShell());
@@ -507,11 +631,13 @@
       return;
     }
 
-    loadFromServer().catch((e) => {
-      setStatus(`Не удалось загрузить ${CATALOG_URL}: ${e.message}. Используйте «Загрузить JSON…».`, true);
+    try {
+      await loadFromServer();
+    } catch (e) {
+      setStatus(`Не удалось загрузить data/catalog.json: ${e.message}. Проверьте URL и «Загрузить JSON…».`, true);
       catalog = ensureCatalogShape(emptyCatalogShell());
       renderAll();
-    });
+    }
   }
 
   bootstrap();
