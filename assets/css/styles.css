@@ -3,7 +3,7 @@
 :root {
   --bg: #ffffff;
   --card: #ffffff;
-  --card-alt: #f7f5f2;
+  --card-alt: #ffffff;
   --text: #1a1714;
   --muted: #7a746e;
   --line: #e4e0da;
@@ -444,7 +444,7 @@ button, select, input { font: inherit; }
 .footer {
   padding: 44px 0 52px;
   border-top: 1px solid var(--line);
-  background: var(--card-alt);
+  background: #f7f5f2;
   color: var(--muted);
 }
 .footer-grid {
