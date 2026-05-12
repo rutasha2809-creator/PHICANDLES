@@ -36,6 +36,21 @@
       "description": ""
     },
     {
+      "id": "dekor",
+      "name": "Декор для дома",
+      "description": ""
+    },
+    {
+      "id": "gift",
+      "name": "Подарочные боксы",
+      "description": ""
+    },
+    {
+      "id": "limited",
+      "name": "Лимитированные предложения",
+      "description": ""
+    },
+    {
       "id": "seson",
       "name": "Сезонные коллекции",
       "description": ""
