@@ -10,87 +10,19 @@
   <link rel="stylesheet" href="../assets/css/styles.css">
   <style>
     .catalog-page { padding: 48px 0 80px; }
-    .catalog-page-header {
-      padding-bottom: 32px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 40px;
-    }
-    .catalog-page-header h1 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 300;
-      font-size: clamp(2.2rem, 4vw, 3.4rem);
-      margin: 0 0 8px;
-      letter-spacing: 0.01em;
-    }
-    .catalog-page-header p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.94rem;
-      line-height: 1.7;
-    }
-    .catalog-shell {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 48px;
-      align-items: start;
-    }
-    .catalog-sidebar {
-      position: sticky;
-      top: 80px;
-    }
-    .catalog-sidebar__title {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin: 0 0 16px;
-    }
-    .catalog-sidebar__list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .catalog-sidebar__link {
-      display: block;
-      padding: 10px 14px;
-      font-size: 0.88rem;
-      color: var(--muted);
-      letter-spacing: 0.02em;
-      transition: color 0.15s, background 0.15s;
-      border-left: 2px solid transparent;
-    }
-    .catalog-sidebar__link:hover {
-      color: var(--text);
-      background: #f5f3f0;
-    }
-    .catalog-sidebar__link.is-active {
-      color: var(--text);
-      border-left-color: var(--text);
-      font-weight: 500;
-      background: #f5f3f0;
-    }
-    .catalog-count {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-bottom: 24px;
-      min-height: 20px;
-    }
-    .catalog-products {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
-    }
-    .catalog-empty {
-      grid-column: 1 / -1;
-      padding: 60px 20px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
+    .catalog-page-header { padding-bottom: 32px; border-bottom: 1px solid var(--line); margin-bottom: 40px; }
+    .catalog-page-header h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2.2rem, 4vw, 3.4rem); margin: 0 0 8px; letter-spacing: 0.01em; }
+    .catalog-page-header p { margin: 0; color: var(--muted); font-size: 0.94rem; line-height: 1.7; }
+    .catalog-shell { display: grid; grid-template-columns: 220px 1fr; gap: 48px; align-items: start; }
+    .catalog-sidebar { position: sticky; top: 80px; }
+    .catalog-sidebar__title { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
+    .catalog-sidebar__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+    .catalog-sidebar__link { display: block; padding: 10px 14px; font-size: 0.88rem; color: var(--muted); letter-spacing: 0.02em; transition: color 0.15s, background 0.15s; border-left: 2px solid transparent; }
+    .catalog-sidebar__link:hover { color: var(--text); background: #f5f3f0; }
+    .catalog-sidebar__link.is-active { color: var(--text); border-left-color: var(--text); font-weight: 500; background: #f5f3f0; }
+    .catalog-count { font-size: 0.82rem; color: var(--muted); margin-bottom: 24px; min-height: 20px; }
+    .catalog-products { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+    .catalog-empty { grid-column: 1 / -1; padding: 60px 20px; text-align: center; color: var(--muted); font-size: 0.94rem; }
     @media (max-width: 960px) {
       .catalog-shell { grid-template-columns: 1fr; gap: 32px; }
       .catalog-sidebar { position: static; }
@@ -162,10 +94,11 @@
     </div>
   </footer>
 
+  <script src="../assets/js/base.js"></script>
   <script>
   (async function () {
     const ROOT = '../';
-    const CART_KEY = 'phicandles_cart';
+    const CART_KEY = 'phicandles-cart-v1';
 
     let catalog;
     try {
@@ -181,16 +114,6 @@
     const products = catalog.products || [];
     const catMap = new Map(categories.map(c => [c.id, c.name]));
 
-    function getCart() {
-      try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { return []; }
-    }
-    function saveCart(cart) { localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
-    function updateCount() {
-      const n = getCart().reduce((s, i) => s + (i.quantity || 1), 0);
-      document.querySelectorAll('[data-cart-count]').forEach(el => el.textContent = n);
-    }
-    updateCount();
-
     function plural(n, one, few, many) {
       const m = n % 100;
       if (m >= 11 && m <= 19) return many;
@@ -205,29 +128,25 @@
       const sale = Number(p.salePrice);
       const hasSale = Number.isFinite(sale) && sale > 0 && sale < price;
       const priceHtml = hasSale
-        ? `<span class="price-current">${sale.toLocaleString('ru-RU')} ₽</span><span class="price-old">${price.toLocaleString('ru-RU')} ₽</span>`
-        : `<span>${price.toLocaleString('ru-RU')} ₽</span>`;
+        ? '<span class="price-current">' + sale.toLocaleString('ru-RU') + ' ₽</span><span class="price-old">' + price.toLocaleString('ru-RU') + ' ₽</span>'
+        : '<span>' + price.toLocaleString('ru-RU') + ' ₽</span>';
       const img = p.assetImage || (p.image || '').replace(/^\.\//, '');
       const catName = catMap.get(p.categoryId) || '';
-      return `<article class="product-card">
-        <a class="product-card-media" href="${ROOT}products/${p.slug}/index.html" aria-label="${p.name}">
-          <img loading="lazy" src="${ROOT}${img}" alt="${p.imageAlt || p.name}" class="is-active"
-               onerror="this.onerror=null;this.src='${ROOT}assets/img/image-placeholder.svg'">
-        </a>
-        <div class="product-card-body">
-          ${catName ? `<div class="badge-row"><span class="badge">${catName}</span></div>` : ''}
-          <h3><a href="${ROOT}products/${p.slug}/index.html">${p.name}</a></h3>
-          <p>${p.shortDescription || ''}</p>
-          <div class="price-row">
-            <div class="price">${priceHtml}</div>
-            <div class="muted">${p.dimensions || ''}</div>
-          </div>
-          <div class="card-actions">
-            <a class="button-secondary" href="${ROOT}products/${p.slug}/index.html">Подробнее</a>
-            <button class="button" type="button" data-add-to-cart="${p.id}">В корзину</button>
-          </div>
-        </div>
-      </article>`;
+      return '<article class="product-card">'
+        + '<a class="product-card-media" href="' + ROOT + 'products/' + p.slug + '/index.html" aria-label="' + p.name + '">'
+        + '<img loading="lazy" src="' + ROOT + img + '" alt="' + (p.imageAlt || p.name) + '" class="is-active"'
+        + ' onerror="this.onerror=null;this.src=\'' + ROOT + 'assets/img/image-placeholder.svg\'">'
+        + '</a>'
+        + '<div class="product-card-body">'
+        + (catName ? '<div class="badge-row"><span class="badge">' + catName + '</span></div>' : '')
+        + '<h3><a href="' + ROOT + 'products/' + p.slug + '/index.html">' + p.name + '</a></h3>'
+        + '<p>' + (p.shortDescription || '') + '</p>'
+        + '<div class="price-row"><div class="price">' + priceHtml + '</div>'
+        + '<div class="muted">' + (p.dimensions || '') + '</div></div>'
+        + '<div class="card-actions">'
+        + '<a class="button-secondary" href="' + ROOT + 'products/' + p.slug + '/index.html">Подробнее</a>'
+        + '<button class="button" type="button" data-add-to-cart="' + p.id + '">В корзину</button>'
+        + '</div></div></article>';
     }
 
     const grid = document.getElementById('catalog-grid');
@@ -240,30 +159,35 @@
         countEl.textContent = '';
       } else {
         grid.innerHTML = items.map(renderCard).join('');
-        countEl.textContent = `${items.length} ${plural(items.length, 'товар', 'товара', 'товаров')}`;
+        countEl.textContent = items.length + ' ' + plural(items.length, 'товар', 'товара', 'товаров');
+        if (typeof bindQuickAdd === 'function') bindQuickAdd(catalog);
       }
     }
 
     const nav = document.getElementById('catalog-nav');
-    categories.forEach(c => {
+    categories.forEach(function(c) {
       const li = document.createElement('li');
-      li.innerHTML = `<a class="catalog-sidebar__link" href="#${c.id}" data-cat="${c.id}">${c.name}</a>`;
+      const a = document.createElement('a');
+      a.className = 'catalog-sidebar__link';
+      a.href = '#' + c.id;
+      a.dataset.cat = c.id;
+      a.textContent = c.name;
+      li.appendChild(a);
       nav.appendChild(li);
     });
 
     function getActiveCat() {
-      const hash = location.hash.replace('#', '');
-      return hash || 'all';
+      return location.hash.replace('#', '') || 'all';
     }
 
     function setActive(catId) {
-      document.querySelectorAll('.catalog-sidebar__link').forEach(a => {
+      document.querySelectorAll('.catalog-sidebar__link').forEach(function(a) {
         a.classList.toggle('is-active', a.dataset.cat === catId);
       });
       renderProducts(catId);
     }
 
-    nav.addEventListener('click', e => {
+    nav.addEventListener('click', function(e) {
       const link = e.target.closest('[data-cat]');
       if (!link) return;
       e.preventDefault();
@@ -271,23 +195,10 @@
       setActive(link.dataset.cat);
     });
 
-    window.addEventListener('popstate', () => setActive(getActiveCat()));
+    window.addEventListener('popstate', function() { setActive(getActiveCat()); });
 
     setActive(getActiveCat());
 
-    grid.addEventListener('click', e => {
-      const btn = e.target.closest('[data-add-to-cart]');
-      if (!btn) return;
-      const id = btn.dataset.addToCart;
-      const cart = getCart();
-      const ex = cart.find(i => i.productId === id);
-      if (ex) ex.quantity = (ex.quantity || 1) + 1;
-      else cart.push({ productId: id, quantity: 1 });
-      saveCart(cart);
-      updateCount();
-      btn.textContent = 'Добавлено ✓';
-      setTimeout(() => btn.textContent = 'В корзину', 1500);
-    });
   })();
   </script>
 </body>
