@@ -59,11 +59,11 @@ def build_pages(catalog: dict, guide_urls: list[str] | None = None):
             wordmark_src='../../assets/img/brand-wordmark.svg',
             store_name=html.escape(store['name']),
             tagline=html.escape(store['tagline']),
-            catalog_href='../../index.html#catalog',
-            guides_href='../../index.html#guides',
+            catalog_href='../../catalog/index.html',
+            guides_href='../../guides/index.html',
             faq_href='../../faq/index.html',
             faq_extra='',
-            cart_href='../../index.html#cart',
+            cart_href='../../cart/index.html',
         )
         page = main.PRODUCT_TEMPLATE.format(
             title=html.escape(f"{product['name']} — {store['name']}"),

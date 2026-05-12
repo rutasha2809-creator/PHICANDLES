@@ -21,10 +21,10 @@
         <span class="branding-tagline">Ароматические свечи ручной работы</span>
       </a>
       <div class="header-actions">
-        <a class="pill" href="./index.html#catalog">Каталог</a>
-        <a class="pill" href="./index.html#guides">Гид по свечам</a>
+        <a class="pill" href="catalog/index.html">Каталог</a>
+        <a class="pill" href="./guides/index.html">Гид по свечам</a>
         <a class="pill" href="./faq/index.html">Вопросы и ответы</a>
-        <button class="cart-toggle" data-cart-link>Корзина · <span data-cart-count>0</span></button>
+        <a class="cart-toggle pill" href="cart/index.html">Корзина · <span data-cart-count>0</span></a>
       </div>
     </div>
   </header>
@@ -32,39 +32,15 @@
 
   <main>
     <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-card hero-card--about">
-          <div class="hero-about-inner">
+      <div class="container">
+        <div class="hero-about-split">
+          <div class="hero-about-text">
             <h1>О нас</h1>
             <p><span class="text-brand-inline">PHICANDLES</span>&nbsp;— это бренд ароматических свечей ручной работы, созданных с любовью и вниманием к каждой детали. Мы используем только натуральные материалы высочайшего качества, чтобы создавать уникальные изделия, которые наполнят ваш дом теплом и изысканным ароматом.</p>
-            <p>Наша миссия&nbsp;— создавать не просто свечи, а настоящие произведения искусства, которые станут стильным акцентом в вашем интерьере и принесут радость в повседневную жизнь. Каждая свеча&nbsp;— это результат кропотливой работы, в которую вложена частичка души.</p>
             <p>Мы предлагаем широкий ассортимент форм и ароматов: от классики до изысканных цветочных композиций. В нашей коллекции есть всё, чтобы удовлетворить самый взыскательный вкус и стать особенным подарком для вас и ваших близких.</p>
-            <div class="hero-meta">
-              <span class="badge">Натуральные материалы</span>
-              <span class="badge">Ручная работа</span>
-              <span class="badge">Коллекции для интерьера</span>
-              <span class="badge">Подарки с душой</span>
-            </div>
           </div>
-          <div class="hero-about-bg" role="img" aria-label="Коллекция ароматических свечей PHICANDLES: столбы, цветочные композиции из воска и подарочная упаковка"></div>
-        </div>
-        <div class="hero-side">
-          <div class="summary-card summary-card--cart-preview">
-            <h3>Корзина</h3>
-            <p class="home-cart-preview-meta muted" data-home-cart-meta></p>
-            <div class="home-cart-preview-scroll" data-home-cart-preview></div>
-            <div class="home-cart-preview-actions">
-              <a class="button home-cart-preview-cta" href="#catalog">К каталогу</a>
-              <a class="button-secondary home-cart-preview-cta" data-home-cart-secondary-cta href="./guides/kak-vybrat-svechu/index.html">Как выбрать свечу</a>
-            </div>
-          </div>
-          <div class="summary-card summary-card--last-order">
-            <h3>Последний заказ</h3>
-            <div data-home-last-order></div>
-          </div>
-          <div class="summary-card summary-card--reviews">
-            <h3>Отзывы</h3>
-            <div class="home-reviews-list" data-home-reviews></div>
+          <div class="hero-about-photo">
+            <img src="./assets/img/about-lifestyle.png" alt="Коллекция ароматических свечей PHICANDLES">
           </div>
         </div>
       </div>
@@ -73,642 +49,40 @@
     <section class="section">
       <div class="container">
         <div class="section-header">
-          <div>
-            <h2>Популярное</h2>
-
-          </div>
+          <h2>Наши продукты</h2>
         </div>
-        <div class="grid" data-featured-grid>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/pion-v-stakane/index.html" aria-label="Перейти к товару Пион">
-        <img loading="lazy" src="./assets/img/products/pion-v-stakane.png" alt="Свеча Пион в стакане">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"><span class="badge">Хит</span><span class="badge">Формовые свечи</span></div>
-        <h3><a href="./products/pion-v-stakane/index.html">Пион</a></h3>
-        <p>Свеча в стеклянном стакане с цветком-пионом внутри.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>1 500 ₽</span></div>
-            <div class="rating">★ 4.5 · 2 отзыва</div>
-          </div>
-          <div class="muted">Диаметр: 6,6 см</div>
+        <div class="category-grid">
+          <a class="category-card-link" href="./catalog/kontejnernye-svechi/index.html">
+            <span>Контейнерные свечи</span>
+          </a>
+          <a class="category-card-link" href="./catalog/formovye-svechi/index.html">
+            <span>Формовые свечи</span>
+          </a>
+          <a class="category-card-link" href="./catalog/interjernye-svechi/index.html">
+            <span>Интерьерные свечи</span>
+          </a>
+          <a class="category-card-link" href="./catalog/dekor-dlya-doma/index.html">
+            <span>Декор для дома</span>
+          </a>
+          <a class="category-card-link" href="./catalog/sezonnye-kollekcii/index.html">
+            <span>Сезонные коллекции</span>
+          </a>
+          <a class="category-card-link" href="./catalog/specialnye-predlozheniya/index.html">
+            <span>Специальные предложения</span>
+          </a>
         </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/pion-v-stakane/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-pion-glass">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/fistashkovaya-roza/index.html" aria-label="Перейти к товару Фисташковая роза">
-        <img loading="lazy" src="./assets/img/products/fistashkovaya-roza.jpg" alt="Свеча Фисташковая роза">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"><span class="badge">Хит</span><span class="badge">Формовые свечи</span></div>
-        <h3><a href="./products/fistashkovaya-roza/index.html">Фисташковая роза</a></h3>
-        <p>Цветочная композиция в чаше из акрилового гипса для подарка и интерьерного акцента.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>2 500 ₽</span></div>
-            <div class="rating">★ 5.0 · 2 отзыва</div>
-          </div>
-          <div class="muted">Диаметр: 12 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/fistashkovaya-roza/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-pistachio-rose">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/roza-intaliya/index.html" aria-label="Перейти к товару Интерьерная заливная свеча «Роза Инталия»">
-        <img loading="lazy" src="./assets/img/products/roza-intaliya.png" alt="Интерьерная заливная свеча Роза Инталия">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"><span class="badge">Хит</span></div>
-        <h3><a href="./products/roza-intaliya/index.html">Интерьерная заливная свеча «Роза Инталия»</a></h3>
-        <p>Заливная интерьерная свеча с рельефной розой.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>1 800 ₽</span></div>
-            <div class="rating">★ 5.0 · 1 отзыв</div>
-          </div>
-          <div class="muted">Высота: 9 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/roza-intaliya/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-roza-intalia">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/zefirnaya-roza/index.html" aria-label="Перейти к товару Зефирная роза">
-        <img loading="lazy" src="./assets/img/products/zefirnaya-roza.png" alt="Свеча Зефирная роза">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"><span class="badge">Хит</span><span class="badge">Формовые свечи</span></div>
-        <h3><a href="./products/zefirnaya-roza/index.html">Зефирная роза</a></h3>
-        <p>Большая цветочная композиция в бело-розовой гамме.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>3 400 ₽</span></div>
-            <div class="rating">★ 5.0 · 1 отзыв</div>
-          </div>
-          <div class="muted">Диаметр: 16 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/zefirnaya-roza/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-zephyr-rose">В корзину</button>
-        </div>
-      </div>
-    </article></div>
       </div>
     </section>
 
-
-    <section class="section" id="guides">
+    <section class="section">
       <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>Гид по свечам</h2>
-            <p class="muted">Коротко о воске, выборе свечи для дома и подарка — без перегруза терминами.</p>
-          </div>
-          <a class="pill" href="./guides/index.html">Все статьи</a>
-        </div>
-        <div class="guide-grid">
-          <a class="guide-card card" href="./guides/vidy-svechnogo-voska/index.html">
-            <div class="guide-card__image"><img src="./assets/img/guides/wax-types.jpg" alt=""></div>
-            <div class="guide-card__body">
-              <h3 class="guide-card__title">Виды свечного воска</h3>
-              <p class="guide-card__text">Соевый, пчелиный, кокосовый и парафин в одном сравнении.</p>
-              <div class="guide-card__meta">Читать</div>
-            </div>
-          </a>
-          <a class="guide-card card" href="./guides/soevyy-ili-pchelinyy-vosk/index.html">
-            <div class="guide-card__image"><img src="./assets/img/guides/soy-vs-beeswax.jpg" alt=""></div>
-            <div class="guide-card__body">
-              <h3 class="guide-card__title">Соевый или пчелиный?</h3>
-              <p class="guide-card__text">Два популярных натуральных варианта простым языком.</p>
-              <div class="guide-card__meta">Сравнить</div>
-            </div>
-          </a>
-          <a class="guide-card card" href="./guides/kak-vybrat-svechu/index.html">
-            <div class="guide-card__image"><img src="./assets/img/guides/choose-candle.jpg" alt=""></div>
-            <div class="guide-card__body">
-              <h3 class="guide-card__title">Как выбрать свечу</h3>
-              <p class="guide-card__text">Спальня, подарок, декор и вечерний ритуал.</p>
-              <div class="guide-card__meta">Подобрать</div>
-            </div>
-          </a>
-          <a class="guide-card card" href="./guides/naturalnyy-vosk-i-parafin/index.html">
-            <div class="guide-card__image"><img src="./assets/img/guides/natural-vs-paraffin.jpg" alt=""></div>
-            <div class="guide-card__body">
-              <h3 class="guide-card__title">Натуральный воск и парафин</h3>
-              <p class="guide-card__text">Где разница реально заметна покупателю.</p>
-              <div class="guide-card__meta">Разобраться</div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="catalog">
-      <div class="container">
-        <div class="section-header section-header--filters-below">
-          <div>
-            <h2>Все товары</h2>
-          </div>
-          <div class="filters" data-category-filters><button class="pill active" type="button" data-category="all">Все товары</button><button class="pill" type="button" data-category="conteiner">Контейнерные свечи</button><button class="pill" type="button" data-category="forming">Формовые свечи</button><button class="pill" type="button" data-category="interier">Интерьерные свечи</button><button class="pill" type="button" data-category="aroma">Ароматы для дома</button><button class="pill" type="button" data-category="seson">Сезонные коллекции</button></div>
-        </div>
-        <div class="grid" data-product-grid>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/fistashkovaya-roza/index.html" aria-label="Перейти к товару Фисташковая роза">
-        <img loading="lazy" src="./assets/img/products/fistashkovaya-roza.jpg" alt="Свеча Фисташковая роза">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"><span class="badge">Хит</span><span class="badge">Формовые свечи</span></div>
-        <h3><a href="./products/fistashkovaya-roza/index.html">Фисташковая роза</a></h3>
-        <p>Цветочная композиция в чаше из акрилового гипса для подарка и интерьерного акцента.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>2 500 ₽</span></div>
-            <div class="rating">★ 5.0 · 2 отзыва</div>
-          </div>
-          <div class="muted">Диаметр: 12 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/fistashkovaya-roza/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-pistachio-rose">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/zefirnaya-roza/index.html" aria-label="Перейти к товару Зефирная роза">
-        <img loading="lazy" src="./assets/img/products/zefirnaya-roza.png" alt="Свеча Зефирная роза">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"><span class="badge">Хит</span><span class="badge">Формовые свечи</span></div>
-        <h3><a href="./products/zefirnaya-roza/index.html">Зефирная роза</a></h3>
-        <p>Большая цветочная композиция в бело-розовой гамме.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>3 400 ₽</span></div>
-            <div class="rating">★ 5.0 · 1 отзыв</div>
-          </div>
-          <div class="muted">Диаметр: 16 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/zefirnaya-roza/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-zephyr-rose">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/pion-v-stakane/index.html" aria-label="Перейти к товару Пион">
-        <img loading="lazy" src="./assets/img/products/pion-v-stakane.png" alt="Свеча Пион в стакане">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"><span class="badge">Хит</span><span class="badge">Формовые свечи</span></div>
-        <h3><a href="./products/pion-v-stakane/index.html">Пион</a></h3>
-        <p>Свеча в стеклянном стакане с цветком-пионом внутри.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>1 500 ₽</span></div>
-            <div class="rating">★ 4.5 · 2 отзыва</div>
-          </div>
-          <div class="muted">Диаметр: 6,6 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/pion-v-stakane/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-pion-glass">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/fialka-v-stakane/index.html" aria-label="Перейти к товару Фиалка">
-        <img loading="lazy" src="./assets/img/products/fialka-v-stakane.png" alt="Свеча Фиалка в стакане">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"></div>
-        <h3><a href="./products/fialka-v-stakane/index.html">Фиалка</a></h3>
-        <p>Нежная свеча в стакане с декором из фиалок.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>1 500 ₽</span></div>
-            
-          </div>
-          <div class="muted">Диаметр: 6,6 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/fialka-v-stakane/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-fialka-glass">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/kuvshinka/index.html" aria-label="Перейти к товару Кувшинка">
-        <img loading="lazy" src="./assets/img/products/kuvshinka.png" alt="Свеча Кувшинка">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"></div>
-        <h3><a href="./products/kuvshinka/index.html">Кувшинка</a></h3>
-        <p>Фактурное кашпо с цветочным декором для минималистичного интерьера.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>1 700 ₽</span></div>
-            <div class="rating">★ 5.0 · 1 отзыв</div>
-          </div>
-          <div class="muted">Диаметр: 7 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/kuvshinka/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-kuvshinka">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/grani-svecheniya-maksi/index.html" aria-label="Перейти к товару Грани свечения Макси">
-        <img loading="lazy" src="./assets/img/products/grani-svecheniya-maksi.png" alt="Свеча Грани свечения Макси">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"><span class="badge">Хит</span></div>
-        <h3><a href="./products/grani-svecheniya-maksi/index.html">Грани свечения Макси</a></h3>
-        <p>Крупная рельефная свеча-цилиндр для акцентного декора.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>1 500 ₽</span></div>
-            <div class="rating">★ 5.0 · 1 отзыв</div>
-          </div>
-          <div class="muted">Высота: 21 см, диаметр: 7 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/grani-svecheniya-maksi/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-grani-maxi">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/antichnaya-kolonna/index.html" aria-label="Перейти к товару Античная колонна">
-        <img loading="lazy" src="./assets/img/products/antichnaya-kolonna.png" alt="Свеча Античная колонна">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"></div>
-        <h3><a href="./products/antichnaya-kolonna/index.html">Античная колонна</a></h3>
-        <p>Классическая свеча-колонна для минималистичного и неоклассического интерьера.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>1 200 ₽</span></div>
-            
-          </div>
-          <div class="muted">Высота: 25 см, диаметр: 7 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/antichnaya-kolonna/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-antique-column">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/svechi-iz-pchelinogo-voska/index.html" aria-label="Перейти к товару Свечи из пчелиного воска">
-        <img loading="lazy" src="./assets/img/products/svechi-iz-pchelinogo-voska.png" alt="Свечи из пчелиного воска">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"><span class="badge">Хит</span></div>
-        <h3><a href="./products/svechi-iz-pchelinogo-voska/index.html">Свечи из пчелиного воска</a></h3>
-        <p>Набор столовых свечей из пчелиного воска, 3 штуки.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>900 ₽</span></div>
-            <div class="rating">★ 5.0 · 1 отзыв</div>
-          </div>
-          <div class="muted">Высота: 25 см, диаметр: 2 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/svechi-iz-pchelinogo-voska/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-beeswax-dinner">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/roza-intaliya/index.html" aria-label="Перейти к товару Интерьерная заливная свеча «Роза Инталия»">
-        <img loading="lazy" src="./assets/img/products/roza-intaliya.png" alt="Интерьерная заливная свеча Роза Инталия">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"><span class="badge">Хит</span></div>
-        <h3><a href="./products/roza-intaliya/index.html">Интерьерная заливная свеча «Роза Инталия»</a></h3>
-        <p>Заливная интерьерная свеча с рельефной розой.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>1 800 ₽</span></div>
-            <div class="rating">★ 5.0 · 1 отзыв</div>
-          </div>
-          <div class="muted">Высота: 9 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/roza-intaliya/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-roza-intalia">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/izyashnye-linii/index.html" aria-label="Перейти к товару Интерьерная заливная свеча «Изящные линии»">
-        <img loading="lazy" src="./assets/img/products/izyashnye-linii.png" alt="Интерьерная свеча Изящные линии">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"></div>
-        <h3><a href="./products/izyashnye-linii/index.html">Интерьерная заливная свеча «Изящные линии»</a></h3>
-        <p>Геометрическая заливная свеча для современного пространства.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>1 500 ₽</span></div>
-            
-          </div>
-          <div class="muted">Высота: 8 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/izyashnye-linii/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-lines">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/svecha-shkatulka-tykva/index.html" aria-label="Перейти к товару Интерьерная свеча-шкатулка «Тыква»">
-        <img loading="lazy" src="./assets/img/products/svecha-shkatulka-tykva.png" alt="Интерьерная свеча-шкатулка Тыква">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"></div>
-        <h3><a href="./products/svecha-shkatulka-tykva/index.html">Интерьерная свеча-шкатулка «Тыква»</a></h3>
-        <p>Свеча-шкатулка для осеннего декора и хранения мелочей.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>1 500 ₽</span></div>
-            
-          </div>
-          <div class="muted">Высота: 10 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/svecha-shkatulka-tykva/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-pumpkin-box">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/interernyy-nabor-minimalizm/index.html" aria-label="Перейти к товару Интерьерный набор «Минимализм»">
-        <img loading="lazy" src="./assets/img/products/interernyy-nabor-minimalizm.png" alt="Интерьерный набор Минимализм">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"></div>
-        <h3><a href="./products/interernyy-nabor-minimalizm/index.html">Интерьерный набор «Минимализм»</a></h3>
-        <p>Набор из трёх свечей для современного интерьера.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>1 500 ₽</span></div>
-            <div class="rating">★ 5.0 · 1 отзыв</div>
-          </div>
-          <div class="muted">Набор из 3 свечей</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/interernyy-nabor-minimalizm/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-minimalism-set">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/mishka-s-serdtsem/index.html" aria-label="Перейти к товару Интерьерная свеча «Мишка с сердцем»">
-        <img loading="lazy" src="./assets/img/products/mishka-s-serdtsem.png" alt="Свеча Мишка с сердцем">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"><span class="badge">Хит</span></div>
-        <h3><a href="./products/mishka-s-serdtsem/index.html">Интерьерная свеча «Мишка с сердцем»</a></h3>
-        <p>Мини-свеча в форме мишки с сердцем.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>900 ₽</span></div>
-            <div class="rating">★ 5.0 · 1 отзыв</div>
-          </div>
-          <div class="muted">Высота: 6 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/mishka-s-serdtsem/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-bear-heart">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/tsvetochnoe-serdtse/index.html" aria-label="Перейти к товару Интерьерная свеча «Цветочное сердце»">
-        <img loading="lazy" src="./assets/img/products/tsvetochnoe-serdtse.png" alt="Свеча Цветочное сердце">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"></div>
-        <h3><a href="./products/tsvetochnoe-serdtse/index.html">Интерьерная свеча «Цветочное сердце»</a></h3>
-        <p>Мини-свеча в форме сердца с цветочным узором.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>900 ₽</span></div>
-            
-          </div>
-          <div class="muted">Диаметр: 7 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/tsvetochnoe-serdtse/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-flower-heart">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/podarochnyy-nabor-zvezdnyy-uyut/index.html" aria-label="Перейти к товару Подарочный набор «Звездный уют»">
-        <img loading="lazy" src="./assets/img/products/podarochnyy-nabor-zvezdnyy-uyut.png" alt="Подарочный набор Звездный уют">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"></div>
-        <h3><a href="./products/podarochnyy-nabor-zvezdnyy-uyut/index.html">Подарочный набор «Звездный уют»</a></h3>
-        <p>Подарочный набор из мини-свечей в форме звёзд.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>650 ₽</span></div>
-            
-          </div>
-          <div class="muted">Набор из 3 свечей</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/podarochnyy-nabor-zvezdnyy-uyut/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-starry-cozy">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/aromameltsy-s/index.html" aria-label="Перейти к товару Аромамэлтсы S">
-        <img loading="lazy" src="./assets/img/products/aromameltsy-s.png" alt="Аромамэлтсы S">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"><span class="badge">Хит</span></div>
-        <h3><a href="./products/aromameltsy-s/index.html">Аромамэлтсы S</a></h3>
-        <p>Мэлтсы-сердечки для аромалампы, 50 г.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>700 ₽</span></div>
-            <div class="rating">★ 5.0 · 1 отзыв</div>
-          </div>
-          <div class="muted">50 г</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/aromameltsy-s/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-melts-s">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/aromameltsy-m/index.html" aria-label="Перейти к товару Аромамэлтсы M">
-        <img loading="lazy" src="./assets/img/products/aromameltsy-m.jpg" alt="Аромамэлтсы M">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"></div>
-        <h3><a href="./products/aromameltsy-m/index.html">Аромамэлтсы M</a></h3>
-        <p>Большой набор мэлтсов, 100 г.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>1 150 ₽</span></div>
-            
-          </div>
-          <div class="muted">100 г</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/aromameltsy-m/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-melts-m">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/aromalampa-arka/index.html" aria-label="Перейти к товару Аромалампа Арка">
-        <img loading="lazy" src="./assets/img/products/aromalampa-arka.png" alt="Аромалампа Арка">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"><span class="badge">Хит</span></div>
-        <h3><a href="./products/aromalampa-arka/index.html">Аромалампа Арка</a></h3>
-        <p>Гипсовая аромалампа для мэлтсов, в комплекте чайная свеча.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>1 200 ₽</span></div>
-            <div class="rating">★ 5.0 · 1 отзыв</div>
-          </div>
-          <div class="muted">Высота: 10 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/aromalampa-arka/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-arka-burner">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/aromaticheskoe-sashe/index.html" aria-label="Перейти к товару Ароматические саше">
-        <img loading="lazy" src="./assets/img/products/aromaticheskoe-sashe.jpg" alt="Ароматические саше">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"></div>
-        <h3><a href="./products/aromaticheskoe-sashe/index.html">Ароматические саше</a></h3>
-        <p>Восковое саше-плитка на 6 долек.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>900 ₽</span></div>
-            
-          </div>
-          <div class="muted">6 долек</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/aromaticheskoe-sashe/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-sachet">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/yaytso-klassik/index.html" aria-label="Перейти к товару Яйцо классик">
-        <img loading="lazy" src="./assets/img/products/yaytso-klassik.png" alt="Пасхальная свеча Яйцо классик">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"></div>
-        <h3><a href="./products/yaytso-klassik/index.html">Яйцо классик</a></h3>
-        <p>Набор пасхальных свечей-яиц, 3 штуки.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>500 ₽</span></div>
-            
-          </div>
-          <div class="muted">Высота: 6,5 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/yaytso-klassik/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-egg-classic">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/yaytso-azhur/index.html" aria-label="Перейти к товару Яйцо ажур">
-        <img loading="lazy" src="./assets/img/products/yaytso-azhur.png" alt="Пасхальная свеча Яйцо ажур">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"></div>
-        <h3><a href="./products/yaytso-azhur/index.html">Яйцо ажур</a></h3>
-        <p>Рельефная пасхальная свеча-яйцо с цветочным узором.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>700 ₽</span></div>
-            
-          </div>
-          <div class="muted">Высота: 7,5 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/yaytso-azhur/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-egg-ajour">В корзину</button>
-        </div>
-      </div>
-    </article>
-    <article class="product-card">
-      <a class="product-card-media" href="./products/paskhalnyy-zayats-belyy/index.html" aria-label="Перейти к товару Пасхальный заяц (белый)">
-        <img loading="lazy" src="./assets/img/products/paskhalnyy-zayats-belyy.jpg" alt="Пасхальная свеча Заяц белый">
-      </a>
-      <div class="product-card-body">
-        <div class="badge-row"><span class="badge">Хит</span></div>
-        <h3><a href="./products/paskhalnyy-zayats-belyy/index.html">Пасхальный заяц (белый)</a></h3>
-        <p>Крупная пасхальная свеча-заяц ручной работы.</p>
-        <div class="price-row">
-          <div>
-            <div class="price"><span>2 500 ₽</span></div>
-            <div class="rating">★ 5.0 · 1 отзыв</div>
-          </div>
-          <div class="muted">Высота: 15 см</div>
-        </div>
-        <div class="card-actions">
-          <a class="button-secondary" href="./products/paskhalnyy-zayats-belyy/index.html">Подробнее</a>
-          <button class="button" type="button" data-add-to-cart="prod-bunny-white">В корзину</button>
-        </div>
-      </div>
-    </article></div>
-      </div>
-    </section>
-
-    <section class="section" id="cart">
-      <div class="container cart-history-layout" data-cart-root>
-        <div class="panel">
-          <div class="section-header section-header--cart-toolbar">
-            <div>
-              <h2>Корзина</h2>
-            </div>
-            <div class="cart-toolbar">
-              <span class="cart-status" data-cart-status>0 товаров</span>
-              <button type="button" class="button-secondary cart-clear-btn" data-clear-cart hidden>Очистить корзину</button>
-            </div>
-          </div>
-          <div class="cart-items" data-cart-items></div>
-          <div class="cart-checkout-block">
-            <h3 class="panel-title">Оформление</h3>
-            <div data-cart-summary></div>
+        <div class="corporate-split">
+          <div class="corporate-text">
+            <h2>Корпоративные заказы</h2>
+            <p>Мы создаём подарки и сувениры для бизнеса: свечи с индивидуальным дизайном, фирменной упаковкой и логотипом вашей компании. Подходит для клиентских подарков, деловых мероприятий и корпоративных наборов.</p>
+            <a class="button" href="mailto:phicandles@gmail.com">Обсудить заказ</a>
           </div>
         </div>
-        <aside class="panel cart-history-panel" id="order-history">
-          <h3 class="panel-title">История заказов</h3>
-          <div data-order-history></div>
-        </aside>
       </div>
     </section>
   </main>
@@ -721,11 +95,11 @@
       </div>
       <div>
         <strong>Контакты</strong>
-        <p>phicandles@gmail.com<br>+7 (929) 633-16-18<br>+7 (916) 540-63-99</p>
+        <p>phicandles@gmail.com<br>+7 (929) 633-16-18<br>+7 (916) 540-63-99<br><a href="https://t.me/phi_candles">Telegram</a></p>
       </div>
       <div>
-        <strong>Соцсети</strong>
-        <p><a href="https://t.me/phi_candles">Telegram</a><br><a href="https://www.instagram.com/phicandlesdecor/">Instagram</a></p>
+        <strong>Документы</strong>
+        <p><a href="./privacy/index.html">Политика конфиденциальности</a></p>
       </div>
     </div>
   </footer>

@@ -66,11 +66,11 @@ def build_faq_page(catalog: dict, manifest: dict) -> None:
         wordmark_src='../assets/img/brand-wordmark.svg',
         store_name=html.escape(store['name']),
         tagline=html.escape(store['tagline']),
-        catalog_href='../index.html#catalog',
-        guides_href='../index.html#guides',
+        catalog_href='../catalog/index.html',
+        guides_href='../guides/index.html',
         faq_href='./index.html',
         faq_extra=' aria-current="page"',
-        cart_href='../index.html#cart',
+        cart_href='../cart/index.html',
     )
 
     title = manifest['title']
