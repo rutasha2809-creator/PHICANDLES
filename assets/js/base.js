@@ -410,9 +410,96 @@ function ensureClientId() {
   }
 }
 
+function initCookieBanner() {
+  const COOKIE_KEY = 'phicandles-cookie-consent';
+  if (localStorage.getItem(COOKIE_KEY)) return;
+
+  const root = document.body.dataset.rootPath || './';
+  const privacyHref = root + 'privacy/index.html';
+
+  const banner = document.createElement('div');
+  banner.id = 'cookie-banner';
+  banner.setAttribute('role', 'dialog');
+  banner.setAttribute('aria-label', 'Уведомление о cookie');
+  banner.innerHTML = `
+    <p class="cookie-banner__text">
+      Мы используем cookie-файлы. Продолжая пользоваться сайтом, вы соглашаетесь
+      с использованием файлов cookie.
+      <a href="${privacyHref}" class="cookie-banner__link">Политика конфиденциальности</a>
+    </p>
+    <button class="cookie-banner__btn" type="button" aria-label="Принять и закрыть">Принять</button>
+  `;
+
+  const style = document.createElement('style');
+  style.textContent = `
+    #cookie-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 32px;
+      background: #fff;
+      border-top: 1px solid #e4e0da;
+      box-shadow: 0 -4px 24px rgba(0,0,0,0.06);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.87rem;
+      color: #7a746e;
+      line-height: 1.6;
+      animation: cookie-slide-up 0.3s ease;
+    }
+    @keyframes cookie-slide-up {
+      from { transform: translateY(100%); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    .cookie-banner__text { margin: 0; flex: 1; }
+    .cookie-banner__link {
+      color: #1a1714;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      white-space: nowrap;
+    }
+    .cookie-banner__link:hover { color: #7a746e; }
+    .cookie-banner__btn {
+      flex-shrink: 0;
+      padding: 10px 28px;
+      background: #1a1714;
+      color: #fff;
+      border: 1px solid #1a1714;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .cookie-banner__btn:hover { background: #2d2a27; border-color: #2d2a27; }
+    @media (max-width: 600px) {
+      #cookie-banner { flex-direction: column; align-items: flex-start; padding: 20px 20px 24px; }
+      .cookie-banner__btn { width: 100%; text-align: center; }
+    }
+  `;
+
+  document.head.appendChild(style);
+  document.body.appendChild(banner);
+
+  banner.querySelector('.cookie-banner__btn').addEventListener('click', () => {
+    localStorage.setItem(COOKIE_KEY, '1');
+    banner.style.animation = 'none';
+    banner.style.transition = 'opacity 0.25s, transform 0.25s';
+    banner.style.opacity = '0';
+    banner.style.transform = 'translateY(100%)';
+    setTimeout(() => banner.remove(), 300);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCount();
   bindGlobalCartLink();
   bindCardGalleries();
   ensureClientId();
+  initCookieBanner();
 });
