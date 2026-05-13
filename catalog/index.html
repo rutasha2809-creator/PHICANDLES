@@ -153,7 +153,10 @@
     const countEl = document.getElementById('catalog-count');
 
     function renderProducts(catId) {
-      const items = catId === 'all' ? products : products.filter(p => p.categoryId === catId);
+      const visibleCats = new Set(categories.map(c => c.id));
+      const items = catId === 'all'
+        ? products.filter(p => visibleCats.has(p.categoryId))
+        : products.filter(p => p.categoryId === catId);
       if (!items.length) {
         grid.innerHTML = '<p class="catalog-empty">В этой категории пока нет товаров.</p>';
         countEl.textContent = '';
