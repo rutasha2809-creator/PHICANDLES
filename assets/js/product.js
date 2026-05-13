@@ -380,7 +380,30 @@ async function initProductPage() {
   const related = catalog.products
     .filter((item) => item.categoryId === product.categoryId && item.id !== product.id)
     .sort((a, b) => b.popularity - a.popularity)
-    .slice(0, 4);
   document.querySelector('[data-related-grid]').innerHTML = related
     .map((item) => {
-      const categoryName = catego
+      const categoryName = categoryMap.get(item.categoryId)?.name || '';
+      return renderProductCard({ ...item, image: '../../' + item.assetImage }, categoryName);
+    })
+    .join('');
+
+  if (typeof bindQuickAdd === 'function') {
+    bindQuickAdd({
+      ...catalog,
+      products: catalog.products.map((item) => ({ ...item, image: '../../' + item.assetImage })),
+    });
+  }
+}
+
+async function safeInitProductPage() {
+  try {
+    await initProductPage();
+  } catch (err) {
+    console.error('[product] init error', err);
+    const root = document.querySelector('[data-product-root]');
+    if (root) root.innerHTML =
+      '<div class="notice">Не удалось загрузить карточку товара.</div>';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', safeInitProductPage);
