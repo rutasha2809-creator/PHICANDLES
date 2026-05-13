@@ -331,6 +331,8 @@
 
   let activePromo = null; // { code, discount }
 
+  function escKey(key) { return key.replace(/"/g, '&quot;'); }
+
   function formatPrice(n) {
     return new Intl.NumberFormat('ru-RU').format(n) + ' ₽';
   }
@@ -356,7 +358,7 @@
 
     // Список товаров
     wrap.innerHTML = `<div class="cart-items-list">${cart.map(item => `
-      <div class="cart-item" data-key="${item.key}">
+      <div class="cart-item" data-key="${escKey(item.key)}">
         <div class="cart-item__thumb">
           <img src="${(item.image || '').replace(/^(\.\/|\.\.\/\.\.\/|\.\.\/)/,'../') || '../assets/img/image-placeholder.svg'}" alt="${item.name}">
         </div>
@@ -369,11 +371,11 @@
         </div>
         <div class="cart-item__actions">
           <div class="qty-controls">
-            <button type="button" data-qty-dec="${item.key}">−</button>
+            <button type="button" data-qty-dec="${escKey(item.key)}">−</button>
             <span>${item.quantity}</span>
-            <button type="button" data-qty-inc="${item.key}">+</button>
+            <button type="button" data-qty-inc="${escKey(item.key)}">+</button>
           </div>
-          <button class="cart-item__remove" type="button" data-remove="${item.key}">Удалить</button>
+          <button class="cart-item__remove" type="button" data-remove="${escKey(item.key)}">Удалить</button>
         </div>
       </div>`).join('')}</div>`;
 
