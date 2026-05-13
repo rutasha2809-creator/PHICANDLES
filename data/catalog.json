@@ -1078,7 +1078,7 @@
       "slug": "pion",
       "name": "Пион",
       "categoryId": "conteiner",
-      "price": 1500,
+      "price": 2000,
       "salePrice": null,
       "description": "",
       "shortDescription": "",
@@ -1159,6 +1159,50 @@
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/shalfei.jpg",
       "url": "https://phicandles.ru/products/shalfei/",
+      "relatedGroup": "glass"
+    },
+    {
+      "id": "prod-soma",
+      "slug": "soma",
+      "name": "Ароматическая свеча в черной матовой банке",
+      "categoryId": "conteiner",
+      "price": 1500,
+      "salePrice": null,
+      "description": "",
+      "shortDescription": "",
+      "dimensions": "",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [
+          "aroma-francuzskaya-siren",
+          "aroma-lesnoy-landysh",
+          "aroma-goryachiy-yablochnyy-pirog",
+          "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
+          "aroma-sandalovoe-derevo",
+          "aroma-pryanyy-apelsin"
+        ],
+        "color": []
+      },
+      "image": "./assets/img/products/soma.jpg",
+      "imageAlt": "Ароматическая свеча в черной матовой банке",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/soma.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/soma.jpg",
+      "url": "https://phicandles.ru/products/soma/",
       "relatedGroup": "glass"
     },
     {
@@ -1255,7 +1299,7 @@
       "id": "prod-flowers",
       "slug": "flowers",
       "name": "Цветы",
-      "categoryId": "conteiner",
+      "categoryId": "hidden",
       "price": 2000,
       "salePrice": null,
       "description": "",
