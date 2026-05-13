@@ -233,7 +233,7 @@
       "id": "prod-pion-glass",
       "slug": "pion-v-stakane",
       "name": "Пион",
-      "categoryId": "conteiner",
+      "categoryId": "hidden",
       "price": 1500,
       "salePrice": null,
       "description": "Элегантная свеча в стеклянном стакане с вручную выполненным пионом. Совмещает лаконичную форму и роскошь цветочного декора.",
