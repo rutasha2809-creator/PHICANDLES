@@ -644,7 +644,8 @@
       "shortDescription": "Набор из трёх свечей для современного интерьера.",
       "dimensions": "Набор из 3 свечей",
       "materials": [
-        "соевый воск"
+        "соевый воск",
+        "деревянный фитиль"
       ],
       "burnTime": "до 36 часов суммарно",
       "options": {
@@ -2013,10 +2014,7 @@
       "description": "",
       "shortDescription": "",
       "dimensions": "",
-      "materials": [
-        "соевый воск",
-        "хлопковый фитиль"
-      ],
+      "materials": [],
       "burnTime": "",
       "options": {
         "aroma": [],
@@ -2049,10 +2047,7 @@
       "description": "",
       "shortDescription": "",
       "dimensions": "",
-      "materials": [
-        "соевый воск",
-        "хлопковый фитиль"
-      ],
+      "materials": [],
       "burnTime": "",
       "options": {
         "aroma": [],
@@ -2085,10 +2080,7 @@
       "description": "",
       "shortDescription": "",
       "dimensions": "",
-      "materials": [
-        "соевый воск",
-        "хлопковый фитиль"
-      ],
+      "materials": [],
       "burnTime": "",
       "options": {
         "aroma": [],
