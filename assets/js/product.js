@@ -255,7 +255,8 @@ async function initProductPage() {
   if (breadcrumbCatalog) {
     const catName = categoryMap.get(product.categoryId)?.name || 'Каталог';
     breadcrumbCatalog.textContent = catName;
-    breadcrumbCatalog.href = homePageUrl(`?category=${encodeURIComponent(product.categoryId)}#catalog`);
+    const rootPath = document.body.dataset.rootPath || './';
+    breadcrumbCatalog.href = rootPath + 'catalog/index.html#' + product.categoryId;
   }
 
   const badgeEl = document.querySelector('[data-product-collection-badge]');
