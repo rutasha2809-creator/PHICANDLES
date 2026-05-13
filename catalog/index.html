@@ -68,7 +68,7 @@
           <ul class="catalog-sidebar__list" id="catalog-nav">
             <li><a class="catalog-sidebar__link is-active" href="#all" data-cat="all">Все товары</a></li>
           </ul>
-          <ul class="catalog-sidebar__list" style="margin-top: 24px; border-top: 1px solid var(--line); padding-top: 20px;">
+          <ul class="catalog-sidebar__list" style="margin-top:24px;border-top:1px solid var(--line);padding-top:20px;">
             <li><a class="catalog-sidebar__link" href="/corporate/">Корпоративные заказы →</a></li>
           </ul>
         </aside>
@@ -196,4 +196,16 @@
     nav.addEventListener('click', function(e) {
       const link = e.target.closest('[data-cat]');
       if (!link) return;
-      e.preventDefau
+      e.preventDefault();
+      history.pushState(null, '', '#' + link.dataset.cat);
+      setActive(link.dataset.cat);
+    });
+
+    window.addEventListener('popstate', function() { setActive(getActiveCat()); });
+
+    setActive(getActiveCat());
+
+  })();
+  </script>
+</body>
+</html>
