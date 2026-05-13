@@ -89,7 +89,7 @@
       </div>
       <div>
         <strong>Документы</strong>
-        <p><a href="../privacy/index.html">Политика конфиденциальности</a><br><a href="../corporate/index.html">Корпоративные заказы</a></p>
+        <p><a href="../privacy/index.html">Политика конфиденциальности</a> | <a href="/corporate/">Корпоративные заказы</a></p>
       </div>
     </div>
   </footer>
@@ -152,4 +152,57 @@
     const grid = document.getElementById('catalog-grid');
     const countEl = document.getElementById('catalog-count');
 
-    function rend
+    function renderProducts(catId) {
+      const visibleCats = new Set(categories.map(c => c.id));
+      const items = catId === 'all'
+        ? products.filter(p => visibleCats.has(p.categoryId))
+        : products.filter(p => p.categoryId === catId);
+      if (!items.length) {
+        grid.innerHTML = '<p class="catalog-empty">В этой категории пока нет товаров.</p>';
+        countEl.textContent = '';
+      } else {
+        grid.innerHTML = items.map(renderCard).join('');
+        countEl.textContent = items.length + ' ' + plural(items.length, 'товар', 'товара', 'товаров');
+        if (typeof bindQuickAdd === 'function') bindQuickAdd(catalog);
+      }
+    }
+
+    const nav = document.getElementById('catalog-nav');
+    categories.forEach(function(c) {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.className = 'catalog-sidebar__link';
+      a.href = '#' + c.id;
+      a.dataset.cat = c.id;
+      a.textContent = c.name;
+      li.appendChild(a);
+      nav.appendChild(li);
+    });
+
+    function getActiveCat() {
+      return location.hash.replace('#', '') || 'all';
+    }
+
+    function setActive(catId) {
+      document.querySelectorAll('.catalog-sidebar__link').forEach(function(a) {
+        a.classList.toggle('is-active', a.dataset.cat === catId);
+      });
+      renderProducts(catId);
+    }
+
+    nav.addEventListener('click', function(e) {
+      const link = e.target.closest('[data-cat]');
+      if (!link) return;
+      e.preventDefault();
+      history.pushState(null, '', '#' + link.dataset.cat);
+      setActive(link.dataset.cat);
+    });
+
+    window.addEventListener('popstate', function() { setActive(getActiveCat()); });
+
+    setActive(getActiveCat());
+
+  })();
+  </script>
+</body>
+</html>
