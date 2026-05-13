@@ -380,27 +380,7 @@ async function initProductPage() {
   const related = catalog.products
     .filter((item) => item.categoryId === product.categoryId && item.id !== product.id)
     .sort((a, b) => b.popularity - a.popularity)
-    .slice(0, 3);
+    .slice(0, 4);
   document.querySelector('[data-related-grid]').innerHTML = related
     .map((item) => {
-      const categoryName = categoryMap.get(item.categoryId)?.name || '';
-      return renderProductCard({ ...item, image: '../../' + item.assetImage }, categoryName)
-        .replaceAll(`href="./products/${item.slug}/index.html"`, `href="../${item.slug}/index.html"`)
-        .replaceAll(`src="./assets/`, `src="../../assets/`)
-        .replaceAll(`data-add-to-cart="${item.id}"`, `data-add-to-cart="${item.id}"`);
-    })
-    .join('');
-
-  bindQuickAdd({
-    ...catalog,
-    products: catalog.products.map((item) => ({ ...item, image: '../../' + item.assetImage })),
-  });
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-  initProductPage().catch((error) => {
-    console.error(error);
-    document.querySelector('[data-product-root]').innerHTML =
-      '<div class="notice">Не удалось загрузить карточку товара. Проверьте путь к catalog.json.</div>';
-  });
-});
+      const categoryName = catego
