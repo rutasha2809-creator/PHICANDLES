@@ -12,7 +12,7 @@
     "telegram": "https://t.me/phi_candles",
     "instagram": "https://www.instagram.com/phicandlesdecor/",
     "currency": "RUB",
-    "updatedAt": "2026-04-12"
+    "updatedAt": "2026-05-13"
   },
   "categories": [
     {
@@ -1527,6 +1527,438 @@
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/krolik.jpg",
       "url": "https://phicandles.ru/products/krolik/"
+    },
+    {
+      "id": "prod-grani-l",
+      "slug": "grani-svecheniya-l",
+      "name": "Грани свечения L",
+      "categoryId": "forming",
+      "price": 1500,
+      "salePrice": null,
+      "description": "",
+      "shortDescription": "",
+      "dimensions": "",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Бежевый",
+          "Лавандовый",
+          "Черный"
+        ]
+      },
+      "image": "./assets/img/products/grani-svecheniya-l.jpg",
+      "imageAlt": "Грани свечения L",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/grani-svecheniya-l.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/grani-svecheniya-l.jpg",
+      "url": "https://phicandles.ru/products/grani-svecheniya-l/"
+    },
+    {
+      "id": "prod-grani-m",
+      "slug": "grani-svecheniya-m",
+      "name": "Грани свечения M",
+      "categoryId": "forming",
+      "price": 900,
+      "salePrice": null,
+      "description": "",
+      "shortDescription": "",
+      "dimensions": "",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Бежевый",
+          "Лавандовый",
+          "Черный"
+        ]
+      },
+      "image": "./assets/img/products/grani-svecheniya-m.jpg",
+      "imageAlt": "Грани свечения M",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/grani-svecheniya-m.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/grani-svecheniya-m.jpg",
+      "url": "https://phicandles.ru/products/grani-svecheniya-m/"
+    },
+    {
+      "id": "prod-grani-s",
+      "slug": "grani-svecheniya-s",
+      "name": "Грани свечения S",
+      "categoryId": "forming",
+      "price": 1200,
+      "salePrice": null,
+      "description": "",
+      "shortDescription": "",
+      "dimensions": "",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Бежевый",
+          "Лавандовый",
+          "Черный"
+        ]
+      },
+      "image": "./assets/img/products/grani-svecheniya-s.jpg",
+      "imageAlt": "Грани свечения S",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/grani-svecheniya-s.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/grani-svecheniya-s.jpg",
+      "url": "https://phicandles.ru/products/grani-svecheniya-s/"
+    },
+    {
+      "id": "prod-ant-kol-f",
+      "slug": "antichnaya-kolonna-f",
+      "name": "Античная колонна",
+      "categoryId": "forming",
+      "price": 850,
+      "salePrice": null,
+      "description": "",
+      "shortDescription": "",
+      "dimensions": "",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Бежевый",
+          "Лавандовый",
+          "Черный"
+        ]
+      },
+      "image": "./assets/img/products/antichnaya-kolonna-f.jpg",
+      "imageAlt": "Античная колонна",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/antichnaya-kolonna-f.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/antichnaya-kolonna-f.jpg",
+      "url": "https://phicandles.ru/products/antichnaya-kolonna-f/"
+    },
+    {
+      "id": "prod-tsv-kol",
+      "slug": "tsvetochnaya-kolonna",
+      "name": "Цветочная колонна",
+      "categoryId": "forming",
+      "price": 920,
+      "salePrice": null,
+      "description": "",
+      "shortDescription": "",
+      "dimensions": "",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Бежевый",
+          "Лавандовый",
+          "Черный"
+        ]
+      },
+      "image": "./assets/img/products/tsvetochnaya-kolonna.jpg",
+      "imageAlt": "Цветочная колонна",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/tsvetochnaya-kolonna.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/tsvetochnaya-kolonna.jpg",
+      "url": "https://phicandles.ru/products/tsvetochnaya-kolonna/"
+    },
+    {
+      "id": "prod-spiral",
+      "slug": "spiral",
+      "name": "Спираль",
+      "categoryId": "forming",
+      "price": 700,
+      "salePrice": null,
+      "description": "",
+      "shortDescription": "",
+      "dimensions": "",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Бежевый",
+          "Лавандовый",
+          "Черный"
+        ]
+      },
+      "image": "./assets/img/products/spiral.jpg",
+      "imageAlt": "Спираль",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/spiral.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/spiral.jpg",
+      "url": "https://phicandles.ru/products/spiral/"
+    },
+    {
+      "id": "prod-roza-f",
+      "slug": "roza-f",
+      "name": "Роза",
+      "categoryId": "forming",
+      "price": 420,
+      "salePrice": null,
+      "description": "",
+      "shortDescription": "",
+      "dimensions": "",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Бежевый",
+          "Лавандовый",
+          "Черный"
+        ]
+      },
+      "image": "./assets/img/products/roza-f.jpg",
+      "imageAlt": "Роза",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/roza-f.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/roza-f.jpg",
+      "url": "https://phicandles.ru/products/roza-f/"
+    },
+    {
+      "id": "prod-tulip",
+      "slug": "tulip",
+      "name": "Тюльпан",
+      "categoryId": "forming",
+      "price": 450,
+      "salePrice": null,
+      "description": "",
+      "shortDescription": "",
+      "dimensions": "",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Бежевый",
+          "Лавандовый",
+          "Черный"
+        ]
+      },
+      "image": "./assets/img/products/tulip.jpg",
+      "imageAlt": "Тюльпан",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/tulip.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/tulip.jpg",
+      "url": "https://phicandles.ru/products/tulip/"
+    },
+    {
+      "id": "prod-tsv-serd-f",
+      "slug": "tsvetochnoe-serdtse-f",
+      "name": "Цветочное сердце",
+      "categoryId": "forming",
+      "price": 370,
+      "salePrice": null,
+      "description": "",
+      "shortDescription": "",
+      "dimensions": "",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Бежевый",
+          "Лавандовый",
+          "Черный"
+        ]
+      },
+      "image": "./assets/img/products/tsvetochnoe-serdtse-f.jpg",
+      "imageAlt": "Цветочное сердце",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/tsvetochnoe-serdtse-f.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/tsvetochnoe-serdtse-f.jpg",
+      "url": "https://phicandles.ru/products/tsvetochnoe-serdtse-f/"
+    },
+    {
+      "id": "prod-mishka-f",
+      "slug": "mishka-f",
+      "name": "Мишка",
+      "categoryId": "forming",
+      "price": 800,
+      "salePrice": null,
+      "description": "",
+      "shortDescription": "",
+      "dimensions": "",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Бежевый",
+          "Лавандовый",
+          "Черный"
+        ]
+      },
+      "image": "./assets/img/products/mishka-f.jpg",
+      "imageAlt": "Мишка",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/mishka-f.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/mishka-f.jpg",
+      "url": "https://phicandles.ru/products/mishka-f/"
+    },
+    {
+      "id": "prod-mish-s-f",
+      "slug": "mishka-s-serdtsem-f",
+      "name": "Мишка с сердцем",
+      "categoryId": "forming",
+      "price": 450,
+      "salePrice": null,
+      "description": "",
+      "shortDescription": "",
+      "dimensions": "",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Бежевый",
+          "Лавандовый",
+          "Черный"
+        ]
+      },
+      "image": "./assets/img/products/mishka-s-serdtsem-f.jpg",
+      "imageAlt": "Мишка с сердцем",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/mishka-s-serdtsem-f.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/mishka-s-serdtsem-f.jpg",
+      "url": "https://phicandles.ru/products/mishka-s-serdtsem-f/"
+    },
+    {
+      "id": "prod-sobachka",
+      "slug": "sobachka",
+      "name": "Собачка",
+      "categoryId": "forming",
+      "price": 800,
+      "salePrice": null,
+      "description": "",
+      "shortDescription": "",
+      "dimensions": "",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Бежевый",
+          "Лавандовый",
+          "Черный"
+        ]
+      },
+      "image": "./assets/img/products/sobachka.jpg",
+      "imageAlt": "Собачка",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/sobachka.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/sobachka.jpg",
+      "url": "https://phicandles.ru/products/sobachka/"
     }
   ]
 }
