@@ -59,73 +59,55 @@
   "aromas": [
     {
       "id": "aroma-francuzskaya-siren",
-      "name": "Французская сирень",
-      "description": ""
+      "name": "Французская сирень"
     },
     {
       "id": "aroma-lesnoy-landysh",
-      "name": "Лесной ландыш",
-      "description": ""
+      "name": "Лесной ландыш"
     },
     {
       "id": "aroma-goryachiy-yablochnyy-pirog",
-      "name": "Горячий яблочный пирог",
-      "description": ""
+      "name": "Горячий яблочный пирог"
     },
     {
       "id": "aroma-sakharniy-lichi-i-zamsha",
-      "name": "Сахарный личи и замша",
-      "description": ""
+      "name": "Сахарный личи и замша"
+    },
+    {
+      "id": "aroma-baltiyskaya-rosa",
+      "name": "Балтийская роса"
+    },
+    {
+      "id": "aroma-arkticheskiy-plushch",
+      "name": "Арктический плющ"
+    },
+    {
+      "id": "aroma-iriska-i-bourbon",
+      "name": "Ириска и Бурбон"
+    },
+    {
+      "id": "aroma-den-v-spa",
+      "name": "День в СПА"
+    },
+    {
+      "id": "aroma-shalfei-i-morskaya-sol",
+      "name": "Шалфей и морская соль"
+    },
+    {
+      "id": "aroma-plyazhnoe-belye",
+      "name": "Пляжное белье"
+    },
+    {
+      "id": "aroma-egipetskaya-ambra",
+      "name": "Египетская амбра"
     },
     {
       "id": "aroma-sandalovoe-derevo",
-      "name": "Сандаловое дерево",
-      "description": ""
+      "name": "Сандаловое дерево"
     },
     {
       "id": "aroma-pryanyy-apelsin",
-      "name": "Пряный апельсин",
-      "description": ""
-    },
-    {
-      "id": "aroma-kashemirovyy-muskus",
-      "name": "Кашемировый мускус",
-      "description": ""
-    },
-    {
-      "id": "aroma-khlopok",
-      "name": "Хлопок",
-      "description": ""
-    },
-    {
-      "id": "aroma-vanil",
-      "name": "Ваниль",
-      "description": ""
-    },
-    {
-      "id": "aroma-lavanda",
-      "name": "Лаванда",
-      "description": ""
-    },
-    {
-      "id": "aroma-kaktusovaya-voda",
-      "name": "Кактусовая вода",
-      "description": ""
-    },
-    {
-      "id": "aroma-fistashkovoe-beze",
-      "name": "Фисташковое безе",
-      "description": ""
-    },
-    {
-      "id": "aroma-kashemirovaya-tykva",
-      "name": "Кашемировая тыква",
-      "description": ""
-    },
-    {
-      "id": "aroma-bogemskaya-roza",
-      "name": "Богемская роза",
-      "description": ""
+      "name": "Пряный апельсин"
     }
   ],
   "colorSwatches": {
@@ -250,16 +232,15 @@
           "aroma-lesnoy-landysh",
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-kashemirovyy-muskus",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -307,16 +288,15 @@
           "aroma-lesnoy-landysh",
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-kashemirovyy-muskus",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -351,16 +331,15 @@
           "aroma-lesnoy-landysh",
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-kashemirovyy-muskus",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -516,14 +495,7 @@
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -565,16 +537,15 @@
           "aroma-lesnoy-landysh",
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-kashemirovyy-muskus",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -609,16 +580,15 @@
           "aroma-lesnoy-landysh",
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-kashemirovyy-muskus",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -654,16 +624,15 @@
           "aroma-lesnoy-landysh",
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-kashemirovyy-muskus",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": [
           "Белый",
@@ -850,9 +819,7 @@
       "options": {
         "aroma": [
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-vanil",
-          "aroma-lavanda"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -919,9 +886,19 @@
       "burnTime": "до 6 недель аромата",
       "options": {
         "aroma": [
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-fistashkovoe-beze"
+          "aroma-francuzskaya-siren",
+          "aroma-lesnoy-landysh",
+          "aroma-goryachiy-yablochnyy-pirog",
+          "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
+          "aroma-sandalovoe-derevo",
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -1073,16 +1050,15 @@
           "aroma-lesnoy-landysh",
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-kashemirovyy-muskus",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -1118,16 +1094,15 @@
           "aroma-lesnoy-landysh",
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-kashemirovyy-muskus",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -1163,16 +1138,15 @@
           "aroma-lesnoy-landysh",
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-kashemirovyy-muskus",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -1209,16 +1183,15 @@
           "aroma-lesnoy-landysh",
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-kashemirovyy-muskus",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -1255,16 +1228,15 @@
           "aroma-lesnoy-landysh",
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-kashemirovyy-muskus",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -1300,16 +1272,15 @@
           "aroma-lesnoy-landysh",
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-kashemirovyy-muskus",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -1346,16 +1317,15 @@
           "aroma-lesnoy-landysh",
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-kashemirovyy-muskus",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -1392,16 +1362,15 @@
           "aroma-lesnoy-landysh",
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-kashemirovyy-muskus",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -1438,16 +1407,15 @@
           "aroma-lesnoy-landysh",
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-kashemirovyy-muskus",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -1484,16 +1452,15 @@
           "aroma-lesnoy-landysh",
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-kashemirovyy-muskus",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
@@ -1529,16 +1496,15 @@
           "aroma-lesnoy-landysh",
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin",
-          "aroma-kashemirovyy-muskus",
-          "aroma-khlopok",
-          "aroma-vanil",
-          "aroma-lavanda",
-          "aroma-kaktusovaya-voda",
-          "aroma-fistashkovoe-beze",
-          "aroma-kashemirovaya-tykva",
-          "aroma-bogemskaya-roza"
+          "aroma-pryanyy-apelsin"
         ],
         "color": []
       },
