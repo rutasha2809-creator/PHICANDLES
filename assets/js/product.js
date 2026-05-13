@@ -265,13 +265,20 @@ async function initProductPage() {
   }
 
   const shortEl = document.querySelector('[data-product-short]');
-  if (shortEl) {
-    const lead = product.shortDescription || product.description?.slice(0, 160) || '';
-    shortEl.textContent = lead;
-  }
+  const lead = product.shortDescription || product.description?.slice(0, 160) || '';
+  if (shortEl) shortEl.textContent = lead;
 
   const descEl = document.querySelector('[data-product-description]');
-  if (descEl) descEl.textContent = product.description;
+  if (descEl) descEl.textContent = product.description || '';
+
+  // Hide entire "О свече" block and tagline when there is no text content
+  const storyBlock = document.querySelector('.product-story-inline');
+  if (storyBlock) {
+    const hasContent = !!(lead || product.description);
+    storyBlock.classList.toggle('hidden', !hasContent);
+  }
+  const tagline = document.querySelector('.product-story-inline__tagline');
+  if (tagline) tagline.classList.toggle('hidden', !lead && !product.description);
 
   document.querySelector('[data-product-price]').innerHTML = renderPriceHtml(product, {
     oldClass: 'product-price-old',
@@ -318,7 +325,11 @@ async function initProductPage() {
   }
 
   const materialList = document.querySelector('[data-product-materials]');
-  materialList.innerHTML = (product.materials || []).map((item) => `<li>${escapeHtml(item)}</li>`).join('');
+  const materialsArr = (product.materials || []).filter(Boolean);
+  materialList.innerHTML = materialsArr.map((item) => `<li>${escapeHtml(item)}</li>`).join('');
+  // Hide the entire materials block when there are no materials
+  const materialsBlock = document.querySelector('.materials-block');
+  if (materialsBlock) materialsBlock.classList.toggle('hidden', !materialsArr.length);
 
   const aromaWrap = document.querySelector('[data-option-aroma-wrap]');
   const colorWrap = document.querySelector('[data-option-color-wrap]');
