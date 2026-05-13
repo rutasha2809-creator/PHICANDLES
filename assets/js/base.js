@@ -214,19 +214,21 @@ function declension(number, forms) {
   return forms[2];
 }
 
-function renderProductCard(product, categoryName = '') {
+function renderProductCard(product, categoryName = '', opts = {}) {
+  const rp = opts.rootPath || './';
   const rating = renderRating(product);
   const ratingBlock = rating ? `<div class="rating">${rating}</div>` : '';
   const featuredBadge = product.featured ? '<span class="badge">Хит</span>' : '';
   const categoryBadge = categoryName ? `<span class="badge">${categoryName}</span>` : '';
   const gallery = getProductGalleryImages(product);
   const hasGallery = gallery.length > 1;
+  const placeholder = `${rp}assets/img/image-placeholder.svg`;
   const imagesHtml = hasGallery
-    ? gallery.map((src, index) => `<img loading="lazy" src="${src}" alt="${product.imageAlt || product.name}" class="${index === 0 ? 'is-active' : ''}" data-card-gallery-img="${index}" onerror="this.onerror=null;this.src='./assets/img/image-placeholder.svg';">`).join('')
-    : `<img loading="lazy" src="${gallery[0] || './assets/img/image-placeholder.svg'}" alt="${product.imageAlt || product.name}" class="is-active" onerror="this.onerror=null;this.src='./assets/img/image-placeholder.svg';">`;
+    ? gallery.map((src, index) => `<img loading="lazy" src="${src}" alt="${product.imageAlt || product.name}" class="${index === 0 ? 'is-active' : ''}" data-card-gallery-img="${index}" onerror="this.onerror=null;this.src='${placeholder}';">`).join('')
+    : `<img loading="lazy" src="${gallery[0] || placeholder}" alt="${product.imageAlt || product.name}" class="is-active" onerror="this.onerror=null;this.src='${placeholder}';">`;
   return `
     <article class="product-card">
-      <a class="product-card-media" href="./products/${product.slug}/index.html" aria-label="Перейти к товару ${product.name}" data-card-gallery="${hasGallery ? gallery.length : 1}">
+      <a class="product-card-media" href="${rp}products/${product.slug}/index.html" aria-label="Перейти к товару ${product.name}" data-card-gallery="${hasGallery ? gallery.length : 1}">
         ${imagesHtml}
         ${hasGallery ? `
         <div class="card-gallery-dots" aria-hidden="true">
@@ -237,7 +239,7 @@ function renderProductCard(product, categoryName = '') {
       </a>
       <div class="product-card-body">
         <div class="badge-row">${featuredBadge}${categoryBadge}</div>
-        <h3><a href="./products/${product.slug}/index.html">${product.name}</a></h3>
+        <h3><a href="${rp}products/${product.slug}/index.html">${product.name}</a></h3>
         <p>${product.shortDescription || product.description || ''}</p>
         <div class="price-row">
           <div>
@@ -247,7 +249,7 @@ function renderProductCard(product, categoryName = '') {
           <div class="muted">${formatDimensionsLines(product.dimensions)}</div>
         </div>
         <div class="card-actions">
-          <a class="button-secondary" href="./products/${product.slug}/index.html">Подробнее</a>
+          <a class="button-secondary" href="${rp}products/${product.slug}/index.html">Подробнее</a>
           <button class="button" type="button" data-add-to-cart="${product.id}">В корзину</button>
         </div>
       </div>

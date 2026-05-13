@@ -1204,7 +1204,7 @@
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/kuvshinka-k.jpg",
       "url": "https://phicandles.ru/products/kuvshinka-k/",
-      "relatedGroup": "flowers"
+      "relatedGroup": "gips"
     },
     {
       "id": "prod-romashka",
@@ -1249,7 +1249,7 @@
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/romashka.jpg",
       "url": "https://phicandles.ru/products/romashka/",
-      "relatedGroup": "flowers"
+      "relatedGroup": "gips"
     },
     {
       "id": "prod-flowers",
@@ -1292,8 +1292,7 @@
       "assetImage": "assets/img/products/flowers.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/flowers.jpg",
-      "url": "https://phicandles.ru/products/flowers/",
-      "relatedGroup": "flowers"
+      "url": "https://phicandles.ru/products/flowers/"
     },
     {
       "id": "prod-roza-intalia-k",
@@ -1338,7 +1337,7 @@
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/roza-intalia-k.jpg",
       "url": "https://phicandles.ru/products/roza-intalia-k/",
-      "relatedGroup": "flowers"
+      "relatedGroup": "gips"
     },
     {
       "id": "prod-tykva-k",
@@ -1383,7 +1382,7 @@
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/tykva-k.jpg",
       "url": "https://phicandles.ru/products/tykva-k/",
-      "relatedGroup": "shapes"
+      "relatedGroup": "gips"
     },
     {
       "id": "prod-izyashnye-k",
@@ -1428,7 +1427,7 @@
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/izyashnye-linii-k.jpg",
       "url": "https://phicandles.ru/products/izyashnye-linii-k/",
-      "relatedGroup": "shapes"
+      "relatedGroup": "gips"
     },
     {
       "id": "prod-kub",
@@ -1473,7 +1472,7 @@
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/kub.jpg",
       "url": "https://phicandles.ru/products/kub/",
-      "relatedGroup": "shapes"
+      "relatedGroup": "gips"
     },
     {
       "id": "prod-krolik",
@@ -1516,8 +1515,7 @@
       "assetImage": "assets/img/products/krolik.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/krolik.jpg",
-      "url": "https://phicandles.ru/products/krolik/",
-      "relatedGroup": "shapes"
+      "url": "https://phicandles.ru/products/krolik/"
     },
     {
       "id": "prod-grani-l",

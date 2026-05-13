@@ -396,7 +396,7 @@ async function initProductPage() {
   document.querySelector('[data-related-grid]').innerHTML = related
     .map((item) => {
       const categoryName = categoryMap.get(item.categoryId)?.name || '';
-      return renderProductCard({ ...item, image: '../../' + item.assetImage }, categoryName);
+      return renderProductCard({ ...item, image: '../../' + item.assetImage }, categoryName, { rootPath: '../../' });
     })
     .join('');
 
