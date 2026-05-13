@@ -327,20 +327,7 @@
   const FORMSPREE_URL = 'https://formspree.io/f/maqvkvnk';
 
   // ——— ЛОГИКА КОРЗИНЫ ———
-  const STORAGE_KEY = 'phicandles-cart-v1';
-
-  function getCart() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch { return []; }
-  }
-  function saveCart(cart) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
-    updateCartCountBadge();
-    renderCart();
-  }
-  function updateCartCountBadge() {
-    const count = getCart().reduce((s, i) => s + i.quantity, 0);
-    document.querySelectorAll('[data-cart-count]').forEach(el => el.textContent = count);
-  }
+  // getCart / saveCart / STORAGE_KEY определены в base.js
 
   let activePromo = null; // { code, discount }
 
@@ -371,7 +358,7 @@
     wrap.innerHTML = `<div class="cart-items-list">${cart.map(item => `
       <div class="cart-item" data-key="${item.key}">
         <div class="cart-item__thumb">
-          <img src="${item.image?.replace('./', '../') || '../assets/img/image-placeholder.svg'}" alt="${item.name}">
+          <img src="${(item.image || '').replace(/^(\.\/|\.\.\/\.\.\/|\.\.\/)/,'../') || '../assets/img/image-placeholder.svg'}" alt="${item.name}">
         </div>
         <div class="cart-item__info">
           <a class="cart-item__name" href="../products/${item.slug}/index.html">${item.name}</a>
@@ -506,9 +493,12 @@
     }
   });
 
+  // Перерисовываем корзину при любом изменении (base.js fires this event)
+  document.addEventListener('phicandles-cart-changed', renderCart);
+
   // Инициализация
   document.addEventListener('DOMContentLoaded', () => {
-    updateCartCountBadge();
+    updateCartCount();
     renderCart();
   });
   </script>
