@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <title>Корпоративные заказы — PHICANDLES</title>
+  <meta name="description" content="Корпоративные заказы PHICANDLES: подарки клиентам и сотрудникам, брендирование, индивидуальные наборы от 10 штук.">
+  <link rel="canonical" href="https://phicandles.ru/corporate/">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <style>
+    .corp-page { padding: 48px 0 80px; }
+    .corp-header { padding-bottom: 32px; border-bottom: 1px solid var(--line); margin-bottom: 48px; }
+    .corp-header h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2.2rem, 4vw, 3.4rem); margin: 0 0 10px; letter-spacing: 0.01em; }
+    .corp-header p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.7; max-width: 56ch; }
+
+    .corp-shell { display: grid; grid-template-columns: 1fr 360px; gap: 48px; align-items: start; }
+
+    /* Форма */
+    .corp-form { display: flex; flex-direction: column; gap: 32px; }
+    .form-section { display: flex; flex-direction: column; gap: 16px; }
+    .form-section__title { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+    .field-row { display: grid; gap: 16px; }
+    .field-row--2 { grid-template-columns: 1fr 1fr; }
+    .field-row--3 { grid-template-columns: 1fr 1fr 1fr; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); }
+    .field input,
+    .field select,
+    .field textarea {
+      border: 1px solid var(--line); padding: 11px 13px;
+      font-family: 'Jost', sans-serif; font-size: 0.92rem;
+      background: #fff; color: var(--text);
+      outline: none; transition: border-color 0.2s;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus { border-color: var(--text); }
+    .field textarea { resize: vertical; min-height: 100px; }
+    .field select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 13px center; padding-right: 36px; }
+
+    /* Чекбоксы товаров */
+    .checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .checkbox-chip input[type="checkbox"] { display: none; }
+    .checkbox-chip label {
+      display: block; padding: 7px 14px; font-size: 0.84rem;
+      border: 1px solid var(--line); cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+      color: var(--muted); letter-spacing: 0.02em;
+    }
+    .checkbox-chip input:checked + label { border-color: var(--text); background: var(--text); color: #fff; }
+    .checkbox-chip label:hover { border-color: var(--text); color: var(--text); }
+
+    /* Кнопка */
+    .btn-submit {
+      width: 100%; padding: 16px; background: var(--text); color: #fff;
+      border: 1px solid var(--text); font-family: 'Jost', sans-serif;
+      font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s; margin-top: 8px;
+    }
+    .btn-submit:hover { background: #333; border-color: #333; }
+    .btn-submit:disabled { background: #ccc; border-color: #ccc; cursor: not-allowed; }
+    .form-error { font-size: 0.83rem; color: #8b2e2e; margin: 0; min-height: 1.2em; }
+
+    /* Экран успеха */
+    .form-success { display: none; padding: 40px 32px; text-align: center; border: 1px solid var(--line); background: #fafaf8; }
+    .form-success h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: 2rem; margin: 0 0 12px; }
+    .form-success p { color: var(--muted); font-size: 0.94rem; line-height: 1.7; margin: 0; }
+
+    /* Боковая панель */
+    .corp-sidebar { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .sidebar-block { background: #fff; padding: 24px; }
+    .sidebar-block__title { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+    .sidebar-block p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin: 0 0 8px; }
+    .sidebar-block p:last-child { margin: 0; }
+    .sidebar-block a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+    .benefit-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+    .benefit-list li { font-size: 0.88rem; color: var(--muted); padding-left: 18px; position: relative; line-height: 1.5; }
+    .benefit-list li::before { content: '—'; position: absolute; left: 0; color: var(--line-dark, #ccc); }
+
+    @media (max-width: 960px) {
+      .corp-shell { grid-template-columns: 1fr; }
+      .corp-sidebar { position: static; }
+      .field-row--3 { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .field-row--2, .field-row--3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body data-root-path="../">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="branding">
+        <div class="branding-wordmark-row">
+          <img src="../assets/img/favicon.svg" alt="" class="brand-logo-icon" width="36" height="36" decoding="async" aria-hidden="true">
+          <img src="../assets/img/brand-wordmark.svg" alt="PHICANDLES" class="brand-wordmark" width="560" height="48" decoding="async">
+        </div>
+        <span class="branding-tagline">Ароматические свечи ручной работы</span>
+      </a>
+      <div class="header-actions">
+        <a class="pill" href="../index.html">Главная</a>
+        <a class="pill" href="../catalog/index.html">Каталог</a>
+        <a class="pill" href="../guides/index.html">Гид по свечам</a>
+        <a class="pill" href="../faq/index.html">Вопросы и ответы</a>
+        <a class="cart-toggle pill" href="../cart/index.html">Корзина · <span data-cart-count>0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="corp-page">
+    <div class="container">
+      <div class="corp-header">
+        <h1>Корпоративные заказы</h1>
+        <p>Свечи ручной работы в качестве подарков клиентам и сотрудникам, оформление мероприятий, именные наборы с брендингом. Минимальный заказ — от 10 штук.</p>
+      </div>
+
+      <div class="corp-shell">
+        <!-- Форма -->
+        <div>
+          <div class="corp-form" id="corp-form-wrap">
+
+            <!-- О компании -->
+            <div class="form-section">
+              <p class="form-section__title">О компании</p>
+              <div class="field-row field-row--2">
+                <div class="field">
+                  <label for="f-company">Название компании *</label>
+                  <input type="text" id="f-company" placeholder="ООО «Пример»" required>
+                </div>
+                <div class="field">
+                  <label for="f-contact">Контактное лицо *</label>
+                  <input type="text" id="f-contact" placeholder="Анна Иванова" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Контакты -->
+            <div class="form-section">
+              <p class="form-section__title">Контакты</p>
+              <div class="field-row field-row--3">
+                <div class="field">
+                  <label for="f-phone">Телефон *</label>
+                  <input type="tel" id="f-phone" placeholder="+7 (___) ___-__-__" required>
+                </div>
+                <div class="field">
+                  <label for="f-email">Email *</label>
+                  <input type="email" id="f-email" placeholder="your@company.ru" required>
+                </div>
+                <div class="field">
+                  <label for="f-messenger">Удобный способ связи</label>
+                  <select id="f-messenger">
+                    <option value="Telegram">Telegram</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                    <option value="Email">Email</option>
+                    <option value="Телефон">Телефон</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- О заказе -->
+            <div class="form-section">
+              <p class="form-section__title">О заказе</p>
+              <div class="field-row field-row--2">
+                <div class="field">
+                  <label for="f-purpose">Цель заказа</label>
+                  <select id="f-purpose">
+                    <option value="Подарки клиентам">Подарки клиентам</option>
+                    <option value="Подарки сотрудникам">Подарки сотрудникам</option>
+                    <option value="Корпоративное мероприятие">Корпоративное мероприятие</option>
+                    <option value="Свадьба / торжество">Свадьба / торжество</option>
+                    <option value="Другое">Другое</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="f-qty">Количество (от 10 шт.) *</label>
+                  <input type="number" id="f-qty" placeholder="50" min="10" required>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Интересующие товары</label>
+                <div class="checkbox-group">
+                  <div class="checkbox-chip"><input type="checkbox" id="p-conteiner" value="Контейнерные свечи"><label for="p-conteiner">Контейнерные свечи</label></div>
+                  <div class="checkbox-chip"><input type="checkbox" id="p-forming" value="Формовые свечи"><label for="p-forming">Формовые свечи</label></div>
+                  <div class="checkbox-chip"><input type="checkbox" id="p-interier" value="Интерьерные свечи"><label for="p-interier">Интерьерные свечи</label></div>
+                  <div class="checkbox-chip"><input type="checkbox" id="p-gift" value="Подарочные наборы"><label for="p-gift">Подарочные наборы</label></div>
+                  <div class="checkbox-chip"><input type="checkbox" id="p-custom" value="Свой вариант"><label for="p-custom">Свой вариант</label></div>
+                </div>
+              </div>
+
+              <div class="field-row field-row--2">
+                <div class="field">
+                  <label for="f-budget">Бюджет на единицу</label>
+                  <select id="f-budget">
+                    <option value="до 500 ₽">до 500 ₽</option>
+                    <option value="500–1 000 ₽">500–1 000 ₽</option>
+                    <option value="1 000–2 000 ₽" selected>1 000–2 000 ₽</option>
+                    <option value="от 2 000 ₽">от 2 000 ₽</option>
+                    <option value="Обсудим">Обсудим</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="f-custom">Кастомизация</label>
+                  <select id="f-custom-type">
+                    <option value="Не нужна">Не нужна</option>
+                    <option value="Логотип на упаковке">Логотип на упаковке</option>
+                    <option value="Фирменный аромат">Фирменный аромат</option>
+                    <option value="Брендированная лента / открытка">Брендированная лента / открытка</option>
+                    <option value="Несколько видов">Несколько видов</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Сроки -->
+            <div class="form-section">
+              <p class="form-section__title">Сроки и доставка</p>
+              <div class="field-row field-row--2">
+                <div class="field">
+                  <label for="f-date">Желаемая дата получения *</label>
+                  <input type="date" id="f-date" required>
+                </div>
+                <div class="field">
+                  <label for="f-city">Город</label>
+                  <input type="text" id="f-city" placeholder="Москва">
+                </div>
+              </div>
+            </div>
+
+            <!-- Комментарий -->
+            <div class="form-section">
+              <p class="form-section__title">Дополнительно</p>
+              <div class="field">
+                <label for="f-comment">Пожелания и уточнения</label>
+                <textarea id="f-comment" placeholder="Особые требования к упаковке, аромату, цвету, наличие сертификатов и т.д."></textarea>
+              </div>
+            </div>
+
+            <div>
+              <p class="form-error" id="form-error"></p>
+              <button class="btn-submit" type="button" id="btn-submit">Отправить запрос</button>
+            </div>
+          </div>
+
+          <!-- Успех -->
+          <div class="form-success" id="form-success">
+            <h3>Запрос отправлен!</h3>
+            <p>Мы свяжемся с вами в течение одного рабочего дня для обсуждения деталей.<br>По срочным вопросам пишите в <a href="https://t.me/phi_candles">Telegram</a>.</p>
+          </div>
+        </div>
+
+        <!-- Боковая панель -->
+        <aside class="corp-sidebar">
+          <div class="sidebar-block">
+            <p class="sidebar-block__title">Почему PHICANDLES</p>
+            <ul class="benefit-list">
+              <li>Свечи ручной работы из натурального соевого воска</li>
+              <li>Брендирование упаковки под стиль компании</li>
+              <li>Уникальные ароматы на выбор из 13 вариантов</li>
+              <li>Индивидуальный подход к каждому заказу</li>
+              <li>Аккуратная подарочная упаковка включена</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-block__title">Сроки выполнения</p>
+            <p>Стандартный заказ — <strong>5–7 рабочих дней</strong> с момента согласования.</p>
+            <p>Заказы с брендированием — <strong>7–14 рабочих дней</strong>.</p>
+            <p>Для срочных заказов свяжитесь с нами напрямую.</p>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-block__title">Связаться напрямую</p>
+            <p><a href="https://t.me/phi_candles">Telegram</a></p>
+            <p>phicandles@gmail.com</p>
+            <p>+7 (929) 633-16-18<br>+7 (916) 540-63-99</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong class="brand-mark">PHICANDLES</strong>
+        <p>Интернет-магазин ароматических свечей ручной работы: коллекции цветов, классических форм, декора, миниатюр и ароматов для дома.</p>
+      </div>
+      <div>
+        <strong>Контакты</strong>
+        <p>phicandles@gmail.com<br>+7 (929) 633-16-18<br>+7 (916) 540-63-99<br><a href="https://t.me/phi_candles">Telegram</a></p>
+      </div>
+      <div>
+        <strong>Документы</strong>
+        <p><a href="../privacy/index.html">Политика конфиденциальности</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/base.js"></script>
+  <script>
+  const FORMSPREE_URL = 'https://formspree.io/f/maqvkvnk';
+
+  document.getElementById('btn-submit').addEventListener('click', async () => {
+    const company  = document.getElementById('f-company').value.trim();
+    const contact  = document.getElementById('f-contact').value.trim();
+    const phone    = document.getElementById('f-phone').value.trim();
+    const email    = document.getElementById('f-email').value.trim();
+    const messenger= document.getElementById('f-messenger').value;
+    const purpose  = document.getElementById('f-purpose').value;
+    const qty      = document.getElementById('f-qty').value.trim();
+    const budget   = document.getElementById('f-budget').value;
+    const custom   = document.getElementById('f-custom-type').value;
+    const date     = document.getElementById('f-date').value;
+    const city     = document.getElementById('f-city').value.trim();
+    const comment  = document.getElementById('f-comment').value.trim();
+    const errEl    = document.getElementById('form-error');
+
+    const products = [...document.querySelectorAll('.checkbox-group input:checked')]
+      .map(el => el.value).join(', ') || 'Не выбрано';
+
+    if (!company || !contact || !phone || !email || !qty || !date) {
+      errEl.textContent = 'Пожалуйста, заполните все обязательные поля.';
+      return;
+    }
+    if (Number(qty) < 10) {
+      errEl.textContent = 'Минимальное количество заказа — 10 штук.';
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      errEl.textContent = 'Введите корректный email.';
+      return;
+    }
+    errEl.textContent = '';
+
+    const body = {
+      _subject: `Корпоративный заказ PHICANDLES — ${company}`,
+      _replyto: email,
+      company,
+      contact,
+      phone,
+      email,
+      messenger,
+      purpose,
+      quantity: qty + ' шт.',
+      products,
+      budget,
+      customization: custom,
+      delivery_date: date,
+      city: city || '—',
+      comment: comment || '—',
+    };
+
+    const btn = document.getElementById('btn-submit');
+    btn.disabled = true;
+    btn.textContent = 'Отправляем...';
+
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      if (res.ok) {
+        document.getElementById('corp-form-wrap').style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        errEl.textContent = 'Ошибка отправки. Попробуйте ещё раз или напишите нам в Telegram.';
+        btn.disabled = false;
+        btn.textContent = 'Отправить запрос';
+      }
+    } catch {
+      errEl.textContent = 'Нет соединения. Проверьте интернет и попробуйте снова.';
+      btn.disabled = false;
+      btn.textContent = 'Отправить запрос';
+    }
+  });
+  </script>
+</body>
+</html>
