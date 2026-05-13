@@ -266,10 +266,16 @@ async function initProductPage() {
 
   const shortEl = document.querySelector('[data-product-short]');
   const lead = product.shortDescription || product.description?.slice(0, 160) || '';
-  if (shortEl) shortEl.textContent = lead;
+  if (shortEl) {
+    shortEl.textContent = lead;
+    shortEl.classList.toggle('hidden', !lead);
+  }
 
   const descEl = document.querySelector('[data-product-description]');
-  if (descEl) descEl.textContent = product.description || '';
+  if (descEl) {
+    descEl.textContent = product.description || '';
+    descEl.classList.toggle('hidden', !product.description);
+  }
 
   // Hide entire "О свече" block and tagline when there is no text content
   const storyBlock = document.querySelector('.product-story-inline');
