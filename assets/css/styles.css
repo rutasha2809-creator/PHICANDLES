@@ -350,6 +350,10 @@ button, select, input { font: inherit; }
   background: var(--line);
   border: 1px solid var(--line);
 }
+
+[data-related-grid] {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
 .product-card {
   overflow: hidden; display: flex; flex-direction: column;
   height: 100%; min-height: 0; background: #fff; border: none;

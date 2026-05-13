@@ -377,9 +377,22 @@ async function initProductPage() {
     reviewsSection.classList.add('hidden');
   }
 
-  const related = catalog.products
-    .filter((item) => item.categoryId === product.categoryId && item.id !== product.id)
-    .sort((a, b) => b.popularity - a.popularity)
+  // Related products: by relatedGroup within same category, or just same category
+  const allOther = catalog.products.filter(
+    (item) => item.id !== product.id && item.categoryId !== 'hidden'
+  );
+  let related;
+  if (product.relatedGroup) {
+    const sameGroup = allOther.filter(
+      (item) => item.categoryId === product.categoryId && item.relatedGroup === product.relatedGroup
+    );
+    related = sameGroup.sort((a, b) => b.popularity - a.popularity).slice(0, 4);
+  } else {
+    related = allOther
+      .filter((item) => item.categoryId === product.categoryId)
+      .sort((a, b) => b.popularity - a.popularity)
+      .slice(0, 4);
+  }
   document.querySelector('[data-related-grid]').innerHTML = related
     .map((item) => {
       const categoryName = categoryMap.get(item.categoryId)?.name || '';

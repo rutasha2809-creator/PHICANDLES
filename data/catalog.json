@@ -1094,7 +1094,8 @@
       "assetImage": "assets/img/products/fialka.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/fialka.jpg",
-      "url": "https://phicandles.ru/products/fialka/"
+      "url": "https://phicandles.ru/products/fialka/",
+      "relatedGroup": "glass"
     },
     {
       "id": "prod-pion-k",
@@ -1138,7 +1139,8 @@
       "assetImage": "assets/img/products/pion.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/pion.jpg",
-      "url": "https://phicandles.ru/products/pion/"
+      "url": "https://phicandles.ru/products/pion/",
+      "relatedGroup": "glass"
     },
     {
       "id": "prod-shalfei",
@@ -1182,7 +1184,8 @@
       "assetImage": "assets/img/products/shalfei.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/shalfei.jpg",
-      "url": "https://phicandles.ru/products/shalfei/"
+      "url": "https://phicandles.ru/products/shalfei/",
+      "relatedGroup": "glass"
     },
     {
       "id": "prod-kuvshinka-k",
@@ -1227,7 +1230,8 @@
       "assetImage": "assets/img/products/kuvshinka-k.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/kuvshinka-k.jpg",
-      "url": "https://phicandles.ru/products/kuvshinka-k/"
+      "url": "https://phicandles.ru/products/kuvshinka-k/",
+      "relatedGroup": "flowers"
     },
     {
       "id": "prod-romashka",
@@ -1272,7 +1276,8 @@
       "assetImage": "assets/img/products/romashka.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/romashka.jpg",
-      "url": "https://phicandles.ru/products/romashka/"
+      "url": "https://phicandles.ru/products/romashka/",
+      "relatedGroup": "flowers"
     },
     {
       "id": "prod-flowers",
@@ -1316,7 +1321,8 @@
       "assetImage": "assets/img/products/flowers.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/flowers.jpg",
-      "url": "https://phicandles.ru/products/flowers/"
+      "url": "https://phicandles.ru/products/flowers/",
+      "relatedGroup": "flowers"
     },
     {
       "id": "prod-roza-intalia-k",
@@ -1361,7 +1367,8 @@
       "assetImage": "assets/img/products/roza-intalia-k.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/roza-intalia-k.jpg",
-      "url": "https://phicandles.ru/products/roza-intalia-k/"
+      "url": "https://phicandles.ru/products/roza-intalia-k/",
+      "relatedGroup": "flowers"
     },
     {
       "id": "prod-tykva-k",
@@ -1406,7 +1413,8 @@
       "assetImage": "assets/img/products/tykva-k.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/tykva-k.jpg",
-      "url": "https://phicandles.ru/products/tykva-k/"
+      "url": "https://phicandles.ru/products/tykva-k/",
+      "relatedGroup": "shapes"
     },
     {
       "id": "prod-izyashnye-k",
@@ -1451,7 +1459,8 @@
       "assetImage": "assets/img/products/izyashnye-linii-k.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/izyashnye-linii-k.jpg",
-      "url": "https://phicandles.ru/products/izyashnye-linii-k/"
+      "url": "https://phicandles.ru/products/izyashnye-linii-k/",
+      "relatedGroup": "shapes"
     },
     {
       "id": "prod-kub",
@@ -1496,7 +1505,8 @@
       "assetImage": "assets/img/products/kub.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/kub.jpg",
-      "url": "https://phicandles.ru/products/kub/"
+      "url": "https://phicandles.ru/products/kub/",
+      "relatedGroup": "shapes"
     },
     {
       "id": "prod-krolik",
@@ -1540,7 +1550,8 @@
       "assetImage": "assets/img/products/krolik.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/krolik.jpg",
-      "url": "https://phicandles.ru/products/krolik/"
+      "url": "https://phicandles.ru/products/krolik/",
+      "relatedGroup": "shapes"
     },
     {
       "id": "prod-grani-l",
@@ -1792,7 +1803,8 @@
       "assetImage": "assets/img/products/roza-f.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/roza-f.jpg",
-      "url": "https://phicandles.ru/products/roza-f/"
+      "url": "https://phicandles.ru/products/roza-f/",
+      "relatedGroup": "flowers"
     },
     {
       "id": "prod-tulip",
@@ -1828,7 +1840,8 @@
       "assetImage": "assets/img/products/tulip.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/tulip.jpg",
-      "url": "https://phicandles.ru/products/tulip/"
+      "url": "https://phicandles.ru/products/tulip/",
+      "relatedGroup": "flowers"
     },
     {
       "id": "prod-tsv-serd-f",
@@ -1864,7 +1877,8 @@
       "assetImage": "assets/img/products/tsvetochnoe-serdtse-f.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/tsvetochnoe-serdtse-f.jpg",
-      "url": "https://phicandles.ru/products/tsvetochnoe-serdtse-f/"
+      "url": "https://phicandles.ru/products/tsvetochnoe-serdtse-f/",
+      "relatedGroup": "flowers"
     },
     {
       "id": "prod-mishka-f",
@@ -1900,7 +1914,8 @@
       "assetImage": "assets/img/products/mishka-f.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/mishka-f.jpg",
-      "url": "https://phicandles.ru/products/mishka-f/"
+      "url": "https://phicandles.ru/products/mishka-f/",
+      "relatedGroup": "animals"
     },
     {
       "id": "prod-mish-s-f",
@@ -1936,7 +1951,8 @@
       "assetImage": "assets/img/products/mishka-s-serdtsem-f.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/mishka-s-serdtsem-f.jpg",
-      "url": "https://phicandles.ru/products/mishka-s-serdtsem-f/"
+      "url": "https://phicandles.ru/products/mishka-s-serdtsem-f/",
+      "relatedGroup": "animals"
     },
     {
       "id": "prod-sobachka",
@@ -1972,7 +1988,8 @@
       "assetImage": "assets/img/products/sobachka.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/sobachka.jpg",
-      "url": "https://phicandles.ru/products/sobachka/"
+      "url": "https://phicandles.ru/products/sobachka/",
+      "relatedGroup": "animals"
     },
     {
       "id": "prod-bubl",
