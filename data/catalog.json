@@ -640,15 +640,15 @@
       "categoryId": "dekor",
       "price": 1500,
       "salePrice": null,
-      "description": "Заливная свеча в стакане, поднос.",
+      "description": "",
       "shortDescription": "Заливная свеча в стакане, поднос.",
-      "dimensions": "Набор из 3 свечей",
+      "dimensions": "",
       "materials": [
         "соевый воск",
         "акриловый гипс",
         "деревянный фитиль"
       ],
-      "burnTime": "до 20 часов",
+      "burnTime": "более 20 часов",
       "options": {
         "aroma": [
           "aroma-francuzskaya-siren",
