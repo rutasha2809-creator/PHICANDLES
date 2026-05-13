@@ -664,9 +664,16 @@
           "aroma-kashemirovaya-tykva",
           "aroma-bogemskaya-roza"
         ],
-        "color": []
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Бежевый",
+          "Лавандовый",
+          "Черный"
+        ]
       },
-      "image": "./assets/img/products/interernyy-nabor-minimalizm.png",
+      "image": "./assets/img/products/minimalizm-dekor.jpg",
       "imageAlt": "Интерьерный набор Минимализм",
       "popularity": 82,
       "featured": false,
@@ -678,9 +685,9 @@
           "text": "Набор выглядит цельно, сразу украсил консоль в прихожей."
         }
       ],
-      "assetImage": "assets/img/products/interernyy-nabor-minimalizm.png",
+      "assetImage": "assets/img/products/minimalizm-dekor.jpg",
       "gallery": [],
-      "absoluteImage": "https://phicandles.ru/assets/img/products/interernyy-nabor-minimalizm.png",
+      "absoluteImage": "https://phicandles.ru/assets/img/products/minimalizm-dekor.jpg",
       "url": "https://phicandles.ru/products/interernyy-nabor-minimalizm/"
     },
     {
@@ -1995,6 +2002,114 @@
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/bubl.jpg",
       "url": "https://phicandles.ru/products/bubl/"
+    },
+    {
+      "id": "prod-art-deco",
+      "slug": "art-deco",
+      "name": "Интерьерный набор «Арт Деко»",
+      "categoryId": "dekor",
+      "price": 1200,
+      "salePrice": null,
+      "description": "",
+      "shortDescription": "",
+      "dimensions": "",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Бежевый",
+          "Лавандовый",
+          "Черный"
+        ]
+      },
+      "image": "./assets/img/products/art-deco.jpg",
+      "imageAlt": "Интерьерный набор «Арт Деко»",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/art-deco.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/art-deco.jpg",
+      "url": "https://phicandles.ru/products/art-deco/"
+    },
+    {
+      "id": "prod-candlehold-tall",
+      "slug": "candlehold-tall",
+      "name": "Высокий подсвечник",
+      "categoryId": "dekor",
+      "price": 300,
+      "salePrice": null,
+      "description": "",
+      "shortDescription": "",
+      "dimensions": "",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Бежевый",
+          "Лавандовый",
+          "Черный"
+        ]
+      },
+      "image": "./assets/img/products/candlehold-tall.jpg",
+      "imageAlt": "Высокий подсвечник",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/candlehold-tall.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/candlehold-tall.jpg",
+      "url": "https://phicandles.ru/products/candlehold-tall/"
+    },
+    {
+      "id": "prod-candlehold-mini",
+      "slug": "candlehold-mini",
+      "name": "Низкий подсвечник",
+      "categoryId": "dekor",
+      "price": 210,
+      "salePrice": null,
+      "description": "",
+      "shortDescription": "",
+      "dimensions": "",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Бежевый",
+          "Лавандовый",
+          "Черный"
+        ]
+      },
+      "image": "./assets/img/products/candlehold-mini.jpg",
+      "imageAlt": "Низкий подсвечник",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/candlehold-mini.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/candlehold-mini.jpg",
+      "url": "https://phicandles.ru/products/candlehold-mini/"
     }
   ]
 }
