@@ -1532,7 +1532,7 @@
       "id": "prod-grani-l",
       "slug": "grani-svecheniya-l",
       "name": "Грани свечения L",
-      "categoryId": "forming",
+      "categoryId": "interier",
       "price": 1500,
       "salePrice": null,
       "description": "",
@@ -1568,7 +1568,7 @@
       "id": "prod-grani-m",
       "slug": "grani-svecheniya-m",
       "name": "Грани свечения M",
-      "categoryId": "forming",
+      "categoryId": "interier",
       "price": 900,
       "salePrice": null,
       "description": "",
@@ -1604,7 +1604,7 @@
       "id": "prod-grani-s",
       "slug": "grani-svecheniya-s",
       "name": "Грани свечения S",
-      "categoryId": "forming",
+      "categoryId": "interier",
       "price": 1200,
       "salePrice": null,
       "description": "",
@@ -1640,7 +1640,7 @@
       "id": "prod-ant-kol-f",
       "slug": "antichnaya-kolonna-f",
       "name": "Античная колонна",
-      "categoryId": "forming",
+      "categoryId": "interier",
       "price": 850,
       "salePrice": null,
       "description": "",
@@ -1676,7 +1676,7 @@
       "id": "prod-tsv-kol",
       "slug": "tsvetochnaya-kolonna",
       "name": "Цветочная колонна",
-      "categoryId": "forming",
+      "categoryId": "interier",
       "price": 920,
       "salePrice": null,
       "description": "",
@@ -1712,7 +1712,7 @@
       "id": "prod-spiral",
       "slug": "spiral",
       "name": "Спираль",
-      "categoryId": "forming",
+      "categoryId": "interier",
       "price": 700,
       "salePrice": null,
       "description": "",
@@ -1959,6 +1959,42 @@
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/sobachka.jpg",
       "url": "https://phicandles.ru/products/sobachka/"
+    },
+    {
+      "id": "prod-bubl",
+      "slug": "bubl",
+      "name": "Бабл",
+      "categoryId": "interier",
+      "price": 1300,
+      "salePrice": null,
+      "description": "",
+      "shortDescription": "",
+      "dimensions": "",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Бежевый",
+          "Лавандовый",
+          "Черный"
+        ]
+      },
+      "image": "./assets/img/products/bubl.jpg",
+      "imageAlt": "Бабл",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/bubl.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/bubl.jpg",
+      "url": "https://phicandles.ru/products/bubl/"
     }
   ]
 }
