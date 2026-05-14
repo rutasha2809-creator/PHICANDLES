@@ -265,7 +265,7 @@ async function initProductPage() {
   }
 
   const shortEl = document.querySelector('[data-product-short]');
-  const lead = product.shortDescription || product.description?.slice(0, 160) || '';
+  const lead = product.shortDescription || '';
   if (shortEl) {
     shortEl.textContent = lead;
     shortEl.classList.toggle('hidden', !lead);
@@ -403,20 +403,4 @@ async function initProductPage() {
   if (typeof bindQuickAdd === 'function') {
     bindQuickAdd({
       ...catalog,
-      products: catalog.products.map((item) => ({ ...item, image: '../../' + item.assetImage })),
-    });
-  }
-}
-
-async function safeInitProductPage() {
-  try {
-    await initProductPage();
-  } catch (err) {
-    console.error('[product] init error', err);
-    const root = document.querySelector('[data-product-root]');
-    if (root) root.innerHTML =
-      '<div class="notice">Не удалось загрузить карточку товара.</div>';
-  }
-}
-
-document.addEventListener('DOMContentLoaded', safeInitProductPage);
+      products: catalog.products.map((item) => ({ ...item, image: '..
