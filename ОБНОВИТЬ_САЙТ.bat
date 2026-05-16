@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "category.js: vertical card layout - name, price, dimensions"
+git commit -m "catalog/index.html: fix card layout - vertical name, price, dimensions"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
