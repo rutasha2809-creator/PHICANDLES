@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Aromas: add 12 new aromas, all 26 in conteiner products except Pion"
+git commit -m "Soma: description, dimensions, burnTime, coconut wax"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
