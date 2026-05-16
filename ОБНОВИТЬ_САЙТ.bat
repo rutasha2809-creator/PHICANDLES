@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Conteiner category: add aroma material, Ves to Obem, clear shortDescription"
+git commit -m "Conteiner: spec cards show only Diameter+Volume+Burn, fix obem split in formatDimensionsLines"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.

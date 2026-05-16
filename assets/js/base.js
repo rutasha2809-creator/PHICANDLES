@@ -88,7 +88,7 @@ function capitalizeDimensionLabel(segment) {
 /** Несколько параметров (Высота…, Диаметр…) — с новой строки; запятая в числах вроде «6,6 см» не режется. */
 function formatDimensionsLines(dimensions) {
   if (!dimensions || typeof dimensions !== 'string') return '';
-  const re = /\s*,\s*(?=(?:высота|диаметр|ширина|глубина|длина|вес|размер|набор)\s*:)/i;
+  const re = /\s*,\s*(?=(?:высота|диаметр|ширина|глубина|длина|вес|объем|объём|размер|набор)\s*:)/i;
   const raw = dimensions.split(re).map((s) => s.trim()).filter(Boolean);
   const parts = raw.map((s) => capitalizeDimensionLabel(s));
   if (parts.length > 1) return parts.join('\n');
