@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Conteiner: reorder cards, Shalfei rename+desc+dims, stock label removed, aromas full list"
+git commit -m "New category kashpo: Pion+Kuvshinka+Romashka moved, added to nav"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
