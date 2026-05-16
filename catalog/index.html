@@ -146,7 +146,7 @@
         + (catName ? '<div class="badge-row"><span class="badge">' + catName + '</span></div>' : '')
         + '<h3><a href="' + ROOT + 'products/' + p.slug + '/index.html">' + p.name + '</a></h3>'
         + '<div class="card-price">' + priceHtml + '</div>'
-        + '<div class="card-dims muted">' + (p.dimensions || '') + '</div>'
+        + '<div class="card-dims muted">' + (p.dimensions || '').replace(/,?\s*Вес:[^,]*/gi, '').trim().replace(/,\s*$/, '') + '</div>'
         + '<div class="card-actions">'
         + '<a class="button-secondary" href="' + ROOT + 'products/' + p.slug + '/index.html">Подробнее</a>'
         + '<button class="button" type="button" data-add-to-cart="' + p.id + '">В корзину</button>'

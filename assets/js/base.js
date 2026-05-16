@@ -241,7 +241,7 @@ function renderProductCard(product, categoryName = '', opts = {}) {
         <div class="badge-row">${featuredBadge}${categoryBadge}</div>
         <h3><a href="${rp}products/${product.slug}/index.html">${product.name}</a></h3>
         <div class="card-price">${renderPriceHtml(product)}</div>
-        <div class="card-dims muted">${formatDimensionsLines(product.dimensions)}</div>
+        <div class="card-dims muted">${formatDimensionsLines((product.dimensions || '').replace(/,?\s*Вес:[^,]*/gi, '').trim().replace(/,\s*$/, ''))}</div>
         <div class="card-actions">
           <a class="button-secondary" href="${rp}products/${product.slug}/index.html">Подробнее</a>
           <button class="button" type="button" data-add-to-cart="${product.id}">В корзину</button>

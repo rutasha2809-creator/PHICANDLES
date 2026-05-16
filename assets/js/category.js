@@ -55,7 +55,7 @@
         ${catName ? `<div class="badge-row"><span class="badge">${catName}</span></div>` : ''}
         <h3><a href="${rootPath}products/${product.slug}/index.html">${product.name}</a></h3>
         <div class="card-price">${priceHtml}</div>
-        <div class="card-dims muted">${product.dimensions || ''}</div>
+        <div class="card-dims muted">${(product.dimensions || '').replace(/,?\s*Вес:[^,]*/gi, '').trim().replace(/,\s*$/, '')}</div>
         <div class="card-actions">
           <a class="button-secondary" href="${rootPath}products/${product.slug}/index.html">Подробнее</a>
           <button class="button" type="button" data-add-to-cart="${product.id}">В корзину</button>
