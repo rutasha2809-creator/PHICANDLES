@@ -403,4 +403,20 @@ async function initProductPage() {
   if (typeof bindQuickAdd === 'function') {
     bindQuickAdd({
       ...catalog,
-      products: catalog.products.map((item) => ({ ...item, image: '..
+      products: catalog.products.map((item) => ({ ...item, image: '../../' + item.assetImage })),
+    });
+  }
+}
+
+async function safeInitProductPage() {
+  try {
+    await initProductPage();
+  } catch (err) {
+    console.error('[product] init error', err);
+    const root = document.querySelector('[data-product-root]');
+    if (root) root.innerHTML =
+      '<div class="notice">Не удалось загрузить карточку товара.</div>';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', safeInitProductPage);
