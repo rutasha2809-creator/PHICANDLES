@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Pion: fix description, add rozovyy-pion aroma, single aroma option"
+git commit -m "Pion: remove duplicate tagline from description"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
