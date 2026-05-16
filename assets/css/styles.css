@@ -415,7 +415,7 @@ button, select, input { font: inherit; }
 .product-card-body > p {
   display: -webkit-box; -webkit-box-orient: vertical;
   -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden;
-  line-height: 1.62; font-size: 0.85rem; color: var(--muted);
+  line-height: 1.62; font-size: 0.95rem; color: var(--muted);
 }
 .price-row {
   display: flex; justify-content: space-between;
@@ -601,11 +601,11 @@ button, select, input { font: inherit; }
 }
 .spec-card { padding: 16px 14px; background: #fff; display: grid; gap: 6px; min-height: 72px; }
 .spec-card__label {
-  font-size: 0.69rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);
+  font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);
 }
 .spec-card__value {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.05rem; font-weight: 400; color: var(--text); line-height: 1.35;
+  font-size: 1.2rem; font-weight: 400; color: var(--text); line-height: 1.35;
 }
 .materials-list { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
 .materials-list li {
@@ -1053,7 +1053,7 @@ main.section[data-product-root] { padding-top: 22px; }
   text-decoration: none;
   color: var(--text);
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   font-weight: 400;
   letter-spacing: 0.04em;
   transition: background 0.25s ease, color 0.25s ease;

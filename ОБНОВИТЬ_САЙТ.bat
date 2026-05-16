@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Bubl: add description, dimensions, burn time"
+git commit -m "CSS: increase font sizes for readability - cards, specs, categories"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
