@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Tsvetochnaya kolonna: add description, dimensions, burn time"
+git commit -m "Spiral: add description, dimensions, burn time"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
