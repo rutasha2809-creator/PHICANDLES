@@ -612,7 +612,7 @@ button, select, input { font: inherit; }
 }
 .spec-card__value {
   font-family: 'Jost', sans-serif;
-  font-size: 1.2rem; font-weight: 400; color: var(--text); line-height: 1.35;
+  font-size: 1rem; font-weight: 400; color: var(--text); line-height: 1.35;
 }
 .materials-list { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
 .materials-list li {
