@@ -2132,6 +2132,41 @@
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/candlehold-mini.jpg",
       "url": "https://phicandles.ru/products/candlehold-mini/"
+    },
+    {
+      "id": "prod-buton-rozy",
+      "slug": "buton-rozy",
+      "name": "Бутон розы",
+      "categoryId": "interier",
+      "price": 2300,
+      "salePrice": null,
+      "description": "Интерьерная свеча, которая идеально подходит для декора, дома или подарка.\nБез аромата, только чистый, спокойный свет.\nПодходящие подсвечники вы найдёте в разделе Декор для дома.",
+      "shortDescription": "",
+      "dimensions": "Высота: 10,5 см, Диаметр: 10,5 см, Вес: 620 г",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль"
+      ],
+      "burnTime": "более 50 часов",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Пудровый",
+          "Розовый",
+          "Сиреневый",
+          "Оливковый"
+        ]
+      },
+      "image": "./assets/img/products/buton-rozy.jpg",
+      "imageAlt": "Бутон розы",
+      "popularity": 75,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/buton-rozy.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/buton-rozy.jpg",
+      "url": "https://phicandles.ru/products/buton-rozy/"
     }
   ]
 }

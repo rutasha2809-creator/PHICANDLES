@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Catalog cards: hide weight from dimensions, keep it on product page"
+git commit -m "Add new product: Buton rozy - interier category"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
