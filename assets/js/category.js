@@ -54,13 +54,8 @@
       <div class="product-card-body">
         ${catName ? `<div class="badge-row"><span class="badge">${catName}</span></div>` : ''}
         <h3><a href="${rootPath}products/${product.slug}/index.html">${product.name}</a></h3>
-        <p>${product.shortDescription || ''}</p>
-        <div class="price-row">
-          <div>
-            <div class="price">${priceHtml}</div>
-          </div>
-          <div class="muted">${product.dimensions || ''}</div>
-        </div>
+        <div class="card-price">${priceHtml}</div>
+        <div class="card-dims muted">${product.dimensions || ''}</div>
         <div class="card-actions">
           <a class="button-secondary" href="${rootPath}products/${product.slug}/index.html">Подробнее</a>
           <button class="button" type="button" data-add-to-cart="${product.id}">В корзину</button>
