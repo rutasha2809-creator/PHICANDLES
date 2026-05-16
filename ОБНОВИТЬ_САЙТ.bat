@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Catalog cards: show price next to product name, same font size"
+git commit -m "Catalog cards: vertical layout - name, price, dimensions"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.

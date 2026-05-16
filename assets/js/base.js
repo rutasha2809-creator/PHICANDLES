@@ -239,15 +239,9 @@ function renderProductCard(product, categoryName = '', opts = {}) {
       </a>
       <div class="product-card-body">
         <div class="badge-row">${featuredBadge}${categoryBadge}</div>
-        <div class="card-name-price-row">
-          <h3><a href="${rp}products/${product.slug}/index.html">${product.name}</a></h3>
-          <div class="card-price">${renderPriceHtml(product)}</div>
-        </div>
-        <p>${product.shortDescription || product.description || ''}</p>
-        <div class="price-row">
-          <div>${ratingBlock}</div>
-          <div class="muted">${formatDimensionsLines(product.dimensions)}</div>
-        </div>
+        <h3><a href="${rp}products/${product.slug}/index.html">${product.name}</a></h3>
+        <div class="card-price">${renderPriceHtml(product)}</div>
+        <div class="card-dims muted">${formatDimensionsLines(product.dimensions)}</div>
         <div class="card-actions">
           <a class="button-secondary" href="${rp}products/${product.slug}/index.html">Подробнее</a>
           <button class="button" type="button" data-add-to-cart="${product.id}">В корзину</button>
