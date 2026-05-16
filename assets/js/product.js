@@ -265,7 +265,7 @@ async function initProductPage() {
   }
 
   const shortEl = document.querySelector('[data-product-short]');
-  const lead = product.shortDescription || product.description?.slice(0, 160) || '';
+  const lead = product.shortDescription || '';
   if (shortEl) {
     shortEl.textContent = lead;
     shortEl.classList.toggle('hidden', !lead);
