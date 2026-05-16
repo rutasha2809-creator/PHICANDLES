@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "CSS: increase font sizes for readability - cards, specs, categories"
+git commit -m "CSS: switch card titles, prices, spec values to Jost font"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
