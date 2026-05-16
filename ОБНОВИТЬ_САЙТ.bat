@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Grani S: fix dimensions - height 12.5cm, diameter 7cm, weight 370g"
+git commit -m "Grani M: fix dimensions - height 14.5cm, diameter 5cm, weight 230g"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
