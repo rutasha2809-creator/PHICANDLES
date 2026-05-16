@@ -48,7 +48,7 @@ function collectionBadgeText(product) {
 
 function stockLabel(product) {
   if (product.availability === 'made_to_order') return 'Изготавливается 1–3 дня';
-  return 'В наличии';
+  return '';
 }
 
 function buildGalleryPaths(product) {
