@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Pion conteiner: add description, dimensions, burnTime"
+git commit -m "Pion: fix description, add rozovyy-pion aroma, single aroma option"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
