@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Remove all reviews and ratings from site"
+git commit -m "Remove Otzyvy link from all product pages"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
