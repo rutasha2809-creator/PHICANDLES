@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Conteiner: spec cards show only Diameter+Volume+Burn, fix obem split in formatDimensionsLines"
+git commit -m "Pion conteiner: add description, dimensions, burnTime"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
