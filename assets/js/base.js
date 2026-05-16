@@ -216,8 +216,7 @@ function declension(number, forms) {
 
 function renderProductCard(product, categoryName = '', opts = {}) {
   const rp = opts.rootPath || './';
-  const rating = renderRating(product);
-  const ratingBlock = rating ? `<div class="rating">${rating}</div>` : '';
+  const ratingBlock = '';
   const featuredBadge = product.featured ? '<span class="badge">Хит</span>' : '';
   const categoryBadge = categoryName ? `<span class="badge">${categoryName}</span>` : '';
   const gallery = getProductGalleryImages(product);

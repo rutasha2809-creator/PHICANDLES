@@ -1212,14 +1212,9 @@ main.section[data-product-root] { padding-top: 22px; }
   }
 }
 @media (max-widt
-/* ——— ОТЗЫВЫ И РЕЙТИНГИ СКРЫТЫ ——— */
-[data-reviews-section],
-.product-reviews-aside,
-[data-product-rating-line],
-[data-product-reviews-link],
-[data-meta-sep-a],
-[data-meta-sep-b],
-.rating,
-.home-reviews-list,
-.summary-card--reviews,
-.review-card { display: none !important; }
+/* ——— ОТЗЫВЫ И РЕЙТИНГИ УДАЛЕНЫ ——— */
+[data-reviews-section], .product-reviews-aside,
+[data-product-rating-line], [data-product-reviews-link],
+[data-meta-sep-a], [data-meta-sep-b],
+.rating, .home-reviews-list,
+.summary-card--reviews, .review-card { display: none !important; }

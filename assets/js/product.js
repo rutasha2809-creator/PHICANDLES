@@ -294,28 +294,6 @@ async function initProductPage() {
   const stockEl = document.querySelector('[data-product-stock]');
   if (stockEl) stockEl.textContent = stockLabel(product);
 
-  const ratingSummary = getRatingSummary(product);
-  const ratingLine = document.querySelector('[data-product-rating-line]');
-  const reviewsLink = document.querySelector('[data-product-reviews-link]');
-  if (ratingLine) {
-    if (ratingSummary) {
-      ratingLine.innerHTML = `<span class="product-rating-stars" aria-hidden="true">★</span><span class="product-rating-score">${ratingSummary.avg}</span>`;
-      ratingLine.classList.remove('hidden');
-    } else {
-      ratingLine.classList.add('hidden');
-    }
-  }
-  if (reviewsLink) {
-    if (ratingSummary) {
-      reviewsLink.textContent = ratingSummary.reviewsLabel;
-      reviewsLink.classList.remove('hidden');
-    } else {
-      reviewsLink.classList.add('hidden');
-    }
-  }
-  document.querySelectorAll('[data-meta-sep-a], [data-meta-sep-b]').forEach((el) => {
-    el.classList.toggle('hidden', !ratingSummary);
-  });
 
   const mainImg = document.querySelector('[data-product-image]');
   mainImg.src = '../../' + product.assetImage;
@@ -357,25 +335,6 @@ async function initProductPage() {
     addToCart({ ...product, image: '../../' + product.assetImage }, options);
   });
 
-  const reviewsRoot = document.querySelector('[data-reviews-grid]');
-  const reviewsSection = document.querySelector('[data-reviews-section]');
-  if ((product.reviews || []).length) {
-    reviewsRoot.innerHTML = product.reviews
-      .map(
-        (review) => `
-      <article class="review-card review-card--compact">
-        <div class="review-head">
-          <strong>${escapeHtml(review.author)}</strong>
-          <span>★ ${review.rating}</span>
-        </div>
-        <p>${escapeHtml(review.text)}</p>
-        <p class="muted review-meta">${new Date(review.date).toLocaleDateString('ru-RU')}</p>
-      </article>`,
-      )
-      .join('');
-  } else {
-    reviewsSection.classList.add('hidden');
-  }
 
   // Related products: by relatedGroup within same category, or just same category
   const allOther = catalog.products.filter(
