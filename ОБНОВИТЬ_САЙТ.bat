@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "CSS: spec-card value font size 1.2rem to 1rem"
+git commit -m "CSS: product page price font size -15 percent"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.

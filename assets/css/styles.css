@@ -538,7 +538,7 @@ button, select, input { font: inherit; }
 .product-price-hero__amount {
   display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 10px;
   font-family: 'Jost', sans-serif;
-  font-size: clamp(2rem, 3.2vw, 2.8rem);
+  font-size: clamp(1.7rem, 2.72vw, 2.38rem);
   font-weight: 300; color: var(--text); letter-spacing: 0.02em;
 }
 .product-price-old { font-size: 0.55em; }
