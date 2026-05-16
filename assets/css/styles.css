@@ -411,6 +411,13 @@ button, select, input { font: inherit; }
   font-family: 'Jost', sans-serif;
   font-weight: 400; letter-spacing: 0.03em; line-height: 1.35;
 }
+.card-name-price-row {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
+}
+.card-price {
+  font-family: 'Jost', sans-serif; font-size: 1rem; font-weight: 400;
+  color: var(--text); white-space: nowrap; letter-spacing: 0.02em;
+}
 .product-card p, .muted { margin: 0; color: var(--muted); font-size: 0.87rem; }
 .product-card-body > p {
   display: -webkit-box; -webkit-box-orient: vertical;
