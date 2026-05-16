@@ -1035,7 +1035,7 @@
       "id": "prod-fialka-k",
       "slug": "fialka",
       "name": "Фиалка",
-      "categoryId": "conteiner",
+      "categoryId": "limited",
       "price": 1500,
       "salePrice": null,
       "description": "",
@@ -2167,6 +2167,50 @@
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/buton-rozy.jpg",
       "url": "https://phicandles.ru/products/buton-rozy/"
+    },
+    {
+      "id": "prod-zalivnaya-stakane",
+      "slug": "zalivnaya-svecha-v-stakane",
+      "name": "Заливная свеча в стакане",
+      "categoryId": "conteiner",
+      "price": 1300,
+      "salePrice": null,
+      "description": "Ароматическая свеча в стакане — это стильный элемент декора и источник уюта, который помогает расслабиться после тяжелого дня.\nБлагодаря безопасному стеклянному подсвечнику воск не растекается, а пламя защищено от сквозняков.",
+      "shortDescription": "",
+      "dimensions": "Высота: 8 см, Диаметр: 6,5 см, Объем: 140 мл",
+      "materials": [
+        "соевый воск",
+        "хлопковый фитиль",
+        "аромамасло премиум класса"
+      ],
+      "burnTime": "до 16 часов",
+      "options": {
+        "aroma": [
+          "aroma-francuzskaya-siren",
+          "aroma-lesnoy-landysh",
+          "aroma-goryachiy-yablochnyy-pirog",
+          "aroma-sakharniy-lichi-i-zamsha",
+          "aroma-baltiyskaya-rosa",
+          "aroma-arkticheskiy-plushch",
+          "aroma-iriska-i-bourbon",
+          "aroma-den-v-spa",
+          "aroma-shalfei-i-morskaya-sol",
+          "aroma-plyazhnoe-belye",
+          "aroma-egipetskaya-ambra",
+          "aroma-sandalovoe-derevo",
+          "aroma-pryanyy-apelsin"
+        ],
+        "color": []
+      },
+      "image": "./assets/img/products/zalivnaya-svecha-v-stakane.jpg",
+      "imageAlt": "Заливная свеча в стакане",
+      "popularity": 85,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/zalivnaya-svecha-v-stakane.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/zalivnaya-svecha-v-stakane.jpg",
+      "url": "https://phicandles.ru/products/zalivnaya-svecha-v-stakane/"
     }
   ]
 }

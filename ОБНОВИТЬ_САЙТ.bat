@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Remove Otzyvy link from all product pages"
+git commit -m "Zalivnaya: price 1300, Fialka moved to limited category"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
