@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Shalfei: rename, description, dimensions, burnTime"
+git commit -m "Conteiner: reorder cards, Shalfei rename+desc+dims, stock label removed, aromas full list"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
