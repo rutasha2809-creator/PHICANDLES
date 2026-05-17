@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Breadcrumbs: add Catalog link, category becomes separate crumb"
+git commit -m "Pion: add gallery carousel with 2 photos"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
