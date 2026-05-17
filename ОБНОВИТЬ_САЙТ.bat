@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Gallery: arrows + swipe + dots carousel navigation"
+git commit -m "Gallery: add carousel for 9 products (Izyashnye, Kub, Minimalizm, Tykva, Romashka, Kuvshinka, Roza, Shalfei, Soma)"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
