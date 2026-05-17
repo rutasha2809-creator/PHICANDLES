@@ -1525,20 +1525,19 @@
     {
       "id": "prod-izyashnye-k",
       "slug": "izyashnye-linii-k",
-      "name": "Изящные линии",
+      "name": "Ароматическая свеча в шкатулке Изящные линии",
       "categoryId": "conteiner",
       "price": 1500,
       "salePrice": null,
-      "description": "",
+      "description": "Воплощение утонченности, грации и минималистичной эстетики. Эта заливная свеча ручной работы представлена в лаконичной цилиндрической шкатулке с крышкой из акрилового гипса, украшенной изысканным объемным барельефом.\nБлагодаря своему сдержанному и благородному дизайну, свеча станет идеальным акцентом для туалетного столика, рабочей зоны или пространства для медитаций. После того как воск полностью прогорит, экологичную и прочную гипсовую шкатулку можно использовать для хранения украшений, косметических кистей или канцелярии.",
       "shortDescription": "",
-      "dimensions": "",
+      "dimensions": "Высота: 10 см, Диаметр: 5,6 см, Объем: 130 мл",
       "materials": [
         "соевый воск",
-        "акриловый гипс",
-        "хлопковый фитиль",
-        "аромамасло премиум качества"
+        "деревянный фитиль",
+        "аромамасло премиального качества"
       ],
-      "burnTime": "",
+      "burnTime": "более 15 часов",
       "options": {
         "aroma": [
           "aroma-francuzskaya-siren",
@@ -1554,6 +1553,7 @@
           "aroma-egipetskaya-ambra",
           "aroma-sandalovoe-derevo",
           "aroma-pryanyy-apelsin",
+          "aroma-rozovyy-pion",
           "aroma-kashemirovyy-muskus",
           "aroma-chistyy-khlopok",
           "aroma-lavanda",
@@ -1564,14 +1564,17 @@
           "aroma-rynok-marrakesha",
           "aroma-solenoe-medovoe-maslo",
           "aroma-vanilnyy-gogol-mogol",
-          "aroma-rozovyy-pion",
           "aroma-rozovoe-shampanskoe",
           "aroma-grusha-v-karameli"
         ],
-        "color": []
+        "color": [
+          "белый",
+          "розовый",
+          "бежевый"
+        ]
       },
       "image": "./assets/img/products/izyashnye-linii-k.jpg",
-      "imageAlt": "Изящные линии",
+      "imageAlt": "Ароматическая свеча в шкатулке Изящные линии",
       "popularity": 80,
       "featured": false,
       "reviews": [],

@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Fix truncated HTML: roza-intalia-k, shalfei restored with current catalog"
+git commit -m "Izyashnye linii: rename, description, dims, price, materials, colors, aromas"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
