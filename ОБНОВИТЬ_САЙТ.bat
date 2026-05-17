@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Rename: Zalivnaya svecha -> Aromaticheskaya svecha v stakane"
+git commit -m "Conteiner: relatedGroup glass for jars/glasses, gips for plaster boxes"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.

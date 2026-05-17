@@ -1187,7 +1187,8 @@
       "assetImage": "assets/img/products/zalivnaya-svecha-v-stakane.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/zalivnaya-svecha-v-stakane.jpg",
-      "url": "https://phicandles.ru/products/zalivnaya-svecha-v-stakane/"
+      "url": "https://phicandles.ru/products/zalivnaya-svecha-v-stakane/",
+      "relatedGroup": "glass"
     },
     {
       "id": "prod-shalfei",
@@ -1360,7 +1361,8 @@
       "assetImage": "assets/img/products/grey-can.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/grey-can.jpg",
-      "url": "https://phicandles.ru/products/grey-can/"
+      "url": "https://phicandles.ru/products/grey-can/",
+      "relatedGroup": "glass"
     },
     {
       "id": "prod-pion-k",
@@ -1708,7 +1710,8 @@
       "assetImage": "assets/img/products/minimalizm-k.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/minimalizm-k.jpg",
-      "url": "https://phicandles.ru/products/minimalizm-k/"
+      "url": "https://phicandles.ru/products/minimalizm-k/",
+      "relatedGroup": "gips"
     },
     {
       "id": "prod-kub",
@@ -1814,7 +1817,8 @@
       "assetImage": "assets/img/products/krolik-k.jpg",
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/krolik-k.jpg",
-      "url": "https://phicandles.ru/products/krolik/"
+      "url": "https://phicandles.ru/products/krolik/",
+      "relatedGroup": "gips"
     },
     {
       "id": "prod-flowers",
