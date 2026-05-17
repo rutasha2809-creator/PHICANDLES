@@ -406,8 +406,6 @@ function ensureClientId() {
 }
 
 function initCookieBanner() {
-  const COOKIE_KEY = 'phicandles-cookie-consent';
-  if (localStorage.getItem(COOKIE_KEY)) return;
 
   const root = document.body.dataset.rootPath || './';
   const privacyHref = root + 'privacy/index.html';
@@ -482,7 +480,6 @@ function initCookieBanner() {
   document.body.appendChild(banner);
 
   banner.querySelector('.cookie-banner__btn').addEventListener('click', () => {
-    localStorage.setItem(COOKIE_KEY, '1');
     banner.style.animation = 'none';
     banner.style.transition = 'opacity 0.25s, transform 0.25s';
     banner.style.opacity = '0';
