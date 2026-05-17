@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Izyashnye linii: rename, description, dims, price, materials, colors, aromas"
+git commit -m "Roza Intalia: add colors white, pink, beige"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
