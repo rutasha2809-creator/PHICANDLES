@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Kuvshinka: description, dimensions, burnTime, price, materials, aromas"
+git commit -m "Kuvshinka: add height to dimensions"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
