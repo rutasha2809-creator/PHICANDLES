@@ -1513,7 +1513,10 @@
         "aroma": [
           "aroma-kashemirovaya-tykva"
         ],
-        "color": []
+        "color": [
+          "белый",
+          "бежевый"
+        ]
       },
       "image": "./assets/img/products/tykva-k.jpg",
       "imageAlt": "Ароматическая свеча в шкатулке Тыква",
