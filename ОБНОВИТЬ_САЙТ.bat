@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Kuvshinka: add height to dimensions"
+git commit -m "Kuvshinka: fix burnTime to more than 16 hours"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
