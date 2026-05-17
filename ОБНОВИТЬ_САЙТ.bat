@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "New category kashpo: Pion+Kuvshinka+Romashka moved, added to nav"
+git commit -m "Kuvshinka: description, dimensions, burnTime, price, materials, aromas"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
