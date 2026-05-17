@@ -214,21 +214,52 @@ function setupGallery(product, mainImg) {
     )
     .join('');
 
-  // Переключение главного изображения по точке.
+  let currentIndex = 0;
+
+  // Переключение главного изображения.
   const setIndex = (i) => {
-    const rel = paths[i];
+    currentIndex = (i + paths.length) % paths.length;
+    const rel = paths[currentIndex];
     if (!rel) return;
     mainImg.src = `../../${rel}`;
     thumbs.querySelectorAll('.product-gallery-thumb').forEach((btn, j) => {
-      btn.classList.toggle('is-active', j === i);
+      btn.classList.toggle('is-active', j === currentIndex);
     });
   };
 
   thumbs.querySelectorAll('.product-gallery-thumb').forEach((btn) => {
     const index = Number(btn.dataset.galleryIndex);
     btn.addEventListener('click', () => setIndex(index));
-    btn.addEventListener('mouseenter', () => setIndex(index));
   });
+
+  // Стрелки навигации.
+  const prevBtn = document.createElement('button');
+  prevBtn.type = 'button';
+  prevBtn.className = 'gallery-arrow gallery-arrow--prev';
+  prevBtn.setAttribute('aria-label', 'Предыдущее фото');
+  prevBtn.innerHTML = '&#8249;';
+  prevBtn.addEventListener('click', () => setIndex(currentIndex - 1));
+
+  const nextBtn = document.createElement('button');
+  nextBtn.type = 'button';
+  nextBtn.className = 'gallery-arrow gallery-arrow--next';
+  nextBtn.setAttribute('aria-label', 'Следующее фото');
+  nextBtn.innerHTML = '&#8250;';
+  nextBtn.addEventListener('click', () => setIndex(currentIndex + 1));
+
+  root.appendChild(prevBtn);
+  root.appendChild(nextBtn);
+
+  // Свайп пальцем.
+  let touchStartX = 0;
+  const mainWrap = root.querySelector('.product-gallery-main') || mainImg.parentElement;
+  mainWrap.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+  }, { passive: true });
+  mainWrap.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) setIndex(currentIndex + (dx < 0 ? 1 : -1));
+  }, { passive: true });
 }
 
 function syncProductAddButton(productId, button) {

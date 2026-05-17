@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Pion: add gallery carousel with 2 photos"
+git commit -m "Gallery: arrows + swipe + dots carousel navigation"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
