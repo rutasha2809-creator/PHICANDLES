@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Add Minimalizm-k: new conteiner product with page, image, full catalog update"
+git commit -m "Add grey-can: new conteiner product with page and image"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
