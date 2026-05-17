@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Kub: rename to Bubl, description, dims, price, materials, colors, aromas; restore prod-bubl"
+git commit -m "Kub: cotton wick instead of wooden wick"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
