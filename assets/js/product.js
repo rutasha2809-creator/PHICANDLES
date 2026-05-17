@@ -251,12 +251,12 @@ async function initProductPage() {
   document.querySelectorAll('[data-product-name], [data-product-breadcrumb-name]').forEach((node) => {
     node.textContent = product.name;
   });
-  const breadcrumbCatalog = document.querySelector('[data-breadcrumb-catalog]');
-  if (breadcrumbCatalog) {
-    const catName = categoryMap.get(product.categoryId)?.name || 'Каталог';
-    breadcrumbCatalog.textContent = catName;
+  const breadcrumbCategory = document.querySelector('[data-breadcrumb-category]');
+  if (breadcrumbCategory) {
+    const catName = categoryMap.get(product.categoryId)?.name || '';
+    breadcrumbCategory.textContent = catName;
     const rootPath = document.body.dataset.rootPath || './';
-    breadcrumbCatalog.href = rootPath + 'catalog/index.html#' + product.categoryId;
+    breadcrumbCategory.href = rootPath + 'catalog/index.html#' + product.categoryId;
   }
 
   const badgeEl = document.querySelector('[data-product-collection-badge]');

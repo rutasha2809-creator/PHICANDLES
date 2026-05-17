@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Conteiner: relatedGroup glass for jars/glasses, gips for plaster boxes"
+git commit -m "Breadcrumbs: add Catalog link, category becomes separate crumb"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
