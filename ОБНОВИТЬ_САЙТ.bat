@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Romashka: description, dimensions, burnTime, price, materials, aromas"
+git commit -m "Category grid: 3 columns, show all 9 categories"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
