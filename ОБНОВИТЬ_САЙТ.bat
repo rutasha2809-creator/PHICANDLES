@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Krolik: add krolik-k.jpg to standard path, fix image ref"
+git commit -m "Rename: Zalivnaya svecha -> Aromaticheskaya svecha v stakane"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
