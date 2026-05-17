@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Add grey-can: new conteiner product with page and image"
+git commit -m "Krolik: rename, description, dims, price, materials, 5 aromas, 6 colors"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
