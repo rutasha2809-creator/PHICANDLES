@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Tykva: single aroma Kashemirovaya tykva"
+git commit -m "Fix tykva-k: restore truncated HTML, update catalog embed"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
