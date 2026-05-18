@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "SEO: add Google Search Console verification tag"
+git commit -m "Fix: restore krolik product page (was truncated by JSON-LD script)"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
