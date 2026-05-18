@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Fix: restore krolik product page (was truncated by JSON-LD script)"
+git commit -m "Krolik: add gallery carousel (3 photos)"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
