@@ -281,13 +281,17 @@
             <!-- Экран успеха -->
             <div class="order-success" id="order-success">
               <h3>Заказ принят!</h3>
+              <p id="order-success-number" style="font-weight:500;font-size:0.95rem;margin-bottom:6px;"></p>
               <p>Мы отправили подтверждение на ваш email.<br>Для оплаты используйте QR-код:</p>
               <div class="qr-placeholder">
                 <!-- Замените содержимое на тег <img src="../assets/img/qr-payment.png" alt="QR для оплаты"> -->
                 <span>Здесь будет<br>ваш QR-код<br>для оплаты</span>
               </div>
               <p style="font-size:0.82rem;">После оплаты напишите нам в <a href="https://t.me/phi_candles" style="text-decoration:underline;">Telegram</a> — мы подтвердим получение.</p>
-              <a class="button" href="../catalog/index.html" style="display:inline-block;margin-top:8px;">Продолжить покупки</a>
+              <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
+                <a class="button" href="../catalog/index.html">Продолжить покупки</a>
+                <a class="button-secondary" href="../orders/index.html">Мои заказы</a>
+              </div>
             </div>
           </div>
 
@@ -314,7 +318,40 @@
   </footer>
 
   <script src="../assets/js/base.js"></script>
+  <!-- Firebase compat SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
   <script>
+  // ——— FIREBASE ———
+  const FIREBASE_CONFIG = {
+    apiKey: "AIzaSyDx-NOofEzEr6PCk-au7QobPvZ09uQhnF8",
+    authDomain: "phicandles-eae16.firebaseapp.com",
+    projectId: "phicandles-eae16",
+    storageBucket: "phicandles-eae16.firebasestorage.app",
+    messagingSenderId: "328637287743",
+    appId: "1:328637287743:web:55490a23f6e19fae41d78a"
+  };
+  if (!firebase.apps.length) firebase.initializeApp(FIREBASE_CONFIG);
+  const db = firebase.firestore();
+
+  function generateOrderNumber() {
+    const now = new Date();
+    const date = `${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}`;
+    const rand = String(Math.floor(1000 + Math.random() * 9000));
+    return `PHI-${date}-${rand}`;
+  }
+
+  async function saveOrderToFirestore(orderData) {
+    try {
+      await db.collection('orders').add({
+        ...orderData,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    } catch (e) {
+      console.warn('Firestore save failed:', e);
+    }
+  }
+
   // ——— ПРОМОКОДЫ ———
   // Добавляйте новые коды здесь: { код: процент_скидки }
   const PROMO_CODES = {
@@ -481,7 +518,30 @@
         body: JSON.stringify(body),
       });
       if (res.ok) {
+        const orderNumber = generateOrderNumber();
+        const clientId = readCookie('phicid') || localStorage.getItem('phicandles-client-id') || 'unknown';
+
+        await saveOrderToFirestore({
+          orderNumber,
+          clientId,
+          name, phone, email, delivery,
+          address: address || '—',
+          comment: comment || '—',
+          promo: activePromo ? `${activePromo.code} (−${activePromo.discount}%)` : '—',
+          total: `${new Intl.NumberFormat('ru-RU').format(total)} ₽`,
+          totalRaw: total,
+          items: cart.map(i => ({
+            name: i.name,
+            slug: i.slug,
+            price: i.price,
+            quantity: i.quantity,
+            selectedOptions: i.selectedOptions || {}
+          })),
+          status: 'Принят'
+        });
+
         saveCart([]);
+        document.getElementById('order-success-number').textContent = `Номер заказа: ${orderNumber}`;
         document.getElementById('order-form-wrap').style.display = 'none';
         document.getElementById('promo-panel').style.display = 'none';
         document.getElementById('order-success').style.display = 'block';
