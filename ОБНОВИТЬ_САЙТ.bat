@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Cookie banner: fix - mark session on show, not on button click"
+git commit -m "SEO: rebuild sitemap (61 URLs), fix JSON-LD schema on all 54 product pages"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.

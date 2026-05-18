@@ -2,122 +2,307 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://phicandles.ru/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://phicandles.ru/404.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://phicandles.ru/catalog/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://phicandles.ru/guides/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://phicandles.ru/guides/vidy-svechnogo-voska/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://phicandles.ru/guides/soevyy-ili-pchelinyy-vosk/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://phicandles.ru/guides/kak-vybrat-svechu/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://phicandles.ru/guides/naturalnyy-vosk-i-parafin/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://phicandles.ru/faq/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/corporate/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/privacy/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/oferta/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/catalog/kontejnernye-svechi/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/catalog/formovye-svechi/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/catalog/interjernye-svechi/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/catalog/svechi-v-kashpo/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/catalog/aromaty/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/catalog/dekor-dlya-doma/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/catalog/specialnye-predlozheniya/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/catalog/sezonnye-kollekcii/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://phicandles.ru/products/fistashkovaya-roza/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://phicandles.ru/products/zefirnaya-roza/</loc>
-    <lastmod>2026-04-12</lastmod>
-  </url>
-  <url>
-    <loc>https://phicandles.ru/products/pion-v-stakane/</loc>
-    <lastmod>2026-04-12</lastmod>
-  </url>
-  <url>
-    <loc>https://phicandles.ru/products/fialka-v-stakane/</loc>
-    <lastmod>2026-04-12</lastmod>
-  </url>
-  <url>
-    <loc>https://phicandles.ru/products/kuvshinka/</loc>
-    <lastmod>2026-04-12</lastmod>
-  </url>
-  <url>
-    <loc>https://phicandles.ru/products/grani-svecheniya-maksi/</loc>
-    <lastmod>2026-04-12</lastmod>
-  </url>
-  <url>
-    <loc>https://phicandles.ru/products/antichnaya-kolonna/</loc>
-    <lastmod>2026-04-12</lastmod>
-  </url>
-  <url>
-    <loc>https://phicandles.ru/products/svechi-iz-pchelinogo-voska/</loc>
-    <lastmod>2026-04-12</lastmod>
-  </url>
-  <url>
-    <loc>https://phicandles.ru/products/roza-intaliya/</loc>
-    <lastmod>2026-04-12</lastmod>
-  </url>
-  <url>
-    <loc>https://phicandles.ru/products/izyashnye-linii/</loc>
-    <lastmod>2026-04-12</lastmod>
-  </url>
-  <url>
-    <loc>https://phicandles.ru/products/svecha-shkatulka-tykva/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://phicandles.ru/products/interernyy-nabor-minimalizm/</loc>
-    <lastmod>2026-04-12</lastmod>
-  </url>
-  <url>
-    <loc>https://phicandles.ru/products/mishka-s-serdtsem/</loc>
-    <lastmod>2026-04-12</lastmod>
-  </url>
-  <url>
-    <loc>https://phicandles.ru/products/tsvetochnoe-serdtse/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://phicandles.ru/products/podarochnyy-nabor-zvezdnyy-uyut/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://phicandles.ru/products/aromameltsy-s/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://phicandles.ru/products/aromameltsy-m/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://phicandles.ru/products/aromalampa-arka/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://phicandles.ru/products/aromaticheskoe-sashe/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://phicandles.ru/products/yaytso-klassik/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://phicandles.ru/products/yaytso-azhur/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://phicandles.ru/products/paskhalnyy-zayats-belyy/</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/fialka/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/zalivnaya-svecha-v-stakane/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/shalfei/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/soma/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/grey-can/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/pion/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/kuvshinka-k/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/romashka/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/roza-intalia-k/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/tykva-k/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/izyashnye-linii-k/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/minimalizm-k/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/kub/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/krolik/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/grani-svecheniya-l/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/grani-svecheniya-m/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/grani-svecheniya-s/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/antichnaya-kolonna-f/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/tsvetochnaya-kolonna/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/spiral/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/roza-f/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/tulip/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/tsvetochnoe-serdtse-f/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/mishka-f/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/mishka-s-serdtsem-f/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/sobachka/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/bubl/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/art-deco/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/candlehold-tall/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/candlehold-mini/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://phicandles.ru/products/buton-rozy/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <priority>0.9</priority>
   </url>
 </urlset>
