@@ -546,29 +546,26 @@ button, select, input { font: inherit; }
   margin: 0; font-size: 0.94rem; line-height: 1.78; color: var(--muted); max-width: 60ch;
 }
 .product-price-hero {
-  padding: 20px 22px; background: var(--card-alt); border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid var(--line); padding: 14px 0 2px; margin-top: 4px;
+}
+.product-price-hero::before {
+  content: "Цена"; font-size: 0.82rem; color: var(--muted);
+  font-family: 'Jost', sans-serif; letter-spacing: 0.04em;
 }
 .product-price-hero__amount {
-  display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 10px;
   font-family: 'Jost', sans-serif;
-  font-size: clamp(1.7rem, 2.72vw, 2.38rem);
-  font-weight: 300; color: var(--text); letter-spacing: 0.02em;
+  font-size: 1.15rem;
+  font-weight: 500; color: var(--text); letter-spacing: 0.02em;
 }
-.product-price-old { font-size: 0.55em; }
-.product-price-hero__meta {
-  display: flex; flex-wrap: wrap; align-items: center;
-  gap: 6px 10px; margin-top: 10px; font-size: 0.87rem; color: var(--muted);
-}
-.product-price-hero__rating { color: var(--text); font-weight: 500; }
+.product-price-old { font-size: 0.8em; font-weight: 400; color: var(--muted); text-decoration: line-through; margin-left: 6px; }
+.product-price-hero__meta { display: none; }
+.product-price-hero__rating { display: none; }
 .product-rating-stars { margin-right: 3px; }
 .product-rating-score { color: var(--text); }
-.product-price-hero__reviews {
-  color: var(--muted); text-decoration: underline;
-  text-underline-offset: 3px; font-weight: 400;
-}
-.product-price-hero__reviews:hover { color: var(--text); }
-.product-price-hero__sep { color: var(--line); user-select: none; }
-.product-price-hero__stock { color: var(--text); font-weight: 500; }
+.product-price-hero__reviews { display: none; }
+.product-price-hero__sep { display: none; }
+.product-price-hero__stock { display: none; }
 .option-field { display: grid; gap: 12px; }
 .option-field__label {
   font-weight: 500; font-size: 0.76rem; color: var(--text);
