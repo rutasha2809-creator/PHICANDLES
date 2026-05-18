@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Orders: Firebase Firestore integration - save orders + history page"
+git commit -m "Colors: update swatches - white, pink, lilac, powder, mint, olive, yellow, coral"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
