@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "SEO: rebuild sitemap (61 URLs), fix JSON-LD schema on all 54 product pages"
+git commit -m "SEO: add Google Search Console verification tag"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
