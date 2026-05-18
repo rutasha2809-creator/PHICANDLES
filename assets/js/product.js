@@ -198,6 +198,40 @@ function setupColorControls(colorWrap, colorSelect, product, colorMap) {
   colorSelect.tabIndex = -1;
 }
 
+function setupFinishControls(finishWrap, finishSelect, product) {
+  const values = product.options?.finish || [];
+  if (!finishWrap || !finishSelect || !values.length) {
+    finishWrap?.classList.add('hidden');
+    return;
+  }
+  finishWrap.classList.remove('hidden');
+
+  const chipHost = finishWrap.querySelector('[data-option-finish-chips]');
+  if (!chipHost) return;
+
+  chipHost.innerHTML = values
+    .map(
+      (val, i) => `<button type="button" class="option-chip${i === 0 ? ' is-active' : ''}" data-finish-chip value="${escapeAttr(val)}">${escapeHtml(val)}</button>`,
+    )
+    .join('');
+
+  const setActive = (value) => {
+    chipHost.querySelectorAll('[data-finish-chip]').forEach((btn) => {
+      btn.classList.toggle('is-active', btn.value === value);
+    });
+    finishSelect.value = value;
+  };
+
+  chipHost.querySelectorAll('[data-finish-chip]').forEach((btn) => {
+    btn.addEventListener('click', () => setActive(btn.value));
+  });
+
+  finishSelect.innerHTML = values
+    .map((val) => `<option value="${escapeAttr(val)}">${escapeHtml(val)}</option>`)
+    .join('');
+  setActive(values[0]);
+}
+
 function setupGallery(product, mainImg) {
   const paths = buildGalleryPaths(product);
   const thumbs = document.querySelector('[data-product-gallery-thumbs]');
@@ -348,12 +382,15 @@ async function initProductPage() {
 
   const aromaWrap = document.querySelector('[data-option-aroma-wrap]');
   const colorWrap = document.querySelector('[data-option-color-wrap]');
+  const finishWrap = document.querySelector('[data-option-finish-wrap]');
   const aromaSelect = document.querySelector('[data-option-aroma]');
   const colorSelect = document.querySelector('[data-option-color]');
+  const finishSelect = document.querySelector('[data-option-finish]');
   const aromaMap = buildAromaMap(catalog);
   setupAromaControls(aromaWrap, aromaSelect, product, aromaMap);
   const colorSwatchMap = buildColorSwatchMap(catalog);
   setupColorControls(colorWrap, colorSelect, product, colorSwatchMap);
+  setupFinishControls(finishWrap, finishSelect, product);
 
   const addButton = document.querySelector('[data-add-product]');
   // Поддерживаем текст кнопки в актуальном состоянии при любом изменении корзины.
@@ -363,6 +400,7 @@ async function initProductPage() {
     const options = {};
     if (!aromaWrap.classList.contains('hidden')) options.aroma = aromaSelect.value;
     if (!colorWrap.classList.contains('hidden')) options.color = colorSelect.value;
+    if (finishWrap && !finishWrap.classList.contains('hidden')) options.finish = finishSelect.value;
     addToCart({ ...product, image: '../../' + product.assetImage }, options);
   });
 

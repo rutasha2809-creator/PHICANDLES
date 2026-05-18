@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Cookie banner: show on every visit"
+git commit -m "Cart: include selected options (aroma/color) in order email"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
