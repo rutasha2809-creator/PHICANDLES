@@ -250,7 +250,9 @@
       ],
       "burnTime": "до 30 часов",
       "options": {
-        "aroma": [],
+        "aroma": [
+          "Богемская роза"
+        ],
         "color": []
       },
       "image": "./assets/img/products/zefirnaya-roza.png",
