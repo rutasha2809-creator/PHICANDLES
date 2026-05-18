@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Cookie banner: show once per session, not on every page"
+git commit -m "Cookie banner: fix - mark session on show, not on button click"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.

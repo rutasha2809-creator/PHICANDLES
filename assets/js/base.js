@@ -480,6 +480,7 @@ function initCookieBanner() {
 
   document.head.appendChild(style);
   document.body.appendChild(banner);
+  sessionStorage.setItem(SESSION_KEY, '1');
 
   banner.querySelector('.cookie-banner__btn').addEventListener('click', () => {
     sessionStorage.setItem(SESSION_KEY, '1');
