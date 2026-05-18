@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Colors: update swatches - white, pink, lilac, powder, mint, olive, yellow, coral"
+git commit -m "Cookie banner: show once per session, not on every page"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
