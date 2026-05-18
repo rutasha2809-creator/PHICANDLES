@@ -17,7 +17,7 @@ git status --short
 
 echo.
 echo === Step 3: Commit ===
-git commit -m "Cart: include selected options (aroma/color) in order email"
+git commit -m "Krolik: move finish buttons (mat/glyants) under color swatches"
 if %errorlevel% neq 0 ( echo ERROR at commit && pause && exit /b 1 )
 
 echo.
