@@ -14,7 +14,7 @@ git status --short
 
 Write-Host ""
 Write-Host "=== Step 3: Commit ===" -ForegroundColor Cyan
-$result = git commit -m "Dekor care text updated; grani/antichnaya image fixes; all pages updated"
+$result = git commit -m "Fix images tykva/grani/antichnaya; care sections dekor+kashpo; all pages updated"
 if ($LASTEXITCODE -eq 0) {
     Write-Host "Committed OK" -ForegroundColor Green
 } else {
