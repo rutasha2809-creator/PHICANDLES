@@ -208,7 +208,9 @@
       ],
       "burnTime": "до 24 часов",
       "options": {
-        "aroma": [],
+        "aroma": [
+          "aroma-lesnoy-landysh"
+        ],
         "color": []
       },
       "image": "./assets/img/products/fistashkovaya-roza.jpg",
