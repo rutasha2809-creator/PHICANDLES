@@ -447,7 +447,7 @@
           "Пудровый"
         ]
       },
-      "image": "./assets/img/products/grani-svecheniya-maksi.png",
+      "image": "./assets/img/products/grani-svecheniya-maksi.jpg",
       "imageAlt": "Свеча Грани свечения Макси",
       "popularity": 93,
       "featured": true,
@@ -459,9 +459,9 @@
           "text": "Выглядит как дизайнерский объект, очень понравилась форма."
         }
       ],
-      "assetImage": "assets/img/products/grani-svecheniya-maksi.png",
+      "assetImage": "assets/img/products/grani-svecheniya-maksi.jpg",
       "gallery": [],
-      "absoluteImage": "https://phicandles.ru/assets/img/products/grani-svecheniya-maksi.png",
+      "absoluteImage": "https://phicandles.ru/assets/img/products/grani-svecheniya-maksi.jpg",
       "url": "https://phicandles.ru/products/grani-svecheniya-maksi/"
     },
     {
@@ -486,14 +486,14 @@
           "Голубой"
         ]
       },
-      "image": "./assets/img/products/antichnaya-kolonna.png",
+      "image": "./assets/img/products/antichnaya-kolonna.jpg",
       "imageAlt": "Свеча Античная колонна",
       "popularity": 85,
       "featured": false,
       "reviews": [],
-      "assetImage": "assets/img/products/antichnaya-kolonna.png",
+      "assetImage": "assets/img/products/antichnaya-kolonna.jpg",
       "gallery": [],
-      "absoluteImage": "https://phicandles.ru/assets/img/products/antichnaya-kolonna.png",
+      "absoluteImage": "https://phicandles.ru/assets/img/products/antichnaya-kolonna.jpg",
       "url": "https://phicandles.ru/products/antichnaya-kolonna/"
     },
     {
