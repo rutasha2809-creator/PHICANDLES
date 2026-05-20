@@ -422,11 +422,24 @@ async function initHomePage() {
     if (updateUrl) syncCategoryInUrl(activeBtn?.dataset.category || 'all');
   };
 
+  // Порядок категорий для сортировки «Все товары»
+  const categoryOrder = (catalog.categories || []).reduce((acc, cat, idx) => {
+    acc[cat.id] = idx;
+    return acc;
+  }, {});
+
   const renderProducts = (categoryId = 'all') => {
     // Перерисовка каталога при смене фильтра.
     let items;
     if (categoryId === 'all') {
-      items = catalog.products;
+      // Все видимые товары, упорядоченные по очерёдности категорий
+      items = catalog.products
+        .filter((product) => product.categoryId !== 'hidden')
+        .sort((a, b) => {
+          const orderA = categoryOrder[a.categoryId] ?? 999;
+          const orderB = categoryOrder[b.categoryId] ?? 999;
+          return orderA - orderB;
+        });
     } else if (categoryId === DISCOUNT_CATEGORY_ID) {
       items = catalog.products.filter((product) => {
         const base = Number(product.price) || 0;
