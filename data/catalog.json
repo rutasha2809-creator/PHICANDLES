@@ -2623,6 +2623,39 @@
       ],
       "absoluteImage": "https://phicandles.ru/assets/img/products/podnos-small.jpg",
       "url": "https://phicandles.ru/products/kruglyy-podnos-podstavka-s/"
+    },
+    {
+      "id": "prod-podnos-oval",
+      "slug": "ovalnyy-podnos-podstavka",
+      "name": "Овальный поднос-подставка для свечей",
+      "categoryId": "dekor",
+      "price": 420,
+      "salePrice": null,
+      "description": "Классическая форма для современного уюта. Вытянутая овальная форма этого подноса — одна из самых популярных и удобных в интерьерном декоре. Он разработан как эстетичная и функциональная подставка для свечей, которая защищает поверхности от воска и собирает детали интерьера в единую гармоничную композицию. Так же удобно использовать в ванной или на трюмо для хранения парфюма, крема и базовых украшений.",
+      "shortDescription": "",
+      "dimensions": "Длина: 17,5 см, ширина: 9 см",
+      "materials": [
+        "гипс",
+        "защитный лак"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Бежевый",
+          "Серый"
+        ]
+      },
+      "image": "./assets/img/products/podnos-oval.jpg",
+      "imageAlt": "Овальный поднос-подставка для свечей",
+      "popularity": 78,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/podnos-oval.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/podnos-oval.jpg",
+      "url": "https://phicandles.ru/products/ovalnyy-podnos-podstavka/"
     }
   ]
 }
