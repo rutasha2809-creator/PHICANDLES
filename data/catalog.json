@@ -2112,7 +2112,7 @@
     {
       "id": "prod-roza-f",
       "slug": "roza-f",
-      "name": "Роза",
+      "name": "Пион",
       "categoryId": "forming",
       "price": 420,
       "salePrice": null,
@@ -2135,14 +2135,16 @@
           "Черный"
         ]
       },
-      "image": "./assets/img/products/roza-f.jpg",
-      "imageAlt": "Роза",
+      "image": "./assets/img/products/pion-f.jpg",
+      "imageAlt": "Формовая свеча Пион",
       "popularity": 80,
       "featured": false,
       "reviews": [],
-      "assetImage": "assets/img/products/roza-f.jpg",
-      "gallery": [],
-      "absoluteImage": "https://phicandles.ru/assets/img/products/roza-f.jpg",
+      "assetImage": "assets/img/products/pion-f.jpg",
+      "gallery": [
+        "assets/img/products/pion-f-2.jpg"
+      ],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/pion-f.jpg",
       "url": "https://phicandles.ru/products/roza-f/",
       "relatedGroup": "flowers"
     },
@@ -2178,7 +2180,9 @@
       "featured": false,
       "reviews": [],
       "assetImage": "assets/img/products/tulip.jpg",
-      "gallery": [],
+      "gallery": [
+        "assets/img/products/tulip-2.jpg"
+      ],
       "absoluteImage": "https://phicandles.ru/assets/img/products/tulip.jpg",
       "url": "https://phicandles.ru/products/tulip/",
       "relatedGroup": "flowers"
@@ -2215,7 +2219,9 @@
       "featured": false,
       "reviews": [],
       "assetImage": "assets/img/products/tsvetochnoe-serdtse-f.jpg",
-      "gallery": [],
+      "gallery": [
+        "assets/img/products/tsvetochnoe-serdtse-f-2.jpg"
+      ],
       "absoluteImage": "https://phicandles.ru/assets/img/products/tsvetochnoe-serdtse-f.jpg",
       "url": "https://phicandles.ru/products/tsvetochnoe-serdtse-f/",
       "relatedGroup": "flowers"
