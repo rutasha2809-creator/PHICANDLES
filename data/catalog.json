@@ -677,7 +677,8 @@
       "materials": [
         "соевый воск",
         "акриловый гипс",
-        "деревянный фитиль"
+        "деревянный фитиль",
+        "защитный лак"
       ],
       "burnTime": "более 20 часов",
       "options": {
@@ -2383,7 +2384,10 @@
       "description": "",
       "shortDescription": "",
       "dimensions": "",
-      "materials": [],
+      "materials": [
+        "гипс",
+        "защитный лак"
+      ],
       "burnTime": "",
       "options": {
         "aroma": [],
@@ -2416,7 +2420,10 @@
       "description": "",
       "shortDescription": "",
       "dimensions": "",
-      "materials": [],
+      "materials": [
+        "гипс",
+        "защитный лак"
+      ],
       "burnTime": "",
       "options": {
         "aroma": [],
@@ -2449,7 +2456,10 @@
       "description": "",
       "shortDescription": "",
       "dimensions": "",
-      "materials": [],
+      "materials": [
+        "гипс",
+        "защитный лак"
+      ],
       "burnTime": "",
       "options": {
         "aroma": [],
