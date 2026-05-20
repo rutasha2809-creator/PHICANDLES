@@ -257,7 +257,7 @@
         ],
         "color": []
       },
-      "image": "./assets/img/products/zefirnaya-roza.png",
+      "image": "./assets/img/products/zefirnaya-roza.jpg",
       "imageAlt": "Свеча Зефирная роза",
       "popularity": 95,
       "featured": true,
@@ -269,9 +269,9 @@
           "text": "Очень эффектная композиция. Покупала на день рождения маме — восторг!"
         }
       ],
-      "assetImage": "assets/img/products/zefirnaya-roza.png",
+      "assetImage": "assets/img/products/zefirnaya-roza.jpg",
       "gallery": [],
-      "absoluteImage": "https://phicandles.ru/assets/img/products/zefirnaya-roza.png",
+      "absoluteImage": "https://phicandles.ru/assets/img/products/zefirnaya-roza.jpg",
       "url": "https://phicandles.ru/products/zefirnaya-roza/"
     },
     {
