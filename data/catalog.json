@@ -2588,6 +2588,41 @@
       ],
       "absoluteImage": "https://phicandles.ru/assets/img/products/podnos-midi.jpg",
       "url": "https://phicandles.ru/products/kruglyy-podnos-podstavka-m/"
+    },
+    {
+      "id": "prod-podnos-small",
+      "slug": "kruglyy-podnos-podstavka-s",
+      "name": "Круглый поднос-подставка для свечей S",
+      "categoryId": "dekor",
+      "price": 220,
+      "salePrice": null,
+      "description": "Элегантная база для ваших интерьерных историй. Этот круглый поднос с лаконичными бортиками создан как идеальное и безопасное основание для свечей, диффузоров или украшений. Надежно защищает мебель от случайных капель горячего воска и завершает композицию. Отлично подходит для размещения небольших свечей.",
+      "shortDescription": "",
+      "dimensions": "Диаметр: 8 см",
+      "materials": [
+        "гипс",
+        "защитный лак"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Бежевый",
+          "Серый"
+        ]
+      },
+      "image": "./assets/img/products/podnos-small.jpg",
+      "imageAlt": "Круглый поднос-подставка для свечей S",
+      "popularity": 78,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/podnos-small.jpg",
+      "gallery": [
+        "assets/img/products/podnos-small-1.jpg"
+      ],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/podnos-small.jpg",
+      "url": "https://phicandles.ru/products/kruglyy-podnos-podstavka-s/"
     }
   ]
 }
