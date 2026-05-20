@@ -2656,6 +2656,41 @@
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/podnos-oval.jpg",
       "url": "https://phicandles.ru/products/ovalnyy-podnos-podstavka/"
+    },
+    {
+      "id": "prod-salfetnica-bubl",
+      "slug": "salfetnica-bubl",
+      "name": "Интерьерная салфетница Бабл",
+      "categoryId": "dekor",
+      "price": 2100,
+      "salePrice": null,
+      "description": "Трендовый арт-объект для вашего дома. Эта салфетница в культовом объемном дизайне «Bubble» превращает обычную пачку бумажных салфеток в стильную деталь интерьера. Ее округлые, приятные на ощупь формы притягивают взгляд и добавляют пространству легкого футуризма и уюта одновременно. Изготовленная из премиального гипса, она обладает благородной тяжестью и идеальной матовой текстурой, напоминая скульптуру из природного камня. Безупречно смотрится на журнальном столике в гостиной, прикроватной тумбе, в ванной комнате или на обеденном столе.",
+      "shortDescription": "",
+      "dimensions": "Длина: 20 см, ширина: 13 см, высота: 11 см",
+      "materials": [
+        "гипс",
+        "защитный лак"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "Белый",
+          "Бежевый",
+          "Пудровый",
+          "Салатовый",
+          "Серый"
+        ]
+      },
+      "image": "./assets/img/products/salfetnica-bubl.png",
+      "imageAlt": "Интерьерная салфетница Бабл",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/salfetnica-bubl.png",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/salfetnica-bubl.png",
+      "url": "https://phicandles.ru/products/salfetnica-bubl/"
     }
   ]
 }
