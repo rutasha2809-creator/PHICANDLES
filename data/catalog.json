@@ -2500,6 +2500,36 @@
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/buton-rozy.jpg",
       "url": "https://phicandles.ru/products/buton-rozy/"
+    },
+    {
+      "id": "prod-podnos-big",
+      "slug": "kruglyy-podnos-podstavka",
+      "name": "Круглый поднос-подставка для свечей из акрилового гипса",
+      "categoryId": "dekor",
+      "price": 600,
+      "salePrice": null,
+      "description": "Элегантная база для ваших интерьерных историй. Этот круглый поднос с лаконичными бортиками создан как идеальное и безопасное основание для свечей, диффузоров или украшений.\n\nМногофункциональность в интерьере:\n\n• Подставка под свечи: Надежно защищает мебель от случайных капель горячего воска и завершает композицию. Отлично подходит для размещения сразу нескольких свечей разной высоты или одной крупной свечи-букета.\n• Органайзер для мелочей: Идеальное место для хранения колец, часов и парфюма на прикроватном столике.\n• Фотореквизит: Создает лаконичный и стильный фон для предметной съемки.",
+      "shortDescription": "",
+      "dimensions": "Диаметр: 19 см",
+      "materials": [
+        "акриловый гипс"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": []
+      },
+      "image": "./assets/img/products/podnos-big.jpg",
+      "imageAlt": "Круглый поднос-подставка из акрилового гипса",
+      "popularity": 80,
+      "featured": false,
+      "reviews": [],
+      "assetImage": "assets/img/products/podnos-big.jpg",
+      "gallery": [
+        "assets/img/products/podnos-big-1.jpg"
+      ],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/podnos-big.jpg",
+      "url": "https://phicandles.ru/products/kruglyy-podnos-podstavka/"
     }
   ]
 }
