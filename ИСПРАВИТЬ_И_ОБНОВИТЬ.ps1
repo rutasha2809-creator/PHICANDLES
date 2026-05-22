@@ -14,7 +14,7 @@ git status --short
 
 Write-Host ""
 Write-Host "=== Step 3: Commit ===" -ForegroundColor Cyan
-$result = git commit -m "Fix izyashnye-linii-k: restore truncated file, add product.js, update gallery to k1"
+$result = git commit -m "Set price 1180 for shalfei (dark glass); fix truncated catalog.json and product page"
 if ($LASTEXITCODE -eq 0) {
     Write-Host "Committed OK" -ForegroundColor Green
 } else {
