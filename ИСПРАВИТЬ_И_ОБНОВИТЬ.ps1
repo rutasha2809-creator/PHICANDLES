@@ -14,7 +14,7 @@ git status --short
 
 Write-Host ""
 Write-Host "=== Step 3: Commit ===" -ForegroundColor Cyan
-$result = git commit -m "Add kashpo category to main page; price 1180 shalfei; fix truncated files"
+$result = git commit -m "Replace 'акрилового гипса' with 'гипса' in care sections; add kashpo to main page; price shalfei 1180"
 if ($LASTEXITCODE -eq 0) {
     Write-Host "Committed OK" -ForegroundColor Green
 } else {
