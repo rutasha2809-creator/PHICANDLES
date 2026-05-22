@@ -14,7 +14,7 @@ git status --short
 
 Write-Host ""
 Write-Host "=== Step 3: Commit ===" -ForegroundColor Cyan
-$result = git commit -m "Remove minimalizm-k-3 from carousel; care text fixes; kashpo on main page; shalfei price"
+$result = git commit -m "Rename minimalizm-k to 'Минимализм S'; remove photo -3 from carousel; care fixes; kashpo; shalfei price"
 if ($LASTEXITCODE -eq 0) {
     Write-Host "Committed OK" -ForegroundColor Green
 } else {
