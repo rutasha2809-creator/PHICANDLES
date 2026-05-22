@@ -154,10 +154,15 @@
     const grid = document.getElementById('catalog-grid');
     const countEl = document.getElementById('catalog-count');
 
+    // Порядок категорий для сортировки
+    const categoryOrder = categories.reduce((acc, c, i) => { acc[c.id] = i; return acc; }, {});
+
     function renderProducts(catId) {
       const visibleCats = new Set(categories.map(c => c.id));
       const items = catId === 'all'
-        ? products.filter(p => visibleCats.has(p.categoryId))
+        ? products
+            .filter(p => visibleCats.has(p.categoryId))
+            .sort((a, b) => (categoryOrder[a.categoryId] ?? 999) - (categoryOrder[b.categoryId] ?? 999))
         : products.filter(p => p.categoryId === catId);
       if (!items.length) {
         grid.innerHTML = '<p class="catalog-empty">В этой категории пока нет товаров.</p>';
