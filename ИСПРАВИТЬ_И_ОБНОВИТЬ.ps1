@@ -14,7 +14,7 @@ git status --short
 
 Write-Host ""
 Write-Host "=== Step 3: Commit ===" -ForegroundColor Cyan
-$result = git commit -m "Update bubl photo; fix photos mishka-f/sobachka/mishka-s-serdtsem-f; carousels; other fixes"
+$result = git commit -m "Remove aromameltsy-m; rename aromameltsy-s to Аромамэлтсы; bubl photo; photo fixes"
 if ($LASTEXITCODE -eq 0) {
     Write-Host "Committed OK" -ForegroundColor Green
 } else {

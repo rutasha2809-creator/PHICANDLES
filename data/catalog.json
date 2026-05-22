@@ -828,7 +828,7 @@
     {
       "id": "prod-melts-s",
       "slug": "aromameltsy-s",
-      "name": "Аромамэлтсы S",
+      "name": "Аромамэлтсы",
       "categoryId": "aroma",
       "price": 700,
       "salePrice": null,
@@ -865,38 +865,6 @@
       "gallery": [],
       "absoluteImage": "https://phicandles.ru/assets/img/products/aromameltsy-s.png",
       "url": "https://phicandles.ru/products/aromameltsy-s/"
-    },
-    {
-      "id": "prod-melts-m",
-      "slug": "aromameltsy-m",
-      "name": "Аромамэлтсы M",
-      "categoryId": "aroma",
-      "price": 1150,
-      "salePrice": null,
-      "description": "Большая упаковка ароматных сердечек для аромалампы. Достаточно 1–2 штук для стойкого аромата.",
-      "shortDescription": "Большой набор мэлтсов, 100 г.",
-      "dimensions": "100 г",
-      "materials": [
-        "соевый воск",
-        "хлопковый фитиль"
-      ],
-      "burnTime": "до 40 сеансов",
-      "options": {
-        "aroma": [
-          "aroma-sandalovoe-derevo",
-          "aroma-pryanyy-apelsin"
-        ],
-        "color": []
-      },
-      "image": "./assets/img/products/aromameltsy-m.jpg",
-      "imageAlt": "Аромамэлтсы M",
-      "popularity": 83,
-      "featured": false,
-      "reviews": [],
-      "assetImage": "assets/img/products/aromameltsy-m.jpg",
-      "gallery": [],
-      "absoluteImage": "https://phicandles.ru/assets/img/products/aromameltsy-m.jpg",
-      "url": "https://phicandles.ru/products/aromameltsy-m/"
     },
     {
       "id": "prod-arka-burner",
