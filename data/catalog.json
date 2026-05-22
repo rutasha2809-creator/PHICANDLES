@@ -901,19 +901,19 @@
       "categoryId": "aroma",
       "price": 1200,
       "salePrice": null,
-      "description": "Лаконичная гипсовая аромалампа в форме арки. Подходит для ароматических мэлтсов и поставляется с чайной свечой PHICANDLES.",
-      "shortDescription": "Гипсовая аромалампа для мэлтсов, в комплекте чайная свеча.",
+      "description": "Эта элегантная аромалампа — идеальный способ создать уютную атмосферу в вашем доме. Ее минималистичный дизайн в виде белой арки, выполненной из высококачественного гипса, гармонично впишется в любой современный интерьер. Аромалампа оснащена съемной чашей из полированной нержавеющей стали, которая легко очищается после использования. Вы можете поместить в чашу восковые мелтсы или капнуть любимое эфирное масло, смешанное с водой. Нагревание чаши происходит за счет чайной свечи, расположенной в основании, что обеспечивает мягкое и равномерное распространение аромата. Этот стильный аксессуар станет прекрасным подарком для ценителей ароматерапии и уютного домашнего декора. Чтобы вы могли сразу насладиться приятным ароматом, в комплект уже входит одна чайная свеча.",
+      "shortDescription": "",
       "dimensions": "Высота: 10 см",
       "materials": [
         "соевый воск",
         "хлопковый фитиль"
       ],
-      "burnTime": "многоразовое использование",
+      "burnTime": "",
       "options": {
         "aroma": [],
         "color": []
       },
-      "image": "./assets/img/products/aromalampa-arka.png",
+      "image": "./assets/img/products/aromalamp-arka.jpg",
       "imageAlt": "Аромалампа Арка",
       "popularity": 94,
       "featured": true,
@@ -925,9 +925,11 @@
           "text": "Очень стильная лампа, смотрится как дизайнерская вещь."
         }
       ],
-      "assetImage": "assets/img/products/aromalampa-arka.png",
-      "gallery": [],
-      "absoluteImage": "https://phicandles.ru/assets/img/products/aromalampa-arka.png",
+      "assetImage": "assets/img/products/aromalamp-arka.jpg",
+      "gallery": [
+        "assets/img/products/aromalamp-arka-1.jpg"
+      ],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/aromalamp-arka.jpg",
       "url": "https://phicandles.ru/products/aromalampa-arka/"
     },
     {
