@@ -198,6 +198,35 @@ function setupColorControls(colorWrap, colorSelect, product, colorMap) {
   colorSelect.tabIndex = -1;
 }
 
+function setupVariantControls(variantWrap, product, onPriceChange) {
+  const variants = product.variants || [];
+  if (!variantWrap || !variants.length) {
+    variantWrap?.classList.add('hidden');
+    return null;
+  }
+  variantWrap.classList.remove('hidden');
+  const chipHost = variantWrap.querySelector('[data-option-variant-chips]');
+  if (!chipHost) return null;
+
+  let activePrice = variants[0].price;
+
+  chipHost.innerHTML = variants
+    .map((v, i) => `<button type="button" class="option-chip${i === 0 ? ' is-active' : ''}" data-variant-chip value="${escapeAttr(String(v.price))}">${escapeHtml(v.label)}&nbsp;—&nbsp;${v.price.toLocaleString('ru-RU')}&nbsp;₽</button>`)
+    .join('');
+
+  chipHost.querySelectorAll('[data-variant-chip]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      chipHost.querySelectorAll('[data-variant-chip]').forEach((b) => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      activePrice = Number(btn.value);
+      onPriceChange(activePrice);
+    });
+  });
+
+  onPriceChange(activePrice);
+  return () => activePrice;
+}
+
 function setupFinishControls(finishWrap, finishSelect, product) {
   const values = product.options?.finish || [];
   if (!finishWrap || !finishSelect || !values.length) {
@@ -383,14 +412,20 @@ async function initProductPage() {
   const aromaWrap = document.querySelector('[data-option-aroma-wrap]');
   const colorWrap = document.querySelector('[data-option-color-wrap]');
   const finishWrap = document.querySelector('[data-option-finish-wrap]');
+  const variantWrap = document.querySelector('[data-option-variant-wrap]');
   const aromaSelect = document.querySelector('[data-option-aroma]');
   const colorSelect = document.querySelector('[data-option-color]');
   const finishSelect = document.querySelector('[data-option-finish]');
+  const priceEl = document.querySelector('[data-product-price]');
   const aromaMap = buildAromaMap(catalog);
   setupAromaControls(aromaWrap, aromaSelect, product, aromaMap);
   const colorSwatchMap = buildColorSwatchMap(catalog);
   setupColorControls(colorWrap, colorSelect, product, colorSwatchMap);
   setupFinishControls(finishWrap, finishSelect, product);
+
+  const getVariantPrice = setupVariantControls(variantWrap, product, (price) => {
+    if (priceEl) priceEl.innerHTML = `<span class="product-price-current">${price.toLocaleString('ru-RU')} ₽</span>`;
+  });
 
   const addButton = document.querySelector('[data-add-product]');
   // Поддерживаем текст кнопки в актуальном состоянии при любом изменении корзины.
@@ -401,7 +436,9 @@ async function initProductPage() {
     if (!aromaWrap.classList.contains('hidden')) options.aroma = aromaSelect.value;
     if (!colorWrap.classList.contains('hidden')) options.color = colorSelect.value;
     if (finishWrap && !finishWrap.classList.contains('hidden')) options.finish = finishSelect.value;
-    addToCart({ ...product, image: '../../' + product.assetImage }, options);
+    const variantPrice = getVariantPrice ? getVariantPrice() : null;
+    const productToAdd = variantPrice ? { ...product, price: variantPrice, salePrice: null } : product;
+    addToCart({ ...productToAdd, image: '../../' + product.assetImage }, options);
   });
 
 
