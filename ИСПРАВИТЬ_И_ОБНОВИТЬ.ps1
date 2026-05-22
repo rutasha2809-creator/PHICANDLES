@@ -14,7 +14,7 @@ git status --short
 
 Write-Host ""
 Write-Host "=== Step 3: Commit ===" -ForegroundColor Cyan
-$result = git commit -m "Update izyashnye-linii-k photos: new main + gallery k1; fix static src"
+$result = git commit -m "Fix izyashnye-linii-k: restore truncated file, add product.js, update gallery to k1"
 if ($LASTEXITCODE -eq 0) {
     Write-Host "Committed OK" -ForegroundColor Green
 } else {
