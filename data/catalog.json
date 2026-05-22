@@ -834,12 +834,11 @@
       "salePrice": null,
       "description": "Набор ароматических мэлтсов в форме сердечек. Идеальны для использования в аромалампе для быстрого наполнения пространства ароматом.",
       "shortDescription": "Мэлтсы-сердечки для аромалампы, 50 г.",
-      "dimensions": "50 г",
+      "dimensions": "50 г — 700 ₽ / 100 г — 1 200 ₽",
       "materials": [
-        "соевый воск",
-        "хлопковый фитиль"
+        "соевый воск"
       ],
-      "burnTime": "до 20 сеансов",
+      "burnTime": "",
       "options": {
         "aroma": [
           "aroma-francuzskaya-siren",
@@ -847,10 +846,20 @@
           "aroma-goryachiy-yablochnyy-pirog",
           "aroma-sakharniy-lichi-i-zamsha"
         ],
-        "color": []
+        "color": [
+          "белый",
+          "розовый",
+          "голубой"
+        ],
+        "finish": [
+          "сердечка",
+          "облачко",
+          "мишка",
+          "кролик"
+        ]
       },
-      "image": "./assets/img/products/aromameltsy-s.png",
-      "imageAlt": "Аромамэлтсы S",
+      "image": "./assets/img/products/melts.jpg",
+      "imageAlt": "Аромамэлтсы",
       "popularity": 87,
       "featured": true,
       "reviews": [
@@ -861,9 +870,18 @@
           "text": "Очень удобный формат, аромат быстро наполняет комнату."
         }
       ],
-      "assetImage": "assets/img/products/aromameltsy-s.png",
-      "gallery": [],
-      "absoluteImage": "https://phicandles.ru/assets/img/products/aromameltsy-s.png",
+      "assetImage": "assets/img/products/melts.jpg",
+      "gallery": [
+        "assets/img/products/melts-1.jpg",
+        "assets/img/products/melts-2.jpg",
+        "assets/img/products/melts-3.jpg",
+        "assets/img/products/melts-4.jpg",
+        "assets/img/products/melts-5.jpg",
+        "assets/img/products/melts-6.jpg",
+        "assets/img/products/melts-7.jpg",
+        "assets/img/products/melts-8.jpg"
+      ],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/melts.jpg",
       "url": "https://phicandles.ru/products/aromameltsy-s/"
     },
     {
