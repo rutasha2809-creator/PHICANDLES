@@ -53,21 +53,90 @@
         </div>
       </div>
       <div class="product-content product-panel">
+        <style>
+          .phi-accordion { margin-top: 24px; border-top: 1px solid #e8e0d8; }
+          .phi-accordion__item { border-bottom: 1px solid #e8e0d8; }
+          .phi-accordion__toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 14px 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            color: inherit;
+            text-align: left;
+            text-transform: uppercase;
+          }
+          .phi-accordion__toggle:hover { opacity: 0.7; }
+          .phi-accordion__icon {
+            font-size: 1.3rem;
+            font-weight: 300;
+            line-height: 1;
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+            margin-left: 12px;
+          }
+          .phi-accordion__toggle[aria-expanded="true"] .phi-accordion__icon { transform: rotate(45deg); }
+          .phi-accordion__body {
+            padding-bottom: 16px;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: inherit;
+          }
+          .phi-accordion__body[hidden] { display: none; }
+          .phi-accordion__body .spec-grid { margin-top: 8px; }
+          .phi-accordion__body .materials-list { margin-top: 8px; }
+          .phi-accordion__body p + p { margin-top: 8px; }
+          .phi-accordion__body .muted { font-style: italic; opacity: 0.6; }
+        </style>
+
         <div class="product-collection-badge"><span class="badge badge--collection" data-product-collection-badge></span></div>
         <h1 class="product-title product-title--page" data-product-name></h1>
-        <div class="product-story-inline">
-          <h2 class="product-story-inline__title">О товаре</h2>
-          <p class="product-story-inline__text" data-product-short></p>
-          <p class="product-story-inline__text" data-product-description></p>
+
+        <div class="phi-accordion">
+          <div class="phi-accordion__item">
+            <button class="phi-accordion__toggle" aria-expanded="false" aria-controls="acc-about">
+              О товаре <span class="phi-accordion__icon">+</span>
+            </button>
+            <div class="phi-accordion__body" id="acc-about" hidden>
+              <p class="product-story-inline__text" data-product-short></p>
+              <p class="muted">Настроение, аромат и идея — всё, что важно знать перед заказом.</p>
+              <p class="product-story-inline__text" data-product-description></p>
+            </div>
+          </div>
+          <div class="phi-accordion__item">
+            <button class="phi-accordion__toggle" aria-expanded="false" aria-controls="acc-specs">
+              Характеристики <span class="phi-accordion__icon">+</span>
+            </button>
+            <div class="phi-accordion__body" id="acc-specs" hidden>
+              <div class="spec-grid" data-product-specs></div>
+              <ul class="materials-list" data-product-materials></ul>
+            </div>
+          </div>
+          <div class="phi-accordion__item">
+            <button class="phi-accordion__toggle" aria-expanded="false" aria-controls="acc-care">
+              Рекомендации по уходу <span class="phi-accordion__icon">+</span>
+            </button>
+            <div class="phi-accordion__body" id="acc-care" hidden>
+              <p>Избегайте прямого контакта с водой; очищайте поверхность сухой или слегка влажной мягкой салфеткой. Очищайте чашу от застывшего свечного воска бережно, без использования острых металлических предметов.</p>
+            </div>
+          </div>
+          <div class="phi-accordion__item">
+            <button class="phi-accordion__toggle" aria-expanded="false" aria-controls="acc-time">
+              Срок изготовления <span class="phi-accordion__icon">+</span>
+            </button>
+            <div class="phi-accordion__body" id="acc-time" hidden>
+              <p>Срок изготовления гипсовых изделий 7–9 дней. Ваши изделия заливаются в день заказа или на следующий день (в зависимости от времени заказа), проходят этап сушки 5–7 дней, далее происходит обработка грунтом и лаком. В зависимости от объема изделия и используемого материала – срок на изготовление может быть уменьшен.</p>
+            </div>
+          </div>
         </div>
-        <div class="product-story-inline" style="margin-top: 16px;">
-          <h2 class="product-story-inline__title">Рекомендации по уходу</h2>
-                              <p class="product-story-inline__text">Избегайте прямого контакта с водой; очищайте поверхность сухой или слегка влажной мягкой салфеткой. Очищайте чашу от застывшего свечного воска бережно, без использования острых металлических предметов.</p>
-        </div>
-        <div class="product-story-inline" style="margin-top: 16px;">
-          <h2 class="product-story-inline__title">Срок изготовления</h2>
-          <p class="product-story-inline__text">Срок изготовления гипсовых изделий 7–9 дней. Ваши изделия заливаются в день заказа или на следующий день (в зависимости от времени заказа), проходят этап сушки 5–7 дней, далее происходит обработка грунтом и лаком. В зависимости от объема изделия и используемого материала – срок на изготовление может быть уменьшен.</p>
-        </div>
+
         <div class="option-field" data-option-aroma-wrap>
           <span class="option-field__label" id="option-aroma-label">Аромат</span>
           <div class="option-chips-scroll" data-option-aroma-chips hidden></div>
@@ -82,15 +151,6 @@
             <select id="option-color" class="select select--premium" data-option-color aria-labelledby="option-color-label"></select>
           </div>
         </div>
-        <div class="product-specs-section" data-product-specs-section>
-          <span class="product-specs-section__label">Ключевые характеристики</span>
-          <div class="spec-grid" data-product-specs></div>
-        </div>
-        <div class="materials-block">
-          <span class="materials-block__label">Материалы</span>
-          <ul class="materials-list" data-product-materials></ul>
-        </div>
-        
         <div class="product-price-hero">
           <div class="product-price-hero__amount" data-product-price></div>
           <div class="product-price-hero__meta">
@@ -107,6 +167,25 @@
           <div class="trust-strip__item"><strong>Для подарка</strong><span>Эстетичный презентабельный вид</span></div>
           <div class="trust-strip__item"><strong>Ручная работа</strong><span>Внимание к деталям</span></div>
         </div>
+
+        <script>
+          (function () {
+            document.querySelectorAll('.phi-accordion__toggle').forEach(function (btn) {
+              btn.addEventListener('click', function () {
+                var expanded = this.getAttribute('aria-expanded') === 'true';
+                var bodyId = this.getAttribute('aria-controls');
+                var body = document.getElementById(bodyId);
+                if (expanded) {
+                  this.setAttribute('aria-expanded', 'false');
+                  body.hidden = true;
+                } else {
+                  this.setAttribute('aria-expanded', 'true');
+                  body.hidden = false;
+                }
+              });
+            });
+          })();
+        </script>
       </div>
     </section>
     </div>
