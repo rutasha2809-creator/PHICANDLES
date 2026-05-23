@@ -836,7 +836,8 @@
       "shortDescription": "",
       "dimensions": "",
       "materials": [
-        "оливковый воск"
+        "оливковый воск",
+        "соевый воск"
       ],
       "burnTime": "",
       "options": {
@@ -1005,6 +1006,7 @@
       "shortDescription": "",
       "dimensions": "6 долек",
       "materials": [
+        "оливковый воск",
         "соевый воск"
       ],
       "burnTime": "до 6 недель аромата",
