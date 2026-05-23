@@ -1,7 +1,13 @@
 @echo off
 chcp 65001 >nul
-pushd "%~dp0"
+cd /d "%~dp0"
 
+echo === Step 0: Propagate catalog to all pages ===
+python propagate.py --no-wait
+if %errorlevel% neq 0 ( echo ERROR in propagate.py && pause && exit /b 1 )
+echo Done
+
+echo.
 echo === Step 1: Remove index.lock ===
 if exist ".git\index.lock" (
     del /f ".git\index.lock"

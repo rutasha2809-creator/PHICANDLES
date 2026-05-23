@@ -1,35 +1,34 @@
 """
-1. Копирует изображения из подпапок в основную папку products.
-2. Распространяет catalog.json во все HTML-страницы сайта.
-Запустите этот файл двойным кликом перед ОБНОВИТЬ_САЙТ.bat
+1. Kopируet images from subfolders to main products folder.
+2. Propagates catalog.json into all HTML pages.
+Run before ОБНОВИТЬ_САЙТ.bat (or it runs automatically from it).
 """
 import os, re, json, sys, shutil
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 PRODUCTS_IMG = os.path.join(BASE, "assets", "img", "products")
 
-# ─── Шаг 1: копирование изображений из подпапок ───────────────────────────
+# ─── Step 1: copy images from subfolders ──────────────────────────────────
 copies = [
-    # Аромалампа Минимализм
     ("Aroma home/Aromalamp-simpl.jpg",   "aromalamp-simpl.jpg"),
     ("Aroma home/Aromalamp-simpl-1.jpg", "aromalamp-simpl-1.jpg"),
     ("Aroma home/Aromalamp-simpl-2.jpg", "aromalamp-simpl-2.jpg"),
 ]
 
-print("=== Шаг 1: копирование изображений ===")
+print("=== Step 1: copy images ===")
 for src_rel, dst_name in copies:
     src = os.path.join(PRODUCTS_IMG, src_rel)
     dst = os.path.join(PRODUCTS_IMG, dst_name)
     if not os.path.exists(src):
-        print(f"  НЕ НАЙДЕН: {src_rel}")
+        print(f"  NOT FOUND: {src_rel}")
         continue
     if os.path.exists(dst):
-        print(f"  Уже есть:  {dst_name}")
+        print(f"  Already exists: {dst_name}")
     else:
         shutil.copy2(src, dst)
-        print(f"  Скопирован: {dst_name}")
+        print(f"  Copied: {dst_name}")
 
-# ─── Шаг 2: распространение catalog.json ──────────────────────────────────
+# ─── Step 2: propagate catalog.json ───────────────────────────────────────
 catalog_path = os.path.join(BASE, "data", "catalog.json")
 
 with open(catalog_path, "rb") as f:
@@ -41,10 +40,10 @@ if not text.endswith('}'):
 
 try:
     catalog = json.loads(text)
-    print(f"\n=== Шаг 2: распространение каталога ===")
-    print(f"Каталог OK: {len(catalog.get('products', []))} товаров")
+    print(f"\n=== Step 2: propagate catalog ===")
+    print(f"Catalog OK: {len(catalog.get('products', []))} products")
 except json.JSONDecodeError as e:
-    print("ОШИБКА JSON:", e)
+    print("JSON ERROR:", e)
     sys.exit(1)
 
 catalog_json = json.dumps(catalog, ensure_ascii=False, indent=2)
@@ -78,9 +77,8 @@ for root, dirs, files in os.walk(BASE):
                 f.write(new_content)
             updated += 1
             rel = os.path.relpath(fpath, BASE)
-            print(f"  Обновлён: {rel}")
+            print(f"  Updated: {rel}")
 
-print(f"\nГотово! Обновлено {updated} страниц, пропущено {skipped}.")
-print("Теперь запустите ОБНОВИТЬ_САЙТ.bat")
+print(f"\nDone! Updated {updated} pages, skipped {skipped}.")
 if "--no-wait" not in sys.argv:
-    input("\nНажмите Enter для закрытия...")
+    input("\nPress Enter to close...")
