@@ -260,7 +260,12 @@ def main():
         fpath = os.path.join(PRODUCTS_DIR, slug, 'index.html')
         if not os.path.isfile(fpath):
             continue
-        result = convert_page(fpath)
+        try:
+            result = convert_page(fpath)
+        except Exception as e:
+            errors += 1
+            print(f'  ERROR (exception): {slug} — {e}')
+            continue
         if result == 'ok':
             converted += 1
             print(f'  Converted: {slug}')

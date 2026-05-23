@@ -4,13 +4,13 @@ cd /d "%~dp0"
 
 echo === Step 0a: Convert all product pages to accordion layout ===
 python convert_accordion.py --no-wait
-if %errorlevel% neq 0 ( echo ERROR in convert_accordion.py && pause && exit /b 1 )
+if %errorlevel% neq 0 ( echo WARNING: convert_accordion.py finished with errors, continuing... )
 echo Done
 
 echo.
 echo === Step 0b: Propagate catalog to all pages ===
 python propagate.py --no-wait
-if %errorlevel% neq 0 ( echo ERROR in propagate.py && pause && exit /b 1 )
+if %errorlevel% neq 0 ( echo WARNING: propagate.py finished with errors, continuing... )
 echo Done
 
 echo.
