@@ -14,12 +14,18 @@ if %errorlevel% neq 0 ( echo WARNING: propagate.py finished with errors, continu
 echo Done
 
 echo.
-echo === Step 1: Remove index.lock ===
+echo === Step 1: Remove git lock files ===
 if exist ".git\index.lock" (
     del /f ".git\index.lock"
-    echo Done: lock removed
+    echo Done: index.lock removed
 ) else (
-    echo OK: no lock found
+    echo OK: no index.lock found
+)
+if exist ".git\HEAD.lock" (
+    del /f ".git\HEAD.lock"
+    echo Done: HEAD.lock removed
+) else (
+    echo OK: no HEAD.lock found
 )
 
 echo.
