@@ -33,11 +33,8 @@ for src_rel, dst_name in copies:
     if not os.path.exists(src):
         print("  NOT FOUND: " + src_rel)
         continue
-    if os.path.exists(dst):
-        print("  Already exists: " + dst_name)
-    else:
-        shutil.copy2(src, dst)
-        print("  Copied: " + dst_name)
+    shutil.copy2(src, dst)
+    print("  Copied: " + dst_name)
 
 # Step 2: propagate catalog.json
 catalog_path = os.path.join(BASE, "data", "catalog.json")
