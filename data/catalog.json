@@ -932,6 +932,39 @@
       "url": "https://phicandles.ru/products/aromalampa-arka/"
     },
     {
+      "id": "prod-aromalampa-minimalizm",
+      "slug": "aromalampa-minimalizm",
+      "name": "Аромалампа Минимализм",
+      "categoryId": "aroma",
+      "price": 1200,
+      "salePrice": null,
+      "description": "Лаконичная аромалампа в стиле минимализма идеально подходит для использования с восковыми мэлтсами и эфирными маслами. Продуманная конструкция обеспечивает равномерное плавление воска и максимальную отдачу аромата, гармонично дополняя любой современный интерьер.\nМеталлическая емкость легко вынимается, что делает очистку от застывшего воска или остатков масла быстрой и удобной. Широкое открытое окно позволяет безопасно зажигать и легко заменять свечу. В комплекте идет одна стартовая чайная свеча — лампа готова к использованию сразу после распаковки.",
+      "shortDescription": "",
+      "dimensions": "Высота: 10 см",
+      "materials": [
+        "гипс"
+      ],
+      "burnTime": "",
+      "options": {
+        "aroma": [],
+        "color": [
+          "белый",
+          "серый",
+          "бежевый",
+          "пудровый"
+        ]
+      },
+      "image": "./assets/img/products/aromalampa-minimalizm.jpg",
+      "imageAlt": "Аромалампа Минимализм",
+      "popularity": 90,
+      "featured": true,
+      "reviews": [],
+      "assetImage": "assets/img/products/aromalampa-minimalizm.jpg",
+      "gallery": [],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/aromalampa-minimalizm.jpg",
+      "url": "https://phicandles.ru/products/aromalampa-minimalizm/"
+    },
+    {
       "id": "prod-sachet",
       "slug": "aromaticheskoe-sashe",
       "name": "Ароматические саше",
