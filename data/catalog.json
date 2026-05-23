@@ -954,14 +954,17 @@
           "пудровый"
         ]
       },
-      "image": "./assets/img/products/aromalampa-minimalizm.jpg",
+      "image": "./assets/img/products/aromalamp-simpl.jpg",
       "imageAlt": "Аромалампа Минимализм",
       "popularity": 90,
       "featured": true,
       "reviews": [],
-      "assetImage": "assets/img/products/aromalampa-minimalizm.jpg",
-      "gallery": [],
-      "absoluteImage": "https://phicandles.ru/assets/img/products/aromalampa-minimalizm.jpg",
+      "assetImage": "assets/img/products/aromalamp-simpl.jpg",
+      "gallery": [
+        "assets/img/products/aromalamp-simpl-1.jpg",
+        "assets/img/products/aromalamp-simpl-2.jpg"
+      ],
+      "absoluteImage": "https://phicandles.ru/assets/img/products/aromalamp-simpl.jpg",
       "url": "https://phicandles.ru/products/aromalampa-minimalizm/"
     },
     {

@@ -1,14 +1,37 @@
 """
-Propagates catalog.json into all HTML pages.
-Run this script from the project root, or just double-click it.
+1. Копирует изображения из подпапок в основную папку products.
+2. Распространяет catalog.json во все HTML-страницы сайта.
+Запустите этот файл двойным кликом перед ОБНОВИТЬ_САЙТ.bat
 """
-import os, re, json, sys
+import os, re, json, sys, shutil
 
-# Resolve the script's own directory so it works from anywhere
 BASE = os.path.dirname(os.path.abspath(__file__))
+PRODUCTS_IMG = os.path.join(BASE, "assets", "img", "products")
+
+# ─── Шаг 1: копирование изображений из подпапок ───────────────────────────
+copies = [
+    # Аромалампа Минимализм
+    ("Aroma home/Aromalamp-simpl.jpg",   "aromalamp-simpl.jpg"),
+    ("Aroma home/Aromalamp-simpl-1.jpg", "aromalamp-simpl-1.jpg"),
+    ("Aroma home/Aromalamp-simpl-2.jpg", "aromalamp-simpl-2.jpg"),
+]
+
+print("=== Шаг 1: копирование изображений ===")
+for src_rel, dst_name in copies:
+    src = os.path.join(PRODUCTS_IMG, src_rel)
+    dst = os.path.join(PRODUCTS_IMG, dst_name)
+    if not os.path.exists(src):
+        print(f"  НЕ НАЙДЕН: {src_rel}")
+        continue
+    if os.path.exists(dst):
+        print(f"  Уже есть:  {dst_name}")
+    else:
+        shutil.copy2(src, dst)
+        print(f"  Скопирован: {dst_name}")
+
+# ─── Шаг 2: распространение catalog.json ──────────────────────────────────
 catalog_path = os.path.join(BASE, "data", "catalog.json")
 
-# Read and validate catalog
 with open(catalog_path, "rb") as f:
     raw = f.read().rstrip(b'\x00')
 
@@ -18,9 +41,10 @@ if not text.endswith('}'):
 
 try:
     catalog = json.loads(text)
-    print(f"Catalog OK: {len(catalog.get('products', []))} products")
+    print(f"\n=== Шаг 2: распространение каталога ===")
+    print(f"Каталог OK: {len(catalog.get('products', []))} товаров")
 except json.JSONDecodeError as e:
-    print("JSON ERROR:", e)
+    print("ОШИБКА JSON:", e)
     sys.exit(1)
 
 catalog_json = json.dumps(catalog, ensure_ascii=False, indent=2)
@@ -54,7 +78,8 @@ for root, dirs, files in os.walk(BASE):
                 f.write(new_content)
             updated += 1
             rel = os.path.relpath(fpath, BASE)
-            print(f"  Updated: {rel}")
+            print(f"  Обновлён: {rel}")
 
-print(f"\nDone! Updated {updated} files, {skipped} skipped (no catalog tag).")
-input("Press Enter to close...")
+print(f"\nГотово! Обновлено {updated} страниц, пропущено {skipped}.")
+print("Теперь запустите ОБНОВИТЬ_САЙТ.bat")
+input("\nNажмите Enter для закрытия...")
