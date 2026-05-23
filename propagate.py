@@ -10,9 +10,14 @@ PRODUCTS_IMG = os.path.join(BASE, "assets", "img", "products")
 
 # ─── Step 1: copy images from subfolders ──────────────────────────────────
 copies = [
+    # Аромалампа Минимализм
     ("Aroma home/Aromalamp-simpl.jpg",   "aromalamp-simpl.jpg"),
     ("Aroma home/Aromalamp-simpl-1.jpg", "aromalamp-simpl-1.jpg"),
     ("Aroma home/Aromalamp-simpl-2.jpg", "aromalamp-simpl-2.jpg"),
+    # Ароматические саше
+    ("Aroma home/sashe.jpg",   "sashe.jpg"),
+    ("Aroma home/sashe-1.jpg", "sashe-1.jpg"),
+    ("Aroma home/sashe-2.jpg", "sashe-2.jpg"),
 ]
 
 print("=== Step 1: copy images ===")
