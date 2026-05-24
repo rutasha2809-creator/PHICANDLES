@@ -32,6 +32,12 @@ copies = [
     ("Home decor/podstavka-eggs.jpg",    "podstavka-eggs.jpg"),
     ("Home decor/podstavka-eggs-1.jpg",  "podstavka-eggs-1.jpg"),
     ("Limited edition/rose-buket.jpg",   "rose-buket.jpg"),
+    ("Seasons/paskhalnyy-krolik.jpg",    "paskhalnyy-krolik.jpg"),
+    ("Seasons/paskhalnyy-krolik-1.jpg",  "paskhalnyy-krolik-1.jpg"),
+    ("Seasons/paskhalnyy-krolik-2.jpg",  "paskhalnyy-krolik-2.jpg"),
+    ("Seasons/paskhalnyy-krolik-3.jpg",  "paskhalnyy-krolik-3.jpg"),
+    ("Seasons/paskhalnyy-krolik-4.jpg",  "paskhalnyy-krolik-4.jpg"),
+    ("Seasons/paskhalnyy-krolik-5.jpg",  "paskhalnyy-krolik-5.jpg"),
 ]
 
 print("=== Step 1: copy images ===")
