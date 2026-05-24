@@ -120,15 +120,17 @@ for root, dirs, files in os.walk(BASE):
         idx_close = content.find(CLOSE_TAG, idx_content_start)
 
         if idx_close == -1:
-            # Файл повреждён: нет закрывающего </script>.
-            # Восстанавливаем через </body>.
-            idx_body = content.find("</body>", idx_content_start)
-            if idx_body == -1:
+            # Файл повреждён: нет закрывающего </script> после каталога.
+            # Используем </footer> как границу — после него идут скрипты и </body></html>.
+            # rfind ищет ПОСЛЕДНЕЕ вхождение, что даёт реальный тег, а не случайное в JSON.
+            idx_footer = content.rfind("</footer>")
+            if idx_footer == -1 or idx_footer <= idx_open:
                 print("  CRITICAL (cannot fix): " + os.path.relpath(fpath, BASE))
                 skipped += 1
                 continue
             print("  REPAIRED: " + os.path.relpath(fpath, BASE))
-            new_content = content[:idx_content_start] + catalog_json + CLOSE_TAG + "\n" + content[idx_body:]
+            # Берём хвост от </footer> (включая скрипты и </body></html>)
+            new_content = content[:idx_content_start] + catalog_json + CLOSE_TAG + "\n" + content[idx_footer:]
             repaired += 1
         else:
             new_content = content[:idx_content_start] + catalog_json + content[idx_close:]
@@ -140,7 +142,7 @@ for root, dirs, files in os.walk(BASE):
         # Атомарная запись с гарантией сброса буфера
         safe_write(fpath, new_content)
 
-        # Верификация: читаем байты и проверяем корректность UTF-8
+        # Верификация
         try:
             with open(fpath, "rb") as f:
                 verify_raw = f.read()
