@@ -29,6 +29,8 @@ copies = [
     ("Home decor/candlehold-mini-2.jpg", "candlehold-mini-2.jpg"),
     ("Home decor/podnos-big.jpg",        "podnos-big.jpg"),
     ("Home decor/podnos-big-1.jpg",      "podnos-big-1.jpg"),
+    ("Home decor/podstavka-eggs.jpg",    "podstavka-eggs.jpg"),
+    ("Home decor/podstavka-eggs-1.jpg",  "podstavka-eggs-1.jpg"),
 ]
 
 print("=== Step 1: copy images ===")
