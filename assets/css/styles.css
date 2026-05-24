@@ -543,7 +543,7 @@ button, select, input { font: inherit; }
   margin: 0; font-size: 0.89rem; line-height: 1.65; color: var(--muted);
 }
 .product-story-inline__text {
-  margin: 0; font-size: 0.94rem; line-height: 1.78; color: var(--muted); max-width: 60ch;
+  margin: 0; font-size: 0.94rem; line-height: 1.78; color: var(--muted); max-width: 60ch; text-align: justify;
 }
 .product-price-hero {
   display: flex; align-items: center; justify-content: space-between;
