@@ -81,7 +81,8 @@ function renderSpecCards(product) {
     cards.push(`<div class="spec-card"><span class="spec-card__label">${escapeHtml(row.label)}</span><span class="spec-card__value">${escapeHtml(row.value)}</span></div>`);
   });
   if (product.burnTime) {
-    cards.push(`<div class="spec-card"><span class="spec-card__label">Горение</span><span class="spec-card__value">${escapeHtml(product.burnTime)}</span></div>`);
+    const burnLabel = product.burnTimeLabel || 'Горение';
+    cards.push(`<div class="spec-card"><span class="spec-card__label">${escapeHtml(burnLabel)}</span><span class="spec-card__value">${escapeHtml(product.burnTime)}</span></div>`);
   }
   return cards.join('');
 }
