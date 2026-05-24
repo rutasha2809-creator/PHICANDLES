@@ -86,7 +86,7 @@ for root, dirs, files in os.walk(BASE):
         if 'id="phicandles-catalog-json"' not in content:
             skipped += 1
             continue
-        new_content = cat_pattern.sub(script_tag, content)
+        new_content = cat_pattern.sub(lambda m: script_tag, content)
         if new_content != content:
             with open(fpath, "w", encoding="utf-8") as f:
                 f.write(new_content)
