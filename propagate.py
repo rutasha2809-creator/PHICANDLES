@@ -76,6 +76,19 @@ CLOSE_TAG = '</script>'
 updated = 0
 repaired = 0
 skipped = 0
+errors = 0
+
+
+def safe_write(fpath, content):
+    """Записывает файл атомарно через временный файл, гарантируя полный сброс на диск."""
+    tmp = fpath + ".tmp"
+    encoded = content.encode("utf-8")
+    with open(tmp, "wb") as f:
+        f.write(encoded)
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp, fpath)
+
 
 for root, dirs, files in os.walk(BASE):
     dirs[:] = [d for d in dirs if d not in [".git", "node_modules"]]
@@ -85,10 +98,16 @@ for root, dirs, files in os.walk(BASE):
         fpath = os.path.join(root, fname)
         content = None
         try:
-            with open(fpath, "r", encoding="utf-8") as f:
-                content = f.read()
+            with open(fpath, "rb") as f:
+                raw = f.read()
+            content = raw.decode("utf-8")
+        except UnicodeDecodeError:
+            print("  TRUNCATED (UTF-8 broken): " + os.path.relpath(fpath, BASE))
+            errors += 1
+            continue
         except Exception:
             continue
+
         if 'id="phicandles-catalog-json"' not in content:
             skipped += 1
             continue
@@ -102,7 +121,7 @@ for root, dirs, files in os.walk(BASE):
 
         if idx_close == -1:
             # Файл повреждён: нет закрывающего </script>.
-            # Восстанавливаем: вставляем каталог + закрывающий тег + хвост от </body>.
+            # Восстанавливаем через </body>.
             idx_body = content.find("</body>", idx_content_start)
             if idx_body == -1:
                 print("  CRITICAL (cannot fix): " + os.path.relpath(fpath, BASE))
@@ -118,19 +137,29 @@ for root, dirs, files in os.walk(BASE):
             skipped += 1
             continue
 
-        with open(fpath, "w", encoding="utf-8") as f:
-            f.write(new_content)
+        # Атомарная запись с гарантией сброса буфера
+        safe_write(fpath, new_content)
 
-        with open(fpath, "r", encoding="utf-8") as f:
-            verify = f.read()
+        # Верификация: читаем байты и проверяем корректность UTF-8
+        try:
+            with open(fpath, "rb") as f:
+                verify_raw = f.read()
+            verify = verify_raw.decode("utf-8")
+        except UnicodeDecodeError:
+            print("  ERROR: file truncated after write: " + os.path.relpath(fpath, BASE))
+            errors += 1
+            continue
+
         if not verify.rstrip().endswith("</html>"):
-            print("  WARNING: file may be truncated: " + os.path.relpath(fpath, BASE))
+            print("  WARNING: missing </html>: " + os.path.relpath(fpath, BASE))
 
         updated += 1
 
 suffix = ""
 if repaired:
-    suffix = ", repaired " + str(repaired)
+    suffix += ", repaired " + str(repaired)
+if errors:
+    suffix += ", ERRORS " + str(errors)
 print("\nDone! Updated " + str(updated) + " pages" + suffix + ", skipped " + str(skipped) + ".")
 
 if "--no-wait" not in sys.argv:
