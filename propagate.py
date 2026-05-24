@@ -88,8 +88,15 @@ for root, dirs, files in os.walk(BASE):
             continue
         new_content = cat_pattern.sub(lambda m: script_tag, content)
         if new_content != content:
-            with open(fpath, "w", encoding="utf-8") as f:
-                f.write(new_content)
+            raw_out = new_content.encode("utf-8")
+            with open(fpath, "wb") as f:
+                f.write(raw_out)
+            # Защита от нулевых байт, которые добавляет Windows-файловая система
+            with open(fpath, "rb") as f:
+                written = f.read()
+            if b"\x00" in written:
+                with open(fpath, "wb") as f:
+                    f.write(written.replace(b"\x00", b""))
             updated += 1
             print("  Updated: " + os.path.relpath(fpath, BASE))
 
