@@ -3,7 +3,7 @@
 2. Propagates catalog.json into all HTML pages.
 Runs automatically from ОБНОВИТЬ_САЙТ.bat
 """
-import os, re, json, sys, shutil
+import os, json, sys, shutil
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 PRODUCTS_IMG = os.path.join(BASE, "assets", "img", "products")
@@ -42,8 +42,8 @@ copies = [
     ("Home decor/bubble-1.jpg",          "bubble-1.jpg"),
     ("Home decor/bubble-2.jpg",          "bubble-2.jpg"),
     ("Gifts/melts.jpg",                  "gift-melts.jpg"),
-    ("Gifts/melts-1.jpg",               "gift-melts-1.jpg"),
-    ("Gifts/melts-2.jpg",               "gift-melts-2.jpg"),
+    ("Gifts/melts-1.jpg",                "gift-melts-1.jpg"),
+    ("Gifts/melts-2.jpg",                "gift-melts-2.jpg"),
 ]
 
 print("=== Step 1: copy images ===")
@@ -63,9 +63,8 @@ with open(catalog_path, "r", encoding="utf-8") as f:
     catalog_json = f.read()
 
 try:
-    json.loads(catalog_json)
-    print("\n=== Step 2: propagate catalog ===")
     catalog_obj = json.loads(catalog_json)
+    print("\n=== Step 2: propagate catalog ===")
     print("Catalog OK: " + str(len(catalog_obj.get("products", []))) + " products")
 except json.JSONDecodeError as e:
     print("JSON ERROR: " + str(e))
@@ -75,6 +74,7 @@ OPEN_TAG = '<script id="phicandles-catalog-json" type="application/json">'
 CLOSE_TAG = '</script>'
 
 updated = 0
+repaired = 0
 skipped = 0
 
 for root, dirs, files in os.walk(BASE):
@@ -83,6 +83,7 @@ for root, dirs, files in os.walk(BASE):
         if fname != "index.html":
             continue
         fpath = os.path.join(root, fname)
+        content = None
         try:
             with open(fpath, "r", encoding="utf-8") as f:
                 content = f.read()
@@ -92,19 +93,26 @@ for root, dirs, files in os.walk(BASE):
             skipped += 1
             continue
 
-        # Находим границы тега и заменяем содержимое строковым поиском
-        # (избегаем regex-replacement, чтобы не интерпретировать \n как спецсимволы)
         idx_open = content.find(OPEN_TAG)
         if idx_open == -1:
             skipped += 1
             continue
         idx_content_start = idx_open + len(OPEN_TAG)
         idx_close = content.find(CLOSE_TAG, idx_content_start)
-        if idx_close == -1:
-            skipped += 1
-            continue
 
-        new_content = content[:idx_content_start] + catalog_json + content[idx_close:]
+        if idx_close == -1:
+            # Файл повреждён: нет закрывающего </script>.
+            # Восстанавливаем: вставляем каталог + закрывающий тег + хвост от </body>.
+            idx_body = content.find("</body>", idx_content_start)
+            if idx_body == -1:
+                print("  CRITICAL (cannot fix): " + os.path.relpath(fpath, BASE))
+                skipped += 1
+                continue
+            print("  REPAIRED: " + os.path.relpath(fpath, BASE))
+            new_content = content[:idx_content_start] + catalog_json + CLOSE_TAG + "\n" + content[idx_body:]
+            repaired += 1
+        else:
+            new_content = content[:idx_content_start] + catalog_json + content[idx_close:]
 
         if new_content == content:
             skipped += 1
@@ -113,7 +121,6 @@ for root, dirs, files in os.walk(BASE):
         with open(fpath, "w", encoding="utf-8") as f:
             f.write(new_content)
 
-        # Проверяем что файл записан корректно
         with open(fpath, "r", encoding="utf-8") as f:
             verify = f.read()
         if not verify.rstrip().endswith("</html>"):
@@ -121,7 +128,10 @@ for root, dirs, files in os.walk(BASE):
 
         updated += 1
 
-print("\nDone! Updated " + str(updated) + " pages, skipped " + str(skipped) + ".")
+suffix = ""
+if repaired:
+    suffix = ", repaired " + str(repaired)
+print("\nDone! Updated " + str(updated) + " pages" + suffix + ", skipped " + str(skipped) + ".")
 
 if "--no-wait" not in sys.argv:
     input("\nPress Enter to close...")
