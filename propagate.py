@@ -53,30 +53,20 @@ for src_rel, dst_name in copies:
 # Step 2: propagate catalog.json
 catalog_path = os.path.join(BASE, "data", "catalog.json")
 
-with open(catalog_path, "rb") as f:
-    raw = f.read().rstrip(b"\x00")
-
-text = raw.decode("utf-8").rstrip()
-if not text.endswith("}"):
-    text = text + "\n}"
+with open(catalog_path, "r", encoding="utf-8") as f:
+    catalog_json = f.read()
 
 try:
-    catalog = json.loads(text)
+    json.loads(catalog_json)
     print("\n=== Step 2: propagate catalog ===")
-    print("Catalog OK: " + str(len(catalog.get("products", []))) + " products")
+    catalog_obj = json.loads(catalog_json)
+    print("Catalog OK: " + str(len(catalog_obj.get("products", []))) + " products")
 except json.JSONDecodeError as e:
     print("JSON ERROR: " + str(e))
     sys.exit(1)
 
-catalog_json = json.dumps(catalog, ensure_ascii=False, indent=2)
-opening = '<script id="phicandles-catalog-json" type="application/json">'
-closing = '</script>'
-script_tag = opening + catalog_json + closing
-
-cat_pattern = re.compile(
-    r'<script\s+id="phicandles-catalog-json"\s+type="application/json">.*?</script>',
-    re.DOTALL,
-)
+OPEN_TAG = '<script id="phicandles-catalog-json" type="application/json">'
+CLOSE_TAG = '</script>'
 
 updated = 0
 skipped = 0
@@ -95,19 +85,35 @@ for root, dirs, files in os.walk(BASE):
         if 'id="phicandles-catalog-json"' not in content:
             skipped += 1
             continue
-        new_content = cat_pattern.sub(lambda m: script_tag, content)
-        if new_content != content:
-            raw_out = new_content.encode("utf-8")
-            with open(fpath, "wb") as f:
-                f.write(raw_out)
-            # Защита от нулевых байт, которые добавляет Windows-файловая система
-            with open(fpath, "rb") as f:
-                written = f.read()
-            if b"\x00" in written:
-                with open(fpath, "wb") as f:
-                    f.write(written.replace(b"\x00", b""))
-            updated += 1
-            print("  Updated: " + os.path.relpath(fpath, BASE))
+
+        # Находим границы тега и заменяем содержимое строковым поиском
+        # (избегаем regex-replacement, чтобы не интерпретировать \n как спецсимволы)
+        idx_open = content.find(OPEN_TAG)
+        if idx_open == -1:
+            skipped += 1
+            continue
+        idx_content_start = idx_open + len(OPEN_TAG)
+        idx_close = content.find(CLOSE_TAG, idx_content_start)
+        if idx_close == -1:
+            skipped += 1
+            continue
+
+        new_content = content[:idx_content_start] + catalog_json + content[idx_close:]
+
+        if new_content == content:
+            skipped += 1
+            continue
+
+        with open(fpath, "w", encoding="utf-8") as f:
+            f.write(new_content)
+
+        # Проверяем что файл записан корректно
+        with open(fpath, "r", encoding="utf-8") as f:
+            verify = f.read()
+        if not verify.rstrip().endswith("</html>"):
+            print("  WARNING: file may be truncated: " + os.path.relpath(fpath, BASE))
+
+        updated += 1
 
 print("\nDone! Updated " + str(updated) + " pages, skipped " + str(skipped) + ".")
 
