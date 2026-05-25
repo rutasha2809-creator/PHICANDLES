@@ -150,7 +150,12 @@
       cursor: pointer; transition: background 0.2s;
     }
     .btn-checkout:hover { background: #333; border-color: #333; }
-    .btn-checkout:disabled { background: #ccc; border-color: #ccc; cursor: not-allowed; }
+    .btn-checkout:disabled { background: #bbb; border-color: #bbb; opacity: 0.45; cursor: not-allowed; }
+    .consent-wrap { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; }
+    .consent-wrap input[type="checkbox"] { flex-shrink: 0; margin-top: 3px; width: 16px; height: 16px; accent-color: var(--text); cursor: pointer; }
+    .consent-wrap label { font-size: 0.82rem; line-height: 1.55; color: var(--muted); cursor: pointer; }
+    .consent-wrap a { color: inherit; text-decoration: underline; }
+    .consent-wrap a:hover { opacity: 0.7; }
 
     /* Экран успеха */
     .order-success { display: none; text-align: center; padding: 16px 0; }
@@ -273,6 +278,10 @@
                   <textarea class="order-form__textarea" id="f-comment" placeholder="Пожелания, уточнения..."></textarea>
                 </div>
                 <p id="form-error" style="font-size:0.83rem;color:#8b2e2e;margin:0;min-height:1.2em;"></p>
+                <div class="consent-wrap">
+                  <input type="checkbox" id="consent-cb" class="consent-cb">
+                  <label for="consent-cb">Нажимая кнопку, я даю согласие на обработку моих персональных данных в соответствии с <a href="https://phicandles.ru/soglasie/" target="_blank">Согласием</a> и принимаю условия <a href="https://phicandles.ru/privacy/" target="_blank">Политики конфиденциальности</a>.</label>
+                </div>
                 <button class="btn-checkout" type="button" id="btn-submit">Оформить заказ</button>
               </div>
             </div>
@@ -565,6 +574,17 @@
     updateCartCount();
     renderCart();
   });
-  </script>
+  
+  // Consent checkbox — блокирует кнопку до принятия
+  (function () {
+    var cb  = document.getElementById('consent-cb');
+    var btn = document.getElementById('btn-submit');
+    if (!cb || !btn) return;
+    btn.disabled = true;
+    cb.addEventListener('change', function () {
+      btn.disabled = !this.checked;
+    });
+  })();
+</script>
 </body>
 </html>
