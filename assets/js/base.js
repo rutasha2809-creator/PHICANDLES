@@ -406,11 +406,13 @@ function ensureClientId() {
 }
 
 function initCookieBanner() {
-  const SESSION_KEY = 'phicandles-cookie-seen';
-  if (sessionStorage.getItem(SESSION_KEY)) return;
-
-  const root = document.body.dataset.rootPath || './';
-  const privacyHref = root + 'privacy/index.html';
+  // Используем localStorage — согласие сохраняется навсегда, а не только на сессию.
+  const CONSENT_KEY = 'phicandles-cookie-consent';
+  if (localStorage.getItem(CONSENT_KEY)) {
+    // Согласие уже было дано ранее — сразу инициализируем clientId.
+    ensureClientId();
+    return;
+  }
 
   const banner = document.createElement('div');
   banner.id = 'cookie-banner';
@@ -418,9 +420,8 @@ function initCookieBanner() {
   banner.setAttribute('aria-label', 'Уведомление о cookie');
   banner.innerHTML = `
     <p class="cookie-banner__text">
-      Мы используем cookie-файлы. Продолжая пользоваться сайтом, вы соглашаетесь
-      с использованием файлов cookie.
-      <a href="${privacyHref}" class="cookie-banner__link">Политика конфиденциальности</a>
+      Мы используем cookie-файлы для корректной работы сайта и корзины.
+      <a href="https://phicandles.ru/privacy/" class="cookie-banner__link" target="_blank">Политика конфиденциальности</a>
     </p>
     <button class="cookie-banner__btn" type="button" aria-label="Принять и закрыть">Принять</button>
   `;
@@ -480,10 +481,13 @@ function initCookieBanner() {
 
   document.head.appendChild(style);
   document.body.appendChild(banner);
-  sessionStorage.setItem(SESSION_KEY, '1');
+  // Согласие НЕ записываем здесь — только после явного нажатия кнопки.
 
   banner.querySelector('.cookie-banner__btn').addEventListener('click', () => {
-    sessionStorage.setItem(SESSION_KEY, '1');
+    // Фиксируем согласие в localStorage с датой принятия.
+    localStorage.setItem(CONSENT_KEY, new Date().toISOString());
+    // Только теперь устанавливаем clientId cookie.
+    ensureClientId();
     banner.style.animation = 'none';
     banner.style.transition = 'opacity 0.25s, transform 0.25s';
     banner.style.opacity = '0';
@@ -496,6 +500,6 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartCount();
   bindGlobalCartLink();
   bindCardGalleries();
-  ensureClientId();
+  // ensureClientId вызывается внутри initCookieBanner — после получения согласия.
   initCookieBanner();
 });
