@@ -1098,9 +1098,6 @@ main.section[data-product-root] { padding-top: 22px; }
   .cart-item { grid-template-columns: 1fr; }
   .section { padding: 14px 0 30px; }
 
-  /* Category grid: 1 column on phones */
-  .category-grid { grid-template-columns: 1fr; }
-
   /* Footer: compact */
   .footer-grid {
     grid-template-columns: 1fr;
@@ -1322,6 +1319,11 @@ main.section[data-product-root] { padding-top: 22px; }
   .category-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* Категории: 1 колонка на телефонах (после 768px-блока, чтобы перебить его) */
+@media (max-width: 680px) {
+  .category-grid { grid-template-columns: 1fr; }
 }
 
 /* ——— ОТЗЫВЫ И РЕЙТИНГИ УДАЛЕНЫ ——— */
