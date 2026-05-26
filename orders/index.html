@@ -193,6 +193,13 @@
     document.getElementById('search-input').addEventListener('keydown', e => {
       if (e.key === 'Enter') searchOrders();
     });
+
+    // Автозаполнение email из предыдущего заказа
+    const savedEmail = localStorage.getItem('phi_customer_email');
+    if (savedEmail) {
+      document.getElementById('search-input').value = savedEmail;
+      searchOrders();
+    }
   });
   </script>
 </body>

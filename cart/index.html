@@ -497,6 +497,7 @@
       if (res.ok && json.ok) {
         const orderNumber = json.orderNumber || '—';
         orderPlaced = true; // блокируем скрытие sidebar
+        localStorage.setItem('phi_customer_email', email);
         saveCart([]);
         document.getElementById('order-success-number').textContent = `Номер заказа: ${orderNumber}`;
         document.getElementById('order-form-wrap').style.display = 'none';
