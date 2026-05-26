@@ -469,16 +469,13 @@ async function initProductPage() {
 
   let related;
   if (trays.length) {
-    // Берём до 4 похожих свечей из своей категории + все подносы отдельно (гарантируем их присутствие)
-    const candles = basePool.sort((a, b) => (b.popularity || 0) - (a.popularity || 0)).slice(0, 4);
-    const traysSorted = trays.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
-    // Объединяем: сначала свечи, потом подносы; убираем дубли
-    const seenIds = new Set();
-    related = [...candles, ...traysSorted].filter((item) => {
-      if (seenIds.has(item.id)) return false;
-      seenIds.add(item.id);
-      return true;
-    });
+    // Объединяем свечи из своей категории + подносы, перемешиваем, берём 5
+    const pool = [...basePool, ...trays];
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+    related = pool.slice(0, 5);
   } else {
     // Стандартное поведение для остальных категорий
     related = basePool.sort((a, b) => (b.popularity || 0) - (a.popularity || 0)).slice(0, 4);
