@@ -172,23 +172,14 @@
     }
     .qr-placeholder img { width: 100%; height: 100%; object-fit: contain; }
 
-    /* СДЭК виджет */
-    .cdek-widget-wrap { display: none; margin-top: 8px; }
-    .cdek-widget-wrap.visible { display: block; }
-    #cdek-map { width: 100%; height: 500px; border: 1px solid var(--line); }
-    .cdek-delivery-info { font-size: 0.82rem; color: var(--muted); margin-top: 6px; min-height: 1.4em; }
-    .cdek-delivery-info.selected { color: #2d7a3a; font-weight: 500; }
-
     @media (max-width: 860px) {
       .cart-layout { grid-template-columns: 1fr; }
-      #cdek-map { height: 380px; }
     }
     @media (max-width: 560px) {
       .cart-item { grid-template-columns: 72px 1fr; }
       .cart-item__actions { grid-column: 1 / -1; flex-direction: row; justify-content: space-between; align-items: center; }
     }
   </style>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3/dist/cdek-widget.css">
 </head>
 <body data-catalog-path="../data/catalog.json" data-root-path="../">
   <header class="site-header">
@@ -340,69 +331,6 @@
   <script src="../assets/js/base.js"></script>
   <script>
 
-  // ——— СДЭК ВИДЖЕТ ———
-  let cdekWidget = null;
-  let cdekSelected = null; // выбранный ПВЗ
-
-  function initCdekWidget() {
-    if (cdekWidget) return; // уже инициализирован
-    const cart = getCart();
-    const qty  = cart.reduce((s, i) => s + i.quantity, 0) || 1;
-
-    cdekWidget = new window.CDEKWidget({
-      from: { country_code: 'RU', city: 'Москва' },
-      root: 'cdek-map',
-      apiKey: '64c037dc-dd84-4db7-b2a8-9f2b1135d9f2',
-      servicePath: 'https://api.phicandles.ru/cdek-service.php',
-      defaultLocation: 'Москва',
-      lang: 'rus',
-      currency: 'RUB',
-      goods: [{ weight: 0.5 * qty, length: 20, width: 15, height: 15 }],
-      callbacks: {
-        onReady: () => {},
-        onCalculate: () => {},
-        onChoose: function(type, tariff, address) {
-          cdekSelected = { type, tariff, address };
-          const pvzName   = address.address || address.name || '';
-          const city      = address.city    || '';
-          const cost      = tariff && tariff.delivery_sum ? tariff.delivery_sum + ' ₽' : '';
-          const period    = tariff && tariff.period_max   ? tariff.period_max + ' дн.' : '';
-
-          const fullAddr  = [city, pvzName].filter(Boolean).join(', ');
-          document.getElementById('f-address').value = fullAddr;
-
-          const info = document.getElementById('cdek-info');
-          info.textContent = '✓ ' + fullAddr + (cost ? ' · Доставка: ' + cost : '') + (period ? ' · Срок: ' + period : '');
-          info.className   = 'cdek-delivery-info selected';
-        }
-      }
-    });
-  }
-
-  function toggleCdekWidget(delivery) {
-    const wrap = document.getElementById('cdek-widget-wrap');
-    const addrField = document.getElementById('f-address');
-    if (delivery === 'СДЭК') {
-      wrap.classList.add('visible');
-      addrField.placeholder = 'Заполняется автоматически после выбора ПВЗ';
-      addrField.readOnly = true;
-      // Загружаем виджет только когда он нужен
-      if (window.CDEKWidget) {
-        initCdekWidget();
-      } else {
-        const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/@cdek-it/widget@3';
-        script.onload = initCdekWidget;
-        document.head.appendChild(script);
-      }
-    } else {
-      wrap.classList.remove('visible');
-      addrField.placeholder = 'Город, улица, дом';
-      addrField.readOnly = false;
-      if (delivery !== 'СДЭК') cdekSelected = null;
-    }
-  }
-
   // ——— ПРОМОКОДЫ ———
   // Добавляйте новые коды здесь: { код: процент_скидки }
   const PROMO_CODES = {
@@ -419,6 +347,7 @@
 
   let activePromo = null; // { code, discount }
   let orderPlaced = false; // флаг: заказ оформлен, не скрывать sidebar
+  let deliveryCost = null; // null = неизвестна, число = фиксированная цена
 
   function escKey(key) { return key.replace(/"/g, '&quot;'); }
 
@@ -472,11 +401,19 @@
     // Итог
     const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
     const discount = activePromo ? Math.round(subtotal * activePromo.discount / 100) : 0;
-    const total = subtotal - discount;
+    const goodsTotal = subtotal - discount;
+    const total = goodsTotal + (typeof deliveryCost === 'number' ? deliveryCost : 0);
+
+    const deliveryRow = deliveryCost === null
+      ? `<div class="cart-totals__row"><span>Доставка</span><span style="color:var(--muted);font-size:0.82rem;">по тарифам оператора</span></div>`
+      : deliveryCost === 0
+      ? ''
+      : `<div class="cart-totals__row"><span>Доставка</span><span>${formatPrice(deliveryCost)}</span></div>`;
 
     totals.innerHTML = `
       <div class="cart-totals__row"><span>Товары (${cart.reduce((s,i)=>s+i.quantity,0)} шт.)</span><span>${formatPrice(subtotal)}</span></div>
       ${discount ? `<div class="cart-totals__row cart-totals__row--discount"><span>Скидка ${activePromo.code} (${activePromo.discount}%)</span><span>−${formatPrice(discount)}</span></div>` : ''}
+      ${deliveryRow}
       <div class="cart-totals__row cart-totals__row--total"><span>Итого</span><span>${formatPrice(total)}</span></div>`;
   }
 
@@ -540,7 +477,7 @@
     const cart = getCart();
     const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
     const discount = activePromo ? Math.round(subtotal * activePromo.discount / 100) : 0;
-    const total = subtotal - discount;
+    const total = subtotal - discount + (typeof deliveryCost === 'number' ? deliveryCost : 0);
 
     const itemsText = cart.map(i => {
       const opts = i.selectedOptions && Object.values(i.selectedOptions).filter(Boolean).length
@@ -549,12 +486,16 @@
       return `• ${i.name}${opts} × ${i.quantity} = ${new Intl.NumberFormat('ru-RU').format(i.price * i.quantity)} ₽`;
     }).join('\n');
 
+    const deliveryLine = typeof deliveryCost === 'number' && deliveryCost > 0
+      ? `\n• Доставка (${delivery}) = ${new Intl.NumberFormat('ru-RU').format(deliveryCost)} ₽`
+      : '';
+
     const body = {
       name, phone, email,
       address: `${delivery}${address ? ': ' + address : ''}`,
       comment: `${comment || '—'}${activePromo ? '\nПромокод: ' + activePromo.code + ' (−' + activePromo.discount + '%)' : ''}`,
       total: `${new Intl.NumberFormat('ru-RU').format(total)} ₽`,
-      items: itemsText,
+      items: itemsText + deliveryLine,
     };
 
     const btn = document.getElementById('btn-submit');
@@ -598,7 +539,7 @@
     updateCartCount();
     renderCart();
 
-    // Подсказки по способу доставки
+    // Подсказки и стоимость по способу доставки
     const deliveryHints = {
       'Курьер':          'Курьерская доставка по Москве — 200 ₽. Укажите адрес доставки.',
       'СДЭК':            'Доставка по тарифам СДЭК. Укажите удобный пункт выдачи в поле адреса.',
@@ -607,9 +548,19 @@
       'Почта России':    'Доставка по тарифам Почты России. Укажите адрес доставки.',
       'Самовывоз':       'Детали согласовываем при оформлении заказа.',
     };
+    const deliveryCosts = {
+      'Курьер':          200,   // фиксированная цена
+      'СДЭК':            null,  // по тарифам
+      'Яндекс Доставка': null,
+      'Озон Доставка':   null,
+      'Почта России':    null,
+      'Самовывоз':       0,     // бесплатно, строка не показывается
+    };
     document.getElementById('f-delivery').addEventListener('change', function() {
       const hint = document.getElementById('delivery-hint');
       hint.textContent = deliveryHints[this.value] || '';
+      deliveryCost = this.value ? (deliveryCosts[this.value] ?? null) : 0;
+      renderCart(); // пересчитать итоги
     });
   });
   
