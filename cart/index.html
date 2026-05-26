@@ -368,8 +368,8 @@
     'GIFT20':   20,
   };
 
-  // ——— FORMSPREE — замените YOUR_FORM_ID на ваш ID с formspree.io ———
-  const FORMSPREE_URL = 'https://formspree.io/f/maqvkvnk';
+  // ——— Бэкенд PHICANDLES на api.phicandles.ru ———
+  const FORMSPREE_URL = 'https://api.phicandles.ru/send-order.php';
 
   // ——— ЛОГИКА КОРЗИНЫ ———
   // getCart / saveCart / STORAGE_KEY определены в base.js
@@ -505,14 +505,11 @@
     }).join('\n');
 
     const body = {
-      name, phone, email, delivery,
-      address: address || '—',
-      comment: comment || '—',
-      promo: activePromo ? `${activePromo.code} (−${activePromo.discount}%)` : '—',
+      name, phone, email,
+      address: `${delivery}${address ? ': ' + address : ''}`,
+      comment: `${comment || '—'}${activePromo ? '\nПромокод: ' + activePromo.code + ' (−' + activePromo.discount + '%)' : ''}`,
       total: `${new Intl.NumberFormat('ru-RU').format(total)} ₽`,
       items: itemsText,
-      _subject: `Новый заказ PHICANDLES — ${name}`,
-      _replyto: email,
     };
 
     const btn = document.getElementById('btn-submit');
