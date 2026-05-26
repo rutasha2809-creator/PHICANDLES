@@ -496,10 +496,66 @@ function initCookieBanner() {
   });
 }
 
+/* ——— МОБИЛЬНОЕ МЕНЮ ——— */
+function initMobileNav() {
+  const siteHeader  = document.querySelector('.site-header');
+  const headerInner = document.querySelector('.header-inner');
+  const actions     = document.querySelector('.header-actions');
+  if (!siteHeader || !headerInner || !actions) return;
+
+  const root = document.body.dataset.rootPath || './';
+
+  // Контейнер справа: ссылка на корзину + гамбургер
+  const mobileGroup = document.createElement('div');
+  mobileGroup.className = 'header-mobile-actions';
+
+  // Ссылка на корзину (всегда видна)
+  const cartMobile = document.createElement('a');
+  cartMobile.className = 'nav-cart-mobile';
+  cartMobile.href = root + 'cart/index.html';
+  cartMobile.innerHTML = 'Корзина&nbsp;·&nbsp;<span data-cart-count>0</span>';
+  mobileGroup.appendChild(cartMobile);
+
+  // Гамбургер
+  const burger = document.createElement('button');
+  burger.className = 'nav-burger';
+  burger.setAttribute('aria-label', 'Открыть меню');
+  burger.innerHTML =
+    '<span class="nav-burger__line"></span>' +
+    '<span class="nav-burger__line"></span>' +
+    '<span class="nav-burger__line"></span>';
+  mobileGroup.appendChild(burger);
+
+  headerInner.appendChild(mobileGroup);
+
+  // Открыть / закрыть
+  burger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var isOpen = actions.classList.toggle('nav-open');
+    burger.classList.toggle('nav-burger--open', isOpen);
+  });
+
+  // Клик вне меню — закрыть
+  document.addEventListener('click', function () {
+    actions.classList.remove('nav-open');
+    burger.classList.remove('nav-burger--open');
+  });
+  actions.addEventListener('click', function (e) { e.stopPropagation(); });
+
+  // Клик по ссылке — закрыть
+  actions.querySelectorAll('a.pill').forEach(function (link) {
+    link.addEventListener('click', function () {
+      actions.classList.remove('nav-open');
+      burger.classList.remove('nav-burger--open');
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCount();
   bindGlobalCartLink();
   bindCardGalleries();
+  initMobileNav();
   // ensureClientId вызывается внутри initCookieBanner — после получения согласия.
   initCookieBanner();
 });

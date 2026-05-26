@@ -995,8 +995,96 @@ main.section[data-product-root] { padding-top: 22px; }
   .cart-history-panel { height: auto; }
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+/* ——— HAMBURGER BUTTON ——— */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+}
+.nav-burger__line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.nav-burger--open .nav-burger__line:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger--open .nav-burger__line:nth-child(2) { opacity: 0; }
+.nav-burger--open .nav-burger__line:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav-cart-mobile { display: none; }
+
+.header-mobile-actions {
+  display: none;
+  align-items: center;
+  gap: 4px;
+}
+
 @media (max-width: 680px) {
-  .header-inner { align-items: start; flex-direction: column; gap: 12px; }
+  /* Header: row with logo left, mobile controls right */
+  .header-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    position: relative;
+  }
+
+  /* Hide desktop nav pills */
+  .header-actions {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 12px 16px;
+    gap: 4px;
+    z-index: 200;
+  }
+  .header-actions.nav-open { display: flex; }
+  .header-actions .pill {
+    display: block;
+    text-align: left;
+    padding: 10px 12px;
+    border-radius: 6px;
+  }
+  /* Hide cart pill inside dropdown (we show separate mobile cart link) */
+  .header-actions .pill[href*="cart"] { display: none; }
+
+  /* Show hamburger & mobile cart */
+  .header-mobile-actions { display: flex; }
+  .nav-burger { display: flex; }
+  .nav-cart-mobile {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.85rem;
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 6px 10px;
+    background: var(--card-alt);
+    border-radius: 20px;
+  }
+
+  /* Site header needs position for dropdown */
+  .site-header { position: relative; }
+
   .hero { padding: 36px 0 22px; }
   .hero-card { padding: 26px 20px; }
   .summary-card { padding: 20px; }
@@ -1009,6 +1097,21 @@ main.section[data-product-root] { padding-top: 22px; }
   .reviews-grid { grid-template-columns: 1fr; }
   .cart-item { grid-template-columns: 1fr; }
   .section { padding: 14px 0 30px; }
+
+  /* Category grid: 1 column on phones */
+  .category-grid { grid-template-columns: 1fr; }
+
+  /* Footer: compact */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .footer-grid > * {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .footer-grid > *:last-child { border-bottom: none; }
+  .footer p { margin: 4px 0 0; }
 }
 
 /* ——— HERO: текст + фото рядом ——— */
@@ -1218,7 +1321,7 @@ main.section[data-product-root] { padding-top: 22px; }
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (max-widt
+
 /* ——— ОТЗЫВЫ И РЕЙТИНГИ УДАЛЕНЫ ——— */
 [data-reviews-section], .product-reviews-aside,
 [data-product-rating-line], [data-product-reviews-link],
