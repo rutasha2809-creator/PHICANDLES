@@ -443,22 +443,38 @@ async function initProductPage() {
   });
 
 
-  // Related products: by relatedGroup within same category, or just same category
+  // Related products: same category (or relatedGroup) + подносы для forming/interier
   const allOther = catalog.products.filter(
     (item) => item.id !== product.id && item.categoryId !== 'hidden'
   );
-  let related;
-  if (product.relatedGroup) {
-    const sameGroup = allOther.filter(
-      (item) => item.categoryId === product.categoryId && item.relatedGroup === product.relatedGroup
-    );
-    related = sameGroup.sort((a, b) => b.popularity - a.popularity).slice(0, 4);
-  } else {
-    related = allOther
-      .filter((item) => item.categoryId === product.categoryId)
-      .sort((a, b) => b.popularity - a.popularity)
-      .slice(0, 4);
+
+  // Базовый пул: та же категория (или та же relatedGroup)
+  const sameCategory = allOther.filter((item) => item.categoryId === product.categoryId);
+  const basePool = product.relatedGroup
+    ? sameCategory.filter((item) => item.relatedGroup === product.relatedGroup)
+    : sameCategory;
+
+  // Подносы, которые добавляются в зависимости от категории товара
+  let trayIds = [];
+  if (product.categoryId === 'forming') {
+    // Все подносы, кроме Круглый поднос L (prod-podnos-big)
+    trayIds = ['prod-podnos-midi', 'prod-podnos-small', 'prod-podnos-oval'];
+  } else if (product.categoryId === 'interier') {
+    // Все подносы без исключений
+    trayIds = ['prod-podnos-big', 'prod-podnos-midi', 'prod-podnos-small', 'prod-podnos-oval'];
   }
+  const trays = trayIds.length
+    ? allOther.filter((item) => trayIds.includes(item.id))
+    : [];
+
+  // Объединяем, убираем дубли, сортируем по популярности, берём 4
+  const seenIds = new Set();
+  const merged = [...basePool, ...trays].filter((item) => {
+    if (seenIds.has(item.id)) return false;
+    seenIds.add(item.id);
+    return true;
+  });
+  const related = merged.sort((a, b) => (b.popularity || 0) - (a.popularity || 0)).slice(0, 4);
   document.querySelector('[data-related-grid]').innerHTML = related
     .map((item) => {
       const categoryName = categoryMap.get(item.categoryId)?.name || '';
