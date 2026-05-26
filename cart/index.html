@@ -154,19 +154,43 @@
     .promo-msg--ok { color: #2d7a3a; }
     .promo-msg--err { color: #8b2e2e; }
 
+    /* Вкладки оплаты */
+    .pay-tabs {
+      display: flex; gap: 0; margin-top: 18px;
+      border: 1px solid var(--line);
+    }
+    .pay-tab {
+      flex: 1; padding: 9px 6px; border: none; background: #fff;
+      font-family: 'Jost', sans-serif; font-size: 0.78rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); cursor: pointer; transition: background 0.15s, color 0.15s;
+      border-right: 1px solid var(--line);
+    }
+    .pay-tab:last-child { border-right: none; }
+    .pay-tab.active { background: var(--text); color: #fff; }
+
     /* QR-блок */
     .qr-block {
-      display: flex; gap: 12px; align-items: flex-start;
-      background: var(--card-alt); padding: 14px;
-      margin-top: 18px;
+      display: flex; flex-direction: column; align-items: center;
+      background: var(--card-alt); padding: 16px 14px 14px;
+      text-align: center;
     }
     .qr-block__img {
-      width: 72px; height: 72px; flex-shrink: 0;
-      border: 1px solid var(--line); background: #fff; padding: 4px;
+      width: 140px; height: 140px;
+      border: 1px solid var(--line); background: #fff; padding: 6px;
+      margin-bottom: 12px;
     }
     .qr-block__img img { width: 100%; height: 100%; object-fit: contain; display: block; }
     .qr-block__text { font-size: 0.82rem; line-height: 1.65; color: var(--muted); }
-    .qr-block__text strong { color: var(--text); display: block; margin-bottom: 2px; font-size: 0.85rem; }
+
+    /* Банковский перевод */
+    .bank-block {
+      background: var(--card-alt); padding: 14px;
+      font-size: 0.82rem; line-height: 1.8; color: var(--muted);
+      display: none;
+    }
+    .bank-block p { margin: 0 0 6px; }
+    .bank-block strong { color: var(--text); font-weight: 500; }
 
     /* Согласие и кнопка */
     .consent-wrap { display: flex; gap: 10px; align-items: flex-start; margin: 16px 0 12px; }
@@ -217,7 +241,6 @@
         <a class="pill" href="../index.html">Главная</a>
         <a class="pill" href="../catalog/index.html">Каталог</a>
         <a class="pill" href="../guides/index.html">Гид по свечам</a>
-        <a class="pill" href="../orders/index.html">Мои заказы</a>
         <button class="cart-toggle" data-cart-link>Корзина · <span data-cart-count>0</span></button>
       </div>
     </div>
@@ -294,15 +317,26 @@
             </div>
             <p class="promo-msg" id="promo-msg"></p>
 
-            <!-- QR-код для оплаты -->
-            <div class="qr-block">
+            <!-- Способы оплаты -->
+            <div class="pay-tabs">
+              <button class="pay-tab active" id="tab-qr" type="button">QR-код</button>
+              <button class="pay-tab" id="tab-bank" type="button">Банковский перевод</button>
+            </div>
+
+            <div class="qr-block" id="pay-panel-qr">
               <div class="qr-block__img">
                 <img src="../assets/img/qr-payment.jpg" alt="QR-код для оплаты PHICANDLES">
               </div>
               <div class="qr-block__text">
-                <strong>Оплата по QR-коду</strong>
-                Предоплата 50% после оформления заказа. Фискальный чек об оплате придёт на ваш email.
+                Предоплата 50% после подтверждения заказа.<br>Фискальный чек об оплате придёт на ваш email.
               </div>
+            </div>
+
+            <div class="bank-block" id="pay-panel-bank">
+              <p><strong>Реквизиты для перевода</strong></p>
+              <p>Реквизиты отправим в переписке после подтверждения заказа.<br>
+              Полные реквизиты также доступны в разделе <a href="/oferta/#rekvizity" target="_blank" style="color:inherit;text-decoration:underline;">Оферта → Реквизиты</a>.</p>
+              <p style="margin-top:4px;">Предоплата 50% после подтверждения заказа.<br>Фискальный чек об оплате придёт на ваш email.</p>
             </div>
 
             <!-- Согласие и кнопка -->
@@ -343,7 +377,7 @@
       </div>
       <div>
         <strong>Покупателям</strong>
-        <p><a href="/delivery/#delivery">Доставка и оплата</a><br><a href="/delivery/#return">Возврат товара</a><br><a href="/faq/">Вопросы и ответы</a></p>
+        <p><a href="/delivery/#delivery">Доставка и оплата</a><br><a href="/delivery/#return">Возврат товара</a><br><a href="/faq/">Вопросы и ответы</a><br><a href="/orders/">Мои заказы</a></p>
       </div>
     </div>
   </footer>
@@ -580,6 +614,23 @@
       renderCart();
     });
   });
+
+  // Переключение вкладок оплаты
+  (function () {
+    const tabQr   = document.getElementById('tab-qr');
+    const tabBank = document.getElementById('tab-bank');
+    const panelQr   = document.getElementById('pay-panel-qr');
+    const panelBank = document.getElementById('pay-panel-bank');
+    if (!tabQr) return;
+    tabQr.addEventListener('click', () => {
+      tabQr.classList.add('active'); tabBank.classList.remove('active');
+      panelQr.style.display = ''; panelBank.style.display = 'none';
+    });
+    tabBank.addEventListener('click', () => {
+      tabBank.classList.add('active'); tabQr.classList.remove('active');
+      panelBank.style.display = ''; panelQr.style.display = 'none';
+    });
+  })();
 
   // Consent checkbox
   (function () {
