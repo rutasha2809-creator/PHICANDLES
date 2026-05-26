@@ -410,14 +410,13 @@ button, select, input { font: inherit; }
   margin: 0; font-size: 1rem;
   font-family: 'Jost', sans-serif;
   font-weight: 400; letter-spacing: 0.03em; line-height: 1.35;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
 }
 .card-price {
   font-family: 'Jost', sans-serif; font-size: 1rem; font-weight: 400;
   color: var(--text); letter-spacing: 0.02em;
 }
-.card-dims {
-  font-size: 0.84rem; color: var(--muted); line-height: 1.5;
-}
+.card-dims { display: none; }
 .product-card p, .muted { margin: 0; color: var(--muted); font-size: 0.87rem; }
 .product-card-body > p {
   display: -webkit-box; -webkit-box-orient: vertical;
@@ -444,7 +443,7 @@ button, select, input { font: inherit; }
 .product-price-current { color: var(--text); }
 .rating { color: var(--muted); font-size: 0.84rem; }
 .card-actions {
-  display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px;
+  display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 12px;
 }
 .card-actions > * { flex: 1; text-align: center; }
 .product-card .card-actions .button,
