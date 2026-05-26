@@ -35,6 +35,30 @@ $comment = htmlspecialchars($data['comment'] ?? '');
 $items   = htmlspecialchars($data['items']   ?? '');
 $total   = htmlspecialchars($data['total']   ?? '');
 
+// Сохранить заказ в MySQL
+function saveOrderToDB($orderNumber, $name, $phone, $email, $address, $comment, $items, $total) {
+    try {
+        $pdo = new PDO(
+            'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4',
+            DB_USER, DB_PASS,
+            [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+        );
+        $stmt = $pdo->prepare(
+            'INSERT INTO orders (order_number, name, phone, email, address, comment, items, total, status)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)'
+        );
+        $stmt->execute([$orderNumber, $name, $phone, $email, $address, $comment, $items, $total, 'Принят']);
+    } catch (Exception $e) {
+        // Логируем ошибку БД, но не прерываем отправку письма
+        error_log('DB error: ' . $e->getMessage());
+    }
+}
+
+$orderNumber = $data['orderNumber'] ?? ('ORD-' . date('Ymd') . '-' . rand(1000, 9999));
+
+// Сохраняем в базу
+saveOrderToDB($orderNumber, $name, $phone, $email, $address, $comment, $items, $total);
+
 $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
 try {
@@ -51,18 +75,19 @@ try {
     $mail->addAddress(ORDER_TO);
     $mail->addReplyTo($email, $name);
 
-    $mail->Subject = 'Новый заказ PHICANDLES — ' . $name;
+    $mail->Subject = 'Новый заказ PHICANDLES — ' . $name . ' (' . $orderNumber . ')';
     $mail->Body    = "Новый заказ с сайта phicandles.ru\n\n"
-                   . "Имя:      {$name}\n"
-                   . "Телефон:  {$phone}\n"
-                   . "Email:    {$email}\n"
-                   . "Доставка: {$address}\n"
+                   . "Номер заказа: {$orderNumber}\n\n"
+                   . "Имя:         {$name}\n"
+                   . "Телефон:     {$phone}\n"
+                   . "Email:       {$email}\n"
+                   . "Доставка:    {$address}\n"
                    . "Комментарий: {$comment}\n\n"
                    . "Состав заказа:\n{$items}\n\n"
                    . "Итого: {$total}";
 
     $mail->send();
-    echo json_encode(['ok' => true]);
+    echo json_encode(['ok' => true, 'orderNumber' => $orderNumber]);
 
 } catch (Exception $e) {
     http_response_code(500);

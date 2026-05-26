@@ -326,39 +326,7 @@
   </footer>
 
   <script src="../assets/js/base.js"></script>
-  <!-- Firebase compat SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
   <script>
-  // ——— FIREBASE ———
-  const FIREBASE_CONFIG = {
-    apiKey: "AIzaSyDx-NOofEzEr6PCk-au7QobPvZ09uQhnF8",
-    authDomain: "phicandles-eae16.firebaseapp.com",
-    projectId: "phicandles-eae16",
-    storageBucket: "phicandles-eae16.firebasestorage.app",
-    messagingSenderId: "328637287743",
-    appId: "1:328637287743:web:55490a23f6e19fae41d78a"
-  };
-  if (!firebase.apps.length) firebase.initializeApp(FIREBASE_CONFIG);
-  const db = firebase.firestore();
-
-  function generateOrderNumber() {
-    const now = new Date();
-    const date = `${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}`;
-    const rand = String(Math.floor(1000 + Math.random() * 9000));
-    return `PHI-${date}-${rand}`;
-  }
-
-  async function saveOrderToFirestore(orderData) {
-    try {
-      await db.collection('orders').add({
-        ...orderData,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-      });
-    } catch (e) {
-      console.warn('Firestore save failed:', e);
-    }
-  }
 
   // ——— ПРОМОКОДЫ ———
   // Добавляйте новые коды здесь: { код: процент_скидки }
@@ -522,29 +490,9 @@
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(body),
       });
-      if (res.ok) {
-        const orderNumber = generateOrderNumber();
-        const clientId = readCookie('phicid') || localStorage.getItem('phicandles-client-id') || 'unknown';
-
-        await saveOrderToFirestore({
-          orderNumber,
-          clientId,
-          name, phone, email, delivery,
-          address: address || '—',
-          comment: comment || '—',
-          promo: activePromo ? `${activePromo.code} (−${activePromo.discount}%)` : '—',
-          total: `${new Intl.NumberFormat('ru-RU').format(total)} ₽`,
-          totalRaw: total,
-          items: cart.map(i => ({
-            name: i.name,
-            slug: i.slug,
-            price: i.price,
-            quantity: i.quantity,
-            selectedOptions: i.selectedOptions || {}
-          })),
-          status: 'Принят'
-        });
-
+      const json = await res.json();
+      if (res.ok && json.ok) {
+        const orderNumber = json.orderNumber || '—';
         saveCart([]);
         document.getElementById('order-success-number').textContent = `Номер заказа: ${orderNumber}`;
         document.getElementById('order-form-wrap').style.display = 'none';

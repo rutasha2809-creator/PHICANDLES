@@ -93,10 +93,12 @@
   <main>
     <div class="container orders-page">
       <h1>Мои заказы</h1>
-      <p class="orders-subtitle">История заказов на этом устройстве</p>
-      <div id="orders-root">
-        <div class="orders-loading">Загружаем историю заказов…</div>
+      <p class="orders-subtitle">Введите email или телефон, указанные при оформлении заказа</p>
+      <div id="orders-search" style="display:flex;gap:10px;margin-bottom:32px;flex-wrap:wrap;">
+        <input id="search-input" type="text" placeholder="Email или телефон" style="flex:1;min-width:220px;border:1px solid var(--line);padding:11px 14px;font-family:'Jost',sans-serif;font-size:0.92rem;outline:none;">
+        <button id="search-btn" style="padding:11px 28px;background:var(--text);color:#fff;border:none;font-family:'Jost',sans-serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;">Найти</button>
       </div>
+      <div id="orders-root"></div>
     </div>
   </main>
 
@@ -118,24 +120,12 @@
   </footer>
 
   <script src="../assets/js/base.js"></script>
-  <!-- Firebase compat SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
   <script>
-  const FIREBASE_CONFIG = {
-    apiKey: "AIzaSyDx-NOofEzEr6PCk-au7QobPvZ09uQhnF8",
-    authDomain: "phicandles-eae16.firebaseapp.com",
-    projectId: "phicandles-eae16",
-    storageBucket: "phicandles-eae16.firebasestorage.app",
-    messagingSenderId: "328637287743",
-    appId: "1:328637287743:web:55490a23f6e19fae41d78a"
-  };
-  if (!firebase.apps.length) firebase.initializeApp(FIREBASE_CONFIG);
-  const db = firebase.firestore();
+  const API_URL = 'https://api.phicandles.ru/get-orders.php';
 
-  function formatDate(ts) {
-    if (!ts) return '—';
-    const d = ts.toDate ? ts.toDate() : new Date(ts);
+  function formatDate(str) {
+    if (!str) return '—';
+    const d = new Date(str);
     return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
   }
 
@@ -150,72 +140,58 @@
     const root = document.getElementById('orders-root');
     if (!orders.length) {
       root.innerHTML = `<div class="orders-empty">
-        <p>У вас пока нет заказов.<br>
+        <p>Заказы не найдены.<br>
         <a href="../catalog/index.html">Перейти в каталог</a></p>
       </div>`;
       return;
     }
 
-    root.innerHTML = `<div class="orders-list">${orders.map(o => {
-      const itemsHtml = (o.items || []).map(i => {
-        const opts = i.selectedOptions && Object.values(i.selectedOptions).filter(Boolean).length
-          ? Object.entries(i.selectedOptions).filter(([,v]) => v).map(([k,v]) => `${k}: ${v}`).join(' · ')
-          : '';
-        const lineTotal = new Intl.NumberFormat('ru-RU').format(i.price * i.quantity);
-        return `<div class="order-item">
-          <div class="order-item__name">
-            ${i.name}
-            ${opts ? `<span class="order-item__opts">${opts}</span>` : ''}
-          </div>
-          <span class="order-item__qty">× ${i.quantity}</span>
-          <span class="order-item__price">${lineTotal} ₽</span>
-        </div>`;
-      }).join('');
-
-      return `<div class="order-card">
+    root.innerHTML = `<div class="orders-list">${orders.map(o => `
+      <div class="order-card">
         <div class="order-card__header">
           <div>
-            <div class="order-card__number">${o.orderNumber || '—'}</div>
-            <div class="order-card__date">${formatDate(o.createdAt)}</div>
+            <div class="order-card__number">${o.order_number || '—'}</div>
+            <div class="order-card__date">${formatDate(o.created_at)}</div>
           </div>
           <span class="order-status ${statusClass(o.status)}">${o.status || 'Принят'}</span>
         </div>
-        <div class="order-card__items">${itemsHtml}</div>
+        <div class="order-card__items">
+          <div class="order-item" style="white-space:pre-line;font-size:0.88rem;padding:10px 0;color:var(--text);">${o.items || '—'}</div>
+        </div>
         <div class="order-card__footer">
           <span class="order-card__total">Итого: ${o.total}</span>
         </div>
-      </div>`;
-    }).join('')}</div>`;
+      </div>`).join('')}</div>`;
   }
 
-  async function loadOrders() {
-    const clientId = readCookie('phicid') || localStorage.getItem('phicandles-client-id') || '';
-    if (!clientId) {
-      renderOrders([]);
-      return;
-    }
+  async function searchOrders() {
+    const val = document.getElementById('search-input').value.trim();
+    if (!val) return;
+    const root = document.getElementById('orders-root');
+    root.innerHTML = '<div class="orders-loading">Ищем заказы…</div>';
+
+    const isEmail = val.includes('@');
+    const param = isEmail ? `email=${encodeURIComponent(val)}` : `phone=${encodeURIComponent(val)}`;
+
     try {
-      const snap = await db.collection('orders')
-        .where('clientId', '==', clientId)
-        .get();
-      const orders = snap.docs
-        .map(d => ({ id: d.id, ...d.data() }))
-        .sort((a, b) => {
-          const ta = a.createdAt?.seconds || 0;
-          const tb = b.createdAt?.seconds || 0;
-          return tb - ta;
-        });
-      renderOrders(orders);
+      const res = await fetch(`${API_URL}?${param}`);
+      const json = await res.json();
+      if (json.ok) {
+        renderOrders(json.orders);
+      } else {
+        root.innerHTML = '<div class="orders-loading">Не удалось загрузить заказы. Попробуйте позже.</div>';
+      }
     } catch (e) {
-      console.error('Orders load error:', e);
-      document.getElementById('orders-root').innerHTML =
-        '<div class="orders-loading">Не удалось загрузить заказы. Попробуйте позже.</div>';
+      root.innerHTML = '<div class="orders-loading">Не удалось загрузить заказы. Попробуйте позже.</div>';
     }
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
-    loadOrders();
+    document.getElementById('search-btn').addEventListener('click', searchOrders);
+    document.getElementById('search-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') searchOrders();
+    });
   });
   </script>
 </body>
