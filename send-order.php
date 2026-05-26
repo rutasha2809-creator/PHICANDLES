@@ -87,6 +87,43 @@ try {
                    . "Итого: {$total}";
 
     $mail->send();
+
+    // Письмо клиенту с подтверждением заказа
+    if ($email) {
+        $mailClient = new PHPMailer\PHPMailer\PHPMailer(true);
+        try {
+            $mailClient->isSMTP();
+            $mailClient->Host       = SMTP_HOST;
+            $mailClient->SMTPAuth   = true;
+            $mailClient->Username   = SMTP_USER;
+            $mailClient->Password   = SMTP_PASS;
+            $mailClient->SMTPSecure = 'ssl';
+            $mailClient->Port       = SMTP_PORT;
+            $mailClient->CharSet    = 'UTF-8';
+
+            $mailClient->setFrom(SMTP_FROM, SMTP_FROM_NAME);
+            $mailClient->addAddress($email, $name);
+
+            $mailClient->Subject = 'Заказ ' . $orderNumber . ' — PHICANDLES';
+            $mailClient->Body    = "Здравствуйте, {$name}!\n\n"
+                                 . "Ваш заказ успешно принят. Мы свяжемся с вами в ближайшее время.\n\n"
+                                 . "Номер заказа: {$orderNumber}\n\n"
+                                 . "Состав заказа:\n{$items}\n\n"
+                                 . "Итого: {$total}\n\n"
+                                 . "Доставка: {$address}\n"
+                                 . ($comment && $comment !== '—' ? "Комментарий: {$comment}\n\n" : "\n")
+                                 . "Отследить статус заказа: https://phicandles.ru/orders/\n\n"
+                                 . "По всем вопросам:\n"
+                                 . "Email: orders@phicandles.ru\n"
+                                 . "Telegram: https://t.me/phi_candles\n\n"
+                                 . "С теплом, PHICANDLES";
+
+            $mailClient->send();
+        } catch (Exception $e) {
+            // Письмо клиенту не отправилось — не критично
+        }
+    }
+
     echo json_encode(['ok' => true, 'orderNumber' => $orderNumber]);
 
 } catch (Exception $e) {

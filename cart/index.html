@@ -343,6 +343,7 @@
   // getCart / saveCart / STORAGE_KEY определены в base.js
 
   let activePromo = null; // { code, discount }
+  let orderPlaced = false; // флаг: заказ оформлен, не скрывать sidebar
 
   function escKey(key) { return key.replace(/"/g, '&quot;'); }
 
@@ -357,6 +358,7 @@
     const totals = document.getElementById('cart-totals');
 
     if (!cart.length) {
+      if (orderPlaced) return; // заказ оформлен — не трогаем экран успеха
       wrap.innerHTML = `
         <div class="cart-empty">
           <h2>Корзина пуста</h2>
@@ -493,6 +495,7 @@
       const json = await res.json();
       if (res.ok && json.ok) {
         const orderNumber = json.orderNumber || '—';
+        orderPlaced = true; // блокируем скрытие sidebar
         saveCart([]);
         document.getElementById('order-success-number').textContent = `Номер заказа: ${orderNumber}`;
         document.getElementById('order-form-wrap').style.display = 'none';
