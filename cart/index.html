@@ -278,6 +278,7 @@
                     </select>
                     <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%) rotate(45deg);width:7px;height:7px;border-right:1px solid var(--muted);border-bottom:1px solid var(--muted);pointer-events:none;"></span>
                   </div>
+                  <p id="delivery-hint" style="font-size:0.82rem;color:var(--muted);margin-top:6px;min-height:1.1em;line-height:1.5;"></p>
                 </div>
                 <div class="order-form__field">
                   <label class="order-form__label" for="f-address">Адрес доставки</label>
@@ -597,9 +598,18 @@
     updateCartCount();
     renderCart();
 
-    // Слушаем выбор способа доставки
+    // Подсказки по способу доставки
+    const deliveryHints = {
+      'Курьер':          'Курьерская доставка по Москве — 200 ₽. Укажите адрес доставки.',
+      'СДЭК':            'Доставка по тарифам СДЭК. Укажите удобный пункт выдачи в поле адреса.',
+      'Яндекс Доставка': 'Доставка по тарифам Яндекс Доставки. Укажите удобный пункт выдачи в поле адреса.',
+      'Озон Доставка':   'Доставка по тарифам Ozon. Укажите удобный пункт выдачи в поле адреса.',
+      'Почта России':    'Доставка по тарифам Почты России. Укажите адрес доставки.',
+      'Самовывоз':       'Детали согласовываем при оформлении заказа.',
+    };
     document.getElementById('f-delivery').addEventListener('change', function() {
-      toggleCdekWidget(this.value);
+      const hint = document.getElementById('delivery-hint');
+      hint.textContent = deliveryHints[this.value] || '';
     });
   });
   
