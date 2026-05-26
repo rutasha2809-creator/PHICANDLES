@@ -467,14 +467,22 @@ async function initProductPage() {
     ? allOther.filter((item) => trayIds.includes(item.id))
     : [];
 
-  // Объединяем, убираем дубли, сортируем по популярности, берём 4
-  const seenIds = new Set();
-  const merged = [...basePool, ...trays].filter((item) => {
-    if (seenIds.has(item.id)) return false;
-    seenIds.add(item.id);
-    return true;
-  });
-  const related = merged.sort((a, b) => (b.popularity || 0) - (a.popularity || 0)).slice(0, 4);
+  let related;
+  if (trays.length) {
+    // Берём до 4 похожих свечей из своей категории + все подносы отдельно (гарантируем их присутствие)
+    const candles = basePool.sort((a, b) => (b.popularity || 0) - (a.popularity || 0)).slice(0, 4);
+    const traysSorted = trays.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
+    // Объединяем: сначала свечи, потом подносы; убираем дубли
+    const seenIds = new Set();
+    related = [...candles, ...traysSorted].filter((item) => {
+      if (seenIds.has(item.id)) return false;
+      seenIds.add(item.id);
+      return true;
+    });
+  } else {
+    // Стандартное поведение для остальных категорий
+    related = basePool.sort((a, b) => (b.popularity || 0) - (a.popularity || 0)).slice(0, 4);
+  }
   document.querySelector('[data-related-grid]').innerHTML = related
     .map((item) => {
       const categoryName = categoryMap.get(item.categoryId)?.name || '';
