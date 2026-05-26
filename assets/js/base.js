@@ -1,3 +1,10 @@
+// PWA: регистрация service worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+
 const CATALOG_PATH = document.body.dataset.catalogPath || './data/catalog.json';
 const STORAGE_KEY = 'phicandles-cart-v1';
 const CLIENT_ID_STORAGE_KEY = 'phicandles-client-id';
