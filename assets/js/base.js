@@ -558,11 +558,47 @@ function initMobileNav() {
   });
 }
 
+/* ——— iOS PWA БАННЕР ——— */
+function initIosPwaBanner() {
+  const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isStandalone = window.navigator.standalone === true;
+  const dismissed = localStorage.getItem('phi-pwa-banner');
+  if (!isIos || isStandalone || dismissed) return;
+
+  const banner = document.createElement('div');
+  banner.className = 'pwa-banner';
+  banner.innerHTML = `
+    <div class="pwa-banner__arrow"></div>
+    <div class="pwa-banner__top">
+      <img src="/assets/img/icon-192.png" alt="PHICANDLES" class="pwa-banner__icon">
+      <div class="pwa-banner__info">
+        <strong>PHICANDLES</strong>
+        <span>phicandles.ru</span>
+      </div>
+      <button class="pwa-banner__close" aria-label="Закрыть">✕</button>
+    </div>
+    <p class="pwa-banner__text">Добавьте приложение на экран — удобнее, чем каждый раз открывать браузер</p>
+    <p class="pwa-banner__hint">Нажмите <span class="pwa-banner__share-icon">⎙</span> затем «На экран Домой»</p>
+  `;
+  document.body.appendChild(banner);
+
+  setTimeout(() => banner.classList.add('pwa-banner--visible'), 300);
+
+  function dismiss() {
+    banner.classList.remove('pwa-banner--visible');
+    localStorage.setItem('phi-pwa-banner', '1');
+    setTimeout(() => banner.remove(), 400);
+  }
+
+  banner.querySelector('.pwa-banner__close').addEventListener('click', dismiss);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCount();
   bindGlobalCartLink();
   bindCardGalleries();
   initMobileNav();
+  initIosPwaBanner();
   // ensureClientId вызывается внутри initCookieBanner — после получения согласия.
   initCookieBanner();
 });
