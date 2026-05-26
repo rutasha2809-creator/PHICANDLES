@@ -94,7 +94,7 @@
   <main>
     <div class="container orders-page">
       <h1>Мои заказы</h1>
-      <p class="orders-subtitle">Введите email или телефон, указанные при оформлении заказа</p>
+      <p class="orders-subtitle">Введите email или телефон, указанные при оформлении заказа — браузер запомнит их для следующих визитов</p>
       <div id="orders-search" style="display:flex;gap:10px;margin-bottom:32px;flex-wrap:wrap;">
         <input id="search-input" type="text" placeholder="Email или телефон" style="flex:1;min-width:220px;border:1px solid var(--line);padding:11px 14px;font-family:'Jost',sans-serif;font-size:0.92rem;outline:none;">
         <button id="search-btn" style="padding:11px 28px;background:var(--text);color:#fff;border:none;font-family:'Jost',sans-serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;">Найти</button>
@@ -178,6 +178,9 @@
       const res = await fetch(`${API_URL}?${param}`);
       const json = await res.json();
       if (json.ok) {
+        // Запоминаем email или телефон для следующего визита
+        if (isEmail) localStorage.setItem('phi_customer_email', val);
+        else localStorage.setItem('phi_customer_phone', val);
         renderOrders(json.orders);
       } else {
         root.innerHTML = '<div class="orders-loading">Не удалось загрузить заказы. Попробуйте позже.</div>';
@@ -194,10 +197,12 @@
       if (e.key === 'Enter') searchOrders();
     });
 
-    // Автозаполнение email из предыдущего заказа
+    // Автозаполнение из предыдущего визита
     const savedEmail = localStorage.getItem('phi_customer_email');
-    if (savedEmail) {
-      document.getElementById('search-input').value = savedEmail;
+    const savedPhone = localStorage.getItem('phi_customer_phone');
+    const saved = savedEmail || savedPhone;
+    if (saved) {
+      document.getElementById('search-input').value = saved;
       searchOrders();
     }
   });
