@@ -14,41 +14,41 @@
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-weight: 300;
       font-size: clamp(2.2rem, 4vw, 3.6rem);
-      margin: 0 0 36px;
+      margin: 0 0 32px;
       letter-spacing: 0.01em;
     }
     .cart-layout {
       display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 32px;
+      grid-template-columns: 1fr 320px;
+      gap: 28px;
       align-items: start;
     }
 
     /* Список товаров */
-    .cart-items-list { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .cart-items-list { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 20px; }
     .cart-item {
       display: grid;
-      grid-template-columns: 90px 1fr auto;
-      gap: 20px;
+      grid-template-columns: 88px 1fr auto;
+      gap: 18px;
       align-items: center;
-      padding: 20px;
+      padding: 18px 20px;
       background: #fff;
     }
     .cart-item__thumb {
-      width: 90px; height: 90px;
+      width: 88px; height: 88px;
       overflow: hidden; background: var(--card-alt); flex-shrink: 0;
     }
     .cart-item__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .cart-item__info { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+    .cart-item__info { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
     .cart-item__name {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.05rem; font-weight: 400; color: var(--text);
+      font-size: 1.1rem; font-weight: 400; color: var(--text);
       text-decoration: none; letter-spacing: 0.02em;
     }
     .cart-item__name:hover { text-decoration: underline; }
     .cart-item__opts { font-size: 0.82rem; color: var(--muted); }
-    .cart-item__price { font-size: 1rem; font-family: 'Cormorant Garamond', Georgia, serif; color: var(--text); }
-    .cart-item__actions { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+    .cart-item__price { font-size: 1.05rem; font-family: 'Cormorant Garamond', Georgia, serif; color: var(--text); }
+    .cart-item__actions { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
     .qty-controls {
       display: inline-flex; align-items: center;
       border: 1px solid var(--line);
@@ -78,104 +78,126 @@
     }
     .cart-empty p { color: var(--muted); margin: 0 0 28px; font-size: 0.95rem; }
 
-    /* Боковая панель */
-    .cart-sidebar { display: flex; flex-direction: column; gap: 16px; }
-    .cart-panel {
-      border: 1px solid var(--line); padding: 28px; background: #fff;
+    /* Форма под корзиной */
+    .order-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
     }
-    .cart-panel__title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400; font-size: 1.2rem; margin: 0 0 18px; letter-spacing: 0.04em;
-    }
-
-    /* Промокод */
-    .promo-row { display: flex; gap: 8px; }
-    .promo-input {
-      flex: 1; border: 1px solid var(--line); padding: 10px 12px;
-      font-family: 'Jost', sans-serif; font-size: 0.88rem;
-      outline: none; transition: border-color 0.2s;
-      text-transform: uppercase; letter-spacing: 0.08em;
-    }
-    .promo-input:focus { border-color: var(--text); }
-    .promo-msg { font-size: 0.82rem; margin-top: 8px; min-height: 1.2em; }
-    .promo-msg--ok { color: #2d7a3a; }
-    .promo-msg--err { color: #8b2e2e; }
-
-    /* Итог */
-    .cart-totals { display: flex; flex-direction: column; gap: 10px; margin: 18px 0; }
-    .cart-totals__row { display: flex; justify-content: space-between; font-size: 0.92rem; color: var(--muted); }
-    .cart-totals__row--total {
-      font-size: 1.1rem; font-weight: 500; color: var(--text);
-      border-top: 1px solid var(--line); padding-top: 12px; margin-top: 4px;
-    }
-    .cart-totals__row--discount { color: #2d7a3a; }
-
-    /* Уведомление о сроках */
-    .lead-time-notice {
-      padding: 14px 16px;
-      border: 1px solid var(--line);
-      background: var(--card-alt);
-      font-size: 0.85rem;
-      line-height: 1.6;
-      color: var(--muted);
-    }
-    .lead-time-notice strong { color: var(--text); display: block; margin-bottom: 3px; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; }
-
-    /* Форма заказа */
-    .order-form { display: flex; flex-direction: column; gap: 14px; }
-    .order-form__field { display: flex; flex-direction: column; gap: 6px; }
+    .order-form__field { display: flex; flex-direction: column; gap: 5px; }
+    .order-form__field--full { grid-column: 1 / -1; }
     .order-form__label {
-      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--text);
     }
     .order-form__input,
     .order-form__select,
     .order-form__textarea {
-      border: 1px solid var(--line); padding: 11px 13px;
-      font-family: 'Jost', sans-serif; font-size: 0.92rem;
+      border: 1px solid var(--line); padding: 10px 12px;
+      font-family: 'Jost', sans-serif; font-size: 0.9rem;
       background: #fff; color: var(--text);
       outline: none; transition: border-color 0.2s;
     }
     .order-form__input:focus,
     .order-form__select:focus,
     .order-form__textarea:focus { border-color: var(--text); }
-    .order-form__textarea { resize: vertical; min-height: 80px; }
+    .order-form__textarea { resize: vertical; min-height: 72px; }
     .order-form__select { appearance: none; cursor: pointer; }
+    #delivery-hint { font-size: 0.8rem; color: var(--muted); margin-top: 3px; min-height: 1em; line-height: 1.5; }
 
-    /* Кнопка оформить */
+    /* Правая боковая панель */
+    .cart-sidebar { display: flex; flex-direction: column; gap: 0; }
+    .cart-panel {
+      border: 1px solid var(--line); padding: 24px; background: #fff;
+    }
+    .cart-panel__title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400; font-size: 1.25rem; margin: 0 0 16px; letter-spacing: 0.04em;
+    }
+
+    /* Итог */
+    .cart-totals { display: flex; flex-direction: column; gap: 8px; margin-bottom: 0; }
+    .cart-totals__row { display: flex; justify-content: space-between; font-size: 0.88rem; color: var(--muted); }
+    .cart-totals__row--total {
+      font-size: 1.05rem; font-weight: 500; color: var(--text);
+      border-top: 1px solid var(--line); padding-top: 11px; margin-top: 4px;
+    }
+    .cart-totals__row--discount { color: #2d7a3a; }
+
+    /* Промокод — в стиле строк итога */
+    .promo-section {
+      border-top: 1px solid var(--line);
+      margin-top: 12px;
+      padding-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .promo-input {
+      flex: 1; border: none; border-bottom: 1px solid var(--line); padding: 4px 0;
+      font-family: 'Jost', sans-serif; font-size: 0.85rem;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      background: transparent; color: var(--text);
+      outline: none; transition: border-color 0.2s;
+    }
+    .promo-input:focus { border-color: var(--text); }
+    .promo-input::placeholder { color: var(--muted); }
+    .promo-btn {
+      background: none; border: none; padding: 0;
+      font-family: 'Jost', sans-serif; font-size: 0.78rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); cursor: pointer; white-space: nowrap;
+      text-decoration: underline; text-underline-offset: 3px;
+    }
+    .promo-btn:hover { color: var(--text); }
+    .promo-msg { font-size: 0.8rem; margin-top: 6px; min-height: 1.2em; }
+    .promo-msg--ok { color: #2d7a3a; }
+    .promo-msg--err { color: #8b2e2e; }
+
+    /* QR-блок */
+    .qr-block {
+      display: flex; gap: 12px; align-items: flex-start;
+      background: var(--card-alt); padding: 14px;
+      margin-top: 18px;
+    }
+    .qr-block__img {
+      width: 72px; height: 72px; flex-shrink: 0;
+      border: 1px solid var(--line); background: #fff; padding: 4px;
+    }
+    .qr-block__img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .qr-block__text { font-size: 0.82rem; line-height: 1.65; color: var(--muted); }
+    .qr-block__text strong { color: var(--text); display: block; margin-bottom: 2px; font-size: 0.85rem; }
+
+    /* Согласие и кнопка */
+    .consent-wrap { display: flex; gap: 10px; align-items: flex-start; margin: 16px 0 12px; }
+    .consent-wrap input[type="checkbox"] { flex-shrink: 0; margin-top: 3px; width: 15px; height: 15px; accent-color: var(--text); cursor: pointer; }
+    .consent-wrap label { font-size: 0.8rem; line-height: 1.55; color: var(--muted); cursor: pointer; }
+    .consent-wrap a { color: inherit; text-decoration: underline; }
     .btn-checkout {
-      width: 100%; padding: 16px; background: var(--text); color: #fff;
+      width: 100%; padding: 15px; background: var(--text); color: #fff;
       border: 1px solid var(--text); font-family: 'Jost', sans-serif;
-      font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase;
+      font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase;
       cursor: pointer; transition: background 0.2s;
     }
     .btn-checkout:hover { background: #333; border-color: #333; }
     .btn-checkout:disabled { background: #bbb; border-color: #bbb; opacity: 0.45; cursor: not-allowed; }
-    .consent-wrap { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; }
-    .consent-wrap input[type="checkbox"] { flex-shrink: 0; margin-top: 3px; width: 16px; height: 16px; accent-color: var(--text); cursor: pointer; }
-    .consent-wrap label { font-size: 0.82rem; line-height: 1.55; color: var(--muted); cursor: pointer; }
-    .consent-wrap a { color: inherit; text-decoration: underline; }
-    .consent-wrap a:hover { opacity: 0.7; }
+    #form-error { font-size: 0.82rem; color: #8b2e2e; margin: 0 0 8px; min-height: 1.2em; }
 
     /* Экран успеха */
-    .order-success { display: none; text-align: center; padding: 16px 0; }
+    .order-success { display: none; text-align: center; padding: 8px 0; }
     .order-success h3 {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-weight: 400; font-size: 1.5rem; margin: 0 0 10px;
     }
-    .order-success p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin: 0 0 20px; }
-    .qr-placeholder {
-      width: 160px; height: 160px; margin: 0 auto 16px;
-      border: 1px solid var(--line); background: var(--card-alt);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.75rem; color: var(--muted); text-align: center; padding: 10px;
-    }
-    .qr-placeholder img { width: 100%; height: 100%; object-fit: contain; }
+    .order-success p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; margin: 0 0 16px; }
 
     @media (max-width: 860px) {
       .cart-layout { grid-template-columns: 1fr; }
+      .cart-sidebar { order: -1; }
     }
     @media (max-width: 560px) {
+      .order-form-grid { grid-template-columns: 1fr; }
+      .order-form__field--full { grid-column: auto; }
       .cart-item { grid-template-columns: 72px 1fr; }
       .cart-item__actions { grid-column: 1 / -1; flex-direction: row; justify-content: space-between; align-items: center; }
     }
@@ -206,33 +228,58 @@
       <h1>Корзина</h1>
 
       <div class="cart-layout">
-        <!-- Левая колонка: товары -->
-        <div>
+
+        <!-- Левая колонка: товары + форма -->
+        <div id="cart-left">
           <div id="cart-items-wrap">
             <!-- Заполняется JS -->
           </div>
+
+          <!-- Форма под корзиной -->
+          <div id="order-form-wrap">
+            <div class="order-form-grid">
+              <div class="order-form__field">
+                <label class="order-form__label" for="f-name">Имя *</label>
+                <input class="order-form__input" type="text" id="f-name" placeholder="Ваше имя" required>
+              </div>
+              <div class="order-form__field">
+                <label class="order-form__label" for="f-phone">Телефон *</label>
+                <input class="order-form__input" type="tel" id="f-phone" placeholder="+7 (___) ___-__-__" required>
+              </div>
+              <div class="order-form__field order-form__field--full">
+                <label class="order-form__label" for="f-email">Email *</label>
+                <input class="order-form__input" type="email" id="f-email" placeholder="your@email.com" required>
+              </div>
+              <div class="order-form__field order-form__field--full">
+                <label class="order-form__label" for="f-delivery">Способ доставки *</label>
+                <div style="position:relative;">
+                  <select class="order-form__select order-form__input" id="f-delivery" required>
+                    <option value="">— Выберите —</option>
+                    <option value="СДЭК">СДЭК</option>
+                    <option value="Почта России">Почта России</option>
+                    <option value="Яндекс Доставка">Яндекс Доставка</option>
+                    <option value="Озон Доставка">Озон Доставка</option>
+                    <option value="Курьер">Курьер</option>
+                    <option value="Самовывоз">Самовывоз</option>
+                  </select>
+                  <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%) rotate(45deg);width:7px;height:7px;border-right:1px solid var(--muted);border-bottom:1px solid var(--muted);pointer-events:none;"></span>
+                </div>
+                <p id="delivery-hint"></p>
+              </div>
+              <div class="order-form__field order-form__field--full">
+                <label class="order-form__label" for="f-address">Адрес доставки</label>
+                <input class="order-form__input" type="text" id="f-address" placeholder="Город, улица, дом">
+              </div>
+              <div class="order-form__field order-form__field--full">
+                <label class="order-form__label" for="f-comment">Комментарий к заказу</label>
+                <textarea class="order-form__textarea" id="f-comment" placeholder="Пожелания, уточнения..."></textarea>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Правая колонка: итог + форма -->
+        <!-- Правая колонка: итог + промокод + QR + кнопка -->
         <div class="cart-sidebar" id="cart-sidebar">
-
-          <!-- Уведомление о сроках -->
-          <div class="lead-time-notice">
-            <strong>Срок изготовления</strong>
-            Товары, которых нет в наличии, изготавливаются на заказ в течение <b>3–5 рабочих дней</b>.
-          </div>
-
-          <!-- Промокод -->
-          <div class="cart-panel" id="promo-panel">
-            <p class="cart-panel__title">Промокод</p>
-            <div class="promo-row">
-              <input class="promo-input" type="text" id="promo-input" placeholder="ВВЕДИТЕ КОД">
-              <button class="button" type="button" id="promo-btn">Применить</button>
-            </div>
-            <p class="promo-msg" id="promo-msg"></p>
-          </div>
-
-          <!-- Итог и форма -->
           <div class="cart-panel" id="order-panel">
             <p class="cart-panel__title">Ваш заказ</p>
 
@@ -240,78 +287,51 @@
               <!-- Заполняется JS -->
             </div>
 
-            <!-- Форма -->
-            <div id="order-form-wrap">
-              <div class="order-form">
-                <div class="order-form__field">
-                  <label class="order-form__label" for="f-name">Имя *</label>
-                  <input class="order-form__input" type="text" id="f-name" placeholder="Ваше имя" required>
-                </div>
-                <div class="order-form__field">
-                  <label class="order-form__label" for="f-phone">Телефон *</label>
-                  <input class="order-form__input" type="tel" id="f-phone" placeholder="+7 (___) ___-__-__" required>
-                </div>
-                <div class="order-form__field">
-                  <label class="order-form__label" for="f-email">Email *</label>
-                  <input class="order-form__input" type="email" id="f-email" placeholder="your@email.com" required>
-                </div>
-                <div class="order-form__field">
-                  <label class="order-form__label" for="f-delivery">Способ доставки *</label>
-                  <div style="position:relative;">
-                    <select class="order-form__select order-form__input" id="f-delivery" required>
-                      <option value="">— Выберите —</option>
-                      <option value="СДЭК">СДЭК</option>
-                      <option value="Почта России">Почта России</option>
-                      <option value="Яндекс Доставка">Яндекс Доставка</option>
-                      <option value="Озон Доставка">Озон Доставка</option>
-                      <option value="Курьер">Курьер</option>
-                      <option value="Самовывоз">Самовывоз</option>
-                    </select>
-                    <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%) rotate(45deg);width:7px;height:7px;border-right:1px solid var(--muted);border-bottom:1px solid var(--muted);pointer-events:none;"></span>
-                  </div>
-                  <p id="delivery-hint" style="font-size:0.82rem;color:var(--muted);margin-top:6px;min-height:1.1em;line-height:1.5;"></p>
-                </div>
-                <div class="order-form__field">
-                  <label class="order-form__label" for="f-address">Адрес доставки</label>
-                  <input class="order-form__input" type="text" id="f-address" placeholder="Город, улица, дом">
-                </div>
+            <!-- Промокод — строкой под итого -->
+            <div class="promo-section">
+              <input class="promo-input" type="text" id="promo-input" placeholder="Промокод">
+              <button class="promo-btn" type="button" id="promo-btn">Применить</button>
+            </div>
+            <p class="promo-msg" id="promo-msg"></p>
 
-                <div class="order-form__field">
-                  <label class="order-form__label" for="f-comment">Комментарий к заказу</label>
-                  <textarea class="order-form__textarea" id="f-comment" placeholder="Пожелания, уточнения..."></textarea>
-                </div>
-                <p id="form-error" style="font-size:0.83rem;color:#8b2e2e;margin:0;min-height:1.2em;"></p>
-                <div class="consent-wrap">
-                  <input type="checkbox" id="consent-cb" class="consent-cb">
-                  <label for="consent-cb">Нажимая кнопку, я даю согласие на обработку моих персональных данных в соответствии с <a href="https://phicandles.ru/soglasie/" target="_blank">Согласием</a> и принимаю условия <a href="https://phicandles.ru/privacy/" target="_blank">Политики конфиденциальности</a>.</label>
-                </div>
-                <button class="btn-checkout" type="button" id="btn-submit">Оформить заказ</button>
+            <!-- QR-код для оплаты -->
+            <div class="qr-block">
+              <div class="qr-block__img">
+                <img src="../assets/img/qr-payment.jpg" alt="QR-код для оплаты PHICANDLES">
+              </div>
+              <div class="qr-block__text">
+                <strong>Оплата по QR-коду</strong>
+                Предоплата 50% после оформления заказа. Фискальный чек об оплате придёт на ваш email.
               </div>
             </div>
+
+            <!-- Согласие и кнопка -->
+            <p id="form-error"></p>
+            <div class="consent-wrap">
+              <input type="checkbox" id="consent-cb" class="consent-cb">
+              <label for="consent-cb">Нажимая кнопку, я даю согласие на обработку персональных данных в соответствии с <a href="https://phicandles.ru/soglasie/" target="_blank">Согласием</a> и принимаю <a href="https://phicandles.ru/privacy/" target="_blank">Политику конфиденциальности</a>.</label>
+            </div>
+            <button class="btn-checkout" type="button" id="btn-submit">Оформить заказ</button>
 
             <!-- Экран успеха -->
             <div class="order-success" id="order-success">
               <h3>Заказ принят!</h3>
-              <p id="order-success-number" style="font-weight:500;font-size:0.95rem;margin-bottom:6px;"></p>
-              <p>Мы отправили подтверждение на ваш email.<br>Для оплаты используйте QR-код:</p>
-              <div class="qr-placeholder">
-                <!-- Замените содержимое на тег <img src="../assets/img/qr-payment.png" alt="QR для оплаты"> -->
-                <span>Здесь будет<br>ваш QR-код<br>для оплаты</span>
-              </div>
-              <p style="font-size:0.82rem;">После оплаты напишите нам в <a href="https://t.me/phi_candles" style="text-decoration:underline;">Telegram</a> — мы подтвердим получение.</p>
-              <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
+              <p id="order-success-number" style="font-weight:500;font-size:0.95rem;margin-bottom:6px;color:var(--text);"></p>
+              <p>Подтверждение отправлено на ваш email.<br>Для оплаты отсканируйте QR-код выше.</p>
+              <p style="font-size:0.8rem;margin-top:8px;">После оплаты напишите нам в <a href="https://t.me/phi_candles" style="text-decoration:underline;">Telegram</a> — мы подтвердим получение.</p>
+              <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px;">
                 <a class="button" href="../catalog/index.html">Продолжить покупки</a>
                 <a class="button-secondary" href="../orders/index.html">Мои заказы</a>
               </div>
             </div>
           </div>
-
         </div>
+
       </div>
     </div>
   </main>
 
-    <footer class="footer">
+  <footer class="footer">
     <div class="container footer-grid">
       <div>
         <strong>Контакты</strong>
@@ -332,22 +352,17 @@
   <script>
 
   // ——— ПРОМОКОДЫ ———
-  // Добавляйте новые коды здесь: { код: процент_скидки }
   const PROMO_CODES = {
     'CANDLE10': 10,
     'PHI15':    15,
     'GIFT20':   20,
   };
 
-  // ——— Бэкенд PHICANDLES на api.phicandles.ru ———
   const FORMSPREE_URL = 'https://api.phicandles.ru/send-order.php';
 
-  // ——— ЛОГИКА КОРЗИНЫ ———
-  // getCart / saveCart / STORAGE_KEY определены в base.js
-
-  let activePromo = null; // { code, discount }
-  let orderPlaced = false; // флаг: заказ оформлен, не скрывать sidebar
-  let deliveryCost = null; // null = неизвестна, число = фиксированная цена
+  let activePromo = null;
+  let orderPlaced = false;
+  let deliveryCost = null;
 
   function escKey(key) { return key.replace(/"/g, '&quot;'); }
 
@@ -359,10 +374,11 @@
     const cart = getCart();
     const wrap = document.getElementById('cart-items-wrap');
     const sidebar = document.getElementById('cart-sidebar');
+    const formWrap = document.getElementById('order-form-wrap');
     const totals = document.getElementById('cart-totals');
 
     if (!cart.length) {
-      if (orderPlaced) return; // заказ оформлен — не трогаем экран успеха
+      if (orderPlaced) return;
       wrap.innerHTML = `
         <div class="cart-empty">
           <h2>Корзина пуста</h2>
@@ -370,10 +386,12 @@
           <a class="button" href="../catalog/index.html">Перейти в каталог</a>
         </div>`;
       sidebar.style.display = 'none';
+      if (formWrap) formWrap.style.display = 'none';
       return;
     }
 
     sidebar.style.display = '';
+    if (formWrap) formWrap.style.display = '';
 
     // Список товаров
     wrap.innerHTML = `<div class="cart-items-list">${cart.map(item => `
@@ -405,7 +423,7 @@
     const total = goodsTotal + (typeof deliveryCost === 'number' ? deliveryCost : 0);
 
     const deliveryRow = deliveryCost === null
-      ? `<div class="cart-totals__row"><span>Доставка</span><span style="color:var(--muted);font-size:0.82rem;">по тарифам оператора</span></div>`
+      ? `<div class="cart-totals__row"><span>Доставка</span><span style="color:var(--muted);font-size:0.8rem;">по тарифам оператора</span></div>`
       : deliveryCost === 0
       ? ''
       : `<div class="cart-totals__row"><span>Доставка</span><span>${formatPrice(deliveryCost)}</span></div>`;
@@ -417,7 +435,7 @@
       <div class="cart-totals__row cart-totals__row--total"><span>Итого</span><span>${formatPrice(total)}</span></div>`;
   }
 
-  // Клики по корзине (+ / - / удалить)
+  // Клики по корзине
   document.getElementById('cart-items-wrap').addEventListener('click', e => {
     const inc = e.target.closest('[data-qty-inc]');
     const dec = e.target.closest('[data-qty-dec]');
@@ -511,14 +529,17 @@
       const json = await res.json();
       if (res.ok && json.ok) {
         const orderNumber = json.orderNumber || '—';
-        orderPlaced = true; // блокируем скрытие sidebar
+        orderPlaced = true;
         localStorage.setItem('phi_customer_email', email);
         saveCart([]);
         document.getElementById('order-success-number').textContent = `Номер заказа: ${orderNumber}`;
         document.getElementById('order-form-wrap').style.display = 'none';
-        document.getElementById('promo-panel').style.display = 'none';
         document.getElementById('order-success').style.display = 'block';
         document.getElementById('cart-items-wrap').style.display = 'none';
+        document.getElementById('promo-input').closest('.promo-section').style.display = 'none';
+        document.getElementById('promo-msg').style.display = 'none';
+        document.querySelector('.consent-wrap').style.display = 'none';
+        btn.style.display = 'none';
       } else {
         errEl.textContent = 'Ошибка отправки. Попробуйте ещё раз или напишите нам в Telegram.';
         btn.disabled = false;
@@ -531,15 +552,12 @@
     }
   });
 
-  // Перерисовываем корзину при любом изменении (base.js fires this event)
   document.addEventListener('phicandles-cart-changed', renderCart);
 
-  // Инициализация
   document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
     renderCart();
 
-    // Подсказки и стоимость по способу доставки
     const deliveryHints = {
       'Курьер':          'Курьерская доставка по Москве — 200 ₽. Укажите адрес доставки.',
       'СДЭК':            'Доставка по тарифам СДЭК. Укажите удобный пункт выдачи в поле адреса.',
@@ -549,32 +567,30 @@
       'Самовывоз':       'Детали согласовываем при оформлении заказа.',
     };
     const deliveryCosts = {
-      'Курьер':          200,   // фиксированная цена
-      'СДЭК':            null,  // по тарифам
+      'Курьер':          200,
+      'СДЭК':            null,
       'Яндекс Доставка': null,
       'Озон Доставка':   null,
       'Почта России':    null,
-      'Самовывоз':       0,     // бесплатно, строка не показывается
+      'Самовывоз':       0,
     };
     document.getElementById('f-delivery').addEventListener('change', function() {
-      const hint = document.getElementById('delivery-hint');
-      hint.textContent = deliveryHints[this.value] || '';
-      deliveryCost = this.value ? (deliveryCosts[this.value] ?? null) : 0;
-      renderCart(); // пересчитать итоги
+      document.getElementById('delivery-hint').textContent = deliveryHints[this.value] || '';
+      deliveryCost = this.value ? (deliveryCosts[this.value] ?? null) : null;
+      renderCart();
     });
   });
-  
-  // Consent checkbox — блокирует кнопку до принятия
+
+  // Consent checkbox
   (function () {
-    var cb  = document.getElementById('consent-cb');
-    var btn = document.getElementById('btn-submit');
+    const cb  = document.getElementById('consent-cb');
+    const btn = document.getElementById('btn-submit');
     if (!cb || !btn) return;
     btn.disabled = true;
     cb.addEventListener('change', function () {
       btn.disabled = !this.checked;
     });
   })();
-</script>
+  </script>
 </body>
 </html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
