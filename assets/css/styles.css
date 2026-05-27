@@ -1183,29 +1183,6 @@ main.section[data-product-root] { padding-top: 22px; }
   background: var(--text);
   color: #fff;
 }
-.category-card-link--photo {
-  position: relative;
-  color: #fff;
-  min-height: 180px;
-}
-.category-card-link--photo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.28);
-  transition: background 0.25s ease;
-}
-.category-card-link--photo span {
-  position: relative;
-  z-index: 1;
-}
-.category-card-link--photo:hover {
-  background-color: transparent;
-  color: #fff;
-}
-.category-card-link--photo:hover::before {
-  background: rgba(0,0,0,0.55);
-}
 
 /* ——— КАТАЛОГ: HERO И КАРТОЧКИ КАТЕГОРИЙ ——— */
 .catalog-hero {
