@@ -100,6 +100,27 @@
         </div>
       </div>
     </section>
+
+    <section class="section section--contact" id="contact">
+      <div class="container">
+        <div class="contact-split">
+          <div class="contact-text">
+            <h2>Остались вопросы?</h2>
+            <p>Напишите нам — ответим в течение дня. Поможем с выбором, расскажем об ароматах, обсудим индивидуальный заказ.</p>
+            <p class="contact-alt">Или напишите напрямую: <a href="mailto:orders@phicandles.ru">orders@phicandles.ru</a></p>
+          </div>
+          <form class="contact-form" id="contact-form" novalidate>
+            <div class="contact-form__row">
+              <input class="contact-form__input" type="text" name="name" placeholder="Ваше имя" required autocomplete="name">
+              <input class="contact-form__input" type="email" name="email" placeholder="Email" required autocomplete="email">
+            </div>
+            <textarea class="contact-form__input contact-form__textarea" name="message" placeholder="Ваш вопрос или пожелание" required rows="4"></textarea>
+            <button class="button contact-form__submit" type="submit">Отправить</button>
+            <p class="contact-form__status" id="contact-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -114,7 +135,7 @@
       </div>
       <div>
         <strong>Покупателям</strong>
-        <p><a href="/delivery/#delivery">Доставка и оплата</a><br><a href="/delivery/#return">Возврат товара</a><br><a href="/faq/">Вопросы и ответы</a><br><a href="/orders/">Мои заказы</a></p>
+        <p><a href="/delivery/#delivery">Доставка и оплата</a><br><a href="/delivery/#return">Возврат товара</a><br><a href="/faq/">Вопросы и ответы</a><br><a href="/orders/">Мои заказы</a><br><a href="/#contact">Написать нам</a></p>
       </div>
     </div>
   </footer>

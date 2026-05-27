@@ -503,6 +503,54 @@ function initCookieBanner() {
   });
 }
 
+/* ——— ФОРМА ОБРАТНОЙ СВЯЗИ ——— */
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  const status = document.getElementById('contact-status');
+  const btn = form.querySelector('.contact-form__submit');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name    = form.name.value.trim();
+    const email   = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    if (!name || !email || !message) {
+      status.textContent = 'Пожалуйста, заполните все поля.';
+      status.className = 'contact-form__status contact-form__status--error';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Отправляем…';
+    status.textContent = '';
+    status.className = 'contact-form__status';
+
+    try {
+      const res = await fetch('https://api.phicandles.ru/send-contact.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      });
+      const json = await res.json();
+      if (json.ok) {
+        status.textContent = 'Сообщение отправлено! Ответим вам в течение дня.';
+        status.className = 'contact-form__status contact-form__status--ok';
+        form.reset();
+      } else {
+        throw new Error(json.error || 'Ошибка');
+      }
+    } catch {
+      status.textContent = 'Не удалось отправить. Напишите нам на orders@phicandles.ru';
+      status.className = 'contact-form__status contact-form__status--error';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Отправить';
+    }
+  });
+}
+
 /* ——— МОБИЛЬНОЕ МЕНЮ ——— */
 function initMobileNav() {
   const siteHeader  = document.querySelector('.site-header');
@@ -598,6 +646,7 @@ document.addEventListener('DOMContentLoaded', () => {
   bindGlobalCartLink();
   bindCardGalleries();
   initMobileNav();
+  initContactForm();
   initIosPwaBanner();
   // ensureClientId вызывается внутри initCookieBanner — после получения согласия.
   initCookieBanner();
