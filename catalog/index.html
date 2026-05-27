@@ -23,6 +23,33 @@
     .catalog-count { font-size: 0.82rem; color: var(--muted); margin-bottom: 24px; min-height: 20px; }
     .catalog-products { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
     .catalog-empty { grid-column: 1 / -1; padding: 60px 20px; text-align: center; color: var(--muted); font-size: 0.94rem; }
+    .catalog-search-wrap { position: relative; margin-bottom: 20px; }
+    .catalog-search {
+      width: 100%; box-sizing: border-box;
+      padding: 11px 40px 11px 16px;
+      border: 1px solid var(--line); border-radius: 2px;
+      font-family: 'Jost', sans-serif; font-size: 0.95rem;
+      color: var(--text); background: #fff; outline: none;
+      transition: border-color 0.2s;
+    }
+    .catalog-search:focus { border-color: var(--text); }
+    .catalog-search::placeholder { color: var(--muted); }
+    .catalog-search-clear {
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer;
+      color: var(--muted); font-size: 1.1rem; line-height: 1;
+      display: none; padding: 4px;
+    }
+    .catalog-search-clear.visible { display: block; }
+    .catalog-aroma-filter { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+    .aroma-chip {
+      padding: 6px 14px; font-size: 0.82rem; letter-spacing: 0.06em;
+      border: 1px solid var(--line); background: #fff; cursor: pointer;
+      font-family: 'Jost', sans-serif; color: var(--muted);
+      border-radius: 20px; transition: all 0.15s;
+    }
+    .aroma-chip:hover { border-color: var(--text); color: var(--text); }
+    .aroma-chip.is-active { background: var(--text); color: #fff; border-color: var(--text); }
     @media (max-width: 960px) {
       .catalog-shell { grid-template-columns: 1fr; gap: 32px; }
       .catalog-sidebar { position: static; }
@@ -75,6 +102,15 @@
           </ul>
         </aside>
         <div>
+          <div class="catalog-search-wrap">
+            <input class="catalog-search" id="catalog-search" type="search" placeholder="Поиск по каталогу…" autocomplete="off" spellcheck="false">
+            <button class="catalog-search-clear" id="catalog-search-clear" aria-label="Очистить поиск">✕</button>
+          </div>
+          <div class="catalog-aroma-filter">
+            <button class="aroma-chip is-active" data-aroma="all">Все</button>
+            <button class="aroma-chip" data-aroma="yes">С ароматом</button>
+            <button class="aroma-chip" data-aroma="no">Без аромата</button>
+          </div>
           <p class="catalog-count" id="catalog-count"></p>
           <div class="catalog-products" id="catalog-grid"></div>
         </div>
@@ -159,15 +195,41 @@
     // Порядок категорий для сортировки
     const categoryOrder = categories.reduce((acc, c, i) => { acc[c.id] = i; return acc; }, {});
 
-    function renderProducts(catId) {
+    const searchInput = document.getElementById('catalog-search');
+    const searchClear = document.getElementById('catalog-search-clear');
+    let searchQuery = '';
+    let aromaFilter = 'all'; // 'all' | 'yes' | 'no'
+
+    function getFilteredItems(catId) {
       const visibleCats = new Set(categories.map(c => c.id));
-      const items = catId === 'all'
+      let items = catId === 'all'
         ? products
             .filter(p => visibleCats.has(p.categoryId))
             .sort((a, b) => (categoryOrder[a.categoryId] ?? 999) - (categoryOrder[b.categoryId] ?? 999))
         : products.filter(p => p.categoryId === catId);
+
+      if (aromaFilter === 'yes') {
+        items = items.filter(p => p.options && p.options.aroma && p.options.aroma.length > 0);
+      } else if (aromaFilter === 'no') {
+        items = items.filter(p => !p.options || !p.options.aroma || p.options.aroma.length === 0);
+      }
+
+      if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        items = items.filter(p =>
+          p.name.toLowerCase().includes(q) ||
+          (catMap.get(p.categoryId) || '').toLowerCase().includes(q)
+        );
+      }
+      return items;
+    }
+
+    function renderProducts(catId) {
+      const items = getFilteredItems(catId);
       if (!items.length) {
-        grid.innerHTML = '<p class="catalog-empty">В этой категории пока нет товаров.</p>';
+        grid.innerHTML = searchQuery
+          ? '<p class="catalog-empty">По запросу «' + searchQuery + '» ничего не найдено.</p>'
+          : '<p class="catalog-empty">В этой категории пока нет товаров.</p>';
         countEl.textContent = '';
       } else {
         grid.innerHTML = items.map(renderCard).join('');
@@ -175,6 +237,31 @@
         if (typeof bindQuickAdd === 'function') bindQuickAdd(catalog);
       }
     }
+
+    // Поиск по тексту
+    searchInput.addEventListener('input', function() {
+      searchQuery = searchInput.value.trim();
+      searchClear.classList.toggle('visible', searchQuery.length > 0);
+      renderProducts(getActiveCat());
+    });
+
+    searchClear.addEventListener('click', function() {
+      searchInput.value = '';
+      searchQuery = '';
+      searchClear.classList.remove('visible');
+      searchInput.focus();
+      renderProducts(getActiveCat());
+    });
+
+    // Фильтр по аромату
+    document.querySelectorAll('.aroma-chip').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.aroma-chip').forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        aromaFilter = btn.dataset.aroma;
+        renderProducts(getActiveCat());
+      });
+    });
 
     const nav = document.getElementById('catalog-nav');
     categories.forEach(function(c) {
