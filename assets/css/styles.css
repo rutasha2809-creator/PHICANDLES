@@ -1155,6 +1155,51 @@ main.section[data-product-root] { padding-top: 22px; }
   display: block;
 }
 
+/* ——— PHI-КЛУБ БАННЕР ——— */
+.loyalty-strip {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--text);
+  color: #fff;
+  padding: 18px 0;
+}
+.loyalty-strip__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.loyalty-strip__title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-right: 16px;
+  opacity: 0.7;
+}
+.loyalty-strip__text {
+  font-size: 0.9rem;
+  opacity: 0.88;
+}
+.loyalty-strip__btn {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 8px 20px;
+  white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s;
+}
+.loyalty-strip__btn:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.7);
+}
+@media (max-width: 680px) {
+  .loyalty-strip__inner { flex-direction: column; text-align: center; gap: 10px; }
+  .loyalty-strip__title { display: none; }
+}
+
 /* ——— КАТЕГОРИИ ——— */
 .category-grid {
   display: grid;
