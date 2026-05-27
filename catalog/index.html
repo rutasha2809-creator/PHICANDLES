@@ -34,6 +34,7 @@
     }
     .catalog-search:focus { border-color: var(--text); }
     .catalog-search::placeholder { color: var(--muted); }
+    .catalog-search::-webkit-search-cancel-button { display: none; }
     .catalog-search-clear {
       position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
       background: none; border: none; cursor: pointer;
@@ -216,10 +217,19 @@
 
       if (searchQuery) {
         const q = searchQuery.toLowerCase();
-        items = items.filter(p =>
-          p.name.toLowerCase().includes(q) ||
-          (catMap.get(p.categoryId) || '').toLowerCase().includes(q)
-        );
+        const queryHasAroma = q.includes('аромат');
+        const queryHasNoAroma = q.includes('без аромат') || q.includes('без запах') || q.includes('без запа');
+        items = items.filter(p => {
+          const hasAromaOption = p.options && p.options.aroma && p.options.aroma.length > 0;
+          // Умный поиск: "аромат..." → товары с ароматом, "без аромат..." → без аромата
+          if (queryHasNoAroma) return !hasAromaOption;
+          if (queryHasAroma) return hasAromaOption;
+          // Обычный поиск по названию, категории и описанию
+          return p.name.toLowerCase().includes(q) ||
+            (catMap.get(p.categoryId) || '').toLowerCase().includes(q) ||
+            (p.shortDescription || '').toLowerCase().includes(q) ||
+            (p.description || '').toLowerCase().includes(q);
+        });
       }
       return items;
     }
