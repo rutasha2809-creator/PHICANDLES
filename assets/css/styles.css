@@ -1038,6 +1038,8 @@ main.section[data-product-root] { padding-top: 22px; }
     gap: 0;
     position: relative;
   }
+  /* Резервируем место под кнопки гамбургера до загрузки JS — предотвращает мигание логотипа */
+  .branding { max-width: calc(100% - 110px); }
 
   /* Hide desktop nav pills */
   .header-actions {
