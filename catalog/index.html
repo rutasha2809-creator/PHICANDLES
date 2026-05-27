@@ -245,6 +245,7 @@
         grid.innerHTML = items.map(renderCard).join('');
         countEl.textContent = items.length + ' ' + plural(items.length, 'товар', 'товара', 'товаров');
         if (typeof bindQuickAdd === 'function') bindQuickAdd(catalog);
+        if (typeof animateNewCards === 'function') animateNewCards();
       }
     }
 

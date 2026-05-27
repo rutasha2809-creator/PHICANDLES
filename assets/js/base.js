@@ -503,6 +503,35 @@ function initCookieBanner() {
   });
 }
 
+/* ——— АНИМАЦИЯ КАРТОЧЕК ——— */
+function initCardAnimations() {
+  if (!('IntersectionObserver' in window)) {
+    // Старые браузеры — просто показываем все карточки
+    document.querySelectorAll('.product-card').forEach(c => c.classList.add('is-visible'));
+    return;
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        // Небольшая задержка для каждой карточки в ряду — эффект волны
+        const card = entry.target;
+        const delay = (Array.from(card.parentElement.children).indexOf(card) % 4) * 80;
+        setTimeout(() => card.classList.add('is-visible'), delay);
+        observer.unobserve(card);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.product-card').forEach(card => observer.observe(card));
+  return observer;
+}
+
+// Экспортируем для вызова после динамической загрузки карточек
+function animateNewCards() {
+  if (!('IntersectionObserver' in window)) return;
+  initCardAnimations();
+}
+
 /* ——— ФОРМА ОБРАТНОЙ СВЯЗИ ——— */
 function initContactForm() {
   const form = document.getElementById('contact-form');
@@ -645,6 +674,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartCount();
   bindGlobalCartLink();
   bindCardGalleries();
+  initCardAnimations();
   initMobileNav();
   initContactForm();
   initIosPwaBanner();

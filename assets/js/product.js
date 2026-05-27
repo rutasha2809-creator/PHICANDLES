@@ -486,6 +486,7 @@ async function initProductPage() {
       return renderProductCard({ ...item, image: '../../' + item.assetImage }, categoryName, { rootPath: '../../' });
     })
     .join('');
+  if (typeof animateNewCards === 'function') animateNewCards();
 
   if (typeof bindQuickAdd === 'function') {
     bindQuickAdd({

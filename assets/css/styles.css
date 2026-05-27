@@ -1334,6 +1334,22 @@ main.section[data-product-root] { padding-top: 22px; }
 .rating, .home-reviews-list,
 .summary-card--reviews, .review-card { display: none !important; }
 
+/* ——— АНИМАЦИЯ КАРТОЧЕК ——— */
+.product-card {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.product-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Если JS не загрузился — карточки всё равно видны */
+.no-js .product-card { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .product-card { opacity: 1; transform: none; transition: none; }
+}
+
 /* ——— ФОРМА ОБРАТНОЙ СВЯЗИ ——— */
 .section--contact {
   background: var(--card-alt);
