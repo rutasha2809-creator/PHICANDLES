@@ -114,12 +114,29 @@
         </details>
       </div>
 
-      <section class="faq-cta" aria-labelledby="faq-cta-heading">
-        <h2 id="faq-cta-heading">Остались вопросы?</h2>
-        <p>Напишите нам — подскажем по составу заказа, срокам и доставке. Телефоны: +7 (929) 633-16-18, +7 (916) 540-63-99.</p>
-      </section>
     </div>
   </main>
+
+  <section class="section section--contact" id="contact">
+    <div class="container">
+      <div class="contact-split">
+        <div class="contact-text">
+          <h2>Остались вопросы?</h2>
+          <p>Напишите нам — ответим в течение дня. Поможем с выбором, расскажем об ароматах, обсудим индивидуальный заказ.</p>
+          <p class="contact-alt">Хотите ответ прямо сейчас? Напишите в чат — кнопка внизу экрана.</p>
+        </div>
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="contact-form__row">
+            <input class="contact-form__input" type="text" name="name" placeholder="Ваше имя" required autocomplete="name">
+            <input class="contact-form__input" type="email" name="email" placeholder="Email" required autocomplete="email">
+          </div>
+          <textarea class="contact-form__input contact-form__textarea" name="message" placeholder="Ваш вопрос или пожелание" required rows="4"></textarea>
+          <button class="button contact-form__submit" type="submit">Отправить</button>
+          <p class="contact-form__status" id="contact-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
 
   <footer class="footer">
     <div class="container footer-grid">
@@ -140,6 +157,4 @@
 
   <script src="../assets/js/base.js"></script>
   <script src="//code.jivo.ru/widget/eOs8CTiXXr" async></script>
-</body>
-</html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+</bod

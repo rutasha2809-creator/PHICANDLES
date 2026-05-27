@@ -174,7 +174,7 @@ button, select, input { font: inherit; }
 }
 
 /* ——— HERO ——— */
-.hero { padding: 60px 0 36px; }
+.hero { padding: 60px 0 8px; }
 .hero-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -318,7 +318,7 @@ button, select, input { font: inherit; }
   font-family: 'Cormorant Garamond', Georgia, serif;
   margin-bottom: 6px; color: var(--text);
 }
-.section { padding: 20px 0 44px; }
+.section { padding: 8px 0 28px; }
 .section-header {
   display: flex; flex-wrap: wrap;
   justify-content: space-between; align-items: end;
@@ -328,8 +328,9 @@ button, select, input { font: inherit; }
   margin: 0;
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 400;
-  font-size: clamp(1.8rem, 3.5vw, 3rem);
-  letter-spacing: 0.02em;
+  font-style: italic;
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  letter-spacing: 0.04em;
 }
 .section-header p {
   margin: 8px 0 0; color: var(--muted); max-width: 60ch;
@@ -466,6 +467,11 @@ button, select, input { font: inherit; }
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 24px;
+}
+/* Покупателям: ссылки в 2 колонки */
+.footer-grid > div:last-child p {
+  columns: 2;
+  column-gap: 14px;
 }
 
 /* ——— PRODUCT PAGE ——— */
@@ -1159,8 +1165,8 @@ main.section[data-product-root] { padding-top: 22px; }
 .loyalty-strip {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  background: var(--text);
-  color: #fff;
+  background: #e8e2dc;
+  color: var(--text);
   padding: 18px 0;
 }
 .loyalty-strip__inner {
@@ -1175,14 +1181,14 @@ main.section[data-product-root] { padding-top: 22px; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-right: 16px;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 .loyalty-strip__text {
   font-size: 0.9rem;
-  opacity: 0.88;
+  opacity: 0.8;
 }
 .loyalty-strip__btn {
-  color: #fff;
+  color: var(--text);
   text-decoration: none;
   font-size: 0.85rem;
   letter-spacing: 0.06em;
@@ -1192,8 +1198,8 @@ main.section[data-product-root] { padding-top: 22px; }
   transition: background 0.2s, border-color 0.2s;
 }
 .loyalty-strip__btn:hover {
-  background: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.7);
+  background: rgba(0,0,0,0.06);
+  border-color: var(--text);
 }
 @media (max-width: 680px) {
   .loyalty-strip__inner { flex-direction: column; text-align: center; gap: 10px; }
@@ -1213,12 +1219,12 @@ main.section[data-product-root] { padding-top: 22px; }
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 36px 24px;
+  padding: 22px 20px;
   background: #fff;
   text-decoration: none;
   color: var(--text);
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   font-weight: 400;
   letter-spacing: 0.04em;
   transition: background 0.25s ease, color 0.25s ease;
@@ -1330,24 +1336,27 @@ main.section[data-product-root] { padding-top: 22px; }
   border-bottom: 1px solid var(--line);
 }
 .corporate-split {
-  max-width: 640px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
 }
 .corporate-split h2 {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 400;
-  font-size: clamp(1.8rem, 3.5vw, 3rem);
-  letter-spacing: 0.02em;
-  margin: 0 0 20px;
+  font-style: italic;
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  letter-spacing: 0.04em;
+  margin: 0 0 8px;
 }
 .corporate-text p {
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.78;
-  margin: 0 0 14px;
+  margin: 0;
 }
-.corporate-text .button {
-  margin-top: 10px;
-  display: inline-flex;
+.corporate-split > .button {
+  flex-shrink: 0;
 }
 
 /* ——— RESPONSIVE: новые блоки ——— */
@@ -1403,37 +1412,37 @@ main.section[data-product-root] { padding-top: 22px; }
 .contact-split {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
-  gap: 60px;
-  align-items: start;
-  padding: 60px 0;
+  gap: 28px;
+  align-items: center;
+  padding: 16px 0;
 }
 .contact-text h2 {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 400;
   font-style: italic;
-  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
-  margin: 0 0 16px;
+  font-size: 1.15rem;
+  margin: 0 0 6px;
   letter-spacing: 0.02em;
 }
 .contact-text p {
   color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.78;
-  margin: 0 0 12px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0 0 4px;
 }
 .contact-text p:last-child { margin-bottom: 0; }
-.contact-alt { font-size: 0.9rem !important; }
+.contact-alt { font-size: 0.82rem !important; }
 .contact-alt a { color: var(--text); }
 
-.contact-form { display: flex; flex-direction: column; gap: 12px; }
-.contact-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.contact-form { display: flex; flex-direction: column; gap: 8px; }
+.contact-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .contact-form__input {
   width: 100%; box-sizing: border-box;
-  padding: 12px 14px;
+  padding: 7px 10px;
   border: 1px solid var(--line);
   background: #fff;
   font-family: 'Jost', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: var(--text);
   border-radius: 2px;
   outline: none;
@@ -1441,14 +1450,14 @@ main.section[data-product-root] { padding-top: 22px; }
 }
 .contact-form__input:focus { border-color: var(--text); }
 .contact-form__input::placeholder { color: var(--muted); }
-.contact-form__textarea { resize: vertical; min-height: 110px; }
+.contact-form__textarea { resize: vertical; min-height: 70px; }
 .contact-form__submit { align-self: flex-start; }
-.contact-form__status { font-size: 0.87rem; margin: 0; }
+.contact-form__status { font-size: 0.82rem; margin: 0; }
 .contact-form__status--ok { color: #3a7a3a; }
 .contact-form__status--error { color: #a33; }
 
 @media (max-width: 768px) {
-  .contact-split { grid-template-columns: 1fr; gap: 28px; padding: 40px 0; }
+  .contact-split { grid-template-columns: 1fr; gap: 16px; padding: 20px 0; }
 }
 @media (max-width: 680px) {
   .contact-form__row { grid-template-columns: 1fr; }
