@@ -889,14 +889,21 @@
           var ymS = document.createElement('script');
           ymS.src = 'https://api-maps.yandex.ru/v3/?lang=ru_RU&apikey=64c037dc-dd84-4db7-b2a8-9f2b1135d9f2';
           ymS.onload = function() {
-            cdekStatus('Карты загружены ✓, ожидание инициализации…', 'info');
-            // Ждём полной готовности ymaps3 перед созданием виджета
-            (window.ymaps3 && window.ymaps3.ready ? window.ymaps3.ready : Promise.resolve())
+            cdekStatus('Карты загружены, патчим namespace…', 'info');
+            window.ymaps3.ready
               .then(function() {
-                cdekStatus('ymaps3 готов, запуск виджета…', 'info');
+                // Импортируем подпакет с классами, которых не хватает виджету
+                return window.ymaps3.import('@yandex/ymaps3-default-ui-theme');
+              })
+              .then(function(theme) {
+                // Патчим ymaps3 — добавляем классы в корневой namespace
+                if (theme.YMapDefaultSchemeLayer)   window.ymaps3.YMapDefaultSchemeLayer   = theme.YMapDefaultSchemeLayer;
+                if (theme.YMapDefaultFeaturesLayer) window.ymaps3.YMapDefaultFeaturesLayer = theme.YMapDefaultFeaturesLayer;
+                if (theme.YMapDefaultMarker)        window.ymaps3.YMapDefaultMarker        = theme.YMapDefaultMarker;
+                cdekStatus('ymaps3 готов ✓, запуск виджета…', 'info');
                 try {
                   window._cdekWidgetInstance = new window.CDEKWidget({
-                    defaultLocation: [37.6173, 55.7558], // Москва — координаты, без геокодера
+                    defaultLocation: [37.6173, 55.7558],
                     root:            'cdek-map',
                     apiKey:          '64c037dc-dd84-4db7-b2a8-9f2b1135d9f2',
                     servicePath:     'https://api.phicandles.ru/cdek-service.php',
@@ -914,11 +921,11 @@
                 }
               })
               .catch(function(e) {
-                cdekStatus('ymaps3.ready failed: ' + e.message, 'error');
+                cdekStatus('Ошибка инициализации ymaps3: ' + e.message, 'error');
               });
           };
           ymS.onerror = function() {
-            cdekStatus('❌ Яндекс Карты v3 не загружаются. Ключ не активирован для v3 API.', 'error');
+            cdekStatus('❌ Яндекс Карты не загружаются', 'error');
           };
           document.head.appendChild(ymS);
         })
