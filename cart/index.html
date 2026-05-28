@@ -308,11 +308,14 @@
               </div>
               <div class="order-form__field order-form__field--full">
                 <label class="order-form__label" for="f-delivery">Способ доставки *</label>
+                <p id="fragile-notice" style="display:none;margin:0 0 8px;padding:8px 12px;background:#fdf6e3;border:1px solid #e8d8a0;font-size:0.82rem;color:#7a5c00;line-height:1.5;">
+                  В вашем заказе есть хрупкие изделия — доставка по Москве возможна только курьером.
+                </p>
                 <div style="position:relative;">
                   <select class="order-form__select order-form__input" id="f-delivery" required>
                     <option value="">— Выберите —</option>
-                    <option value="СДЭК">СДЭК</option>
-                    <option value="Яндекс Доставка">Яндекс Доставка</option>
+                    <option value="СДЭК" id="opt-sdek">СДЭК</option>
+                    <option value="Яндекс Доставка" id="opt-ya">Яндекс Доставка</option>
                     <option value="Курьер">Курьер</option>
                   </select>
                   <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%) rotate(45deg);width:7px;height:7px;border-right:1px solid var(--muted);border-bottom:1px solid var(--muted);pointer-events:none;"></span>
@@ -512,6 +515,39 @@
   };
 
   const FORMSPREE_URL = 'https://api.phicandles.ru/send-order.php';
+
+  // Хрупкие товары — только курьерская доставка по Москве
+  const FRAGILE_SLUGS = [
+    'roza-intaliya', 'roza-intalia-k',
+    'svecha-shkatulka-tykva', 'tykva-k',
+    'bubl', 'krolik', 'art-deco',
+    'salfetnica-bubl', 'podstavka-dlya-yaits',
+    'fistashkovaya-roza', 'zefirnaya-roza',
+    'buket-roz', 'paskhalnyy-zayats-belyy',
+  ];
+
+  function hasFragileItem() {
+    return getCart().some(item => FRAGILE_SLUGS.includes(item.slug));
+  }
+
+  function applyFragileRestriction() {
+    const fragile = hasFragileItem();
+    const notice  = document.getElementById('fragile-notice');
+    const optSdek = document.getElementById('opt-sdek');
+    const optYa   = document.getElementById('opt-ya');
+    const sel     = document.getElementById('f-delivery');
+    if (!notice || !sel) return;
+
+    notice.style.display = fragile ? '' : 'none';
+    if (optSdek) optSdek.disabled = fragile;
+    if (optYa)   optYa.disabled   = fragile;
+
+    // Если выбран недоступный вариант — сбросить на курьера
+    if (fragile && sel.value && sel.value !== 'Курьер') {
+      sel.value = 'Курьер';
+      sel.dispatchEvent(new Event('change'));
+    }
+  }
 
   let activePromo = null;
   let orderPlaced = false;
@@ -723,11 +759,12 @@
     }
   });
 
-  document.addEventListener('phicandles-cart-changed', renderCart);
+  document.addEventListener('phicandles-cart-changed', () => { renderCart(); applyFragileRestriction(); });
 
   document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
     renderCart();
+    applyFragileRestriction();
 
     const deliveryHints = {
       'Курьер':          'Курьерская доставка по Москве — 200 ₽ (бесплатно при заказе от 8 000 ₽). Укажите адрес доставки.',
