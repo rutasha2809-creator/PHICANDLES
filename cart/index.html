@@ -884,32 +884,35 @@
             cdekStatus('cdek-service.php: нет access_token. Ответ: ' + JSON.stringify(parsed).substring(0, 120), 'error');
             return;
           }
-          // Токен получен — проверяем загрузку ymaps3 перед виджетом
-          cdekStatus('Токен получен, проверка Яндекс Карт…', 'info');
-          var ymTest = document.createElement('script');
-          ymTest.src = 'https://api-maps.yandex.ru/v3/?lang=ru_RU&apikey=64c037dc-dd84-4db7-b2a8-9f2b1135d9f2';
-          ymTest.onload = function() { cdekStatus('Яндекс Карты загружены ✓', 'ok'); };
-          ymTest.onerror = function() { cdekStatus('❌ Яндекс Карты НЕ загружаются (заблокированы или ключ не работает для v3)', 'error'); };
-          document.head.appendChild(ymTest);
-          // Запускаем виджет
-          try {
-            window._cdekWidgetInstance = new window.CDEKWidget({
-              defaultLocation: 'Москва',
-              root:            'cdek-map',
-              apiKey:          '64c037dc-dd84-4db7-b2a8-9f2b1135d9f2',
-              servicePath:     'https://api.phicandles.ru/cdek-service.php',
-              lang:            'rus',
-              onReady: function() { cdekStatus('', 'ok'); },
-              onChoose: function(type, tariff, address) {
-                var label = address.city + ', ' + address.address;
-                document.getElementById('f-address').value = label;
-                document.getElementById('cdek-chosen').textContent = '✓ Выбран ПВЗ: ' + label;
-                cdekStatus('', 'ok');
-              },
-            });
-          } catch(e) {
-            cdekStatus('Ошибка инициализации виджета: ' + e.message, 'error');
-          }
+          // Токен получен — сначала загружаем ymaps3 вручную, потом создаём виджет
+          cdekStatus('Загрузка Яндекс Карт…', 'info');
+          var ymS = document.createElement('script');
+          ymS.src = 'https://api-maps.yandex.ru/v3/?lang=ru_RU&apikey=64c037dc-dd84-4db7-b2a8-9f2b1135d9f2';
+          ymS.onload = function() {
+            cdekStatus('Карты загружены ✓, запуск виджета…', 'info');
+            try {
+              window._cdekWidgetInstance = new window.CDEKWidget({
+                defaultLocation: 'Москва',
+                root:            'cdek-map',
+                apiKey:          '64c037dc-dd84-4db7-b2a8-9f2b1135d9f2',
+                servicePath:     'https://api.phicandles.ru/cdek-service.php',
+                lang:            'rus',
+                onReady: function() { cdekStatus('', 'ok'); },
+                onChoose: function(type, tariff, address) {
+                  var label = address.city + ', ' + address.address;
+                  document.getElementById('f-address').value = label;
+                  document.getElementById('cdek-chosen').textContent = '✓ Выбран ПВЗ: ' + label;
+                  cdekStatus('', 'ok');
+                },
+              });
+            } catch(e) {
+              cdekStatus('Ошибка виджета после загрузки карт: ' + e.message, 'error');
+            }
+          };
+          ymS.onerror = function() {
+            cdekStatus('❌ Яндекс Карты v3 не загружаются. Возможно, ключ не активирован для v3 API.', 'error');
+          };
+          document.head.appendChild(ymS);
         })
         .catch(function(err) {
           cdekStatus('Не удалось подключиться к cdek-service.php: ' + err.message, 'error');
