@@ -14,7 +14,7 @@
   --shadow-hover: 0 8px 40px rgba(0,0,0,0.10);
   --radius: 0px;
   --radius-sm: 0px;
-  --container: 1200px;
+  --container: 1400px;
 }
 
 * { box-sizing: border-box; }
