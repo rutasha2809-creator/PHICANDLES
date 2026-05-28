@@ -869,27 +869,45 @@
 
     function doInitCdek() {
       if (window._cdekWidgetInstance) return;
-      cdekStatus('Инициализация карты…', 'info');
-      try {
-        window._cdekWidgetInstance = new window.CDEKWidget({
-          defaultLocation: 'Москва',
-          root:            'cdek-map',
-          apiKey:          '64c037dc-dd84-4db7-b2a8-9f2b1135d9f2',
-          servicePath:     'https://api.phicandles.ru/cdek-service.php',
-          lang:            'rus',
-          onReady: function() {
-            cdekStatus('', 'ok');
-          },
-          onChoose: function(type, tariff, address) {
-            var label = address.city + ', ' + address.address;
-            document.getElementById('f-address').value = label;
-            document.getElementById('cdek-chosen').textContent = '✓ Выбран ПВЗ: ' + label;
-            cdekStatus('', 'ok');
-          },
+      cdekStatus('Проверка сервиса СДЭК…', 'info');
+
+      // Сначала проверяем, что cdek-service.php отвечает корректно
+      fetch('https://api.phicandles.ru/cdek-service.php')
+        .then(function(r) { return r.text(); })
+        .then(function(text) {
+          var parsed;
+          try { parsed = JSON.parse(text); } catch(e) {
+            cdekStatus('cdek-service.php вернул не JSON: ' + text.substring(0, 120), 'error');
+            return;
+          }
+          if (!parsed.access_token) {
+            cdekStatus('cdek-service.php: нет access_token. Ответ: ' + JSON.stringify(parsed).substring(0, 120), 'error');
+            return;
+          }
+          // Токен получен — запускаем виджет
+          cdekStatus('Токен получен, загрузка карты…', 'info');
+          try {
+            window._cdekWidgetInstance = new window.CDEKWidget({
+              defaultLocation: 'Москва',
+              root:            'cdek-map',
+              apiKey:          '64c037dc-dd84-4db7-b2a8-9f2b1135d9f2',
+              servicePath:     'https://api.phicandles.ru/cdek-service.php',
+              lang:            'rus',
+              onReady: function() { cdekStatus('', 'ok'); },
+              onChoose: function(type, tariff, address) {
+                var label = address.city + ', ' + address.address;
+                document.getElementById('f-address').value = label;
+                document.getElementById('cdek-chosen').textContent = '✓ Выбран ПВЗ: ' + label;
+                cdekStatus('', 'ok');
+              },
+            });
+          } catch(e) {
+            cdekStatus('Ошибка инициализации виджета: ' + e.message, 'error');
+          }
+        })
+        .catch(function(err) {
+          cdekStatus('Не удалось подключиться к cdek-service.php: ' + err.message, 'error');
         });
-      } catch(e) {
-        cdekStatus('Ошибка инициализации: ' + e.message, 'error');
-      }
     }
 
     document.addEventListener('DOMContentLoaded', function() {
