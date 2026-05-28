@@ -872,11 +872,11 @@
       cdekStatus('Инициализация карты…', 'info');
       try {
         window._cdekWidgetInstance = new window.CDEKWidget({
-          from:        { country_code: 'RU', city: 'Москва' },
-          root:        'cdek-map',
-          apiKey:      '64c037dc-dd84-4db7-b2a8-9f2b1135d9f2',
-          servicePath: 'https://api.phicandles.ru/cdek-service.php',
-          lang:        'rus',
+          defaultLocation: 'Москва',
+          root:            'cdek-map',
+          apiKey:          '64c037dc-dd84-4db7-b2a8-9f2b1135d9f2',
+          servicePath:     'https://api.phicandles.ru/cdek-service.php',
+          lang:            'rus',
           onReady: function() {
             cdekStatus('', 'ok');
           },
