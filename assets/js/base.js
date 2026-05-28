@@ -345,6 +345,8 @@ function bindGlobalCartLink() {
   document.querySelectorAll('[data-cart-link]').forEach((link) => {
     link.addEventListener('click', (event) => {
       event.preventDefault();
+      // Уже на странице корзины — ничего не делаем
+      if (window.location.pathname.includes('/cart')) return;
       const cartSection = document.querySelector('#cart');
       if (cartSection) {
         cartSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
