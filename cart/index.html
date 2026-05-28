@@ -312,11 +312,8 @@
                   <select class="order-form__select order-form__input" id="f-delivery" required>
                     <option value="">— Выберите —</option>
                     <option value="СДЭК">СДЭК</option>
-                    <option value="Почта России">Почта России</option>
                     <option value="Яндекс Доставка">Яндекс Доставка</option>
-                    <option value="Озон Доставка">Озон Доставка</option>
                     <option value="Курьер">Курьер</option>
-                    <option value="Самовывоз">Самовывоз</option>
                   </select>
                   <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%) rotate(45deg);width:7px;height:7px;border-right:1px solid var(--muted);border-bottom:1px solid var(--muted);pointer-events:none;"></span>
                 </div>
@@ -723,17 +720,11 @@
       'Курьер':          'Курьерская доставка по Москве — 200 ₽. Укажите адрес доставки.',
       'СДЭК':            'Доставка по тарифам СДЭК. Укажите удобный пункт выдачи в поле адреса.',
       'Яндекс Доставка': 'Доставка по тарифам Яндекс Доставки. Укажите удобный пункт выдачи в поле адреса.',
-      'Озон Доставка':   'Доставка по тарифам Ozon. Укажите удобный пункт выдачи в поле адреса.',
-      'Почта России':    'Доставка по тарифам Почты России. Укажите адрес доставки.',
-      'Самовывоз':       'Детали согласовываем при оформлении заказа.',
     };
     const deliveryCosts = {
       'Курьер':          200,
       'СДЭК':            null,
       'Яндекс Доставка': null,
-      'Озон Доставка':   null,
-      'Почта России':    null,
-      'Самовывоз':       0,
     };
     document.getElementById('f-delivery').addEventListener('change', function() {
       document.getElementById('delivery-hint').textContent = deliveryHints[this.value] || '';
