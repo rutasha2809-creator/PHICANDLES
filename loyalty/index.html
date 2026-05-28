@@ -16,231 +16,207 @@
   <noscript><div><img src="https://mc.yandex.ru/watch/109447818" style="position:absolute;left:-9999px;" alt=""></div></noscript>
   <!-- /Яндекс.Метрика -->
   <style>
+    /* Герой */
     .loyalty-hero {
-      padding: 48px 0 40px;
+      padding: 32px 0 28px;
       border-bottom: 1px solid var(--line);
       background: #faf7f4;
       text-align: center;
     }
     .loyalty-hero h1 {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
       font-weight: 400;
       font-style: italic;
-      margin: 0 0 12px;
+      margin: 0 0 8px;
     }
     .loyalty-hero p {
-      font-size: 1rem;
-      color: #666;
-      margin: 0;
-      max-width: 520px;
+      font-size: 0.95rem;
+      color: #555;
+      max-width: 480px;
       margin: 0 auto;
-      line-height: 1.7;
+      line-height: 1.65;
+    }
+
+    /* Общий заголовок секций */
+    .loyalty-section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      font-style: italic;
+      text-align: center;
+      margin: 0 0 24px;
     }
 
     /* Как это работает */
     .loyalty-how {
-      padding: 64px 0;
+      padding: 36px 0;
       border-bottom: 1px solid var(--line);
-    }
-    .loyalty-how h2 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.6rem;
-      font-weight: 400;
-      font-style: italic;
-      text-align: center;
-      margin: 0 0 40px;
     }
     .loyalty-steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 0;
-      max-width: 820px;
+      max-width: 780px;
       margin: 0 auto;
     }
     .loyalty-step {
-      padding: 0 32px;
+      padding: 0 28px;
       border-right: 1px solid var(--line);
       text-align: center;
     }
     .loyalty-step:last-child { border-right: none; }
     .loyalty-step__num {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 2.4rem;
+      font-size: 1.8rem;
       font-weight: 300;
-      opacity: 0.15;
+      opacity: 0.25;
       display: block;
       line-height: 1;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
     .loyalty-step h3 {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 400;
-      letter-spacing: 0.03em;
-      margin: 0 0 8px;
+      letter-spacing: 0.02em;
+      margin: 0 0 6px;
     }
     .loyalty-step p {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.7;
+      font-size: 0.88rem;
+      color: #555;
+      line-height: 1.6;
       margin: 0;
     }
 
     /* Уровни */
     .loyalty-levels {
-      padding: 64px 0;
+      padding: 36px 0;
       border-bottom: 1px solid var(--line);
       background: #faf7f4;
-    }
-    .loyalty-levels h2 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.6rem;
-      font-weight: 400;
-      font-style: italic;
-      text-align: center;
-      margin: 0 0 40px;
     }
     .loyalty-levels__grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      max-width: 820px;
+      gap: 12px;
+      max-width: 780px;
       margin: 0 auto;
     }
     .loyalty-level-card {
       background: #fff;
       border: 1px solid var(--line);
-      padding: 28px 24px;
+      padding: 20px 18px;
       text-align: center;
     }
-    .loyalty-level-card--featured {
-      border-color: var(--text);
-    }
+    .loyalty-level-card--featured { border-color: var(--text); }
     .loyalty-level-card__badge {
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #999;
+      color: #888;
       display: block;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
-    .loyalty-level-card--featured .loyalty-level-card__badge {
-      color: var(--text);
-    }
+    .loyalty-level-card--featured .loyalty-level-card__badge { color: var(--text); }
     .loyalty-level-card h3 {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: 400;
-      margin: 0 0 8px;
+      margin: 0 0 6px;
     }
     .loyalty-level-card__cashback {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 2.4rem;
+      font-size: 2rem;
       font-weight: 300;
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
     .loyalty-level-card__desc {
-      font-size: 0.85rem;
-      color: #888;
-      line-height: 1.6;
+      font-size: 0.82rem;
+      color: #555;
+      line-height: 1.5;
     }
     .loyalty-level-card__from {
-      font-size: 0.8rem;
-      color: #aaa;
-      margin-top: 12px;
+      font-size: 0.78rem;
+      color: #888;
+      margin-top: 8px;
       display: block;
     }
 
-    /* Реферальная программа */
-    .loyalty-referral {
-      padding: 64px 0;
-      border-bottom: 1px solid var(--line);
+    /* Реферал + форма — одна секция */
+    .loyalty-bottom {
+      padding: 36px 0 48px;
     }
-    .loyalty-referral__inner {
-      max-width: 620px;
+    .loyalty-bottom__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 820px;
       margin: 0 auto;
-      text-align: center;
+      align-items: start;
     }
-    .loyalty-referral__inner h2 {
+    .loyalty-referral h2,
+    .loyalty-join h2 {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.6rem;
+      font-size: 1.3rem;
       font-weight: 400;
       font-style: italic;
-      margin: 0 0 16px;
-    }
-    .loyalty-referral__inner p {
-      font-size: 0.95rem;
-      color: #666;
-      line-height: 1.75;
       margin: 0 0 12px;
+    }
+    .loyalty-referral p {
+      font-size: 0.88rem;
+      color: #555;
+      line-height: 1.65;
+      margin: 0 0 10px;
     }
     .loyalty-referral__bonus {
       display: inline-block;
       border: 1px solid var(--line);
-      padding: 16px 32px;
-      margin: 16px 0;
+      padding: 10px 20px;
+      margin: 8px 0;
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.3rem;
-    }
-
-    /* Форма регистрации */
-    .loyalty-join {
-      padding: 64px 0 80px;
-    }
-    .loyalty-join__inner {
-      max-width: 480px;
-      margin: 0 auto;
-    }
-    .loyalty-join h2 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.6rem;
-      font-weight: 400;
-      font-style: italic;
-      text-align: center;
-      margin: 0 0 32px;
+      font-size: 1.15rem;
     }
     .loyalty-form {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
     .loyalty-form input {
       width: 100%;
-      padding: 12px 16px;
+      padding: 10px 14px;
       border: 1px solid var(--line);
       background: #fff;
       font-family: inherit;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       outline: none;
       box-sizing: border-box;
     }
     .loyalty-form input:focus { border-color: var(--text); }
     .loyalty-form__status {
-      font-size: 0.9rem;
-      min-height: 20px;
-      text-align: center;
-      color: #666;
+      font-size: 0.85rem;
+      min-height: 18px;
+      color: #555;
     }
     .loyalty-form__status--success { color: #2a7a2a; }
     .loyalty-form__status--error   { color: #c0392b; }
-    .loyalty-success { display: none; text-align: center; }
+    .loyalty-success { display: none; }
     .loyalty-success__code {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 2rem;
+      font-size: 1.7rem;
       letter-spacing: 0.1em;
       display: block;
       border: 1px solid var(--line);
-      padding: 16px;
-      margin: 16px 0;
+      padding: 12px;
+      margin: 12px 0;
+      text-align: center;
     }
 
     @media (max-width: 680px) {
-      .loyalty-steps, .loyalty-levels__grid { grid-template-columns: 1fr; }
-      .loyalty-step { border-right: none; border-bottom: 1px solid var(--line); padding: 24px 0; }
+      .loyalty-steps, .loyalty-levels__grid, .loyalty-bottom__grid { grid-template-columns: 1fr; }
+      .loyalty-step { border-right: none; border-bottom: 1px solid var(--line); padding: 20px 0; }
       .loyalty-step:last-child { border-bottom: none; }
-      .loyalty-how, .loyalty-levels, .loyalty-referral, .loyalty-join { padding: 48px 0; }
+      .loyalty-how, .loyalty-levels, .loyalty-bottom { padding: 28px 0; }
     }
   </style>
 </head>
@@ -277,7 +253,7 @@
     <!-- Как работает -->
     <section class="loyalty-how">
       <div class="container">
-        <h2>Как это работает</h2>
+        <p class="loyalty-section-title">Как это работает</p>
         <div class="loyalty-steps">
           <div class="loyalty-step">
             <span class="loyalty-step__num">01</span>
@@ -301,7 +277,7 @@
     <!-- Уровни -->
     <section class="loyalty-levels">
       <div class="container">
-        <h2>Уровни участников</h2>
+        <p class="loyalty-section-title">Уровни участников</p>
         <div class="loyalty-levels__grid">
           <div class="loyalty-level-card">
             <span class="loyalty-level-card__badge">Начальный уровень</span>
@@ -328,40 +304,37 @@
       </div>
     </section>
 
-    <!-- Реферальная программа -->
-    <section class="loyalty-referral">
+    <!-- Реферальная программа + Форма -->
+    <section class="loyalty-bottom">
       <div class="container">
-        <div class="loyalty-referral__inner">
-          <h2>Приглашайте друзей</h2>
-          <p>После регистрации вы получите персональный реферальный код. Поделитесь им с друзьями — и когда они сделают первый заказ, вы оба получите бонус.</p>
-          <div class="loyalty-referral__bonus">300 баллов вам + 300 баллов другу</div>
-          <p>Баллы начисляются автоматически, как только друг оформит первый заказ с вашим кодом.</p>
-        </div>
-      </div>
-    </section>
+        <div class="loyalty-bottom__grid">
 
-    <!-- Форма регистрации -->
-    <section class="loyalty-join">
-      <div class="container">
-        <div class="loyalty-join__inner">
-          <h2>Вступить в PHI-клуб</h2>
-
-          <form class="loyalty-form" id="loyalty-form" novalidate>
-            <input type="text"  name="name"  placeholder="Ваше имя" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="tel"   name="phone" placeholder="Телефон (необязательно)">
-            <input type="text"  name="referral_code" placeholder="Реферальный код друга (если есть)">
-            <button class="button" type="submit">Вступить в клуб</button>
-            <p class="loyalty-form__status" id="loyalty-status" aria-live="polite"></p>
-          </form>
-
-          <div class="loyalty-success" id="loyalty-success">
-            <p>Добро пожаловать в PHI-клуб! 🕯</p>
-            <p>Ваш реферальный код:</p>
-            <span class="loyalty-success__code" id="loyalty-code"></span>
-            <p style="font-size:0.85rem;color:#888;">Поделитесь кодом с друзьями — и вы оба получите 300 баллов</p>
-            <a class="button" href="../account/index.html" style="margin-top:16px;display:inline-block;">Открыть личный кабинет</a>
+          <div class="loyalty-referral">
+            <h2>Приглашайте друзей</h2>
+            <p>После регистрации вы получите персональный реферальный код. Поделитесь им с друзьями — и когда они сделают первый заказ, вы оба получите бонус.</p>
+            <div class="loyalty-referral__bonus">300 баллов вам + 300 баллов другу</div>
+            <p>Баллы начисляются автоматически, как только друг оформит первый заказ с вашим кодом.</p>
           </div>
+
+          <div class="loyalty-join">
+            <h2>Вступить в PHI-клуб</h2>
+            <form class="loyalty-form" id="loyalty-form" novalidate>
+              <input type="text"  name="name"  placeholder="Ваше имя" required>
+              <input type="email" name="email" placeholder="Email" required>
+              <input type="tel"   name="phone" placeholder="Телефон (необязательно)">
+              <input type="text"  name="referral_code" placeholder="Реферальный код друга (если есть)">
+              <button class="button" type="submit">Вступить в клуб</button>
+              <p class="loyalty-form__status" id="loyalty-status" aria-live="polite"></p>
+            </form>
+            <div class="loyalty-success" id="loyalty-success">
+              <p>Добро пожаловать в PHI-клуб!</p>
+              <p>Ваш реферальный код:</p>
+              <span class="loyalty-success__code" id="loyalty-code"></span>
+              <p style="font-size:0.82rem;color:#666;">Поделитесь кодом с друзьями — и вы оба получите 300 баллов</p>
+              <a class="button" href="../account/index.html" style="margin-top:12px;display:inline-block;">Открыть личный кабинет</a>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
