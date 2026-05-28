@@ -326,6 +326,7 @@
               <!-- СДЭК виджет карты -->
               <div id="cdek-widget-wrap" class="order-form__field order-form__field--full" style="display:none;">
                 <label class="order-form__label">Выберите пункт выдачи СДЭК</label>
+                <p id="cdek-status" style="font-size:0.82rem;margin:0 0 6px;min-height:1.2em;"></p>
                 <div id="cdek-map" style="width:100%;height:420px;border:1px solid var(--line);"></div>
                 <p id="cdek-chosen" style="font-size:0.85rem;color:#2a7a2a;margin:6px 0 0;min-height:1.2em;"></p>
               </div>
@@ -823,7 +824,14 @@
 
   <!-- СДЭК виджет выбора ПВЗ -->
   <script>
-    window._cdekWidgetReady = false;
+    window._cdekWidgetInstance = null;
+
+    function cdekStatus(msg, type) {
+      var el = document.getElementById('cdek-status');
+      if (!el) return;
+      el.textContent = msg;
+      el.style.color = type === 'error' ? '#c00' : type === 'ok' ? '#2a7a2a' : '#666';
+    }
 
     function checkCdekVisibility() {
       const sel  = document.getElementById('f-delivery');
@@ -831,27 +839,57 @@
       if (!sel || !wrap) return;
       if (sel.value === 'СДЭК') {
         wrap.style.display = '';
-        initCdekIfReady();
+        loadAndInitCdek();
       } else {
         wrap.style.display = 'none';
       }
     }
 
-    function initCdekIfReady() {
+    function loadAndInitCdek() {
+      if (window._cdekWidgetInstance) return; // уже создан
+      if (window.CDEKWidget) {
+        doInitCdek();
+        return;
+      }
+      cdekStatus('Загрузка виджета СДЭК…', 'info');
+      import('https://cdn.jsdelivr.net/npm/@cdek-it/widget@3/dist/cdek-widget.es.js')
+        .then(function(mod) {
+          var W = mod.CDEKWidget || mod.default;
+          if (!W) {
+            cdekStatus('Ошибка: виджет не найден в модуле (нет CDEKWidget/default)', 'error');
+            return;
+          }
+          window.CDEKWidget = W;
+          doInitCdek();
+        })
+        .catch(function(err) {
+          cdekStatus('Не удалось загрузить виджет: ' + err.message, 'error');
+        });
+    }
+
+    function doInitCdek() {
       if (window._cdekWidgetInstance) return;
-      if (!window.CDEKWidget) return;
-      window._cdekWidgetInstance = new window.CDEKWidget({
-        from:        { country_code: 'RU', city: 'Москва' },
-        root:        'cdek-map',
-        apiKey:      '64c037dc-dd84-4db7-b2a8-9f2b1135d9f2',
-        servicePath: 'https://api.phicandles.ru/cdek-service.php',
-        lang:        'rus',
-        onChoose: function(type, tariff, address) {
-          var label = address.city + ', ' + address.address;
-          document.getElementById('f-address').value = label;
-          document.getElementById('cdek-chosen').textContent = '✓ Выбран ПВЗ: ' + label;
-        },
-      });
+      cdekStatus('Инициализация карты…', 'info');
+      try {
+        window._cdekWidgetInstance = new window.CDEKWidget({
+          from:        { country_code: 'RU', city: 'Москва' },
+          root:        'cdek-map',
+          apiKey:      '64c037dc-dd84-4db7-b2a8-9f2b1135d9f2',
+          servicePath: 'https://api.phicandles.ru/cdek-service.php',
+          lang:        'rus',
+          onReady: function() {
+            cdekStatus('', 'ok');
+          },
+          onChoose: function(type, tariff, address) {
+            var label = address.city + ', ' + address.address;
+            document.getElementById('f-address').value = label;
+            document.getElementById('cdek-chosen').textContent = '✓ Выбран ПВЗ: ' + label;
+            cdekStatus('', 'ok');
+          },
+        });
+      } catch(e) {
+        cdekStatus('Ошибка инициализации: ' + e.message, 'error');
+      }
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -861,18 +899,6 @@
         checkCdekVisibility();
       }
     });
-  </script>
-  <script type="module">
-    // Импортируем все экспорты — берём CDEKWidget или default
-    import * as CDEKWidgetModule from 'https://cdn.jsdelivr.net/npm/@cdek-it/widget@3/dist/cdek-widget.es.js';
-    const W = CDEKWidgetModule.CDEKWidget || CDEKWidgetModule.default;
-    window.CDEKWidget = W;
-    window._cdekWidgetReady = true;
-    // Если СДЭК уже выбран на момент загрузки модуля — инициализируем
-    var sel = document.getElementById('f-delivery');
-    if (sel && sel.value === 'СДЭК') {
-      initCdekIfReady();
-    }
   </script>
 </body>
 </html>
