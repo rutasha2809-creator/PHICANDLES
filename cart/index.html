@@ -658,4 +658,30 @@
   (function () {
     const tabQr   = document.getElementById('tab-qr');
     const tabBank = document.getElementById('tab-bank');
-    const pan
+    const panelQr   = document.getElementById('pay-panel-qr');
+    const panelBank = document.getElementById('pay-panel-bank');
+    if (!tabQr) return;
+    tabQr.addEventListener('click', () => {
+      tabQr.classList.add('active'); tabBank.classList.remove('active');
+      panelQr.style.display = ''; panelBank.style.display = 'none';
+    });
+    tabBank.addEventListener('click', () => {
+      tabBank.classList.add('active'); tabQr.classList.remove('active');
+      panelBank.style.display = ''; panelQr.style.display = 'none';
+    });
+  })();
+
+  // Consent checkbox
+  (function () {
+    const cb  = document.getElementById('consent-cb');
+    const btn = document.getElementById('btn-submit');
+    if (!cb || !btn) return;
+    btn.disabled = true;
+    cb.addEventListener('change', function () {
+      btn.disabled = !this.checked;
+    });
+  })();
+  </script>
+  <script src="//code.jivo.ru/widget/eOs8CTiXXr" async></script>
+</body>
+</html>
