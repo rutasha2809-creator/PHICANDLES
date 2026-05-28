@@ -889,28 +889,36 @@
           var ymS = document.createElement('script');
           ymS.src = 'https://api-maps.yandex.ru/v3/?lang=ru_RU&apikey=64c037dc-dd84-4db7-b2a8-9f2b1135d9f2';
           ymS.onload = function() {
-            cdekStatus('Карты загружены ✓, запуск виджета…', 'info');
-            try {
-              window._cdekWidgetInstance = new window.CDEKWidget({
-                defaultLocation: 'Москва',
-                root:            'cdek-map',
-                apiKey:          '64c037dc-dd84-4db7-b2a8-9f2b1135d9f2',
-                servicePath:     'https://api.phicandles.ru/cdek-service.php',
-                lang:            'rus',
-                onReady: function() { cdekStatus('', 'ok'); },
-                onChoose: function(type, tariff, address) {
-                  var label = address.city + ', ' + address.address;
-                  document.getElementById('f-address').value = label;
-                  document.getElementById('cdek-chosen').textContent = '✓ Выбран ПВЗ: ' + label;
-                  cdekStatus('', 'ok');
-                },
+            cdekStatus('Карты загружены ✓, ожидание инициализации…', 'info');
+            // Ждём полной готовности ymaps3 перед созданием виджета
+            (window.ymaps3 && window.ymaps3.ready ? window.ymaps3.ready : Promise.resolve())
+              .then(function() {
+                cdekStatus('ymaps3 готов, запуск виджета…', 'info');
+                try {
+                  window._cdekWidgetInstance = new window.CDEKWidget({
+                    defaultLocation: [37.6173, 55.7558], // Москва — координаты, без геокодера
+                    root:            'cdek-map',
+                    apiKey:          '64c037dc-dd84-4db7-b2a8-9f2b1135d9f2',
+                    servicePath:     'https://api.phicandles.ru/cdek-service.php',
+                    lang:            'rus',
+                    onReady: function() { cdekStatus('', 'ok'); },
+                    onChoose: function(type, tariff, address) {
+                      var label = address.city + ', ' + address.address;
+                      document.getElementById('f-address').value = label;
+                      document.getElementById('cdek-chosen').textContent = '✓ Выбран ПВЗ: ' + label;
+                      cdekStatus('', 'ok');
+                    },
+                  });
+                } catch(e) {
+                  cdekStatus('Ошибка виджета: ' + e.message, 'error');
+                }
+              })
+              .catch(function(e) {
+                cdekStatus('ymaps3.ready failed: ' + e.message, 'error');
               });
-            } catch(e) {
-              cdekStatus('Ошибка виджета после загрузки карт: ' + e.message, 'error');
-            }
           };
           ymS.onerror = function() {
-            cdekStatus('❌ Яндекс Карты v3 не загружаются. Возможно, ключ не активирован для v3 API.', 'error');
+            cdekStatus('❌ Яндекс Карты v3 не загружаются. Ключ не активирован для v3 API.', 'error');
           };
           document.head.appendChild(ymS);
         })
