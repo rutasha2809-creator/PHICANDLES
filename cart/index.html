@@ -571,6 +571,19 @@
 
     // Итог
     const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+
+    // Динамическая стоимость курьера: бесплатно от 8 000 ₽
+    const selDelivery = document.getElementById('f-delivery') ? document.getElementById('f-delivery').value : '';
+    if (selDelivery === 'Курьер') {
+      deliveryCost = subtotal >= 8000 ? 0 : 200;
+      const hintEl = document.getElementById('delivery-hint');
+      if (hintEl) {
+        hintEl.textContent = subtotal >= 8000
+          ? 'Курьерская доставка по Москве — бесплатно. Укажите адрес доставки.'
+          : `Курьерская доставка по Москве — 200 ₽. До бесплатной доставки ещё ${formatPrice(8000 - subtotal)}.`;
+      }
+    }
+
     const discount = activePromo ? Math.round(subtotal * activePromo.discount / 100) : 0;
     const goodsTotal = subtotal - discount;
     const total = goodsTotal - loyaltyRedeem + (typeof deliveryCost === 'number' ? deliveryCost : 0);
@@ -578,7 +591,7 @@
     const deliveryRow = deliveryCost === null
       ? `<div class="cart-totals__row"><span>Доставка</span><span style="color:var(--muted);font-size:0.8rem;">по тарифам оператора</span></div>`
       : deliveryCost === 0
-      ? ''
+      ? `<div class="cart-totals__row"><span>Доставка</span><span style="color:#2a7a2a;">Бесплатно</span></div>`
       : `<div class="cart-totals__row"><span>Доставка</span><span>${formatPrice(deliveryCost)}</span></div>`;
 
     totals.innerHTML = `
@@ -717,7 +730,7 @@
     renderCart();
 
     const deliveryHints = {
-      'Курьер':          'Курьерская доставка по Москве — 200 ₽. Укажите адрес доставки.',
+      'Курьер':          'Курьерская доставка по Москве — 200 ₽ (бесплатно при заказе от 8 000 ₽). Укажите адрес доставки.',
       'СДЭК':            'Доставка по тарифам СДЭК. Укажите удобный пункт выдачи в поле адреса.',
       'Яндекс Доставка': 'Доставка по тарифам Яндекс Доставки. Укажите удобный пункт выдачи в поле адреса.',
     };
