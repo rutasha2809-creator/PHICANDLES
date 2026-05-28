@@ -863,10 +863,14 @@
     });
   </script>
   <script type="module">
-    import CDEKWidget from 'https://cdn.jsdelivr.net/npm/@cdek-it/widget@3';
-    window.CDEKWidget = CDEKWidget;
-    // Если СДЭК уже выбран — сразу инициализируем
-    if (document.getElementById('f-delivery')?.value === 'СДЭК') {
+    // Импортируем все экспорты — берём CDEKWidget или default
+    import * as CDEKWidgetModule from 'https://cdn.jsdelivr.net/npm/@cdek-it/widget@3/dist/cdek-widget.es.js';
+    const W = CDEKWidgetModule.CDEKWidget || CDEKWidgetModule.default;
+    window.CDEKWidget = W;
+    window._cdekWidgetReady = true;
+    // Если СДЭК уже выбран на момент загрузки модуля — инициализируем
+    var sel = document.getElementById('f-delivery');
+    if (sel && sel.value === 'СДЭК') {
       initCdekIfReady();
     }
   </script>
