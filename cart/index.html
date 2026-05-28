@@ -336,10 +336,31 @@
 
         <!-- Правая колонка: итог + промокод + QR + кнопка -->
         <div class="cart-sidebar" id="cart-sidebar">
-          <div class="cart-loyalty-tip">
+          <!-- PHI-клуб: проверка и списание баллов -->
+          <div class="cart-loyalty-tip" id="loyalty-block">
             <strong>PHI-клуб</strong>
-            За этот заказ вы получите баллы — от 3% до 7% от суммы покупки.
-            <a href="/loyalty/">Вступить в PHI-клуб →</a>
+            <div id="loyalty-check-row" style="margin-top:8px;display:flex;gap:8px;align-items:center;">
+              <input type="email" id="loyalty-email-input" placeholder="Ваш email в PHI-клубе"
+                style="flex:1;border:1px solid var(--line);padding:6px 10px;font-size:0.83rem;font-family:inherit;background:#fff;outline:none;">
+              <button type="button" id="loyalty-check-btn"
+                style="border:1px solid var(--text);background:none;padding:6px 12px;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">
+                Проверить
+              </button>
+            </div>
+            <div id="loyalty-info" style="display:none;margin-top:10px;">
+              <div id="loyalty-balance-text" style="font-size:0.85rem;color:#555;margin-bottom:8px;"></div>
+              <div style="display:flex;gap:8px;align-items:center;">
+                <input type="number" id="loyalty-redeem-input" min="0" placeholder="0"
+                  style="width:90px;border:1px solid var(--line);padding:6px 10px;font-size:0.85rem;font-family:inherit;background:#fff;outline:none;">
+                <span style="font-size:0.82rem;color:#555;">баллов списать</span>
+                <button type="button" id="loyalty-apply-btn"
+                  style="border:1px solid var(--text);background:none;padding:6px 12px;font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;">
+                  Применить
+                </button>
+              </div>
+            </div>
+            <div id="loyalty-msg" style="font-size:0.82rem;margin-top:6px;"></div>
+            <a href="/loyalty/" id="loyalty-join-link" style="color:var(--text);font-size:0.82rem;display:inline-block;margin-top:8px;">Вступить в PHI-клуб →</a>
           </div>
 
           <div class="cart-panel" id="order-panel">
@@ -424,6 +445,68 @@
   <script src="../assets/js/base.js"></script>
   <script>
 
+  // ——— PHI-КЛУБ: баллы ———
+  const LOYALTY_API = 'https://api.phicandles.ru/loyalty.php';
+  let loyaltyMember  = null;  // данные участника
+  let loyaltyRedeem  = 0;     // сколько баллов списать
+
+  // Автозаполнение email из localStorage
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('phi-loyalty-email');
+    if (saved) document.getElementById('loyalty-email-input').value = saved;
+  });
+
+  document.getElementById('loyalty-check-btn').addEventListener('click', async () => {
+    const email = document.getElementById('loyalty-email-input').value.trim();
+    const msg   = document.getElementById('loyalty-msg');
+    if (!email) { msg.textContent = 'Введите email'; msg.style.color = '#8b2e2e'; return; }
+
+    msg.textContent = 'Проверяем…'; msg.style.color = '#888';
+    try {
+      const res  = await fetch(`${LOYALTY_API}?action=get_member&email=${encodeURIComponent(email)}`);
+      const data = await res.json();
+      if (data.ok) {
+        loyaltyMember = data.member;
+        document.getElementById('loyalty-join-link').style.display = 'none';
+        document.getElementById('loyalty-info').style.display = 'block';
+        document.getElementById('loyalty-balance-text').textContent =
+          `${data.member.name}, ваш баланс: ${data.member.points_balance} баллов (1 балл = 1 ₽)`;
+        document.getElementById('loyalty-redeem-input').max = data.member.points_balance;
+        msg.textContent = '';
+      } else {
+        loyaltyMember = null;
+        document.getElementById('loyalty-info').style.display = 'none';
+        document.getElementById('loyalty-join-link').style.display = 'inline-block';
+        msg.textContent = 'Участник не найден. Вступите в PHI-клуб бесплатно.';
+        msg.style.color = '#888';
+      }
+    } catch {
+      msg.textContent = 'Ошибка соединения'; msg.style.color = '#8b2e2e';
+    }
+  });
+
+  document.getElementById('loyalty-apply-btn').addEventListener('click', () => {
+    if (!loyaltyMember) return;
+    const cart     = getCart();
+    const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+    const maxRedeem = Math.floor(subtotal * 0.15);
+    const wanted    = parseInt(document.getElementById('loyalty-redeem-input').value) || 0;
+    const msg       = document.getElementById('loyalty-msg');
+
+    if (wanted > loyaltyMember.points_balance) {
+      msg.textContent = `Недостаточно баллов. Доступно: ${loyaltyMember.points_balance}`;
+      msg.style.color = '#8b2e2e'; return;
+    }
+    if (wanted > maxRedeem) {
+      msg.textContent = `Максимум для списания: ${maxRedeem} баллов (15% от суммы заказа)`;
+      msg.style.color = '#8b2e2e'; return;
+    }
+    loyaltyRedeem = wanted;
+    msg.textContent = wanted > 0 ? `Применено: −${wanted} ₽ баллами` : 'Баллы не списываются';
+    msg.style.color = wanted > 0 ? '#2d7a3a' : '#888';
+    renderCart();
+  });
+
   // ——— ПРОМОКОДЫ ———
   const PROMO_CODES = {
     'CANDLE10': 10,
@@ -493,7 +576,7 @@
     const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
     const discount = activePromo ? Math.round(subtotal * activePromo.discount / 100) : 0;
     const goodsTotal = subtotal - discount;
-    const total = goodsTotal + (typeof deliveryCost === 'number' ? deliveryCost : 0);
+    const total = goodsTotal - loyaltyRedeem + (typeof deliveryCost === 'number' ? deliveryCost : 0);
 
     const deliveryRow = deliveryCost === null
       ? `<div class="cart-totals__row"><span>Доставка</span><span style="color:var(--muted);font-size:0.8rem;">по тарифам оператора</span></div>`
@@ -504,6 +587,7 @@
     totals.innerHTML = `
       <div class="cart-totals__row"><span>Товары (${cart.reduce((s,i)=>s+i.quantity,0)} шт.)</span><span>${formatPrice(subtotal)}</span></div>
       ${discount ? `<div class="cart-totals__row cart-totals__row--discount"><span>Скидка ${activePromo.code} (${activePromo.discount}%)</span><span>−${formatPrice(discount)}</span></div>` : ''}
+      ${loyaltyRedeem > 0 ? `<div class="cart-totals__row cart-totals__row--discount"><span>Баллы PHI-клуба</span><span>−${formatPrice(loyaltyRedeem)}</span></div>` : ''}
       ${deliveryRow}
       <div class="cart-totals__row cart-totals__row--total"><span>Итого</span><span>${formatPrice(total)}</span></div>`;
   }
@@ -581,12 +665,16 @@
       ? `\n• Доставка (${delivery}) = ${new Intl.NumberFormat('ru-RU').format(deliveryCost)} ₽`
       : '';
 
+    const loyaltyEmail = loyaltyMember ? loyaltyMember.email : '';
     const body = {
       name, phone, email,
       address: `${delivery}${address ? ': ' + address : ''}`,
-      comment: `${comment || '—'}${activePromo ? '\nПромокод: ' + activePromo.code + ' (−' + activePromo.discount + '%)' : ''}`,
+      comment: `${comment || '—'}${activePromo ? '\nПромокод: ' + activePromo.code + ' (−' + activePromo.discount + '%)' : ''}${loyaltyRedeem > 0 ? '\nСписано баллов PHI-клуба: ' + loyaltyRedeem : ''}`,
       total: `${new Intl.NumberFormat('ru-RU').format(total)} ₽`,
       items: itemsText + deliveryLine,
+      loyalty_email:  loyaltyEmail,
+      loyalty_redeem: loyaltyRedeem,
+      subtotal_for_points: subtotal - discount,
     };
 
     const btn = document.getElementById('btn-submit');

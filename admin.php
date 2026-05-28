@@ -22,6 +22,72 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['password'])) {
 
 $isAdmin = !empty($_SESSION['admin']);
 
+// ——— Программа лояльности ———
+$loyaltyMembers = [];
+$loyaltyError   = '';
+if ($isAdmin) {
+    try {
+        $pdo2 = new PDO(
+            'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4',
+            DB_USER, DB_PASS,
+            [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+        );
+        // Ручное начисление баллов
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['loyalty_email'])) {
+            $lEmail  = trim($_POST['loyalty_email']);
+            $lPoints = (int)($_POST['loyalty_points'] ?? 0);
+            $lDesc   = trim($_POST['loyalty_desc'] ?? 'Ручное начисление');
+            if ($lEmail && $lPoints !== 0) {
+                $pdo2->prepare('UPDATE loyalty_members SET points_balance = points_balance + ? WHERE email = ?')
+                     ->execute([$lPoints, $lEmail]);
+                $pdo2->prepare('INSERT INTO loyalty_transactions (email, type, points, description) VALUES (?, ?, ?, ?)')
+                     ->execute([$lEmail, 'manual', $lPoints, $lDesc]);
+            }
+        }
+        $loyaltyMembers = $pdo2->query(
+            'SELECT *,
+             CASE WHEN total_spent >= 10000 THEN "Преданный"
+                  WHEN total_spent >= 3000  THEN "Постоянный"
+                  ELSE "Новичок" END AS level
+             FROM loyalty_members ORDER BY total_spent DESC'
+        )->fetchAll(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        $loyaltyError = $e->getMessage();
+    }
+}
+
+// ——— Метрика ———
+$metrika = null;
+$tokenFile = __DIR__ . '/metrika-token.json';
+if ($isAdmin && file_exists($tokenFile)) {
+    $tok = json_decode(file_get_contents($tokenFile), true);
+    if (!empty($tok['access_token'])) {
+        $url = 'https://api-metrika.yandex.net/stat/v1/data?' . http_build_query([
+            'ids'     => '109447818',
+            'metrics' => 'ym:s:visits,ym:s:users,ym:s:pageviews,ym:s:bounceRate',
+            'date1'   => '7daysAgo',
+            'date2'   => 'today',
+        ]);
+        $ch = curl_init($url);
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HTTPHEADER     => ['Authorization: OAuth ' . $tok['access_token']],
+        ]);
+        $resp = curl_exec($ch);
+        curl_close($ch);
+        $mdata = json_decode($resp, true);
+        if (!empty($mdata['totals'])) {
+            $t = $mdata['totals'];
+            $metrika = [
+                'visits'     => (int)($t[0] ?? 0),
+                'users'      => (int)($t[1] ?? 0),
+                'pageviews'  => (int)($t[2] ?? 0),
+                'bounceRate' => round($t[3] ?? 0, 1),
+            ];
+        }
+    }
+}
+
 // Получить заказы
 $orders = [];
 if ($isAdmin) {
@@ -92,6 +158,23 @@ function statusColor($s) {
   select.status-select { border: 1px solid #ddd; padding: 6px 10px; font-size: 0.82rem; cursor: pointer; background: #fff; border-radius: 0; }
   .status-msg { font-size: 0.75rem; margin-top: 4px; min-height: 16px; }
   .empty { text-align: center; padding: 60px; color: #888; }
+  .loyalty-section { margin-top: 40px; }
+  .loyalty-adjust { background:#fff; border:1px solid #ddd; padding:16px 20px; margin-bottom:16px; display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end; }
+  .loyalty-adjust label { font-size:0.75rem; color:#888; text-transform:uppercase; letter-spacing:0.06em; display:block; margin-bottom:4px; }
+  .loyalty-adjust input, .loyalty-adjust textarea { border:1px solid #ddd; padding:7px 10px; font-size:0.85rem; font-family:inherit; }
+  .loyalty-adjust button { padding:8px 18px; background:#222; color:#fff; border:none; cursor:pointer; font-size:0.82rem; letter-spacing:0.06em; }
+  .badge { display:inline-block; font-size:0.72rem; padding:2px 8px; border-radius:2px; font-weight:500; letter-spacing:0.04em; }
+  .badge--new  { background:#f0f0ee; color:#888; }
+  .badge--reg  { background:#fff3e0; color:#b07d2e; }
+  .badge--prem { background:#e8f4e8; color:#3a8a4a; }
+  .metrika-block { background:#fff; border:1px solid #ddd; padding:16px 20px; margin-bottom:20px; }
+  .section-title { font-size:0.78rem; font-weight:500; letter-spacing:0.08em; color:#888; text-transform:uppercase; margin-bottom:12px; }
+  .metrika-block h2 { font-size:0.78rem; font-weight:500; letter-spacing:0.08em; color:#888; text-transform:uppercase; margin-bottom:12px; }
+  .metrika-stats { display:flex; gap:12px; flex-wrap:wrap; }
+  .metrika-stat { flex:1; min-width:100px; }
+  .metrika-stat__num { font-size:1.5rem; font-weight:600; color:#222; }
+  .metrika-stat__label { font-size:0.75rem; color:#888; margin-top:2px; }
+  .metrika-stat__num--bounce { color:#b07d2e; }
 </style>
 </head>
 <body>
@@ -113,6 +196,30 @@ function statusColor($s) {
 </header>
 
 <div class="wrap">
+
+  <?php if ($metrika): ?>
+  <div class="metrika-block">
+    <h2>Яндекс Метрика — последние 7 дней</h2>
+    <div class="metrika-stats">
+      <div class="metrika-stat">
+        <div class="metrika-stat__num"><?= number_format($metrika['visits'], 0, '.', ' ') ?></div>
+        <div class="metrika-stat__label">Визитов</div>
+      </div>
+      <div class="metrika-stat">
+        <div class="metrika-stat__num"><?= number_format($metrika['users'], 0, '.', ' ') ?></div>
+        <div class="metrika-stat__label">Уникальных пользователей</div>
+      </div>
+      <div class="metrika-stat">
+        <div class="metrika-stat__num"><?= number_format($metrika['pageviews'], 0, '.', ' ') ?></div>
+        <div class="metrika-stat__label">Просмотров страниц</div>
+      </div>
+      <div class="metrika-stat">
+        <div class="metrika-stat__num metrika-stat__num--bounce"><?= $metrika['bounceRate'] ?>%</div>
+        <div class="metrika-stat__label">Отказы</div>
+      </div>
+    </div>
+  </div>
+  <?php endif; ?>
 
   <?php
   $counts = ['all' => count($orders)];
@@ -178,6 +285,68 @@ function statusColor($s) {
     <?php endforeach; ?>
     </tbody>
   </table>
+  <?php endif; ?>
+</div>
+
+<!-- ——— PHI-КЛУБ ——— -->
+<div class="loyalty-section">
+  <h2 class="section-title" style="margin-bottom:16px;">PHI-клуб — участники (<?= count($loyaltyMembers) ?>)</h2>
+
+  <?php if ($loyaltyError): ?>
+    <p style="color:#8b2e2e"><?= htmlspecialchars($loyaltyError) ?></p>
+  <?php else: ?>
+
+  <!-- Ручное начисление -->
+  <form class="loyalty-adjust" method="POST">
+    <div>
+      <label>Email участника</label>
+      <input type="email" name="loyalty_email" placeholder="email@example.com" required style="width:220px;">
+    </div>
+    <div>
+      <label>Баллы (+ начислить, − списать)</label>
+      <input type="number" name="loyalty_points" placeholder="100" required style="width:120px;">
+    </div>
+    <div style="flex:1;min-width:160px;">
+      <label>Комментарий</label>
+      <input type="text" name="loyalty_desc" placeholder="Ручное начисление" style="width:100%;">
+    </div>
+    <button type="submit">Начислить</button>
+  </form>
+
+  <?php if (empty($loyaltyMembers)): ?>
+    <div class="empty">Участников пока нет</div>
+  <?php else: ?>
+  <table>
+    <thead>
+      <tr>
+        <th>Участник</th>
+        <th>Уровень</th>
+        <th>Баллы</th>
+        <th>Потрачено</th>
+        <th>Реферальный код</th>
+        <th>Дата вступления</th>
+      </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($loyaltyMembers as $m):
+      $badgeClass = $m['level'] === 'Преданный' ? 'badge--prem' : ($m['level'] === 'Постоянный' ? 'badge--reg' : 'badge--new');
+    ?>
+      <tr>
+        <td>
+          <div class="client-name"><?= htmlspecialchars($m['name']) ?></div>
+          <div class="client-contact"><?= htmlspecialchars($m['email']) ?></div>
+          <?php if ($m['phone']): ?><div class="client-contact"><?= htmlspecialchars($m['phone']) ?></div><?php endif; ?>
+        </td>
+        <td><span class="badge <?= $badgeClass ?>"><?= $m['level'] ?></span></td>
+        <td><strong><?= number_format($m['points_balance'], 0, '.', ' ') ?></strong></td>
+        <td><?= number_format($m['total_spent'], 0, '.', ' ') ?> ₽</td>
+        <td style="font-family:monospace;font-size:0.85rem;"><?= htmlspecialchars($m['referral_code']) ?></td>
+        <td style="color:#888;font-size:0.82rem;"><?= date('d.m.Y', strtotime($m['created_at'])) ?></td>
+      </tr>
+    <?php endforeach; ?>
+    </tbody>
+  </table>
+  <?php endif; ?>
   <?php endif; ?>
 </div>
 

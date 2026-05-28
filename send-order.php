@@ -124,6 +124,34 @@ try {
         }
     }
 
+    // ——— PHI-клуб: списание и начисление баллов ———
+    $loyaltyEmail  = trim($data['loyalty_email']       ?? '');
+    $loyaltyRedeem = (int)($data['loyalty_redeem']     ?? 0);
+    $subtotalPts   = (int)($data['subtotal_for_points'] ?? 0);
+    if ($loyaltyEmail) {
+        $loyaltyUrl = 'https://api.phicandles.ru/loyalty.php';
+        // Списать баллы
+        if ($loyaltyRedeem > 0) {
+            $ch = curl_init($loyaltyUrl . '?action=redeem');
+            curl_setopt_array($ch, [
+                CURLOPT_RETURNTRANSFER => true, CURLOPT_POST => true,
+                CURLOPT_POSTFIELDS     => json_encode(['email' => $loyaltyEmail, 'points' => $loyaltyRedeem, 'order_id' => $orderNumber]),
+                CURLOPT_HTTPHEADER     => ['Content-Type: application/json'],
+            ]);
+            curl_exec($ch); curl_close($ch);
+        }
+        // Начислить баллы за заказ
+        if ($subtotalPts > 0) {
+            $ch = curl_init($loyaltyUrl . '?action=add_points');
+            curl_setopt_array($ch, [
+                CURLOPT_RETURNTRANSFER => true, CURLOPT_POST => true,
+                CURLOPT_POSTFIELDS     => json_encode(['email' => $loyaltyEmail, 'order_total' => $subtotalPts, 'order_id' => $orderNumber]),
+                CURLOPT_HTTPHEADER     => ['Content-Type: application/json'],
+            ]);
+            curl_exec($ch); curl_close($ch);
+        }
+    }
+
     echo json_encode(['ok' => true, 'orderNumber' => $orderNumber]);
 
 } catch (Exception $e) {
