@@ -822,42 +822,53 @@
   <script src="//code.jivo.ru/widget/eOs8CTiXXr" async></script>
 
   <!-- СДЭК виджет выбора ПВЗ -->
-  <script type="module">
-    import CDEKWidget from 'https://cdn.jsdelivr.net/npm/@cdek-it/widget@3';
+  <script>
+    window._cdekWidgetReady = false;
 
-    let cdekWidget = null;
+    function checkCdekVisibility() {
+      const sel  = document.getElementById('f-delivery');
+      const wrap = document.getElementById('cdek-widget-wrap');
+      if (!sel || !wrap) return;
+      if (sel.value === 'СДЭК') {
+        wrap.style.display = '';
+        initCdekIfReady();
+      } else {
+        wrap.style.display = 'none';
+      }
+    }
 
-    function initCdekWidget() {
-      if (cdekWidget) return;
-      cdekWidget = new CDEKWidget({
+    function initCdekIfReady() {
+      if (window._cdekWidgetInstance) return;
+      if (!window.CDEKWidget) return;
+      window._cdekWidgetInstance = new window.CDEKWidget({
         from:        { country_code: 'RU', city: 'Москва' },
         root:        'cdek-map',
         apiKey:      '64c037dc-dd84-4db7-b2a8-9f2b1135d9f2',
         servicePath: 'https://api.phicandles.ru/cdek-service.php',
         lang:        'rus',
-        onChoose(type, tariff, address) {
-          const label  = address.city + ', ' + address.address;
-          document.getElementById('f-address').value  = label;
+        onChoose: function(type, tariff, address) {
+          var label = address.city + ', ' + address.address;
+          document.getElementById('f-address').value = label;
           document.getElementById('cdek-chosen').textContent = '✓ Выбран ПВЗ: ' + label;
         },
       });
     }
 
-    // Показываем/скрываем виджет при выборе доставки
-    document.addEventListener('DOMContentLoaded', () => {
-      const sel  = document.getElementById('f-delivery');
-      const wrap = document.getElementById('cdek-widget-wrap');
-      if (!sel || !wrap) return;
-
-      sel.addEventListener('change', function () {
-        if (this.value === 'СДЭК') {
-          wrap.style.display = '';
-          initCdekWidget();
-        } else {
-          wrap.style.display = 'none';
-        }
-      });
+    document.addEventListener('DOMContentLoaded', function() {
+      var sel = document.getElementById('f-delivery');
+      if (sel) {
+        sel.addEventListener('change', checkCdekVisibility);
+        checkCdekVisibility();
+      }
     });
+  </script>
+  <script type="module">
+    import CDEKWidget from 'https://cdn.jsdelivr.net/npm/@cdek-it/widget@3';
+    window.CDEKWidget = CDEKWidget;
+    // Если СДЭК уже выбран — сразу инициализируем
+    if (document.getElementById('f-delivery')?.value === 'СДЭК') {
+      initCdekIfReady();
+    }
   </script>
 </body>
 </html>
