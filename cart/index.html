@@ -323,12 +323,12 @@
                 <p id="delivery-hint"></p>
               </div>
 
-              <!-- СДЭК виджет карты -->
+              <!-- СДЭК — подсказка с ПВЗ -->
               <div id="cdek-widget-wrap" class="order-form__field order-form__field--full" style="display:none;">
-                <label class="order-form__label">Выберите пункт выдачи СДЭК</label>
-                <p id="cdek-status" style="font-size:0.82rem;margin:0 0 6px;min-height:1.2em;"></p>
-                <div id="cdek-map" style="width:100%;height:420px;border:1px solid var(--line);"></div>
-                <p id="cdek-chosen" style="font-size:0.85rem;color:#2a7a2a;margin:6px 0 0;min-height:1.2em;"></p>
+                <div style="background:#f7f4f1;border-left:3px solid #c8b89a;padding:14px 16px;border-radius:4px;font-size:0.88rem;line-height:1.7;">
+                  Найдите удобный пункт выдачи на сайте СДЭК и укажите его адрес в поле ниже.<br>
+                  <a href="https://www.cdek.ru/ru/offices" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;font-weight:600;">Найти ПВЗ СДЭК →</a>
+                </div>
               </div>
 
               <div class="order-form__field order-form__field--full">
@@ -822,115 +822,14 @@
   </script>
   <script src="//code.jivo.ru/widget/eOs8CTiXXr" async></script>
 
-  <!-- СДЭК виджет выбора ПВЗ -->
+  <!-- СДЭК: показ/скрытие подсказки с ПВЗ -->
   <script>
-    window._cdekWidgetInstance = null;
-
-    function cdekStatus(msg, type) {
-      var el = document.getElementById('cdek-status');
-      if (!el) return;
-      el.textContent = msg;
-      el.style.color = type === 'error' ? '#c00' : type === 'ok' ? '#2a7a2a' : '#666';
-    }
-
     function checkCdekVisibility() {
-      const sel  = document.getElementById('f-delivery');
-      const wrap = document.getElementById('cdek-widget-wrap');
+      var sel  = document.getElementById('f-delivery');
+      var wrap = document.getElementById('cdek-widget-wrap');
       if (!sel || !wrap) return;
-      if (sel.value === 'СДЭК') {
-        wrap.style.display = '';
-        loadAndInitCdek();
-      } else {
-        wrap.style.display = 'none';
-      }
+      wrap.style.display = sel.value === 'СДЭК' ? '' : 'none';
     }
-
-    function loadAndInitCdek() {
-      if (window._cdekWidgetInstance) return; // уже создан
-      if (window.CDEKWidget) {
-        doInitCdek();
-        return;
-      }
-      cdekStatus('Загрузка виджета СДЭК…', 'info');
-      import('https://cdn.jsdelivr.net/npm/@cdek-it/widget@3/dist/cdek-widget.es.js')
-        .then(function(mod) {
-          var W = mod.CDEKWidget || mod.default;
-          if (!W) {
-            cdekStatus('Ошибка: виджет не найден в модуле (нет CDEKWidget/default)', 'error');
-            return;
-          }
-          window.CDEKWidget = W;
-          doInitCdek();
-        })
-        .catch(function(err) {
-          cdekStatus('Не удалось загрузить виджет: ' + err.message, 'error');
-        });
-    }
-
-    function doInitCdek() {
-      if (window._cdekWidgetInstance) return;
-      cdekStatus('Проверка сервиса СДЭК…', 'info');
-
-      // Сначала проверяем, что cdek-service.php отвечает корректно
-      fetch('https://api.phicandles.ru/cdek-service.php')
-        .then(function(r) { return r.text(); })
-        .then(function(text) {
-          var parsed;
-          try { parsed = JSON.parse(text); } catch(e) {
-            cdekStatus('cdek-service.php вернул не JSON: ' + text.substring(0, 120), 'error');
-            return;
-          }
-          if (!parsed.access_token) {
-            cdekStatus('cdek-service.php: нет access_token. Ответ: ' + JSON.stringify(parsed).substring(0, 120), 'error');
-            return;
-          }
-          // Токен получен — сначала загружаем ymaps3 вручную, потом создаём виджет
-          cdekStatus('Загрузка Яндекс Карт…', 'info');
-          var ymS = document.createElement('script');
-          ymS.src = 'https://api-maps.yandex.ru/v3/?lang=ru_RU&apikey=64c037dc-dd84-4db7-b2a8-9f2b1135d9f2';
-          ymS.onload = function() {
-            cdekStatus('Карты загружены, регистрируем лоадер…', 'info');
-            window.ymaps3.ready.then(function() {
-              // Регистрируем CDN-лоадер для пакетов @yandex/ymaps3-*
-              // Это позволит виджету СДЭК загружать нужные подпакеты
-              window.ymaps3.import.loaders.unshift(function(pkg) {
-                if (!pkg.startsWith('@yandex/ymaps3')) return; // пропускаем неизвестные
-                var url = 'https://cdn.jsdelivr.net/npm/' + pkg + '/dist/index.js';
-                return import(url);
-              });
-              cdekStatus('Лоадер зарегистрирован, запуск виджета…', 'info');
-              try {
-                window._cdekWidgetInstance = new window.CDEKWidget({
-                  defaultLocation: [37.6173, 55.7558],
-                  root:            'cdek-map',
-                  apiKey:          '64c037dc-dd84-4db7-b2a8-9f2b1135d9f2',
-                  servicePath:     'https://api.phicandles.ru/cdek-service.php',
-                  lang:            'rus',
-                  onReady: function() { cdekStatus('', 'ok'); },
-                  onChoose: function(type, tariff, address) {
-                    var label = address.city + ', ' + address.address;
-                    document.getElementById('f-address').value = label;
-                    document.getElementById('cdek-chosen').textContent = '✓ Выбран ПВЗ: ' + label;
-                    cdekStatus('', 'ok');
-                  },
-                });
-              } catch(e) {
-                cdekStatus('Ошибка виджета: ' + e.message, 'error');
-              }
-            }).catch(function(e) {
-              cdekStatus('ymaps3.ready failed: ' + e.message, 'error');
-            });
-          };
-          ymS.onerror = function() {
-            cdekStatus('❌ Яндекс Карты не загружаются', 'error');
-          };
-          document.head.appendChild(ymS);
-        })
-        .catch(function(err) {
-          cdekStatus('Не удалось подключиться к cdek-service.php: ' + err.message, 'error');
-        });
-    }
-
     document.addEventListener('DOMContentLoaded', function() {
       var sel = document.getElementById('f-delivery');
       if (sel) {
