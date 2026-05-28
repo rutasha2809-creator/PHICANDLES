@@ -1,10 +1,10 @@
 <?php
-// ——— PHICANDLES: СДЭК прокси для виджета ———
-// Загрузить на api.phicandles.ru
+// ——— PHICANDLES: СДЭК — токен для виджета ———
+// Загрузить на api.phicandles.ru/cdek-service.php
 
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: https://phicandles.ru');
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -17,6 +17,7 @@ define('CDEK_SECRET', 'R5rWQFnTvXbIMnKyjOC0qqFFu2cNlFvP');
 define('CDEK_API',    'https://api.cdek.ru/v2');
 define('TOKEN_FILE',  __DIR__ . '/cdek-token.json');
 
+// Получить токен (кэш в файле на 1 час)
 function getCdekToken() {
     if (file_exists(TOKEN_FILE)) {
         $cached = json_decode(file_get_contents(TOKEN_FILE), true);
@@ -52,22 +53,5 @@ if (!$token) {
     exit;
 }
 
-$params = array_filter([
-    'city_code'    => $_GET['city_code']    ?? null,
-    'city'         => $_GET['city']         ?? null,
-    'country_code' => $_GET['country_code'] ?? 'RU',
-    'type'         => $_GET['type']         ?? null,
-    'lang'         => 'rus',
-]);
-
-$url = CDEK_API . '/deliverypoints?' . http_build_query($params);
-$ch = curl_init($url);
-curl_setopt_array($ch, [
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_HTTPHEADER     => ['Authorization: Bearer ' . $token],
-]);
-$response = curl_exec($ch);
-$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-curl_close($ch);
-http_response_code($httpCode);
-echo $response;
+// Виджет v3 ожидает {access_token: "..."}
+echo json_encode(['access_token' => $token]);

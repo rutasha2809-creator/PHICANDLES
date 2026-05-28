@@ -158,11 +158,6 @@
           <p>Точную стоимость доставки сообщаем при подтверждении заказа — она зависит от выбранного оператора, веса посылки и вашего города. Каждый заказ тщательно упаковывается, чтобы свечи и декор доехали в целости.</p>
         </div>
 
-        <div class="delivery-block">
-          <h3>Пункты выдачи СДЭК</h3>
-          <p>Найдите удобный пункт выдачи на карте — введите ваш город и выберите ближайший к вам адрес.</p>
-          <div id="cdek-map" style="width:100%;height:500px;margin-top:16px;border:1px solid var(--line);"></div>
-        </div>
       </section>
 
       <!-- ===== ВОЗВРАТ ===== -->
@@ -219,16 +214,5 @@
   <script src="../assets/js/base.js"></script>
   <script src="//code.jivo.ru/widget/eOs8CTiXXr" async></script>
 
-  <!-- СДЭК виджет -->
-  <script type="module">
-    import CDEKWidget from 'https://cdn.jsdelivr.net/npm/@cdek-it/widget@3';
-    new CDEKWidget({
-      from: { country_code: 'RU', city: 'Москва' },
-      root: 'cdek-map',
-      servicePath: 'https://api.phicandles.ru/cdek-service.php',
-      hideFilters: { have_cashless: false, have_cash: false, is_dressing_room: false, type: false },
-      lang: 'rus',
-    });
-  </script>
 </body>
 </html>

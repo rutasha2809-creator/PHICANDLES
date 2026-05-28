@@ -322,6 +322,14 @@
                 </div>
                 <p id="delivery-hint"></p>
               </div>
+
+              <!-- СДЭК виджет карты -->
+              <div id="cdek-widget-wrap" class="order-form__field order-form__field--full" style="display:none;">
+                <label class="order-form__label">Выберите пункт выдачи СДЭК</label>
+                <div id="cdek-map" style="width:100%;height:420px;border:1px solid var(--line);"></div>
+                <p id="cdek-chosen" style="font-size:0.85rem;color:#2a7a2a;margin:6px 0 0;min-height:1.2em;"></p>
+              </div>
+
               <div class="order-form__field order-form__field--full">
                 <label class="order-form__label" for="f-address">Адрес доставки</label>
                 <input class="order-form__input" type="text" id="f-address" placeholder="Город, улица, дом">
@@ -812,5 +820,44 @@
   })();
   </script>
   <script src="//code.jivo.ru/widget/eOs8CTiXXr" async></script>
+
+  <!-- СДЭК виджет выбора ПВЗ -->
+  <script type="module">
+    import CDEKWidget from 'https://cdn.jsdelivr.net/npm/@cdek-it/widget@3';
+
+    let cdekWidget = null;
+
+    function initCdekWidget() {
+      if (cdekWidget) return;
+      cdekWidget = new CDEKWidget({
+        from:        { country_code: 'RU', city: 'Москва' },
+        root:        'cdek-map',
+        apiKey:      '64c037dc-dd84-4db7-b2a8-9f2b1135d9f2',
+        servicePath: 'https://api.phicandles.ru/cdek-service.php',
+        lang:        'rus',
+        onChoose(type, tariff, address) {
+          const label  = address.city + ', ' + address.address;
+          document.getElementById('f-address').value  = label;
+          document.getElementById('cdek-chosen').textContent = '✓ Выбран ПВЗ: ' + label;
+        },
+      });
+    }
+
+    // Показываем/скрываем виджет при выборе доставки
+    document.addEventListener('DOMContentLoaded', () => {
+      const sel  = document.getElementById('f-delivery');
+      const wrap = document.getElementById('cdek-widget-wrap');
+      if (!sel || !wrap) return;
+
+      sel.addEventListener('change', function () {
+        if (this.value === 'СДЭК') {
+          wrap.style.display = '';
+          initCdekWidget();
+        } else {
+          wrap.style.display = 'none';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
