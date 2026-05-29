@@ -323,12 +323,19 @@
                 <p id="delivery-hint"></p>
               </div>
 
-              <!-- СДЭК — подсказка с ПВЗ -->
+              <!-- СДЭК — карта с ПВЗ -->
               <div id="cdek-widget-wrap" class="order-form__field order-form__field--full" style="display:none;">
-                <div style="background:#f7f4f1;border-left:3px solid #c8b89a;padding:14px 16px;border-radius:4px;font-size:0.88rem;line-height:1.7;">
-                  Найдите удобный пункт выдачи на сайте СДЭК и укажите его адрес в поле ниже.<br>
-                  <a href="https://www.cdek.ru/ru/offices" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;font-weight:600;">Найти ПВЗ СДЭК →</a>
+                <label class="order-form__label">Выберите пункт выдачи СДЭК</label>
+                <!-- Поиск города -->
+                <div style="position:relative;margin-bottom:8px;">
+                  <input type="text" id="cdek-city-input" placeholder="Введите ваш город…"
+                    style="width:100%;padding:10px 36px 10px 12px;border:1px solid var(--line);border-radius:4px;font-size:0.9rem;box-sizing:border-box;background:#fff;">
+                  <span style="position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;">🔍</span>
+                  <div id="cdek-city-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 4px 4px;z-index:200;max-height:220px;overflow-y:auto;box-shadow:0 4px 12px rgba(0,0,0,.08);"></div>
                 </div>
+                <p id="cdek-map-status" style="font-size:0.82rem;color:var(--muted);margin:0 0 6px;min-height:1.2em;"></p>
+                <div id="cdek-map" style="width:100%;height:420px;border:1px solid var(--line);border-radius:4px;"></div>
+                <p id="cdek-pvz-chosen" style="font-size:0.85rem;color:#2a7a2a;margin:8px 0 0;min-height:1.2em;font-weight:500;"></p>
               </div>
 
               <div class="order-form__field order-form__field--full">
@@ -822,14 +829,152 @@
   </script>
   <script src="//code.jivo.ru/widget/eOs8CTiXXr" async></script>
 
-  <!-- СДЭК: показ/скрытие подсказки с ПВЗ -->
+  <!-- СДЭК: карта с ПВЗ на Яндекс Картах v2 -->
   <script>
+    var cdekMap = null;
+    var cdekClusterer = null;
+
     function checkCdekVisibility() {
       var sel  = document.getElementById('f-delivery');
       var wrap = document.getElementById('cdek-widget-wrap');
       if (!sel || !wrap) return;
-      wrap.style.display = sel.value === 'СДЭК' ? '' : 'none';
+      if (sel.value === 'СДЭК') {
+        wrap.style.display = '';
+        initCdekMap();
+      } else {
+        wrap.style.display = 'none';
+      }
     }
+
+    function initCdekMap() {
+      if (cdekMap) return;
+      cdekMapStatus('Загрузка карты…');
+      if (window.ymaps) { window.ymaps.ready(onYmapsReady); return; }
+      var s = document.createElement('script');
+      s.src = 'https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=64c037dc-dd84-4db7-b2a8-9f2b1135d9f2';
+      s.onload  = function() { window.ymaps.ready(onYmapsReady); };
+      s.onerror = function() { cdekMapStatus('Карты Яндекс не загружаются'); };
+      document.head.appendChild(s);
+    }
+
+    function onYmapsReady() {
+      cdekMap = new ymaps.Map('cdek-map', {
+        center: [55.7558, 37.6173],
+        zoom: 10,
+        controls: ['zoomControl', 'fullscreenControl'],
+      }, { suppressMapOpenBlock: true });
+      cdekMapStatus('');
+      loadCdekPvz(44, 'Москва'); // по умолчанию Москва (code=44)
+      setupCdekCitySearch();
+    }
+
+    function loadCdekPvz(cityCode, cityName) {
+      cdekMapStatus('Загрузка пунктов выдачи…');
+      if (cdekClusterer) { cdekMap.geoObjects.remove(cdekClusterer); cdekClusterer = null; }
+
+      fetch('https://api.phicandles.ru/cdek-proxy.php?action=pvz&city_code=' + cityCode)
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (!Array.isArray(data) || !data.length) {
+            cdekMapStatus('Нет пунктов выдачи в городе «' + cityName + '»');
+            return;
+          }
+          cdekMapStatus('');
+          cdekClusterer = new ymaps.Clusterer({
+            preset: 'islands#invertedBlueClusterIcons',
+            groupByCoordinates: false,
+            clusterDisableClickZoom: false,
+            clusterOpenBalloonOnClick: true,
+          });
+
+          var marks = data
+            .filter(function(p) { return p.location && p.location.latitude; })
+            .map(function(pvz) {
+              var addr   = pvz.location.city + ', ' + pvz.location.address;
+              var hours  = pvz.work_time || '';
+              var pm = new ymaps.Placemark(
+                [pvz.location.latitude, pvz.location.longitude],
+                {
+                  balloonContentHeader: pvz.name,
+                  balloonContentBody:
+                    '<div style="font-size:13px;line-height:1.6;">' +
+                    '<p style="margin:4px 0">' + pvz.location.address + '</p>' +
+                    (hours ? '<p style="margin:4px 0;color:#666">' + hours + '</p>' : '') +
+                    '<button onclick="selectCdekPvz(' + JSON.stringify(JSON.stringify(pvz)) + ')" ' +
+                    'style="margin-top:8px;padding:6px 14px;background:#111;color:#fff;border:none;border-radius:3px;cursor:pointer;font-size:13px;">Выбрать</button>' +
+                    '</div>',
+                  hintContent: pvz.name,
+                },
+                { preset: 'islands#blueCircleDotIcon' }
+              );
+              return pm;
+            });
+
+          cdekClusterer.add(marks);
+          cdekMap.geoObjects.add(cdekClusterer);
+          if (marks.length) {
+            cdekMap.setBounds(cdekClusterer.getBounds(), { checkZoomRange: true, zoomMargin: 40 });
+          }
+        })
+        .catch(function(e) { cdekMapStatus('Ошибка загрузки ПВЗ: ' + e.message); });
+    }
+
+    function selectCdekPvz(pvzJson) {
+      var pvz = typeof pvzJson === 'string' ? JSON.parse(pvzJson) : pvzJson;
+      var addr = pvz.location.city + ', ' + pvz.location.address;
+      document.getElementById('f-address').value = addr;
+      document.getElementById('cdek-pvz-chosen').textContent = '✓ ' + pvz.name + ' — ' + pvz.location.address;
+      if (cdekMap) cdekMap.balloon.close();
+    }
+    // Делаем глобальной — вызывается из balloonContentBody
+    window.selectCdekPvz = selectCdekPvz;
+
+    function cdekMapStatus(msg) {
+      var el = document.getElementById('cdek-map-status');
+      if (el) el.textContent = msg;
+    }
+
+    function setupCdekCitySearch() {
+      var input   = document.getElementById('cdek-city-input');
+      var sugBox  = document.getElementById('cdek-city-suggestions');
+      if (!input) return;
+
+      input.value = 'Москва';
+
+      var timer;
+      input.addEventListener('input', function() {
+        clearTimeout(timer);
+        var q = input.value.trim();
+        if (q.length < 2) { sugBox.style.display = 'none'; return; }
+        timer = setTimeout(function() {
+          fetch('https://api.phicandles.ru/cdek-proxy.php?action=cities&q=' + encodeURIComponent(q))
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+              if (!Array.isArray(data) || !data.length) { sugBox.style.display = 'none'; return; }
+              sugBox.innerHTML = data.slice(0, 7).map(function(c) {
+                var label = c.city + (c.region ? ', ' + c.region : '');
+                return '<div class="cdek-sug" data-code="' + c.code + '" data-label="' + label + '">' + label + '</div>';
+              }).join('');
+              sugBox.querySelectorAll('.cdek-sug').forEach(function(el) {
+                el.style.cssText = 'padding:9px 12px;cursor:pointer;font-size:0.88rem;border-bottom:1px solid #f0ece8;';
+                el.addEventListener('mouseenter', function() { el.style.background = '#f7f4f1'; });
+                el.addEventListener('mouseleave', function() { el.style.background = ''; });
+                el.addEventListener('click', function() {
+                  input.value = el.dataset.label;
+                  sugBox.style.display = 'none';
+                  loadCdekPvz(el.dataset.code, el.dataset.label);
+                });
+              });
+              sugBox.style.display = '';
+            });
+        }, 350);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!input.contains(e.target) && !sugBox.contains(e.target)) sugBox.style.display = 'none';
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
       var sel = document.getElementById('f-delivery');
       if (sel) {
