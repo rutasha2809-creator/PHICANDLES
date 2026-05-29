@@ -79,6 +79,31 @@ switch ($action) {
         ]));
         break;
 
+    case 'calculate':
+        $toCode = (int)($_GET['city_code'] ?? 44);
+        $token  = getCdekToken();
+        if (!$token) { echo json_encode(['error' => 'auth failed']); exit; }
+        $body = json_encode([
+            'tariff_code'   => 136, // Посылка склад-склад (ПВЗ → ПВЗ)
+            'from_location' => ['code' => 44], // Москва — откуда отправляем
+            'to_location'   => ['code' => $toCode],
+            'packages'      => [['weight' => 500, 'length' => 20, 'width' => 15, 'height' => 10]],
+        ]);
+        $ch = curl_init(CDEK_API . '/calculator/tariff');
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST           => true,
+            CURLOPT_POSTFIELDS     => $body,
+            CURLOPT_HTTPHEADER     => [
+                'Authorization: Bearer ' . $token,
+                'Content-Type: application/json',
+            ],
+            CURLOPT_TIMEOUT => 10,
+        ]);
+        echo curl_exec($ch);
+        curl_close($ch);
+        break;
+
     default:
         http_response_code(400);
         echo json_encode(['error' => 'unknown action']);

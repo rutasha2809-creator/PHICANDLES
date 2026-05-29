@@ -326,16 +326,33 @@
               <!-- СДЭК — карта с ПВЗ -->
               <div id="cdek-widget-wrap" class="order-form__field order-form__field--full" style="display:none;">
                 <label class="order-form__label">Выберите пункт выдачи СДЭК</label>
-                <!-- Поиск города -->
-                <div style="position:relative;margin-bottom:8px;">
-                  <input type="text" id="cdek-city-input" placeholder="Введите ваш город…"
-                    style="width:100%;padding:10px 36px 10px 12px;border:1px solid var(--line);border-radius:4px;font-size:0.9rem;box-sizing:border-box;background:#fff;">
-                  <span style="position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;">🔍</span>
-                  <div id="cdek-city-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 4px 4px;z-index:200;max-height:220px;overflow-y:auto;box-shadow:0 4px 12px rgba(0,0,0,.08);"></div>
+
+                <!-- Состояние: ПВЗ выбран -->
+                <div id="cdek-pvz-selected" style="display:none;border:1px solid var(--line);padding:14px 16px;background:#fafaf8;border-radius:4px;">
+                  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+                    <div>
+                      <p id="cdek-pvz-name" style="font-weight:500;margin:0 0 4px;font-size:0.95rem;color:var(--text);"></p>
+                      <p id="cdek-pvz-addr" style="margin:0 0 3px;font-size:0.85rem;color:#555;"></p>
+                      <p id="cdek-pvz-hours" style="margin:0 0 3px;font-size:0.82rem;color:var(--muted);"></p>
+                      <p id="cdek-pvz-phone" style="margin:0;font-size:0.82rem;color:var(--muted);"></p>
+                    </div>
+                    <button type="button" id="cdek-pvz-change"
+                      style="white-space:nowrap;border:none;background:none;font-size:0.82rem;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:0;flex-shrink:0;">Изменить</button>
+                  </div>
+                  <p id="cdek-delivery-cost-line" style="margin:10px 0 0;font-size:0.85rem;"></p>
                 </div>
-                <p id="cdek-map-status" style="font-size:0.82rem;color:var(--muted);margin:0 0 6px;min-height:1.2em;"></p>
-                <div id="cdek-map" style="width:100%;height:420px;border:1px solid var(--line);border-radius:4px;"></div>
-                <p id="cdek-pvz-chosen" style="font-size:0.85rem;color:#2a7a2a;margin:8px 0 0;min-height:1.2em;font-weight:500;"></p>
+
+                <!-- Состояние: карта (поиск города + карта) -->
+                <div id="cdek-map-view">
+                  <div style="position:relative;margin-bottom:8px;">
+                    <input type="text" id="cdek-city-input" placeholder="Введите ваш город…"
+                      style="width:100%;padding:10px 36px 10px 12px;border:1px solid var(--line);border-radius:4px;font-size:0.9rem;box-sizing:border-box;background:#fff;">
+                    <span style="position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;">🔍</span>
+                    <div id="cdek-city-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 4px 4px;z-index:200;max-height:220px;overflow-y:auto;box-shadow:0 4px 12px rgba(0,0,0,.08);"></div>
+                  </div>
+                  <p id="cdek-map-status" style="font-size:0.82rem;color:var(--muted);margin:0 0 6px;min-height:1.2em;"></p>
+                  <div id="cdek-map" style="width:100%;height:420px;border:1px solid var(--line);border-radius:4px;"></div>
+                </div>
               </div>
 
               <div class="order-form__field order-form__field--full">
@@ -833,7 +850,8 @@
   <script>
     var cdekMap = null;
     var cdekClusterer = null;
-    var cdekPvzStore = {}; // хранилище данных ПВЗ по uuid
+    var cdekPvzStore = {};       // хранилище данных ПВЗ по id
+    var cdekCurrentCityCode = 44; // код текущего города (для расчёта)
 
     function checkCdekVisibility() {
       var sel  = document.getElementById('f-delivery');
@@ -865,11 +883,12 @@
         controls: ['zoomControl', 'fullscreenControl'],
       }, { suppressMapOpenBlock: true });
       cdekMapStatus('');
-      loadCdekPvz(44, 'Москва'); // по умолчанию Москва (code=44)
+      loadCdekPvz(44, 'Москва');
       setupCdekCitySearch();
     }
 
     function loadCdekPvz(cityCode, cityName) {
+      cdekCurrentCityCode = cityCode; // сохраняем для расчёта стоимости
       cdekMapStatus('Загрузка пунктов выдачи…');
       if (cdekClusterer) { cdekMap.geoObjects.remove(cdekClusterer); cdekClusterer = null; }
 
@@ -888,13 +907,13 @@
             clusterOpenBalloonOnClick: true,
           });
 
-          cdekPvzStore = {}; // сбрасываем хранилище
+          cdekPvzStore = {};
 
           var marks = data
             .filter(function(p) { return p.location && p.location.latitude; })
             .map(function(pvz) {
               var id = pvz.uuid || (pvz.location.latitude + '_' + pvz.location.longitude);
-              cdekPvzStore[id] = pvz; // сохраняем по id
+              cdekPvzStore[id] = pvz;
               var hours = pvz.work_time || '';
               var pm = new ymaps.Placemark(
                 [pvz.location.latitude, pvz.location.longitude],
@@ -926,12 +945,62 @@
     function selectCdekPvz(pvzId) {
       var pvz = cdekPvzStore[pvzId];
       if (!pvz) return;
-      var addr = pvz.location.city + ', ' + pvz.location.address;
-      document.getElementById('f-address').value = addr;
-      document.getElementById('cdek-pvz-chosen').textContent = '✓ ' + pvz.name + ' — ' + pvz.location.address;
+
+      // Заполнить скрытое поле адреса (для письма)
+      var fullAddr = pvz.location.city + ', ' + pvz.location.address;
+      document.getElementById('f-address').value = fullAddr;
+
+      // Переключиться: скрыть карту, показать карточку ПВЗ
+      document.getElementById('cdek-map-view').style.display = 'none';
+      document.getElementById('cdek-pvz-selected').style.display = '';
+
+      // Заполнить детали
+      document.getElementById('cdek-pvz-name').textContent = pvz.name;
+      document.getElementById('cdek-pvz-addr').textContent = fullAddr;
+
+      var hoursEl = document.getElementById('cdek-pvz-hours');
+      hoursEl.textContent = pvz.work_time || '';
+      hoursEl.style.display = pvz.work_time ? '' : 'none';
+
+      var phones = (pvz.phones || []).map(function(p) { return p.number; }).join(', ');
+      var phoneEl = document.getElementById('cdek-pvz-phone');
+      if (phones) { phoneEl.textContent = 'Тел.: ' + phones; phoneEl.style.display = ''; }
+      else { phoneEl.style.display = 'none'; }
+
+      // Закрыть баллун
       if (cdekMap) cdekMap.balloon.close();
+
+      // Рассчитать стоимость доставки
+      var costLine = document.getElementById('cdek-delivery-cost-line');
+      costLine.textContent = 'Считаем стоимость доставки…';
+      costLine.style.color = 'var(--muted)';
+
+      fetch('https://api.phicandles.ru/cdek-proxy.php?action=calculate&city_code=' + cdekCurrentCityCode)
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data && data.total_sum) {
+            var cost = Math.round(data.total_sum);
+            deliveryCost = cost;
+            var days = (data.period_min != null && data.period_max != null)
+              ? (data.period_min === data.period_max ? data.period_min : data.period_min + '–' + data.period_max)
+              : null;
+            costLine.textContent = 'Доставка СДЭК: ' + cost.toLocaleString('ru-RU') + ' ₽'
+              + (days ? ' · ' + days + ' дн.' : '');
+            costLine.style.color = '#2a7a2a';
+          } else {
+            deliveryCost = null;
+            costLine.textContent = 'Стоимость — по тарифам СДЭК';
+            costLine.style.color = 'var(--muted)';
+          }
+          renderCart();
+        })
+        .catch(function() {
+          deliveryCost = null;
+          costLine.textContent = 'Не удалось рассчитать стоимость доставки';
+          costLine.style.color = 'var(--muted)';
+          renderCart();
+        });
     }
-    // Делаем глобальной — вызывается из balloonContentBody
     window.selectCdekPvz = selectCdekPvz;
 
     function cdekMapStatus(msg) {
@@ -981,6 +1050,18 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
+      // Кнопка "Изменить" — вернуться к карте
+      var changeBtn = document.getElementById('cdek-pvz-change');
+      if (changeBtn) {
+        changeBtn.addEventListener('click', function() {
+          document.getElementById('cdek-pvz-selected').style.display = 'none';
+          document.getElementById('cdek-map-view').style.display = '';
+          document.getElementById('f-address').value = '';
+          deliveryCost = null;
+          renderCart();
+        });
+      }
+
       var sel = document.getElementById('f-delivery');
       if (sel) {
         sel.addEventListener('change', checkCdekVisibility);
