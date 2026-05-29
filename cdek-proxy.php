@@ -98,10 +98,16 @@ switch ($action) {
                 'Authorization: Bearer ' . $token,
                 'Content-Type: application/json',
             ],
-            CURLOPT_TIMEOUT => 10,
+            CURLOPT_TIMEOUT => 15,
         ]);
-        echo curl_exec($ch);
+        $result = curl_exec($ch);
+        $curlErr = curl_error($ch);
         curl_close($ch);
+        if ($result === false) {
+            echo json_encode(['error' => 'curl error', 'message' => $curlErr]);
+        } else {
+            echo $result;
+        }
         break;
 
     default:

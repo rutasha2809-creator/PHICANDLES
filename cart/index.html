@@ -978,26 +978,38 @@
       fetch('https://api.phicandles.ru/cdek-proxy.php?action=calculate&city_code=' + cdekCurrentCityCode)
         .then(function(r) { return r.json(); })
         .then(function(data) {
-          if (data && data.total_sum) {
-            var cost = Math.round(data.total_sum);
+          console.log('[CDEK calculate] response:', JSON.stringify(data));
+          // CDEK API может вернуть total_sum или delivery_sum
+          var sum = data && (data.total_sum || data.delivery_sum);
+          if (sum && sum > 0) {
+            var cost = Math.round(sum);
             deliveryCost = cost;
-            var days = (data.period_min != null && data.period_max != null)
-              ? (data.period_min === data.period_max ? data.period_min : data.period_min + '–' + data.period_max)
+            var pMin = data.period_min;
+            var pMax = data.period_max;
+            var days = (pMin != null && pMax != null)
+              ? (pMin === pMax ? pMin : pMin + '–' + pMax)
               : null;
             costLine.textContent = 'Доставка СДЭК: ' + cost.toLocaleString('ru-RU') + ' ₽'
               + (days ? ' · ' + days + ' дн.' : '');
             costLine.style.color = '#2a7a2a';
           } else {
             deliveryCost = null;
-            costLine.textContent = 'Стоимость — по тарифам СДЭК';
+            // Показать ошибку от СДЭК если есть
+            var errMsg = '';
+            if (data && data.errors && data.errors.length) {
+              errMsg = data.errors[0].message || '';
+            }
+            costLine.textContent = errMsg ? 'СДЭК: ' + errMsg : 'Стоимость — по тарифам СДЭК';
             costLine.style.color = 'var(--muted)';
+            console.log('[CDEK calculate] no sum, errors:', errMsg);
           }
           renderCart();
         })
-        .catch(function() {
+        .catch(function(err) {
           deliveryCost = null;
           costLine.textContent = 'Не удалось рассчитать стоимость доставки';
           costLine.style.color = 'var(--muted)';
+          console.log('[CDEK calculate] fetch error:', err);
           renderCart();
         });
     }
