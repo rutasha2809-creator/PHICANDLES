@@ -833,6 +833,7 @@
   <script>
     var cdekMap = null;
     var cdekClusterer = null;
+    var cdekPvzStore = {}; // хранилище данных ПВЗ по uuid
 
     function checkCdekVisibility() {
       var sel  = document.getElementById('f-delivery');
@@ -887,11 +888,14 @@
             clusterOpenBalloonOnClick: true,
           });
 
+          cdekPvzStore = {}; // сбрасываем хранилище
+
           var marks = data
             .filter(function(p) { return p.location && p.location.latitude; })
             .map(function(pvz) {
-              var addr   = pvz.location.city + ', ' + pvz.location.address;
-              var hours  = pvz.work_time || '';
+              var id = pvz.uuid || (pvz.location.latitude + '_' + pvz.location.longitude);
+              cdekPvzStore[id] = pvz; // сохраняем по id
+              var hours = pvz.work_time || '';
               var pm = new ymaps.Placemark(
                 [pvz.location.latitude, pvz.location.longitude],
                 {
@@ -900,8 +904,8 @@
                     '<div style="font-size:13px;line-height:1.6;">' +
                     '<p style="margin:4px 0">' + pvz.location.address + '</p>' +
                     (hours ? '<p style="margin:4px 0;color:#666">' + hours + '</p>' : '') +
-                    '<button onclick="selectCdekPvz(' + JSON.stringify(JSON.stringify(pvz)) + ')" ' +
-                    'style="margin-top:8px;padding:6px 14px;background:#111;color:#fff;border:none;border-radius:3px;cursor:pointer;font-size:13px;">Выбрать</button>' +
+                    '<button onclick="selectCdekPvz(\'' + id.replace(/'/g, '') + '\')" ' +
+                    'style="margin-top:8px;padding:6px 14px;background:#111;color:#fff;border:none;border-radius:3px;cursor:pointer;font-size:13px;">Выбрать этот ПВЗ</button>' +
                     '</div>',
                   hintContent: pvz.name,
                 },
@@ -919,8 +923,9 @@
         .catch(function(e) { cdekMapStatus('Ошибка загрузки ПВЗ: ' + e.message); });
     }
 
-    function selectCdekPvz(pvzJson) {
-      var pvz = typeof pvzJson === 'string' ? JSON.parse(pvzJson) : pvzJson;
+    function selectCdekPvz(pvzId) {
+      var pvz = cdekPvzStore[pvzId];
+      if (!pvz) return;
       var addr = pvz.location.city + ', ' + pvz.location.address;
       document.getElementById('f-address').value = addr;
       document.getElementById('cdek-pvz-chosen').textContent = '✓ ' + pvz.name + ' — ' + pvz.location.address;
