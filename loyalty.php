@@ -263,4 +263,23 @@ if ($action === 'redeem') {
     respond(['ok' => true, 'deducted' => $points, 'new_balance' => $balance - $points]);
 }
 
+// ——— GET REFERRAL STATS (кол-во приглашённых друзей) ———
+if ($action === 'get_referral_stats') {
+    $email = trim(strtolower($data['email'] ?? $_GET['email'] ?? ''));
+    if (!$email) respond(['ok' => false, 'error' => 'Email обязателен'], 400);
+
+    $pdo  = getDB();
+    $stmt = $pdo->prepare('SELECT referral_code FROM loyalty_members WHERE email = ?');
+    $stmt->execute([$email]);
+    $member = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$member) respond(['ok' => false, 'error' => 'Участник не найден']);
+
+    $count = $pdo->prepare('SELECT COUNT(*) FROM loyalty_members WHERE referred_by = ?');
+    $count->execute([$member['referral_code']]);
+    $friends = (int)$count->fetchColumn();
+
+    respond(['ok' => true, 'friends_count' => $friends]);
+}
+
 respond(['ok' => false, 'error' => 'Неизвестное действие'], 400);

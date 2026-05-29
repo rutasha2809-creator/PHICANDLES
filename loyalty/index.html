@@ -344,6 +344,29 @@
     });
   </script>
 
+  <script>
+    // Автозаполнение реферального кода из URL (?ref=КОД)
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const ref = params.get('ref');
+      if (!ref) return;
+
+      // Ждём загрузки DOM
+      document.addEventListener('DOMContentLoaded', function() {
+        const refInput = document.querySelector('input[name="referral_code"]');
+        if (!refInput) return;
+
+        refInput.value = ref;
+
+        // Показываем баннер с бонусом
+        const notice = document.createElement('p');
+        notice.style.cssText = 'margin:8px 0 0;padding:8px 12px;background:#f0faf0;border:1px solid #b8ddb8;border-radius:3px;font-size:0.83rem;color:#2a5a2a;line-height:1.5;';
+        notice.textContent = '🎁 Вы переходите по приглашению друга — получите 300 баллов при регистрации!';
+        refInput.parentNode.insertBefore(notice, refInput.nextSibling);
+      });
+    })();
+  </script>
+
   <script src="../assets/js/base.js" defer></script>
   <script src="//code.jivo.ru/widget/eOs8CTiXXr" async></script>
 </body>
