@@ -45,5 +45,11 @@ git push origin HEAD:main
 if %errorlevel% neq 0 ( echo ERROR at push - check internet/GitHub credentials && pause && exit /b 1 )
 
 echo.
+echo === Step 5: Sync new products to VK ===
+python vk_sync.py
+if %errorlevel% neq 0 ( echo WARNING: VK sync finished with errors )
+echo Done
+
+echo.
 echo === DONE! Wait 2 min then press Ctrl+Shift+R on the site ===
 pause
