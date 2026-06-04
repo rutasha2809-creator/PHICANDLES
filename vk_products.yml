@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE yml_catalog SYSTEM "shops.dtd">
+<yml_catalog date="2026-06-04 12:00">
+<shop>
+<name>PHICANDLES</name>
+<company>PHICANDLES</company>
+<url>https://phicandles.ru</url>
+<categories>
+<category id="1">Контейнерные свечи</category>
+<category id="2">Формовые свечи</category>
+<category id="3">Интерьерные свечи</category>
+<category id="4">Свечи в кашпо с цветочным декором</category>
+<category id="5">Ароматы для дома</category>
+<category id="6">Декор для дома</category>
+<category id="7">Подарочные наборы</category>
+<category id="8">Лимитированные предложения</category>
+<category id="9">Сезонные коллекции</category>
+</categories>
+<offers>
+<offer id="1" available="true">
+<name>Фисташковая роза</name>
+<url>https://phicandles.ru/products/fistashkovaya-roza/</url>
+<price>2500</price>
+<currencyId>RUR</currencyId>
+<categoryId>8</categoryId>
+<picture>https://phicandles.ru/assets/img/products/fistashkovaya-roza.jpg</picture>
+<description><![CDATA[Потрясающая цветочная композиция, которая никогда не завянет. Она создана для тех, кто ценит утонченную эстетику и хочет наполнить дом ощущением весенней свежести. Каждый лепесток пионов и роз отлит вручную из натурального соевого воска, а нежные сухоцветы добавляют букету особую воздушность и фактуру. Свеча станет идеальным акцентом в интерьере или роскошным подарком, который удивляет с первого взгляда.]]></description>
+</offer>
+<offer id="2" available="true">
+<name>Зефирная роза</name>
+<url>https://phicandles.ru/products/zefirnaya-roza/</url>
+<price>3400</price>
+<currencyId>RUR</currencyId>
+<categoryId>8</categoryId>
+<picture>https://phicandles.ru/assets/img/products/zefirnaya-roza.jpg</picture>
+<description><![CDATA[Потрясающая цветочная композиция ручной работы, которая никогда не завянет. Она создана для тех, кто ценит утонченную эстетику и хочет наполнить дом ощущением весенней свежести. Каждый лепесток пионов и роз отлит вручную из натурального соевого воска, а нежные сухоцветы добавляют букету особую воздушность и фактуру. Свеча станет идеальным акцентом в интерьере или роскошным подарком, который удивляет с первого взгляда.]]></description>
+</offer>
+<offer id="3" available="true">
+<name>Букет роз</name>
+<url>https://phicandles.ru/products/buket-roz/</url>
+<price>3400</price>
+<currencyId>RUR</currencyId>
+<categoryId>8</categoryId>
+<picture>https://phicandles.ru/assets/img/products/rose-buket.jpg</picture>
+<description><![CDATA[Интерьерная свеча-композиция «Букет роз» представляет собой изысканный ансамбль из множества маленьких свечек-бутонов, собранных в элегантной круглой чаше. Каждый миниатюрный цветок восхищает реалистичной фактурой и точной проработкой нежных лепестков, создавая визуальный эффект роскошного живого букета. Изделие великолепно смотрится на журнальном столике, консоли или в бьюти-зоне, добавляя интерьеру нотку утонченного шика и романтики. Композиция идеально подходит для сервировки стола, расслабляющих вечеров или в качестве эстетичного реквизита для создания контента. После использования свечи глубокую чашу-основание можно легко очистить и применять как стильную шкатулку для хранения украшений или аксессуаров. Такой изысканный сет послужит великолепным готовым подарком для тех, кто ценит авторский декор и эксклюзивные детали.]]></description>
+</offer>
+<offer id="4" available="true">
+<name>Интерьерный набор «Минимализм»</name>
+<url>https://phicandles.ru/products/interernyy-nabor-minimalizm/</url>
+<price>1500</price>
+<currencyId>RUR</currencyId>
+<categoryId>6</categoryId>
+<picture>https://phicandles.ru/assets/img/products/minimalizm-set.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/minimalizm-set-2.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/minimalizm-set-3.jpg</picture>
+<description><![CDATA[Элегантный и лаконичный сет ручной работы, выполненный в духе современного минимализма. Набор состоит из заливной ароматической свечи в ребристом кашпо со стильным деревянным фитилем и овального подноса-подставки. Четкая геометрия линий, благородная матовая текстура гипса и выверенные пропорции делают этот комплект идеальным элементом для создания эстетичного и гармоничного пространства.]]></description>
+</offer>
+<offer id="5" available="true">
+<name>Подарочный набор «Звездный уют»</name>
+<url>https://phicandles.ru/products/podarochnyy-nabor-zvezdnyy-uyut/</url>
+<price>650</price>
+<currencyId>RUR</currencyId>
+<categoryId>7</categoryId>
+<picture>https://phicandles.ru/assets/img/products/podarochnyy-nabor-zvezdnyy-uyut.png</picture>
+<description><![CDATA[Подарочный набор ручной работы — это готовое решение для создания теплой, романтической атмосферы и утонченный элемент интерьерного декора. В состав сета входит лаконичный подсвечник в форме пятиконечной звезды, а также комплект натуральных чайных свечей в алюминиевых гильзах. Набор оформлен с особым вниманием к деталям: стильная крафтовая коробочка с лаконичным тиснением, декоративный наполнитель и фирменная лента превращают этот комплект в изысканный и самодостаточный презент. Каждая свеча заливается вручную из премиального экологически чистого воска, который горит ровно, долго и без копоти. Такой эстетичный сет станет прекрасным знаком внимания, теплым комплиментом для близких или идеальным поводом устроить уютный вечер наедине с собой.]]></description>
+</offer>
+<offer id="6" available="true">
+<name>Подарочный набор Ароматические мелтсы</name>
+<url>https://phicandles.ru/products/podarochnyy-nabor-aromameltsy/</url>
+<price>300</price>
+<currencyId>RUR</currencyId>
+<categoryId>7</categoryId>
+<picture>https://phicandles.ru/assets/img/products/gift-melts.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/gift-melts-1.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/gift-melts-2.jpg</picture>
+<description><![CDATA[Ароматические мелтсы — это простой способ быстро наполнить пространство любимым запахом. Они созданы специально для использования в аромалампах - достаточно положить порцию в чашу лампы и зажечь свечу в нижнем отсеке. При нагревании воздух в помещении мгновенно заполняется выбранной композицией. Ароматические компоненты отдают свой шлейф мягко, равномерно и без искажений. В отличие от обычных диффузоров, интенсивность здесь раскрывается ярче и быстрее. Это идеальное решение для создания уютной атмосферы после долгого дня. Использовать одну порцию можно многократно в течение нескольких вечеров. Аромат будет выделяться до тех пор, пока полностью не улетучится. После остывания масса затвердевает прямо в чаше до следующего раза. Для смены настроения застывший диск можно легко извлечь и заменить на новый. Отличная альтернатива привычным спреям и традиционным благовониям. Попробуйте разные сочетания, чтобы создать свое неповторимое звучание дома.]]></description>
+</offer>
+<offer id="7" available="true">
+<name>Аромамэлтсы</name>
+<url>https://phicandles.ru/products/aromameltsy-s/</url>
+<price>700</price>
+<currencyId>RUR</currencyId>
+<categoryId>5</categoryId>
+<picture>https://phicandles.ru/assets/img/products/melts.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/melts-1.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/melts-3.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/melts-4.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/melts-5.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/melts-7.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/melts-8.jpg</picture>
+<description><![CDATA[Ароматические мелтсы — это простой способ быстро наполнить пространство любимым запахом. Они созданы специально для использования в аромалампах - достаточно положить порцию в чашу лампы и зажечь свечу в нижнем отсеке. При нагревании воздух в помещении мгновенно заполняется выбранной композицией. Ароматические компоненты отдают свой шлейф мягко, равномерно и без искажений. В отличие от обычных диффузоров, интенсивность здесь раскрывается ярче и быстрее. Это идеальное решение для создания уютной атмосферы после долгого дня. Использовать одну порцию можно многократно в течение нескольких вечеров. Аромат будет выделяться до тех пор, пока полностью не улетучится. После остывания масса затвердевает прямо в чаше до следующего раза. Для смены настроения застывший диск можно легко извлечь и заменить на новый. Отличная альтернатива привычным спреям и традиционным благовониям. Попробуйте разные сочетания, чтобы создать свое неповторимое звучание дома.]]></description>
+</offer>
+<offer id="8" available="true">
+<name>Аромалампа Арка</name>
+<url>https://phicandles.ru/products/aromalampa-arka/</url>
+<price>1200</price>
+<currencyId>RUR</currencyId>
+<categoryId>5</categoryId>
+<picture>https://phicandles.ru/assets/img/products/aromalamp-arka.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/aromalamp-arka-1.jpg</picture>
+<description><![CDATA[Эта элегантная аромалампа — идеальный способ создать уютную атмосферу в вашем доме. Ее минималистичный дизайн в виде белой арки, выполненной из высококачественного гипса, гармонично впишется в любой современный интерьер. Аромалампа оснащена съемной чашей из полированной нержавеющей стали, которая легко очищается после использования. Вы можете поместить в чашу восковые мелтсы или капнуть любимое эфирное масло, смешанное с водой. Нагревание чаши происходит за счет чайной свечи, расположенной в основании, что обеспечивает мягкое и равномерное распространение аромата. Этот стильный аксессуар станет прекрасным подарком для ценителей ароматерапии и уютного домашнего декора. Чтобы вы могли сразу насладиться приятным ароматом, в комплект уже входит одна чайная свеча.]]></description>
+</offer>
+<offer id="9" available="true">
+<name>Аромалампа Минимализм</name>
+<url>https://phicandles.ru/products/aromalampa-minimalizm/</url>
+<price>1200</price>
+<currencyId>RUR</currencyId>
+<categoryId>5</categoryId>
+<picture>https://phicandles.ru/assets/img/products/aromalamp-simpl.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/aromalamp-simpl-1.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/aromalamp-simpl-2.jpg</picture>
+<description><![CDATA[Лаконичная аромалампа в стиле минимализма идеально подходит для использования с восковыми мэлтсами и эфирными маслами. Продуманная конструкция обеспечивает равномерное плавление воска и максимальную отдачу аромата, гармонично дополняя любой современный интерьер. Металлическая емкость легко вынимается, что делает очистку от застывшего воска или остатков масла быстрой и удобной. Широкое открытое окно позволяет безопасно зажигать и легко заменять свечу. В комплекте идет одна стартовая чайная свеча — лампа готова к использованию сразу после распаковки.]]></description>
+</offer>
+<offer id="10" available="true">
+<name>Ароматические саше</name>
+<url>https://phicandles.ru/products/aromaticheskoe-sashe/</url>
+<price>900</price>
+<currencyId>RUR</currencyId>
+<categoryId>5</categoryId>
+<picture>https://phicandles.ru/assets/img/products/sashe.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/sashe-1.jpg</picture>
+<description><![CDATA[Набор из шести порционных кубиков ароматного воска создан для того, чтобы быстро наполнить ваш дом изысканной атмосферой уюта и тепла. Саше изготовлены из натурального воска высокой степени очистки, который полностью раскрывает парфюмерную композицию без посторонних запахов. Ароматические восковые саше в удобном формате кубиков наполнят ваше белье, гардероб и полки нежным стойким ароматом. Просто разместите стильную упаковку в комоде или на полке, чтобы создать тонкий шлейф свежести в доме.]]></description>
+</offer>
+<offer id="11" available="true">
+<name>Ароматическая свеча Пломбир</name>
+<url>https://phicandles.ru/products/plombir/</url>
+<price>800</price>
+<currencyId>RUR</currencyId>
+<categoryId>9</categoryId>
+<picture>https://phicandles.ru/assets/img/products/plombir.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/plombir-1.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/plombir-2.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/plombir-3.jpg</picture>
+<description><![CDATA[Невероятно реалистичная и аппетитная формовая свеча ручной работы, способная вызвать мгновенную ностальгию по беззаботному лету и любимому вкусу из детства. Свеча выполнена полностью из натурального воска и с ювелирной точностью повторяет каждую деталь культового десерта: от характерного клетчатого рельефа золотистого «вафельного» стаканчика до нежных, воздушных складок кремового шарика пломбира сверху.
+
+Это не просто свеча, а полноценный кулинарный арт-объект, который станет идеальным, ироничным украшением кухонной зоны, обеденного стола или ярким подарком, удивляющим своей текстурой. Удлиненный хлопковый фитиль аккуратно венчает верхушку шарика, обеспечивая эстетичное и ровное горение.]]></description>
+</offer>
+<offer id="12" available="true">
+<name>Свеча Пасхальное яйцо</name>
+<url>https://phicandles.ru/products/yaytso-klassik/</url>
+<price>600</price>
+<currencyId>RUR</currencyId>
+<categoryId>9</categoryId>
+<picture>https://phicandles.ru/assets/img/products/yaytso-klassik.png</picture>
+<description><![CDATA[Пасхальный набор из трех интерьерных свечей в форме классических яиц — это изысканное решение для праздничного декорирования дома и создания нежной весенней атмосферы. Сет выполнен в утонченной пастельной палитре, гармонично сочетающей мягкие и естественные оттенки. Благодаря лаконичной форме и безупречно гладкой поверхности, эти свечи станут центральным акцентом при сервировке праздничного стола, стильно дополняя композиции с первыми весенними цветами и традиционным декором. Они великолепно смотрятся в подставке для яиц, которую можно приобрести в разделе Декор для дома. Живое пламя свечей добавит пасхальному семейному обеду особой торжественности, уюта и душевной гармонии. Такой лаконичный сет послужит прекрасным тематическим подарком для близких, выражающим теплоту и внимание, а также станет отличным реквизитом для создания эстетичного праздничного контента.]]></description>
+</offer>
+<offer id="13" available="true">
+<name>Пасхальный кролик</name>
+<url>https://phicandles.ru/products/paskhalnyy-zayats-belyy/</url>
+<price>2800</price>
+<currencyId>RUR</currencyId>
+<categoryId>9</categoryId>
+<picture>https://phicandles.ru/assets/img/products/paskhalnyy-krolik.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/paskhalnyy-krolik-1.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/paskhalnyy-krolik-2.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/paskhalnyy-krolik-3.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/paskhalnyy-krolik-4.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/paskhalnyy-krolik-5.jpg</picture>
+<description><![CDATA[Ароматическая заливная свеча ручной работы в гипсовой шкатулке «Пасхальный кролик» — это очаровательный интерьерный аксессуар, гармонично сочетающий в себе праздничную символику, изысканный аромат и практичность. Шкатулка, выполненная в виде милого сидящего кролика, оснащена аккуратной крышкой, которая надежно защищает воск от пыли и позволяет эстетично тушить пламя одним движением. Премиальная парфюмерная композиция мягко и ненавязчиво раскрывается при плавлении воска, окутывая пространство шлейфом уюта и создавая расслабляющую атмосферу весеннего обновления. Лаконичный дизайн и возможность выбора различных цветовых решений позволяют фигурке гармонично смотреться в любом современном интерьере и великолепно дополнять пасхальную сервировку стола. После полного прогорания свечи функциональная гипсовая форма получает вторую жизнь: её легко очистить и использовать как изящную шкатулку для хранения полезных мелочей. Такой трогательный и стильный аксессуар послужит великолепным готовым подарком для близких, выражающим теплоту и внимание.]]></description>
+</offer>
+<offer id="14" available="true">
+<name>Пион</name>
+<url>https://phicandles.ru/products/pion/</url>
+<price>2000</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://phicandles.ru/assets/img/products/pion-k.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/pion-k-2.jpg</picture>
+<description><![CDATA[Элегантная ароматическая свеча ручной работы, выполненная в форме распускающегося пиона с детальной проработкой каждого лепестка. Роскошный цветок помещен в лаконичное кашпо-шкатулку из премиального акрилового гипса с благородной фактурой.]]></description>
+</offer>
+<offer id="15" available="true">
+<name>Кувшинка</name>
+<url>https://phicandles.ru/products/kuvshinka-k/</url>
+<price>1800</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://phicandles.ru/assets/img/products/kuvshinka-k.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/kuvshinka-k-2.jpg</picture>
+<description><![CDATA[Утонченная свеча ручной работы, которая превращает горение в настоящий эстетический ритуал. Поверхность свечи украшена цветочной композицией из восковых цветов разного размера, напоминающих кувшинки на глади воды. Цветочная композиция заключена в кашпо-шкатулку с рельефными краями, выполненную из премиального акрилового гипса.]]></description>
+</offer>
+<offer id="16" available="true">
+<name>Ромашка</name>
+<url>https://phicandles.ru/products/romashka/</url>
+<price>1800</price>
+<currencyId>RUR</currencyId>
+<categoryId>4</categoryId>
+<picture>https://phicandles.ru/assets/img/products/romashka.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/romashka-2.jpg</picture>
+<description><![CDATA[Нежная и невероятно эстетичная свеча ручной работы, способная мгновенно создать ощущение легкости и уюта. Центром композиции является объемный восковой цветок ромашки с детально прорисованными белоснежными лепестками, бережно уложенный на гладкую восковую основу. Свеча залита в лаконичное кашпо-шкатулку из прочного акрилового гипса премиум-качества.]]></description>
+</offer>
+<offer id="17" available="true">
+<name>Ароматическая свеча Сердце</name>
+<url>https://phicandles.ru/products/serdtse/</url>
+<price>1800</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://phicandles.ru/assets/img/products/serdtse-1.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/serdtse-2.jpg</picture>
+<description><![CDATA[Романтичная и невероятно стильная ароматическая свеча ручной работы, созданная, чтобы дарить тепло и наполнять пространство атмосферой любви. Выполнена в оригинальном гипсовом кашпо в форме идеального каноничного сердца.
+
+Свеча изготовлена из натурального соевого воска премиум-класса, три деревянных фитиля при зажжении создают красивое треугольное перекрестное свечение и уютно потрескивают, напоминая миниатюрный домашний камин.
+
+Такая свеча станет роскошным элементом декора для спальни, гостиной или праздничной сервировки, а также идеальным, говорящим без слов подарком для близкого человека. После полного прогорания воска прочное экологичное кашпо-сердце легко очищается тёплой мыльной водой и превращается в изящную интерьерную чашу для хранения украшений или любимых мелочей.]]></description>
+</offer>
+<offer id="18" available="true">
+<name>Ароматическая свеча в шкатулке Роза Инталия</name>
+<url>https://phicandles.ru/products/roza-intalia-k/</url>
+<price>2300</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://phicandles.ru/assets/img/products/roza-intalia-k.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/roza-intalia-k-2.jpg</picture>
+<description><![CDATA[Абсолютное воплощение нежности и изысканного стиля. Эта уникальная свеча ручной работы залита в дизайнерское шкатулку из высокопрочного акрилового гипса, выполненную в виде раскрывающегося бутона розы. Верхняя съемная крышка безупречно повторяет контуры лепестков, превращая свечу в полноценный арт-объект, который выглядит эстетично как в открытом, так и в закрытом виде. Такая свеча станет идеальным украшением туалетного столика, спальни или гостиной. После полного прогорания воска изящная шкатулка в форме розы продолжит радовать вас, служа стильным органайзером для хранения колец, украшений или ценных мелочей.]]></description>
+</offer>
+<offer id="19" available="true">
+<name>Ароматическая свеча в шкатулке Тыква</name>
+<url>https://phicandles.ru/products/tykva-k/</url>
+<price>2000</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://phicandles.ru/assets/img/products/tykva-k.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/tykva-k-1.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/tykva_k_2.jpg</picture>
+<description><![CDATA[Сама эстетика уюта, тепла и домашнего комфорта. Эта стильная заливная свеча ручной работы представлена в оригинальной шкатулке из высокопрочного акрилового гипса в форме фигурной тыквы. Изюминка дизайна — изящная съемная крышка с хвостиком, аккуратно окрашенным в благородный золотой цвет, что добавляет изделию нотку утонченного шика. Такой аксессуар станет идеальным дополнением для осеннего декора, праздничной сервировки или круглогодичного украшения журнального столика и кухни. После того как свеча прогорит, экологичную форму-тыковку можно использовать как шкатулку для хранения украшений, специй, сладостей или других приятных мелочей.]]></description>
+</offer>
+<offer id="20" available="true">
+<name>Ароматическая свеча в шкатулке Изящные линии</name>
+<url>https://phicandles.ru/products/izyashnye-linii-k/</url>
+<price>1500</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://phicandles.ru/assets/img/products/izyashnye-linii-k.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/izyashnye-linii-k1.jpg</picture>
+<description><![CDATA[Воплощение утонченности, грации и минималистичной эстетики. Эта заливная свеча ручной работы представлена в лаконичной цилиндрической шкатулке с крышкой из акрилового гипса, украшенной изысканным объемным барельефом. Благодаря своему сдержанному и благородному дизайну, свеча станет идеальным акцентом для туалетного столика, рабочей зоны или пространства для медитаций. После того как воск полностью прогорит, экологичную и прочную гипсовую шкатулку можно использовать для хранения украшений, косметических кистей или канцелярии.]]></description>
+</offer>
+<offer id="21" available="true">
+<name>Ароматическая свеча в шкатулке Минимализм S</name>
+<url>https://phicandles.ru/products/minimalizm-k/</url>
+<price>1300</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://phicandles.ru/assets/img/products/minimalizm-k.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/minimalizm-k-2.jpg</picture>
+<description><![CDATA[Безупречная геометрия и ничего лишнего. Эта заливная свеча ручной работы создана для ценителей лаконичного скандинавского стиля и минимализма. Шкатулка выполнена из акрилового гипса премиум-качества и имеет мягкую, сужающуюся кверху конусную форму с идеально гладкой матовой текстурой и плоской минималистичной крышкой. Благодаря лаконичному и благородному дизайну, этот аксессуар мягко интегрируется в любое современное пространство, добавляя ему визуальной легкости и уюта. После полного прогорания воска прочная, экологичная гипсовая форма превращается в стильную минималистичную шкатулку или стаканчик для хранения косметических мелочей, колец и украшений.]]></description>
+</offer>
+<offer id="22" available="true">
+<name>Ароматическая свеча в шкатулке Минимализм M</name>
+<url>https://phicandles.ru/products/minimalizm-k-m/</url>
+<price>1500</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://phicandles.ru/assets/img/products/minimalizm-k-3.jpg</picture>
+<description><![CDATA[Безупречная геометрия и ничего лишнего. Эта заливная свеча ручной работы создана для ценителей лаконичного скандинавского стиля и минимализма. Шкатулка выполнена из акрилового гипса премиум-качества и имеет мягкую, сужающуюся кверху конусную форму с идеально гладкой матовой текстурой и плоской минималистичной крышкой. Благодаря лаконичному и благородному дизайну, этот аксессуар мягко интегрируется в любое современное пространство, добавляя ему визуальной легкости и уюта. После полного прогорания воска прочная, экологичная гипсовая форма превращается в стильную минималистичную шкатулку или стаканчик для хранения косметических мелочей, колец и украшений.]]></description>
+</offer>
+<offer id="23" available="true">
+<name>Ароматическая свеча в шкатулке Бабл</name>
+<url>https://phicandles.ru/products/kub/</url>
+<price>1800</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://phicandles.ru/assets/img/products/kub.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/kub-2.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/kub-3.jpg</picture>
+<description><![CDATA[Ультрасовременный тренд в дизайне интерьера и абсолютный хит эстетики. Эта заливная свеча ручной работы представлена в оригинальной кубической шкатулке из акрилового гипса, состоящей из множества объемных глянцевых пузырей. Фактурная съемная крышка идеально продолжает узнаваемую «бабл»-геометрию куба, превращая свечу в стильный и самодостаточный арт-объект. Благодаря своей смелой и необычной форме, свеча «Бабл» мгновенно приковывает взгляд и идеально вписывается в современные пространства: от скандинавского минимализма до неоклассики. Когда свеча полностью прогорит, прочная и экологичная гипсовая шкатулка станет идеальным стильным органайзером для хранения колец, украшений или других важных мелочей.]]></description>
+</offer>
+<offer id="24" available="true">
+<name>Ароматическая свеча в шкатулке Кролик</name>
+<url>https://phicandles.ru/products/krolik/</url>
+<price>2800</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://phicandles.ru/assets/img/products/krolik-k.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/krolik-k-2.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/krolik-k-3.jpg</picture>
+<description><![CDATA[Очаровательный арт-объект, который наполнит пространство уютом, теплом и легким весенним настроением. Эта заливная свеча ручной работы представлена в оригинальной шкатулке из акрилового гипса, выполненной в форме кролика с аккуратными объемными ушками на крышке. Такой аксессуар станет идеальным украшением для детской комнаты, спальни, праздничной пасхальной сервировки или милым подарком для близких. После полного прогорания воска прочную и экологичную гипсовую форму в виде кролика можно использовать как шкатулку для хранения колец, украшений, памятных мелочей или как самостоятельный интерьерный декор.]]></description>
+</offer>
+<offer id="25" available="true">
+<name>Ароматическая свеча в стакане</name>
+<url>https://phicandles.ru/products/zalivnaya-svecha-v-stakane/</url>
+<price>1300</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://phicandles.ru/assets/img/products/zalivnaya-svecha-v-stakane.jpg</picture>
+<description><![CDATA[Ароматическая свеча в стакане — это стильный элемент декора и источник уюта, который помогает расслабиться после тяжелого дня. Благодаря безопасному стеклянному подсвечнику воск не растекается, а пламя защищено от сквозняков.]]></description>
+</offer>
+<offer id="26" available="true">
+<name>Ароматическая свеча в темном стеклянном стакане</name>
+<url>https://phicandles.ru/products/shalfei/</url>
+<price>1180</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://phicandles.ru/assets/img/products/shalfei.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/shalfei-2.jpg</picture>
+<description><![CDATA[Элегантная заливная свеча ручной работы, выполненная в строгом минималистичном стиле. Баночка из плотного темного стекла глубокого оттенка мягко приглушает и рассеивает пламя, создавая в помещении камерную, расслабляющую атмосферу. Лаконичный дизайн и винтовая крышка делают свечу стильным, независимым элементом декора, который гармонично дополнит любое пространство — от скандинавского уюта до строгого лофта.]]></description>
+</offer>
+<offer id="27" available="true">
+<name>Ароматическая свеча в черной матовой банке</name>
+<url>https://phicandles.ru/products/soma/</url>
+<price>1500</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://phicandles.ru/assets/img/products/soma.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/soma-2.jpg</picture>
+<description><![CDATA[Эта свеча — не просто источник света, а стильный элемент декора, способный подчеркнуть вашу индивидуальность. Лаконичная черная матовая банка из металла выглядит современно и элегантно, вписываясь в любой интерьер — от минимализма до лофта.]]></description>
+</offer>
+<offer id="28" available="true">
+<name>Ароматическая трэвел-свеча</name>
+<url>https://phicandles.ru/products/grey-can/</url>
+<price>700</price>
+<currencyId>RUR</currencyId>
+<categoryId>1</categoryId>
+<picture>https://phicandles.ru/assets/img/products/grey-can.jpg</picture>
+<description><![CDATA[Универсальный, стильный и лаконичный элемент декора, созданный в духе современного урбанизма и минимализма. Свеча залита в компактную баночку из легкого металла с безупречным серым матовым покрытием. Благодаря небольшим размерам идеально подходит в качестве тревел-свечи (travel candle) — её удобно брать с собой в поездки и путешествия, чтобы повсюду создавать привычную атмосферу домашнего уюта. Свеча укомплектована надежной винтовой металлической крышкой, которая плотно закрывается. После полного прогорания воска прочную металлическую баночку можно использовать для хранения мелких дорожных аксессуаров или канцелярии.]]></description>
+</offer>
+<offer id="29" available="true">
+<name>Грани свечения L</name>
+<url>https://phicandles.ru/products/grani-svecheniya-l/</url>
+<price>1500</price>
+<currencyId>RUR</currencyId>
+<categoryId>3</categoryId>
+<picture>https://phicandles.ru/assets/img/products/grani-svecheniya-l.jpg</picture>
+<description><![CDATA[Интерьерная свеча с рельефными гранями, которая создает завораживающую игру света и тени при горении. Без аромата, только чистый, спокойный свет. Подходящие подсвечники вы найдёте в разделе Декор для дома.]]></description>
+</offer>
+<offer id="30" available="true">
+<name>Грани свечения M</name>
+<url>https://phicandles.ru/products/grani-svecheniya-m/</url>
+<price>900</price>
+<currencyId>RUR</currencyId>
+<categoryId>3</categoryId>
+<picture>https://phicandles.ru/assets/img/products/grani-svecheniya-m.jpg</picture>
+<description><![CDATA[Интерьерная свеча с рельефными гранями, которая создает завораживающую игру света и тени при горении. Без аромата, только чистый, спокойный свет. Подходящие подсвечники вы найдёте в разделе Декор для дома.]]></description>
+</offer>
+<offer id="31" available="true">
+<name>Грани свечения S</name>
+<url>https://phicandles.ru/products/grani-svecheniya-s/</url>
+<price>1200</price>
+<currencyId>RUR</currencyId>
+<categoryId>3</categoryId>
+<picture>https://phicandles.ru/assets/img/products/grani-svecheniya-s.jpg</picture>
+<description><![CDATA[Интерьерная свеча с рельефными гранями, которая создает завораживающую игру света и тени при горении. Без аромата, только чистый, спокойный свет. Подходящие подсвечники вы найдёте в разделе Декор для дома.]]></description>
+</offer>
+<offer id="32" available="true">
+<name>Античная колонна</name>
+<url>https://phicandles.ru/products/antichnaya-kolonna-f/</url>
+<price>850</price>
+<currencyId>RUR</currencyId>
+<categoryId>3</categoryId>
+<picture>https://phicandles.ru/assets/img/products/antichnaya-kolonna.jpg</picture>
+<description><![CDATA[Интерьерная свеча, которая идеально подходит для декора, дома или подарка. Без аромата, только чистый, спокойный свет. Подходящие подсвечники вы найдёте в разделе Декор для дома.]]></description>
+</offer>
+<offer id="33" available="true">
+<name>Цветочная колонна</name>
+<url>https://phicandles.ru/products/tsvetochnaya-kolonna/</url>
+<price>920</price>
+<currencyId>RUR</currencyId>
+<categoryId>3</categoryId>
+<picture>https://phicandles.ru/assets/img/products/tsvetochnaya-kolonna.jpg</picture>
+<description><![CDATA[Интерьерная свеча, которая идеально подходит для декора, дома или подарка. Без аромата, только чистый, спокойный свет. Подходящие подсвечники вы найдёте в разделе Декор для дома.]]></description>
+</offer>
+<offer id="34" available="true">
+<name>Спираль</name>
+<url>https://phicandles.ru/products/spiral/</url>
+<price>700</price>
+<currencyId>RUR</currencyId>
+<categoryId>3</categoryId>
+<picture>https://phicandles.ru/assets/img/products/spiral.jpg</picture>
+<description><![CDATA[Интерьерная свеча, которая идеально подходит для декора, дома или подарка. Без аромата, только чистый, спокойный свет. Подходящие подсвечники вы найдёте в разделе Декор для дома.]]></description>
+</offer>
+<offer id="35" available="true">
+<name>Пион</name>
+<url>https://phicandles.ru/products/roza-f/</url>
+<price>420</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://phicandles.ru/assets/img/products/pion-f.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/pion-f-1.jpg</picture>
+<description><![CDATA[Изысканная фигурная свеча, в точности повторяющая роскошный распустившийся бутон пиона. Многослойность, реалистичная текстура нежных, слегка волнистых лепестков и безупречная круглая форма делают эту свечу полноценным элементом декора, который притягивает взгляд. Она создана для того, чтобы добавлять пространству утонченности, романтики и визуальной эстетики. Подходящие подсвечники вы найдёте в разделе Декор для дома.]]></description>
+</offer>
+<offer id="36" available="true">
+<name>Тюльпан</name>
+<url>https://phicandles.ru/products/tulip/</url>
+<price>450</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://phicandles.ru/assets/img/products/tulip.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/tulip-2.jpg</picture>
+<description><![CDATA[Изящная фигурная свеча, выполненная в форме раскрывающегося бутона тюльпана на прочном зеленом стебле. Благодаря сложной, реалистичной проработке каждого лепестка и аккуратному переходу цвета, свеча выглядит как утонченный арт-объект. Она идеально впишется в современный интерьер, добавив в него весеннюю свежесть и ноту утонченного шика. Подходящие подсвечники вы найдёте в разделе Декор для дома.]]></description>
+</offer>
+<offer id="37" available="true">
+<name>Цветочное сердце</name>
+<url>https://phicandles.ru/products/tsvetochnoe-serdtse-f/</url>
+<price>370</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://phicandles.ru/assets/img/products/tsvetochnoe-serdtse-f.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/tsvetochnoe-serdtse-f-2.jpg</picture>
+<description><![CDATA[Эксклюзивная фигурная свеча, сочетающая в себе романтическую форму сердца и невероятно нежную фактуру. Вся поверхность свечи усыпана множеством мелких, детально проработанных цветов, что создает потрясающий объемный эффект. Эта свеча создана для того, чтобы вдохновлять, дарить эстетическое удовольствие и добавлять интерьеру особого шарма. Подходящие подсвечники вы найдёте в разделе Декор для дома.]]></description>
+</offer>
+<offer id="38" available="true">
+<name>Мишка</name>
+<url>https://phicandles.ru/products/mishka-f/</url>
+<price>800</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://phicandles.ru/assets/img/products/mishka-f.jpg</picture>
+<description><![CDATA[Невероятно милая и одновременно стильная фигурная свеча, выполненная в виде силуэта сидящего плюшевого медвежонка. Вся поверхность фигурки полностью соткана из десятков мелких объемных роз. Сочетание классического символа домашнего уюта и нежной флористической фактуры превращает эту свечу в оригинальный арт-объект, который мгновенно приковывает к себе взгляд и вызывает улыбку.]]></description>
+</offer>
+<offer id="39" available="true">
+<name>Мишка с сердцем</name>
+<url>https://phicandles.ru/products/mishka-s-serdtsem-f/</url>
+<price>450</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://phicandles.ru/assets/img/products/mishka-s-serdtsem-f.jpg</picture>
+<description><![CDATA[Трогательная фигурная свеча премиум-класса, выполненная в виде сидящего медвежонка, бережно держащего в лапках гладкое объемное сердце. Поверхность фигурки полностью соткана из десятков миниатюрных, детально проработанных роз, создающих восхитительный контраст с глянцевой текстурой сердца. Эта свеча — идеальное воплощение нежности, уюта и искренних чувств в одном арт-объекте.]]></description>
+</offer>
+<offer id="40" available="true">
+<name>Собачка</name>
+<url>https://phicandles.ru/products/sobachka/</url>
+<price>800</price>
+<currencyId>RUR</currencyId>
+<categoryId>2</categoryId>
+<picture>https://phicandles.ru/assets/img/products/sobachka.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/sobachka-1.jpg</picture>
+<description><![CDATA[Очаровательная фигурная свеча, выполненная в виде силуэта сидящей собачки, фактура которой полностью соткана из множества мелких объемных роз. Это удивительно милый, но при этом стильный и элегантный арт-объект, сочетающий в себе флористические мотивы и анималистичный дизайн. Свеча мгновенно привлекает внимание, добавляя пространству уюта, нежности и капли игривого шика. Подходящие подсвечники вы найдёте в разделе Декор для дома.]]></description>
+</offer>
+<offer id="41" available="true">
+<name>Бабл</name>
+<url>https://phicandles.ru/products/bubl/</url>
+<price>1300</price>
+<currencyId>RUR</currencyId>
+<categoryId>3</categoryId>
+<picture>https://phicandles.ru/assets/img/products/bubl.jpg</picture>
+<description><![CDATA[Интерьерная свеча, которая идеально подходит для декора, дома или подарка. Без аромата, только чистый, спокойный свет. Подходящие подсвечники вы найдёте в разделе Декор для дома.]]></description>
+</offer>
+<offer id="42" available="true">
+<name>Интерьерный набор «Арт Деко»</name>
+<url>https://phicandles.ru/products/art-deco/</url>
+<price>1200</price>
+<currencyId>RUR</currencyId>
+<categoryId>6</categoryId>
+<picture>https://phicandles.ru/assets/img/products/art-deco.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/art-deco-1.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/art-deco-2.jpg</picture>
+<description><![CDATA[Эксклюзивный интерьерный сет ручной работы, выполненный из высокопрочного гипса. Набор гармонично сочетает в себе строгую геометрию и благородную монументальность стиля арт-деко. В комплект входит утонченная ребристая ваза для сухоцветов цилиндрической формы и овальный поднос-подставка. Изящная игра графичных линий и безупречно гладкая матовая поверхность превращают этот дуэт в выразительный арт-объект, который станет главным украшением современного интерьера.]]></description>
+</offer>
+<offer id="43" available="true">
+<name>Высокий подсвечник для столовых свечей</name>
+<url>https://phicandles.ru/products/candlehold-tall/</url>
+<price>450</price>
+<currencyId>RUR</currencyId>
+<categoryId>6</categoryId>
+<picture>https://phicandles.ru/assets/img/products/candlehold-tall.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/candlehold-tall-1.png</picture>
+<description><![CDATA[Утонченный и величественный элемент декора, который задает пространству вертикаль и добавляет интерьеру благородной строгости. Подсвечник выполнен в неоклассическом стиле: его высокая гладкая ножка изящно расширяется к основанию, а верхняя чаша имеет лаконичную чашевидную форму, напоминающую раскрывающийся бутон. Оригинальное круглое каскадное основание обеспечивает идеальную устойчивость и завершает архитектурный силуэт изделия. Он разработан специально для классических столовых длинных конусных или витых свечей, мягко подчеркивая их изящество. Этот аксессуар станет великолепным акцентом при сервировке праздничного стола, украшении каминной полки, консоли или журнального столика.]]></description>
+</offer>
+<offer id="44" available="true">
+<name>Высокий минималистичный подсвечник для столовых свечей</name>
+<url>https://phicandles.ru/products/candlehold-midi/</url>
+<price>210</price>
+<currencyId>RUR</currencyId>
+<categoryId>6</categoryId>
+<picture>https://phicandles.ru/assets/img/products/candlehold-midi.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/candlehold-midi-1.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/candlehold-midi-2.jpg</picture>
+<description><![CDATA[Лаконичный интерьерный подсвечник ручной работы, выполненный в строгом минималистичном стиле. Четкая геометрия, отсутствие лишних деталей и благородная текстура гипса делают этот подсвечник идеальным базовым элементом для современного декора. Широкое плоское основание обеспечивает безупречную устойчивость на любой горизонтальной поверхности и надежно защищает мебель от случайных капель воска. Подсвечник разработан для классических столовых свечей (конусных, прямых или витых) стандартного диаметра. Благодаря своей сдержанной эстетике он отлично смотрится как сольно, так и в паре, создавая гармоничную архитектурную композицию на журнальном столике, консоли или сервировочном подносе.]]></description>
+</offer>
+<offer id="45" available="true">
+<name>Минималистичный подсвечник для столовых свечей</name>
+<url>https://phicandles.ru/products/candlehold-mini/</url>
+<price>180</price>
+<currencyId>RUR</currencyId>
+<categoryId>6</categoryId>
+<picture>https://phicandles.ru/assets/img/products/candlehold-mini.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/candlehold-mini-1.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/candlehold-mini-2.jpg</picture>
+<description><![CDATA[Лаконичный интерьерный подсвечник ручной работы, выполненный в строгом минималистичном стиле. Четкая геометрия, отсутствие лишних деталей и благородная текстура гипса делают этот подсвечник идеальным базовым элементом для современного декора. Широкое плоское основание обеспечивает безупречную устойчивость на любой горизонтальной поверхности и надежно защищает мебель от случайных капель воска. Подсвечник разработан для классических столовых свечей (конусных, прямых или витых) стандартного диаметра. Благодаря своей сдержанной эстетике он отлично смотрится как сольно, так и в паре, создавая гармоничную архитектурную композицию на журнальном столике, консоли или сервировочном подносе.]]></description>
+</offer>
+<offer id="46" available="true">
+<name>Подсвечник для столовых свечей Звезда</name>
+<url>https://phicandles.ru/products/candlehold-zvezda/</url>
+<price>210</price>
+<currencyId>RUR</currencyId>
+<categoryId>6</categoryId>
+<picture>https://phicandles.ru/assets/img/products/candlehold-zvezda.jpg</picture>
+<description><![CDATA[Декоративный подсвечник ручной работы в форме звезды — это лаконичный и стильный аксессуар, выполненный в духе современного минимализма. Его четкая геометрия пятиконечной формы превращает изделие в изящный арт-объект, способный украсить любой интерьер. Внутреннее углубление подсвечника идеально рассчитано под стандартные чайные или небольшие формовые свечи, надежно фиксируя их и защищая поверхности мебели от капель воска. Благодаря специальному влагостойкому покрытию и тщательной ручной шлифовке, он тактильно приятен и долговечен в использовании.]]></description>
+</offer>
+<offer id="47" available="true">
+<name>Бутон розы</name>
+<url>https://phicandles.ru/products/buton-rozy/</url>
+<price>2300</price>
+<currencyId>RUR</currencyId>
+<categoryId>3</categoryId>
+<picture>https://phicandles.ru/assets/img/products/buton-rozy.jpg</picture>
+<description><![CDATA[Интерьерная свеча, которая идеально подходит для декора, дома или подарка. Без аромата, только чистый, спокойный свет. Подходящие подсвечники вы найдёте в разделе Декор для дома.]]></description>
+</offer>
+<offer id="48" available="true">
+<name>Круглый поднос-подставка для свечей L</name>
+<url>https://phicandles.ru/products/kruglyy-podnos-podstavka/</url>
+<price>600</price>
+<currencyId>RUR</currencyId>
+<categoryId>6</categoryId>
+<picture>https://phicandles.ru/assets/img/products/podnos-big.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/podnos-big-1.jpg</picture>
+<description><![CDATA[Элегантная база для ваших интерьерных историй. Этот круглый поднос с лаконичными бортиками создан как идеальное и безопасное основание для свечей, диффузоров или украшений. Надежно защищает мебель от случайных капель горячего воска и завершает композицию. Отлично подходит для размещения сразу нескольких свечей разной высоты или одной крупной свечи-букета.]]></description>
+</offer>
+<offer id="49" available="true">
+<name>Круглый поднос-подставка для свечей M</name>
+<url>https://phicandles.ru/products/kruglyy-podnos-podstavka-m/</url>
+<price>400</price>
+<currencyId>RUR</currencyId>
+<categoryId>6</categoryId>
+<picture>https://phicandles.ru/assets/img/products/podnos-midi.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/podnos-midi-1.jpg</picture>
+<description><![CDATA[Элегантная база для ваших интерьерных историй. Этот круглый поднос с лаконичными бортиками создан как идеальное и безопасное основание для свечей, диффузоров или украшений. Надежно защищает мебель от случайных капель горячего воска и завершает композицию. Отлично подходит для размещения интерьерных свечей разной высоты или формовых свечей.]]></description>
+</offer>
+<offer id="50" available="true">
+<name>Круглый поднос-подставка для свечей S</name>
+<url>https://phicandles.ru/products/kruglyy-podnos-podstavka-s/</url>
+<price>220</price>
+<currencyId>RUR</currencyId>
+<categoryId>6</categoryId>
+<picture>https://phicandles.ru/assets/img/products/podnos-small.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/podnos-small-1.jpg</picture>
+<description><![CDATA[Элегантная база для ваших интерьерных историй. Этот круглый поднос с лаконичными бортиками создан как идеальное и безопасное основание для свечей, диффузоров или украшений. Надежно защищает мебель от случайных капель горячего воска и завершает композицию. Отлично подходит для размещения небольших свечей.]]></description>
+</offer>
+<offer id="51" available="true">
+<name>Овальный поднос-подставка для свечей</name>
+<url>https://phicandles.ru/products/ovalnyy-podnos-podstavka/</url>
+<price>420</price>
+<currencyId>RUR</currencyId>
+<categoryId>6</categoryId>
+<picture>https://phicandles.ru/assets/img/products/podnos-oval.jpg</picture>
+<description><![CDATA[Классическая форма для современного уюта. Вытянутая овальная форма этого подноса — одна из самых популярных и удобных в интерьерном декоре. Он разработан как эстетичная и функциональная подставка для свечей, которая защищает поверхности от воска и собирает детали интерьера в единую гармоничную композицию. Так же удобно использовать в ванной или на трюмо для хранения парфюма, крема и базовых украшений.]]></description>
+</offer>
+<offer id="52" available="true">
+<name>Интерьерная салфетница Бабл</name>
+<url>https://phicandles.ru/products/salfetnica-bubl/</url>
+<price>2100</price>
+<currencyId>RUR</currencyId>
+<categoryId>6</categoryId>
+<picture>https://phicandles.ru/assets/img/products/bubble.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/bubble-1.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/bubble-2.jpg</picture>
+<description><![CDATA[Трендовый арт-объект для вашего дома. Эта салфетница в культовом объемном дизайне «Bubble» превращает обычную пачку бумажных салфеток в стильную деталь интерьера. Ее округлые, приятные на ощупь формы притягивают взгляд и добавляют пространству легкого футуризма и уюта одновременно. Изготовленная из премиального гипса, она обладает благородной тяжестью и идеальной матовой текстурой, напоминая скульптуру из природного камня. Безупречно смотрится на журнальном столике в гостиной, прикроватной тумбе, в ванной комнате или на обеденном столе.]]></description>
+</offer>
+<offer id="53" available="true">
+<name>Подставка для яиц</name>
+<url>https://phicandles.ru/products/podstavka-dlya-yaits/</url>
+<price>700</price>
+<currencyId>RUR</currencyId>
+<categoryId>6</categoryId>
+<picture>https://phicandles.ru/assets/img/products/podstavka-eggs.jpg</picture>
+<picture>https://phicandles.ru/assets/img/products/podstavka-eggs-1.jpg</picture>
+<description><![CDATA[Элегантная подставка для яиц — это стильное и практичное решение для современной сервировки стола и эстетичной организации кухонного пространства. Выполненная в лаконичном дизайне с изящными волнообразными краями, она рассчитана на шесть яиц и идеально вписывается в минималистичный интерьер. Продуманная геометрия ячеек надежно фиксирует яйца, защищая их от скольжения и случайных повреждений. Такой лаконичный предмет декора станет финальным штрихом в оформлении вашей обеденной зоны, превращая обычный прием пищи в красивый эстетический ритуал.]]></description>
+</offer>
+</offers>
+</shop>
+</yml_catalog>

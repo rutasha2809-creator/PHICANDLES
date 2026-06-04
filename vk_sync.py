@@ -22,20 +22,28 @@ def vk(method, params={}):
         raise Exception(f"VK: {data['error']['error_msg']} (code {data['error']['error_code']})")
     return data['response']
 
-def upload_photo(image_path):
-    """Загружает фото товара в VK и возвращает photo_id."""
-    server = vk('photos.getMarketUploadServer', {'group_id': VK_GROUP, 'main_photo': 1})
+def find_image(asset_image):
+    """Ищет файл изображения, пробуя разные расширения."""
+    base = os.path.splitext(os.path.basename(asset_image))[0]
+    for ext in ['.jpg', '.jpeg', '.png', '.webp']:
+        path = os.path.join(ASSETS_DIR, base + ext)
+        if os.path.exists(path):
+            return path
+    return None
+
+def upload_wall_photo(image_path):
+    """Загружает фото на стену сообщества и возвращает attachment-строку."""
+    server = vk('photos.getWallUploadServer', {'group_id': VK_GROUP})
     with open(image_path, 'rb') as f:
-        resp = requests.post(server['upload_url'], files={'file': f}, timeout=60).json()
-    saved = vk('photos.saveMarketPhoto', {
-        'group_id':  VK_GROUP,
-        'photo':     resp.get('photo', ''),
-        'server':    resp.get('server', ''),
-        'hash':      resp.get('hash', ''),
-        'crop_data': resp.get('crop_data', ''),
-        'crop_hash': resp.get('crop_hash', ''),
+        resp = requests.post(server['upload_url'], files={'photo': ('photo.jpg', f, 'image/jpeg')}, timeout=60).json()
+    saved = vk('photos.saveWallPhoto', {
+        'group_id': VK_GROUP,
+        'photo':    resp.get('photo', ''),
+        'server':   resp.get('server', 0),
+        'hash':     resp.get('hash', ''),
     })
-    return saved[0]['id']
+    photo = saved[0]
+    return f"photo{photo['owner_id']}_{photo['id']}"
 
 def build_description(product):
     parts = []
@@ -54,13 +62,13 @@ def build_description(product):
 
 def add_to_market(product, photo_id):
     result = vk('market.add', {
-        'owner_id':    -VK_GROUP,
-        'name':        product['name'][:100],
-        'description': build_description(product),
-        'category_id': 603,   # Товары ручной работы
-        'price':       product['price'],
-        'photo_id':    photo_id,
-        'url':         f"{SITE_URL}/products/{product['slug']}/",
+        'owner_id':      -VK_GROUP,
+        'name':          product['name'][:100],
+        'description':   build_description(product),
+        'category_id':   603,   # Товары ручной работы
+        'price':         product['price'],
+        'main_photo_id': photo_id,
+        'url':           f"{SITE_URL}/products/{product['slug']}/",
     })
     return result['market_item_id']
 
@@ -105,10 +113,9 @@ def main():
         print(f'[VK] → {p["name"]}...', end=' ')
         try:
             # Путь к фото
-            img_file = os.path.basename(p.get('assetImage', ''))
-            img_path = os.path.join(ASSETS_DIR, img_file)
-            if not os.path.exists(img_path):
-                print(f'фото не найдено ({img_file}), пропуск')
+            img_path = find_image(p.get('assetImage', ''))
+            if not img_path:
+                print(f'фото не найдено ({p.get("assetImage")}), пропуск')
                 continue
 
             photo_id      = upload_photo(img_path)
