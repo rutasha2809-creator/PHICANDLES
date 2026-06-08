@@ -51,5 +51,11 @@ if %errorlevel% neq 0 ( echo WARNING: VK sync finished with errors )
 echo Done
 
 echo.
+echo === Step 6: Sync new products to Pinterest ===
+python pinterest_sync.py
+if %errorlevel% neq 0 ( echo WARNING: Pinterest sync finished with errors )
+echo Done
+
+echo.
 echo === DONE! Wait 2 min then press Ctrl+Shift+R on the site ===
 pause
