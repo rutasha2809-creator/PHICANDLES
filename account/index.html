@@ -343,34 +343,38 @@
       return res.json();
     }
 
-    function renderDashboard(data) {
+    function renderDashboard(raw) {
+      // Поддержка обоих форматов ответа: плоского и вложенного (member)
+      const data = Object.assign({}, raw, raw.member || {});
+
       document.getElementById('account-login').style.display     = 'none';
       document.getElementById('account-dashboard').style.display = 'block';
 
       document.getElementById('acc-name').textContent    = data.name  || data.email;
       document.getElementById('acc-email').textContent   = data.email;
-      document.getElementById('acc-level').textContent   = data.level.name;
-      document.getElementById('acc-balance').textContent = data.points_balance.toLocaleString('ru');
-      document.getElementById('acc-spent').textContent   = 'Потрачено: ' + data.total_spent.toLocaleString('ru') + ' ₽';
+      document.getElementById('acc-level').textContent   = (data.level && data.level.name) || '—';
+      document.getElementById('acc-balance').textContent = (+(data.points_balance || 0)).toLocaleString('ru');
+      const totalSpent = +(data.total_spent || 0);
+      document.getElementById('acc-spent').textContent   = 'Потрачено: ' + totalSpent.toLocaleString('ru') + ' ₽';
 
       // Прогресс до следующего уровня
       const progBar   = document.getElementById('acc-progress');
       const progLabel = document.getElementById('acc-progress-label');
       if (data.next_level) {
-        const cur  = data.level.min;
+        const cur  = (data.level && data.level.min) || 0;
         const next = data.next_level.min;
-        const pct  = Math.min(100, ((data.total_spent - cur) / (next - cur)) * 100);
+        const pct  = Math.min(100, ((totalSpent - cur) / (next - cur)) * 100);
         progBar.style.width    = pct + '%';
         progLabel.textContent  = 'До уровня «' + data.next_level.name + '» ещё ' +
-          Math.max(0, next - data.total_spent).toLocaleString('ru') + ' ₽';
+          Math.max(0, next - totalSpent).toLocaleString('ru') + ' ₽';
       } else {
         progBar.style.width   = '100%';
         progLabel.textContent = 'Максимальный уровень достигнут';
       }
 
       // Реферальный блок
-      const refCode = data.referral_code;
-      const refLink = 'https://phicandles.ru/loyalty/?ref=' + refCode;
+      const refCode = data.referral_code || '';
+      const refLink = refCode ? 'https://phicandles.ru/loyalty/?ref=' + refCode : '';
       document.getElementById('acc-ref-link').value = refLink;
 
       // Кнопка "Копировать"

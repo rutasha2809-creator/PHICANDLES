@@ -165,14 +165,16 @@ if ($action === 'get_member') {
         'max_redeem_pct' => MAX_REDEEM_PERCENT,
     ];
     respond([
-        'ok'     => true,
-        'member' => $memberData,
+        'ok'             => true,
+        'member'         => $memberData,
         // Плоские поля для обратной совместимости
         'name'           => $member['name'],
         'email'          => $member['email'],
         'points_balance' => (int)$member['points_balance'],
+        'total_spent'    => (float)$member['total_spent'],
         'referral_code'  => $member['referral_code'],
         'level'          => $level,
+        'next_level'     => $nextLevel,
         'history'        => $history,
         'max_redeem_pct' => MAX_REDEEM_PERCENT,
     ]);
