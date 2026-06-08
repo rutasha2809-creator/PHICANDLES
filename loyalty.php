@@ -152,8 +152,7 @@ if ($action === 'get_member') {
     $hist->execute([$email]);
     $history = $hist->fetchAll(PDO::FETCH_ASSOC);
 
-    respond([
-        'ok'             => true,
+    $memberData = [
         'name'           => $member['name'],
         'email'          => $member['email'],
         'points_balance' => (int)$member['points_balance'],
@@ -161,6 +160,18 @@ if ($action === 'get_member') {
         'referral_code'  => $member['referral_code'],
         'level'          => $level,
         'next_level'     => $nextLevel,
+        'history'        => $history,
+        'max_redeem_pct' => MAX_REDEEM_PERCENT,
+    ];
+    respond([
+        'ok'     => true,
+        'member' => $memberData,
+        // Плоские поля для обратной совместимости
+        'name'           => $member['name'],
+        'email'          => $member['email'],
+        'points_balance' => (int)$member['points_balance'],
+        'referral_code'  => $member['referral_code'],
+        'level'          => $level,
         'history'        => $history,
         'max_redeem_pct' => MAX_REDEEM_PERCENT,
     ]);

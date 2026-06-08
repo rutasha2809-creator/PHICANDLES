@@ -483,18 +483,21 @@
   let loyaltyMember  = null;  // данные участника
   let loyaltyRedeem  = 0;     // сколько баллов списать
 
-  // Автозаполнение email из localStorage
-  document.addEventListener('DOMContentLoaded', () => {
-    const saved = localStorage.getItem('phi-loyalty-email');
-    if (saved) document.getElementById('loyalty-email-input').value = saved;
+  // Автопроверка PHI-клуба когда покупатель вводит email в основной форме
+  let loyaltyCheckTimer = null;
+  document.getElementById('f-email').addEventListener('input', () => {
+    clearTimeout(loyaltyCheckTimer);
+    const email = document.getElementById('f-email').value.trim();
+    if (!email || !email.includes('@')) return;
+    // Синхронизируем email в блок PHI-клуба
+    document.getElementById('loyalty-email-input').value = email;
+    // Проверяем через 800мс после последнего ввода
+    loyaltyCheckTimer = setTimeout(() => checkLoyalty(email), 800);
   });
 
-  document.getElementById('loyalty-check-btn').addEventListener('click', async () => {
-    const email = document.getElementById('loyalty-email-input').value.trim();
-    const msg   = document.getElementById('loyalty-msg');
-    if (!email) { msg.textContent = 'Введите email'; msg.style.color = '#8b2e2e'; return; }
-
-    msg.textContent = 'Проверяем…'; msg.style.color = '#888';
+  async function checkLoyalty(email) {
+    const msg = document.getElementById('loyalty-msg');
+    msg.textContent = 'Проверяем PHI-клуб…'; msg.style.color = '#888';
     try {
       const res  = await fetch(`${LOYALTY_API}?action=get_member&email=${encodeURIComponent(email)}`);
       const data = await res.json();
@@ -505,17 +508,25 @@
         document.getElementById('loyalty-balance-text').textContent =
           `${data.member.name}, ваш баланс: ${data.member.points_balance} баллов (1 балл = 1 ₽)`;
         document.getElementById('loyalty-redeem-input').max = data.member.points_balance;
-        msg.textContent = '';
+        msg.textContent = data.member.points_balance > 0 ? '' : '';
       } else {
         loyaltyMember = null;
         document.getElementById('loyalty-info').style.display = 'none';
         document.getElementById('loyalty-join-link').style.display = 'inline-block';
-        msg.textContent = 'Участник не найден. Вступите в PHI-клуб бесплатно.';
+        msg.textContent = 'Ещё не в PHI-клубе? Вступите бесплатно →';
         msg.style.color = '#888';
       }
     } catch {
-      msg.textContent = 'Ошибка соединения'; msg.style.color = '#8b2e2e';
+      msg.textContent = ''; // тихо игнорируем если нет связи
     }
+  }
+
+  // Ручная проверка по кнопке (запасной вариант)
+  document.getElementById('loyalty-check-btn').addEventListener('click', async () => {
+    const email = document.getElementById('loyalty-email-input').value.trim();
+    const msg   = document.getElementById('loyalty-msg');
+    if (!email) { msg.textContent = 'Введите email'; msg.style.color = '#8b2e2e'; return; }
+    await checkLoyalty(email);
   });
 
   document.getElementById('loyalty-apply-btn').addEventListener('click', () => {
