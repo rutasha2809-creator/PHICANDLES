@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Loyalty Test</title></head>
+<body>
+<h3>Тест PHI-клуб API</h3>
+<pre id="out">Загрузка...</pre>
+<script>
+const url = 'https://api.phicandles.ru/loyalty.php?action=get_member&email=rutasha2809%40gmail.com';
+document.getElementById('out').textContent = 'Запрос к: ' + url + '\n\nОжидаем ответ...';
+
+fetch(url)
+  .then(r => {
+    document.getElementById('out').textContent +=
+      '\n\nHTTP статус: ' + r.status +
+      '\nContent-Type: ' + r.headers.get('content-type') +
+      '\nCORS заголовок: ' + r.headers.get('access-control-allow-origin');
+    return r.text();
+  })
+  .then(text => {
+    document.getElementById('out').textContent += '\n\nОтвет сервера:\n' + text;
+  })
+  .catch(err => {
+    document.getElementById('out').textContent += '\n\nОШИБКА: ' + err.name + ': ' + err.message;
+  });
+</script>
+</body></html>
