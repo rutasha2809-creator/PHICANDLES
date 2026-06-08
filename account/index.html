@@ -197,14 +197,6 @@
       cursor: pointer; white-space: nowrap; transition: background 0.15s;
     }
     .ref-link-copy:hover { background: #333; }
-    .ref-share-btns { display: flex; gap: 8px; margin-bottom: 10px; }
-    .ref-share-btn {
-      flex: 1; text-align: center; padding: 8px 0;
-      font-size: 0.72rem; letter-spacing: 0.07em; text-transform: uppercase;
-      text-decoration: none; border: 1px solid var(--line); color: var(--text);
-      transition: background 0.15s, color 0.15s;
-    }
-    .ref-share-btn:hover { background: var(--text); color: #fff; }
     .account-card__ref-friends {
       font-size: 0.82rem; color: #555; margin: 0 0 4px;
     }
@@ -288,15 +280,10 @@
             <hr class="account-card__divider">
 
             <p class="account-card__ref-label">Реферальная программа</p>
-            <p class="account-card__ref-sub">Приглашайте друзей — вы оба получите 300 баллов</p>
-            <span class="account-card__ref-code" id="acc-ref">—</span>
+            <p class="account-card__ref-sub">Поделитесь ссылкой — и первая покупка друга принесёт бонусные баллы вам обоим</p>
             <div class="ref-link-wrap">
-              <input class="ref-link-input" id="acc-ref-link" readonly value="">
+              <input class="ref-link-input" id="acc-ref-link" readonly placeholder="Загрузка...">
               <button class="ref-link-copy" id="acc-ref-copy" type="button">Копировать</button>
-            </div>
-            <div class="ref-share-btns">
-              <a id="acc-share-tg" class="ref-share-btn" href="#" target="_blank" rel="noopener">Telegram</a>
-              <a id="acc-share-wa" class="ref-share-btn" href="#" target="_blank" rel="noopener">WhatsApp</a>
             </div>
             <p class="account-card__ref-friends" id="acc-ref-friends"></p>
           </div>
@@ -384,7 +371,6 @@
       // Реферальный блок
       const refCode = data.referral_code;
       const refLink = 'https://phicandles.ru/loyalty/?ref=' + refCode;
-      document.getElementById('acc-ref').textContent = refCode;
       document.getElementById('acc-ref-link').value = refLink;
 
       // Кнопка "Копировать"
@@ -394,12 +380,6 @@
           setTimeout(() => { this.textContent = 'Копировать'; }, 1600);
         });
       };
-
-      // Кнопки шаринга
-      const shareText = encodeURIComponent('Присоединяйся к PHI-клубу — получишь 300 баллов на первую покупку!');
-      const shareUrl  = encodeURIComponent(refLink);
-      document.getElementById('acc-share-tg').href = 'https://t.me/share/url?url=' + shareUrl + '&text=' + shareText;
-      document.getElementById('acc-share-wa').href = 'https://wa.me/?text=' + shareText + '%20' + shareUrl;
 
       // Загружаем кол-во приглашённых друзей
       fetch(API + '?action=get_referral_stats&email=' + encodeURIComponent(data.email))

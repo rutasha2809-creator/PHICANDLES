@@ -38,8 +38,9 @@ function getLevel($totalSpent) {
 }
 
 function generateReferralCode($name) {
-    $prefix = strtoupper(substr(preg_replace('/[^a-zA-Zа-яА-ЯёЁ]/u', '', $name), 0, 3));
-    if (mb_strlen($prefix) < 2) $prefix = 'PHI';
+    $clean  = preg_replace('/[^a-zA-Zа-яА-ЯёЁ]/u', '', $name);
+    $prefix = mb_strtoupper(mb_substr($clean, 0, 3, 'UTF-8'), 'UTF-8');
+    if (mb_strlen($prefix, 'UTF-8') < 2) $prefix = 'PHI';
     return $prefix . strtoupper(substr(md5(uniqid()), 0, 5));
 }
 
