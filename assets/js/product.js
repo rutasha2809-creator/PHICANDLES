@@ -468,7 +468,11 @@ async function initProductPage() {
     : [];
 
   let related;
-  if (trays.length) {
+  if (Array.isArray(product.relatedIds) && product.relatedIds.length) {
+    // Явно заданные похожие товары (из любых категорий)
+    const idSet = product.relatedIds;
+    related = idSet.map((id) => allOther.find((item) => item.id === id)).filter(Boolean);
+  } else if (trays.length) {
     // Объединяем свечи из своей категории + подносы, перемешиваем, берём 5
     const pool = [...basePool, ...trays];
     for (let i = pool.length - 1; i > 0; i--) {
