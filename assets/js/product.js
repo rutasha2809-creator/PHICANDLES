@@ -84,6 +84,9 @@ function renderSpecCards(product) {
     const burnLabel = product.burnTimeLabel || 'Горение';
     cards.push(`<div class="spec-card"><span class="spec-card__label">${escapeHtml(burnLabel)}</span><span class="spec-card__value">${escapeHtml(product.burnTime)}</span></div>`);
   }
+  if (product.makeTime) {
+    cards.push(`<div class="spec-card"><span class="spec-card__label">Срок изготовления</span><span class="spec-card__value">${escapeHtml(product.makeTime)}</span></div>`);
+  }
   return cards.join('');
 }
 
