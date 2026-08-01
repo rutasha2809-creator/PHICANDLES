@@ -66,6 +66,7 @@ copies = [
     ("Konteiner candles/Soma.jpg",                      "soma.jpg"),
     ("Konteiner candles/Soma 1.jpg",                    "soma-2.jpg"),
     ("Konteiner candles/Grey can.jpg",                  "grey-can.jpg"),
+    ("Konteiner candles/Grey can 1.jpg",                "grey-can-1.jpg"),
     ("Konteiner candles/serdtse-1.jpg",                 "serdtse-1.jpg"),
     ("Konteiner candles/serdtse-2.jpg",                 "serdtse-2.jpg"),
     ("Konteiner candles/Fialka.jpg",                    "fialka.jpg"),
