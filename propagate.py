@@ -10,6 +10,19 @@ PRODUCTS_IMG = os.path.join(BASE, "assets", "img", "products")
 
 # Step 1: copy images from subfolders
 copies = [
+    ("osobie povodi/Halloween/nabor-big-1.jpg", "nabor-big-1.jpg"),
+    ("osobie povodi/Halloween/nabor-big-2.jpg", "nabor-big-2.jpg"),
+    ("osobie povodi/Halloween/nabor-mini-1.jpg", "nabor-mini-1.jpg"),
+    ("osobie povodi/Halloween/nabor-mini-2.jpg", "nabor-mini-2.jpg"),
+    ("osobie povodi/Halloween/tikva-1.jpg", "tikva-1.jpg"),
+    ("osobie povodi/Halloween/tikva-2.jpg", "tikva-2.jpg"),
+    ("osobie povodi/Halloween/tikva-cashpo-1.jpg", "tikva-cashpo-1.jpg"),
+    ("osobie povodi/Halloween/tikva-cashpo-2.jpg", "tikva-cashpo-2.jpg"),
+    ("osobie povodi/Halloween/tikva-cashpo-3.jpg", "tikva-cashpo-3.jpg"),
+    ("osobie povodi/Halloween/tikva-podsvechnik-1.jpg", "tikva-podsvechnik-1.jpg"),
+    ("osobie povodi/Halloween/tikva-podsvechnik-2.jpg", "tikva-podsvechnik-2.jpg"),
+    ("osobie povodi/Halloween/tikva-podsvechnik-3.jpg", "tikva-podsvechnik-3.jpg"),
+    ("osobie povodi/Halloween/tykva-mini.jpg", "tykva-mini.jpg"),
     ("osobie povodi/Uchitelu/fistashkovaya-roza.jpg", "fistashkovaya-roza.jpg"),
     ("osobie povodi/Uchitelu/zefirnaya-roza.jpg", "zefirnaya-roza.jpg"),
     ("osobie povodi/Uchitelu/rose-buket.jpg", "rose-buket.jpg"),

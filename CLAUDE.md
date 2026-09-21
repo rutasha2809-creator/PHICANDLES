@@ -56,7 +56,7 @@ PHICANDLES (phicandles.ru) — интернет-магазин свечей ру
 - Плитки коллекций на главной ведут на эти страницы. Старые папки catalog/sezonnye-kollekcii и catalog/specialnye-predlozheniya — noindex.
 - Тексты подборок Хэллоуин и Новый год Наталия уточнит, когда добавит товары (тыковки, шкатулки-ёлочные игрушки, лошадки, символ года).
 - В общем каталоге (`catalog/index.html`) при выборе раздела/повода заголовок и вводный текст над товарами тоже берутся из `h1`/`intro` (функция updateHeader) — тексты одинаковые с отдельными страницами.
-- Фото «Особых поводов» Наталия хранит в `assets/img/products/osobie povodi/<Uchitelu|Deserti-i-fructi>/`; `propagate.py` (список `copies`) копирует их в `assets/img/products/` — сайт ссылается только на копии. Новый файл в этих папках → добавить строку в `copies`.
+- Фото «Особых поводов» Наталия хранит в `assets/img/products/osobie povodi/<Uchitelu|Deserti-i-fructi|Halloween>/`; `propagate.py` (список `copies`) копирует их в `assets/img/products/` — сайт ссылается только на копии. Новый файл в этих папках → добавить строку в `copies`.
 
 ## Если сборка GitHub Pages упала или зависла в «Queued»
 - Ошибка «Failed to FinalizeArtifact … 403» на шаге Upload artifact — сбой GitHub, не сайта. Повторный запуск (Re-run) иногда зависает в очереди; надёжнее отменить его (Cancel workflow) и сделать новую отправку через ОБНОВИТЬ_САЙТ.bat (нужно хоть одно изменение в файлах).
