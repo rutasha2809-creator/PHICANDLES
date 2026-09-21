@@ -89,7 +89,7 @@
   .hp-review figcaption a { border-bottom: 1px solid var(--line); align-self: flex-start; }
 
   .hp-corp { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); background: #1a1714; color: #fff; }
-  .hp-corp__collage { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 250px; gap: 6px; padding: 6px; }
+  .hp-corp__collage { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 250px; gap: 6px; padding: 6px; overflow: hidden; }
   .hp-corp__collage img { width: 100%; height: 100% !important; object-fit: cover; display: block; }
   .hp-corp__text { padding: 64px; align-self: center; }
   .hp-corp .hp-eyebrow { color: #b9aea3; }
@@ -109,9 +109,12 @@
     .hp-usp { grid-template-columns: 1fr 1fr; row-gap: 24px; }
     .hp-usp li:nth-child(3) { border-left: 0; }
     .hp-corp__text { padding: 40px 28px; }
+    .hp-corp__collage { grid-auto-rows: auto; }
+    .hp-corp__collage img { height: auto !important; aspect-ratio: 4 / 3; }
   }
   @media (max-width: 640px) {
-    .hp-corp__collage { grid-auto-rows: 170px; }
+    .hp-corp__collage { grid-auto-rows: auto; }
+    .hp-corp__collage img { height: auto !important; aspect-ratio: 1 / 1; }
     .hp-section { padding-top: 64px; }
     .hp-hero { padding-top: 24px; }
     .hp-hero__actions a { flex: 1 1 100%; text-align: center; }
