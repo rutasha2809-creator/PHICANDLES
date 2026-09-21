@@ -16,8 +16,11 @@ seo_static.py — SEO-шаг для PHICANDLES (запускается из ОБ
   • index.html — JSON-LD организации (логотип) и сайта.
   • sitemap.xml и llms.txt — собираются заново.
 
-Своё описание для поисковиков (не показывается на странице) можно задать товару полем
-"seoDescription" в catalog.json. Если его нет — берётся начало обычного описания.
+Заголовок и описание для поисковиков собираются по шаблону (см. seo_title / meta_description):
+  «Свеча «Собачка» ручной работы — купить | PHICANDLES» и
+  «Фигурная свеча «Собачка» из соевого воска ручной работы. Цена 800 ₽. …».
+Для отдельного товара их можно задать вручную полями "seoTitle" / "seoDescription"
+в catalog.json — на самой странице они не показываются.
 
 Запуск вручную из корня проекта:  python tools/seo_static.py
 """
@@ -86,17 +89,63 @@ def plain(text: str) -> str:
     return ' '.join((text or '').split())
 
 
+# Слова, по которым понятно, что это за товар. Если их нет в названии («Собачка», «Тюльпан»),
+# в заголовок и описание добавляется тип товара по категории.
+PRODUCT_KEYWORDS = re.compile(r'свеч|подсвечник|поднос|саше|аромалампа|мэлтс|мелтс|набор|салфетниц|подставк', re.I)
+TYPE_BY_CATEGORY = {            # как называть товар в описании, если в названии нет типа
+    'forming': 'Фигурная свеча',
+    'kashpo': 'Свеча в кашпо',
+    'interier': 'Интерьерная свеча',
+}
+MATERIAL_GENITIVE = {
+    'соевый воск': 'соевого воска',
+    'кокосовый воск': 'кокосового воска',
+    'пчелиный воск': 'пчелиного воска',
+    'оливковый воск': 'оливкового воска',
+    'гипс': 'гипса',
+}
+TITLE_MAX = 70
+DESCRIPTION_MAX = 160
+
+
+def has_type(p: dict) -> bool:
+    return bool(PRODUCT_KEYWORDS.search(p['name']))
+
+
+def seo_title(p: dict) -> str:
+    """Свеча «Собачка» ручной работы — купить | PHICANDLES (или поле seoTitle из каталога)."""
+    if p.get('seoTitle'):
+        return plain(p['seoTitle'])
+    brand = STORE['name']
+    base = p['name'] if has_type(p) else f"Свеча «{p['name']}»"
+    for variant in (f'{base} ручной работы — купить | {brand}', f'{base} — купить | {brand}', f'{base} | {brand}'):
+        if len(variant) <= TITLE_MAX:
+            return variant
+    return f'{base} | {brand}'
+
+
 def meta_description(p: dict) -> str:
+    """Фигурная свеча «Собачка» из соевого воска ручной работы. Цена 800 ₽. Красивая упаковка,
+    доставка по Москве и России. Закажите на сайте! (или поле seoDescription из каталога)."""
     if p.get('seoDescription'):
         return plain(p['seoDescription'])
-    text = plain(p.get('shortDescription') or p.get('description') or '')
-    if len(text) <= 160:
-        return text
-    cut = text[:160]
-    end = max(cut.rfind('. '), cut.rfind('! '), cut.rfind('? '))
-    if end >= 80:
-        return cut[:end + 1]
-    return cut[:cut.rfind(' ')].rstrip(',;:—- ') + '…'
+    material = next((MATERIAL_GENITIVE[m] for m in (p.get('materials') or []) if m in MATERIAL_GENITIVE), '')
+    of_material = f' из {material}' if material else ''
+    if has_type(p):
+        lead = f"{p['name']} ручной работы{of_material}."
+    else:
+        kind = TYPE_BY_CATEGORY.get(p.get('categoryId'), 'Свеча')
+        if ' ' in kind and kind.split(' ', 1)[1].lower() in p['name'].lower():
+            kind = 'Свеча'  # «Пион в кашпо» → не «Свеча в кашпо «Пион в кашпо»»
+        lead = f"{kind} «{p['name']}»{of_material} ручной работы."
+    price = f'Цена {fmt_price(current_price(p))}.'.replace(' ', ' ')
+    variants = [
+        f'{lead} {price} Красивая упаковка, доставка по Москве и России. Закажите на сайте!',
+        f'{lead} {price} Доставка по Москве и России. Закажите на сайте!',
+        f'{lead} {price} Доставка по Москве и России.',
+        f'{lead} {price}',
+    ]
+    return next((v for v in variants if len(v) <= DESCRIPTION_MAX), variants[-1])
 
 
 def abs_img(rel: str) -> str:
@@ -261,7 +310,7 @@ def process_product(p: dict) -> None:
         print(f"  ! нет страницы для товара {p['slug']}")
         return
     page = read(path)
-    title = f"{p['name']} — {STORE['name']}"
+    title = seo_title(p)
     desc = meta_description(p)
     img_rel = (p.get('assetImage') or p.get('image') or 'assets/img/image-placeholder.svg').removeprefix('./').lstrip('/')
     cat_name = CAT_BY_ID.get(p.get('categoryId'), {}).get('name', '')

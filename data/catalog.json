@@ -1393,7 +1393,7 @@
     {
       "id": "prod-pion-k",
       "slug": "pion",
-      "name": "Пион",
+      "name": "Пион в кашпо",
       "categoryId": "kashpo",
       "price": 2000,
       "salePrice": null,
@@ -1414,7 +1414,7 @@
         "color": []
       },
       "image": "./assets/img/products/pion-k.jpg",
-      "imageAlt": "Пион",
+      "imageAlt": "Пион в кашпо",
       "popularity": 80,
       "featured": false,
       "reviews": [],
@@ -2507,7 +2507,7 @@
     {
       "id": "prod-roza-f",
       "slug": "roza-f",
-      "name": "Пион",
+      "name": "Пион формовой",
       "categoryId": "forming",
       "price": 420,
       "salePrice": null,
