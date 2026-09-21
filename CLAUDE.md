@@ -39,3 +39,7 @@ PHICANDLES (phicandles.ru) — интернет-магазин свечей ру
 ## SEO-шаг: `tools/seo_static.py`
 
 Запускается в `ОБНОВИТЬ_САЙТ.bat` сразу после `propagate.py` (Step 0c). Идемпотентно вписывает данные из `data/catalog.json` прямо в HTML: в `products/<slug>/index.html` — title, meta description (поле `seoDescription` или начало `description`), canonical, og:*, JSON-LD (Product + BreadcrumbList), alt фото и текст товара внутри маркеров `<!--seo:…-->…<!--/seo:…-->`; скрытым товарам (categoryId вне `categories`) ставит noindex. Также перезаписывает карточки в `catalog/index.html`, JSON-LD главной, `sitemap.xml` и `llms.txt`. Поэтому `sitemap.xml` руками не править, а после `rebuild_from_catalog.py` обязательно запускать этот скрипт.
+
+## Особые поводы
+
+Категория `occasions` («Особые поводы») — праздничный раздел каталога. Подразделы перечислены в `catalog.json` → `occasions` (id, name, month); товар попадает в подраздел через поле `occasions: [id, ...]` и при этом может оставаться в своей обычной категории. В каталоге (`catalog/index.html`) подразделы показываются только непустые, ближайший по месяцу — первым; ссылка вида `/catalog/index.html#occasions/march8`. Категория `desserts` — «Десерты и фрукты». Категорий `limited` и `seson` больше нет.

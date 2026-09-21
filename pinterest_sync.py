@@ -39,6 +39,8 @@ BOARD_NAMES = {
     'gift':      'Подарочные наборы | PHICANDLES',
     'limited':   'Лимитированная коллекция | PHICANDLES',
     'seson':     'Сезонные коллекции | PHICANDLES',
+    'occasions': 'Особые поводы | PHICANDLES',
+    'desserts':  'Десерты и фрукты | PHICANDLES',
 }
 
 HEADERS = {
