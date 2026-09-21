@@ -18,47 +18,56 @@
     {
       "id": "conteiner",
       "name": "Контейнерные свечи",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/roza-intalia-k-2.jpg"
     },
     {
       "id": "forming",
       "name": "Формовые свечи",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/mishka-s-serdtsem-f.jpg"
     },
     {
       "id": "interier",
       "name": "Интерьерные свечи",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/bubl.jpg"
     },
     {
       "id": "kashpo",
       "name": "Свечи в кашпо с цветочным декором",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/pion-k.jpg"
     },
     {
       "id": "aroma",
       "name": "Ароматы для дома",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/melts-1.jpg"
     },
     {
       "id": "dekor",
       "name": "Декор для дома",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/podnos-big-1.jpg"
     },
     {
       "id": "gift",
       "name": "Подарочные наборы",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/nabor-pion-1.jpg"
     },
     {
       "id": "occasions",
       "name": "Особые поводы",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/rose-buket.jpg"
     },
     {
       "id": "desserts",
       "name": "Десерты и фрукты",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/plombir.jpg"
     }
   ],
   "aromas": [
@@ -3324,5 +3333,17 @@
       "name": "День рождения",
       "month": 0
     }
+  ],
+  "homeHits": [
+    "antichnaya-kolonna-f",
+    "tsvetochnaya-kolonna",
+    "roza-intalia-k",
+    "mishka-s-serdtsem-f",
+    "varenie",
+    "nabor-klubnika",
+    "izyashnye-linii-k",
+    "kruglyy-podnos-podstavka",
+    "aromaticheskoe-sashe",
+    "salfetnica-bubl"
   ]
 }

@@ -25,6 +25,107 @@
 <script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');ym(109447818,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
 <noscript><div><img src="https://mc.yandex.ru/watch/109447818" style="position:absolute;left:-9999px;" alt=""></div></noscript>
 <!-- /Яндекс.Метрика -->
+  <!--hp-css--><style>
+  .hp { padding-bottom: 96px; }
+  .hp-eyebrow { display: block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+  .hp h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(1.9rem, 3.2vw, 2.8rem); letter-spacing: 0.01em; margin: 0; }
+  .hp-section { padding: 88px 0 0; }
+  .hp-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 32px; }
+  .hp-link { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 1px solid currentColor; padding-bottom: 2px; white-space: nowrap; }
+
+  .hp-hero { padding: 48px 0 0; }
+  .hp-hero__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 48px; align-items: center; }
+  .hp-hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2.1rem, 3.3vw, 3.1rem); line-height: 1.15; letter-spacing: 0.005em; margin: 0 0 22px; text-wrap: balance; }
+  .hp-hero__brand { display: block; margin-top: 14px; font-family: 'Jost', sans-serif; font-weight: 400; font-size: 0.78rem; letter-spacing: 0.42em; color: var(--muted); }
+  .hp-hero__lead { font-size: 0.98rem; line-height: 1.8; color: var(--muted); margin: 0 0 16px; max-width: 34em; }
+  .hp-hero__lead + .hp-hero__actions { margin-top: 30px; }
+  .hp-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .hp-hero__actions { gap: 10px; }
+  .hp-hero__actions a { padding: 14px 20px; }
+  .hp-hero__media { display: grid; grid-template-columns: 2.4fr 1fr; grid-template-rows: 0.9fr 1.78fr 0.9fr; grid-template-areas: "m a" "m c" "m b"; gap: 8px; aspect-ratio: 0.98 / 1; }
+  .hp-hero__media img { width: 100%; height: 100% !important; object-fit: cover; min-height: 0; }
+  .hp-hero__main { grid-area: m; }
+  .hp-hero__a { grid-area: a; object-position: center 52%; }
+  .hp-hero__c { grid-area: c; object-position: center 55%; }
+  .hp-hero__b { grid-area: b; object-position: center 47%; }
+  .hp-usp { list-style: none; margin: 64px 0 0; padding: 28px 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .hp-usp li { padding: 0 20px; }
+  .hp-usp li + li { border-left: 1px solid var(--line); }
+  .hp-usp strong { display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.45rem; font-weight: 400; margin-bottom: 4px; }
+  .hp-usp span { font-size: 0.85rem; color: var(--muted); }
+
+  .hp-cats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .hp-cat { position: relative; overflow: hidden; display: block; aspect-ratio: 1 / 1; }
+  .hp-cat img { width: 100%; height: 100% !important; object-fit: cover; object-position: center 60%; transition: transform .6s ease; }
+  .hp-cat:hover img { transform: scale(1.05); }
+  .hp-cat::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,17,14,.62), rgba(20,17,14,0) 65%); }
+  .hp-cat__name { position: absolute; left: 22px; right: 22px; bottom: 18px; z-index: 1; color: #fff; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.55rem; line-height: 1.2; }
+
+  .hp-cards { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 32px 18px; }
+  .hp-card__media { display: block; overflow: hidden; margin-bottom: 14px; }
+  .hp-card__media img { width: 100%; aspect-ratio: 4 / 5; height: auto; object-fit: cover; transition: transform .6s ease; }
+  .hp-card:hover .hp-card__media img { transform: scale(1.04); }
+  .hp-card__cat { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .hp-card h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; font-weight: 400; line-height: 1.25; margin: 6px 0 12px; }
+  .hp-card__row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .hp-price { font-size: 1.05rem; font-weight: 400; }
+  .hp-price__old { color: var(--muted); text-decoration: line-through; margin-right: 8px; font-size: .9rem; }
+  .hp-card__btn { border: 1px solid var(--text); background: transparent; padding: 9px 14px; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all .2s ease; }
+  .hp-card__btn:hover { background: var(--text); color: #fff; }
+
+  .hp-about { margin-top: 88px; padding: 80px 0; background: #f6f2ed; box-shadow: 0 0 0 100vmax #f6f2ed; clip-path: inset(0 -100vmax); }
+  .hp-about__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: center; }
+  .hp-about img { width: 100%; aspect-ratio: 4 / 5; height: auto; object-fit: cover; max-height: 620px; }
+  .hp-about h2 { margin-bottom: 24px; }
+  .hp-about p { font-size: 1rem; line-height: 1.8; color: var(--muted); margin: 0 0 18px; }
+  .hp-about .button-secondary { display: inline-block; margin-top: 12px; }
+
+  .hp-reviews { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .hp-review { margin: 0; border: 1px solid var(--line); padding: 32px 30px; display: flex; flex-direction: column; }
+  .hp-review__stars { letter-spacing: 4px; font-size: .9rem; margin-bottom: 16px; }
+  .hp-review blockquote { margin: 0 0 24px; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.3rem; line-height: 1.45; flex: 1; }
+  .hp-review figcaption { font-size: .85rem; color: var(--muted); display: flex; flex-direction: column; gap: 2px; }
+  .hp-review figcaption strong { color: var(--text); font-weight: 500; }
+  .hp-review figcaption a { border-bottom: 1px solid var(--line); align-self: flex-start; }
+
+  .hp-corp { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); background: #1a1714; color: #fff; }
+  .hp-corp__collage { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 250px; gap: 6px; padding: 6px; }
+  .hp-corp__collage img { width: 100%; height: 100% !important; object-fit: cover; display: block; }
+  .hp-corp__text { padding: 64px; align-self: center; }
+  .hp-corp .hp-eyebrow { color: #b9aea3; }
+  .hp-corp h2 { color: #fff; margin-bottom: 18px; }
+  .hp-corp p { color: #d8d0c8; line-height: 1.75; margin: 0 0 32px; max-width: 34em; }
+  .hp-corp .button { background: #fff; color: #1a1714; border-color: #fff; display: inline-block; }
+
+  .hp-guides { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .hp-guide img { width: 100%; aspect-ratio: 3 / 2; height: auto; object-fit: cover; margin-bottom: 18px; }
+  .hp-guide h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.45rem; font-weight: 400; line-height: 1.25; margin: 0 0 8px; }
+  .hp-guide p { margin: 0; font-size: .92rem; line-height: 1.65; color: var(--muted); }
+
+  @media (max-width: 980px) {
+    .hp-hero__inner, .hp-about__inner, .hp-corp { grid-template-columns: 1fr; gap: 40px; }
+    .hp-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hp-cats, .hp-reviews, .hp-guides { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hp-usp { grid-template-columns: 1fr 1fr; row-gap: 24px; }
+    .hp-usp li:nth-child(3) { border-left: 0; }
+    .hp-corp__text { padding: 40px 28px; }
+  }
+  @media (max-width: 640px) {
+    .hp-corp__collage { grid-auto-rows: 170px; }
+    .hp-section { padding-top: 64px; }
+    .hp-hero { padding-top: 24px; }
+    .hp-hero__actions a { flex: 1 1 100%; text-align: center; }
+    .hp-cats { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hp-cat__name { font-size: 1.15rem; left: 12px; right: 12px; bottom: 10px; }
+    .hp-cards { gap: 28px 12px; }
+    .hp-card__row { flex-direction: column; align-items: stretch; }
+    .hp-card__btn { width: 100%; }
+    .hp-reviews, .hp-guides { grid-template-columns: 1fr; }
+    .hp-usp li { padding: 0 12px; }
+    .hp-about { padding: 56px 0; }
+    .hp-head { flex-direction: column; gap: 8px; }
+  }
+</style><!--/hp-css-->
 </head>
 <body data-catalog-path="./data/catalog.json" data-root-path="./">
   <header class="site-header">
@@ -47,73 +148,180 @@
   </header>
 
 
-  <main>
-    <section class="hero">
+  <main class="hp">
+    <section class="hp-hero">
+      <div class="container hp-hero__inner">
+        <div class="hp-hero__text">
+          <span class="hp-eyebrow">Свечи и декор ручной работы</span>
+          <h1>Ароматические свечи ручной работы <span class="hp-hero__brand">PHICANDLES</span></h1>
+          <p class="hp-hero__lead">PHICANDLES — бренд ароматических свечей и предметов декора ручной работы для тех, кто ценит уют, эстетику и атмосферу дома. Мы создаём не просто красивые изделия — мы создаём настроение.</p>
+          <p class="hp-hero__lead">Каждое изделие рождается вручную из натурального воска, с вниманием к каждой детали — от формы и текстуры до аромата и финальных штрихов, — чтобы наполнить дом теплом, мягким светом и любимым ароматом.</p>
+          <div class="hp-hero__actions">
+            <a class="button" href="./catalog/index.html">Смотреть каталог</a>
+            <a class="button-secondary" href="./corporate/">Корпоративные подарки</a>
+            <a class="button-secondary" href="./about/">О нас</a>
+          </div>
+        </div>
+        <div class="hp-hero__media">
+          <img class="hp-hero__main" src="./assets/img/about-lifestyle.jpg" alt="Композиция из свечей ручной работы PHICANDLES">
+          <img class="hp-hero__a" src="./assets/img/covers/Main-cover-1.jpg" alt="Аромалампы и ароматы для дома PHICANDLES">
+          <img class="hp-hero__b" src="./assets/img/covers/Main-cover-3.jpg" alt="Композиция из свечей-пионов в фирменном кашпо PHICANDLES">
+          <img class="hp-hero__c" src="./assets/img/covers/Main-cover-4.jpg" alt="Ароматическая свеча «Карибское побережье» в стеклянной банке PHICANDLES">
+        </div>
+      </div>
       <div class="container">
-        <div class="hero-about-split">
-          <div class="hero-about-text">
-            <h1>Ароматические свечи ручной работы PHICANDLES</h1>
-            <p><span class="text-brand-inline">PHICANDLES</span>&nbsp;— это бренд ароматических свечей и предметов декора ручной работы, созданный для тех, кто ценит уют, эстетику и атмосферу дома. Мы создаём не просто красивые изделия — мы создаём настроение, превращая пространство в место, куда хочется возвращаться снова и снова.</p>
-            <p>Каждое изделие создаётся вручную с вниманием к каждой детали — от формы и текстуры до аромата и финальных штрихов. В своей работе мы используем натуральный растительный воск, экологичные материалы и премиальные ароматические масла, чтобы наши изделия были не только красивыми, но и дарили особые ощущения и атмосферу.</p>
-            <p>В нашей коллекции вы найдёте ароматические свечи и предметы декора самых разных форм и стилей — от лаконичной классики до необычных дизайнерских решений. Мы верим, что даже небольшая деталь способна преобразить интерьер, наполнить дом теплом и сделать обычные моменты особенными.</p>
-            <p>PHICANDLES — это история о красоте в деталях, уюте и маленьких ритуалах, которые делают каждый день немного приятнее.</p>
-          </div>
-          <div class="hero-about-photo">
-            <img src="./assets/img/about-lifestyle.jpg" alt="Коллекция ароматических свечей PHICANDLES">
-          </div>
+        <ul class="hp-usp">
+          <li><strong>Ручная работа</strong><span>каждое изделие изготавливаем вручную</span></li>
+          <li><strong>Натуральный воск</strong><span>соевый, кокосовый, пчелиный</span></li>
+          <li><strong>Более 30 ароматов</strong><span>от свежих до пряных</span></li>
+          <li><strong>Доставка по России</strong><span>в бережной упаковке</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="hp-section">
+      <div class="container">
+        <div class="hp-head"><h2>Коллекции</h2><a class="hp-link" href="./catalog/index.html">Весь каталог →</a></div>
+        <div class="hp-cats"><!--hp:cats-->
+          <a class="hp-cat" href="./catalog/index.html#conteiner">
+            <img src="./assets/img/products/roza-intalia-k-2.jpg" alt="Контейнерные свечи" loading="lazy">
+            <span class="hp-cat__name">Контейнерные свечи</span>
+          </a>
+          <a class="hp-cat" href="./catalog/index.html#forming">
+            <img src="./assets/img/products/mishka-s-serdtsem-f.jpg" alt="Формовые свечи" loading="lazy">
+            <span class="hp-cat__name">Формовые свечи</span>
+          </a>
+          <a class="hp-cat" href="./catalog/index.html#interier">
+            <img src="./assets/img/products/bubl.jpg" alt="Интерьерные свечи" loading="lazy">
+            <span class="hp-cat__name">Интерьерные свечи</span>
+          </a>
+          <a class="hp-cat" href="./catalog/index.html#kashpo">
+            <img src="./assets/img/products/pion-k.jpg" alt="Свечи в кашпо с цветочным декором" loading="lazy">
+            <span class="hp-cat__name">Свечи в кашпо с цветочным декором</span>
+          </a>
+          <a class="hp-cat" href="./catalog/index.html#aroma">
+            <img src="./assets/img/products/melts-1.jpg" alt="Ароматы для дома" loading="lazy">
+            <span class="hp-cat__name">Ароматы для дома</span>
+          </a>
+          <a class="hp-cat" href="./catalog/index.html#dekor">
+            <img src="./assets/img/products/podnos-big-1.jpg" alt="Декор для дома" loading="lazy">
+            <span class="hp-cat__name">Декор для дома</span>
+          </a>
+          <a class="hp-cat" href="./catalog/index.html#gift">
+            <img src="./assets/img/products/nabor-pion-1.jpg" alt="Подарочные наборы" loading="lazy">
+            <span class="hp-cat__name">Подарочные наборы</span>
+          </a>
+          <a class="hp-cat" href="./catalog/index.html#occasions">
+            <img src="./assets/img/products/rose-buket.jpg" alt="Особые поводы" loading="lazy">
+            <span class="hp-cat__name">Особые поводы</span>
+          </a>
+          <a class="hp-cat" href="./catalog/index.html#desserts">
+            <img src="./assets/img/products/plombir.jpg" alt="Десерты и фрукты" loading="lazy">
+            <span class="hp-cat__name">Десерты и фрукты</span>
+          </a>
+        <!--/hp:cats-->
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="hp-section">
       <div class="container">
-        <div class="section-header">
-          <h2>Наши продукты</h2>
-        </div>
-        <div class="category-grid">
-          <a class="category-card-link" href="./catalog/index.html#conteiner">
-            <span>Контейнерные свечи</span>
-          </a>
-          <a class="category-card-link" href="./catalog/index.html#forming">
-            <span>Формовые свечи</span>
-          </a>
-          <a class="category-card-link" href="./catalog/index.html#interier">
-            <span>Интерьерные свечи</span>
-          </a>
-          <a class="category-card-link" href="./catalog/index.html#kashpo">
-            <span>Свечи в кашпо с цветочным декором</span>
-          </a>
-          <a class="category-card-link" href="./catalog/index.html#aroma">
-            <span>Ароматы для дома</span>
-          </a>
-          <a class="category-card-link" href="./catalog/index.html#dekor">
-            <span>Декор для дома</span>
-          </a>
-          <a class="category-card-link" href="./catalog/index.html#gift">
-            <span>Подарочные наборы</span>
-          </a>
-          <a class="category-card-link" href="./catalog/index.html#occasions">
-            <span>Особые поводы</span>
-          </a>
-          <a class="category-card-link" href="./catalog/index.html#desserts">
-            <span>Десерты и фрукты</span>
-          </a>
+        <div class="hp-head"><h2>Хиты продаж</h2><a class="hp-link" href="./catalog/index.html">Смотреть все →</a></div>
+        <div class="hp-cards"><!--hp:hits-->
+          <article class="hp-card">
+            <a class="hp-card__media" href="./products/antichnaya-kolonna-f/index.html"><img src="./assets/img/products/antichnaya-kolonna.jpg" alt="Античная колонна" loading="lazy"></a>
+            <span class="hp-card__cat">Интерьерные свечи</span>
+            <h3><a href="./products/antichnaya-kolonna-f/index.html">Античная колонна</a></h3>
+            <div class="hp-card__row"><div class="hp-price"><span>850 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-ant-kol-f">В корзину</button></div>
+          </article>
+          <article class="hp-card">
+            <a class="hp-card__media" href="./products/tsvetochnaya-kolonna/index.html"><img src="./assets/img/products/tsvetochnaya-kolonna.jpg" alt="Цветочная колонна" loading="lazy"></a>
+            <span class="hp-card__cat">Интерьерные свечи</span>
+            <h3><a href="./products/tsvetochnaya-kolonna/index.html">Цветочная колонна</a></h3>
+            <div class="hp-card__row"><div class="hp-price"><span>920 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-tsv-kol">В корзину</button></div>
+          </article>
+          <article class="hp-card">
+            <a class="hp-card__media" href="./products/roza-intalia-k/index.html"><img src="./assets/img/products/roza-intalia-k.jpg" alt="Ароматическая свеча в шкатулке Роза Инталия" loading="lazy"></a>
+            <span class="hp-card__cat">Контейнерные свечи</span>
+            <h3><a href="./products/roza-intalia-k/index.html">Ароматическая свеча в шкатулке Роза Инталия</a></h3>
+            <div class="hp-card__row"><div class="hp-price"><span>2 500 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-roza-intalia-k">В корзину</button></div>
+          </article>
+          <article class="hp-card">
+            <a class="hp-card__media" href="./products/mishka-s-serdtsem-f/index.html"><img src="./assets/img/products/mishka-s-serdtsem-f.jpg" alt="Мишка с сердцем" loading="lazy"></a>
+            <span class="hp-card__cat">Формовые свечи</span>
+            <h3><a href="./products/mishka-s-serdtsem-f/index.html">Мишка с сердцем</a></h3>
+            <div class="hp-card__row"><div class="hp-price"><span>450 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-mish-s-f">В корзину</button></div>
+          </article>
+          <article class="hp-card">
+            <a class="hp-card__media" href="./products/varenie/index.html"><img src="./assets/img/products/varenie.jpg" alt="Ароматическая свеча Мамино варенье" loading="lazy"></a>
+            <span class="hp-card__cat">Десерты и фрукты</span>
+            <h3><a href="./products/varenie/index.html">Ароматическая свеча Мамино варенье</a></h3>
+            <div class="hp-card__row"><div class="hp-price"><span>700 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-varenie">В корзину</button></div>
+          </article>
+          <article class="hp-card">
+            <a class="hp-card__media" href="./products/nabor-klubnika/index.html"><img src="./assets/img/products/nabor-klubnika.jpg" alt="Подарочный набор Спелая клубника" loading="lazy"></a>
+            <span class="hp-card__cat">Десерты и фрукты</span>
+            <h3><a href="./products/nabor-klubnika/index.html">Подарочный набор «Спелая клубника»</a></h3>
+            <div class="hp-card__row"><div class="hp-price"><span>700 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-nabor-klubnika">В корзину</button></div>
+          </article>
+          <article class="hp-card">
+            <a class="hp-card__media" href="./products/izyashnye-linii-k/index.html"><img src="./assets/img/products/izyashnye-linii-k.jpg" alt="Ароматическая свеча в шкатулке Изящные линии" loading="lazy"></a>
+            <span class="hp-card__cat">Контейнерные свечи</span>
+            <h3><a href="./products/izyashnye-linii-k/index.html">Ароматическая свеча в шкатулке Изящные линии</a></h3>
+            <div class="hp-card__row"><div class="hp-price"><span>1 500 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-izyashnye-k">В корзину</button></div>
+          </article>
+          <article class="hp-card">
+            <a class="hp-card__media" href="./products/kruglyy-podnos-podstavka/index.html"><img src="./assets/img/products/podnos-big.jpg" alt="Круглый поднос-подставка из акрилового гипса" loading="lazy"></a>
+            <span class="hp-card__cat">Декор для дома</span>
+            <h3><a href="./products/kruglyy-podnos-podstavka/index.html">Круглый поднос-подставка для свечей L</a></h3>
+            <div class="hp-card__row"><div class="hp-price"><span>600 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-podnos-big">В корзину</button></div>
+          </article>
+          <article class="hp-card">
+            <a class="hp-card__media" href="./products/aromaticheskoe-sashe/index.html"><img src="./assets/img/products/sashe.jpg" alt="Ароматические саше" loading="lazy"></a>
+            <span class="hp-card__cat">Ароматы для дома</span>
+            <h3><a href="./products/aromaticheskoe-sashe/index.html">Ароматические саше</a></h3>
+            <div class="hp-card__row"><div class="hp-price"><span>900 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-sachet">В корзину</button></div>
+          </article>
+          <article class="hp-card">
+            <a class="hp-card__media" href="./products/salfetnica-bubl/index.html"><img src="./assets/img/products/bubble.jpg" alt="Интерьерная салфетница Бабл" loading="lazy"></a>
+            <span class="hp-card__cat">Декор для дома</span>
+            <h3><a href="./products/salfetnica-bubl/index.html">Интерьерная салфетница Бабл</a></h3>
+            <div class="hp-card__row"><div class="hp-price"><span>2 100 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-salfetnica-bubl">В корзину</button></div>
+          </article>
+        <!--/hp:hits-->
         </div>
       </div>
     </section>
 
 
-    <section class="section">
+
+    <section class="hp-section">
       <div class="container">
-        <div class="corporate-split">
-          <div class="corporate-text">
-            <h2>Корпоративные заказы</h2>
-            <p>Мы создаём подарки и сувениры для бизнеса: свечи с индивидуальным дизайном, фирменной упаковкой и логотипом вашей компании. Подходит для клиентских подарков, деловых мероприятий и корпоративных наборов.</p>
+        <a class="hp-corp" href="./corporate/">
+          <div class="hp-corp__collage">
+            <img src="./assets/img/corporate/corp-hero.jpg" alt="Подарочный набор PHICANDLES в фирменной упаковке" loading="lazy">
+            <img src="./assets/img/products/zalivnaya-svecha-v-stakane.jpg" alt="Свеча в стакане с фирменной этикеткой" loading="lazy">
+            <img src="./assets/img/products/nabor-pion-1.jpg" alt="Подарочный набор «Маленькие пионы»" loading="lazy">
+            <img src="./assets/img/products/gift-melts.jpg" alt="Мелтсы в подарочной упаковке" loading="lazy">
           </div>
-          <a class="button" href="/corporate/">Обсудить заказ</a>
-        </div>
+          <div class="hp-corp__text">
+            <span class="hp-eyebrow">Корпоративным клиентам</span>
+            <h2>Подарки с логотипом вашей компании</h2>
+            <p>Свечи и декор ручной работы для сотрудников, клиентов и партнёров — от 10 штук, с брендированием и по вашему техническому заданию.</p>
+            <span class="button">Подробнее</span>
+          </div>
+        </a>
       </div>
     </section>
+
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof loadCatalog === 'function' && typeof bindQuickAdd === 'function') {
+        loadCatalog().then(function (catalog) { bindQuickAdd(catalog); }).catch(function () {});
+      }
+    });
+  </script>
   </main>
 
   <footer class="footer">
@@ -153,47 +361,56 @@
     {
       "id": "conteiner",
       "name": "Контейнерные свечи",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/roza-intalia-k-2.jpg"
     },
     {
       "id": "forming",
       "name": "Формовые свечи",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/mishka-s-serdtsem-f.jpg"
     },
     {
       "id": "interier",
       "name": "Интерьерные свечи",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/bubl.jpg"
     },
     {
       "id": "kashpo",
       "name": "Свечи в кашпо с цветочным декором",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/pion-k.jpg"
     },
     {
       "id": "aroma",
       "name": "Ароматы для дома",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/melts-1.jpg"
     },
     {
       "id": "dekor",
       "name": "Декор для дома",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/podnos-big-1.jpg"
     },
     {
       "id": "gift",
       "name": "Подарочные наборы",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/nabor-pion-1.jpg"
     },
     {
       "id": "occasions",
       "name": "Особые поводы",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/rose-buket.jpg"
     },
     {
       "id": "desserts",
       "name": "Десерты и фрукты",
-      "description": ""
+      "description": "",
+      "image": "assets/img/products/plombir.jpg"
     }
   ],
   "aromas": [
@@ -3459,6 +3676,18 @@
       "name": "День рождения",
       "month": 0
     }
+  ],
+  "homeHits": [
+    "antichnaya-kolonna-f",
+    "tsvetochnaya-kolonna",
+    "roza-intalia-k",
+    "mishka-s-serdtsem-f",
+    "varenie",
+    "nabor-klubnika",
+    "izyashnye-linii-k",
+    "kruglyy-podnos-podstavka",
+    "aromaticheskoe-sashe",
+    "salfetnica-bubl"
   ]
 }</script>
   <script src="./assets/js/base.js"></script>

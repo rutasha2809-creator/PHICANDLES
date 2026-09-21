@@ -43,3 +43,7 @@ PHICANDLES (phicandles.ru) — интернет-магазин свечей ру
 ## Особые поводы
 
 Категория `occasions` («Особые поводы») — праздничный раздел каталога. Подразделы перечислены в `catalog.json` → `occasions` (id, name, month); товар попадает в подраздел через поле `occasions: [id, ...]` и при этом может оставаться в своей обычной категории. В каталоге (`catalog/index.html`) подразделы показываются только непустые, ближайший по месяцу — первым; ссылка вида `/catalog/index.html#occasions/march8`. Категория `desserts` — «Десерты и фрукты». Категорий `limited` и `seson` больше нет.
+
+## Главная страница
+
+Главная (`index.html`) свёрстана вручную (стили в блоке `<!--hp-css-->` в `<head>`). Два блока заполняет `tools/seo_static.py` из каталога: плитки коллекций между `<!--hp:cats-->…<!--/hp:cats-->` (картинка — поле `image` у категории в `catalog.json`) и «Хиты продаж» между `<!--hp:hits-->…<!--/hp:hits-->` (список slug в `catalog.json` → `homeHits`). Фото коллажа первого экрана — `assets/img/about-lifestyle.jpg` и `assets/img/covers/Main-cover-1/3/4.jpg`. Шаблон `tools/templates/home.html` устарел — `rebuild_from_catalog.py` для главной не запускать.

@@ -433,7 +433,51 @@ def process_home() -> None:
         'publisher': {'@id': DOMAIN + '/#organization'},
     }
     page = set_head_jsonld(page, {'@context': 'https://schema.org', '@graph': [org, site]})
+    page = fill_home_sections(page)
     write_if_changed(path, page)
+
+
+def fill_marker(page: str, name: str, inner: str) -> str:
+    start, end = f'<!--hp:{name}-->', f'<!--/hp:{name}-->'
+    if start not in page:
+        return page
+    return re.sub(re.escape(start) + r'.*?' + re.escape(end), lambda m: start + inner + end, page, count=1, flags=re.S)
+
+
+def fill_home_sections(page: str) -> str:
+    """Главная: плитки коллекций (categories[].image) и «Хиты продаж» (catalog.homeHits)."""
+    tiles = []
+    for c in CATEGORIES:
+        if not c.get('image') or not any(p['categoryId'] == c['id'] for p in VISIBLE):
+            continue
+        tiles.append(
+            f'\n          <a class="hp-cat" href="./catalog/index.html#{esc(c["id"])}">'
+            f'\n            <img src="./{esc(c["image"].lstrip("./"))}" alt="{esc(c["name"])}" loading="lazy">'
+            f'\n            <span class="hp-cat__name">{esc(c["name"])}</span>'
+            f'\n          </a>')
+    page = fill_marker(page, 'cats', ''.join(tiles) + '\n        ')
+
+    by_slug = {p['slug']: p for p in VISIBLE}
+    cards = []
+    for slug in CATALOG.get('homeHits') or []:
+        p = by_slug.get(slug)
+        if not p:
+            print(f'  ! homeHits: товар {slug} не найден или скрыт')
+            continue
+        img = (p.get('assetImage') or p.get('image') or '').removeprefix('./').lstrip('/')
+        base, cur = p.get('price') or 0, current_price(p)
+        price = (f'<span class="hp-price__old">{fmt_price(base)}</span>' if cur < base else '') + f'<span>{fmt_price(cur)}</span>'
+        href = f"./products/{p['slug']}/index.html"
+        cat_name = CAT_BY_ID.get(p['categoryId'], {}).get('name', '')
+        cards.append(
+            f'\n          <article class="hp-card">'
+            f'\n            <a class="hp-card__media" href="{esc(href)}"><img src="./{esc(img)}" alt="{esc(p.get("imageAlt") or p["name"])}" loading="lazy"></a>'
+            f'\n            <span class="hp-card__cat">{esc(cat_name)}</span>'
+            f'\n            <h3><a href="{esc(href)}">{esc(p["name"])}</a></h3>'
+            f'\n            <div class="hp-card__row"><div class="hp-price">{price}</div>'
+            f'<button class="hp-card__btn" type="button" data-add-to-cart="{esc(p["id"])}">В корзину</button></div>'
+            f'\n          </article>')
+    return fill_marker(page, 'hits', ''.join(cards) + '\n        ')
 
 
 # ---------- sitemap.xml и llms.txt ----------
