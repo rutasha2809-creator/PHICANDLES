@@ -14,6 +14,10 @@ seo_static.py — SEO-шаг для PHICANDLES (запускается из ОБ
     в products/ получают <meta name="robots" content="noindex,follow"> и не попадают в sitemap.
   • catalog/index.html — карточки всех товаров прямо в HTML + JSON-LD списка товаров.
   • index.html — JSON-LD организации (логотип) и сайта.
+  • catalog/<раздел>/ и catalog/osobye-povody/<повод>/ — отдельные страницы разделов и поводов
+    (заголовок, вводный текст, товары, JSON-LD). Тексты — в catalog.json: categories[] и
+    occasions[] поля slug, h1, intro (и необязательный seoTitle). Подборка меньше чем из 3 товаров
+    закрыта от индексации, пока её не наполнят.
   • sitemap.xml и llms.txt — собираются заново.
 
 Заголовок и описание для поисковиков собираются по шаблону (см. seo_title / meta_description):
@@ -458,7 +462,7 @@ def fill_home_sections(page: str) -> str:
         if not c.get('image') or not any(p['categoryId'] == c['id'] for p in VISIBLE):
             continue
         tiles.append(
-            f'\n          <a class="hp-cat" href="./catalog/index.html#{esc(c["id"])}">'
+            f'\n          <a class="hp-cat" href="{esc(category_url(c) if c.get("slug") else "./catalog/index.html#" + c["id"])}">'
             f'\n            <img src="./{esc(c["image"].lstrip("./"))}" alt="{esc(c["name"])}" loading="lazy">'
             f'\n            <span class="hp-cat__name">{esc(c["name"])}</span>'
             f'\n          </a>')
@@ -487,6 +491,305 @@ def fill_home_sections(page: str) -> str:
     return fill_marker(page, 'hits', ''.join(cards) + '\n        ')
 
 
+# ---------- страницы разделов и «Особых поводов» ----------
+# Тексты берутся из catalog.json:
+#   categories[]: slug (папка в catalog/), h1, seoTitle (необязательно), intro
+#   occasions[]:  slug (папка в catalog/osobye-povody/), h1, intro
+# Страницы пересобираются целиком при каждом запуске. Подборка, где меньше LANDING_MIN_INDEX
+# товаров, получает noindex и не попадает в sitemap — пока её не наполнят.
+
+LANDING_MIN_INDEX = 3
+OCC_PARENT = 'osobye-povody'
+GENERATED_MARK = '<!-- Страница собрана tools/seo_static.py из data/catalog.json — правки вручную будут перезаписаны -->'
+CORP_LINE = ('<p class="lp-corp">Нужны подарки для коллег или клиентов? '
+             '<a href="/corporate/">Корпоративные подарки с логотипом →</a></p>')
+
+LANDING_CSS = """
+  .lp { padding: 40px 0 96px; }
+  .lp-head { max-width: 760px; margin: 18px 0 36px; }
+  .lp-head h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1.12; margin: 0 0 16px; }
+  .lp-intro { color: var(--muted); font-size: 1rem; line-height: 1.75; margin: 0; }
+  .lp-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 36px; padding: 0; list-style: none; }
+  .lp-pills a { display: block; padding: 7px 16px; border: 1px solid var(--line); border-radius: 20px; font-size: 0.84rem; color: var(--muted); transition: all .15s; }
+  .lp-pills a:hover { border-color: var(--text); color: var(--text); }
+  .lp-pills a[aria-current] { background: var(--text); border-color: var(--text); color: #fff; }
+  .lp .hp-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 36px 20px; }
+  .lp .hp-card__media { display: block; overflow: hidden; margin-bottom: 14px; }
+  .lp .hp-card__media img { width: 100%; aspect-ratio: 4 / 5; height: auto !important; object-fit: cover; transition: transform .6s ease; }
+  .lp .hp-card:hover .hp-card__media img { transform: scale(1.04); }
+  .lp .hp-card__cat { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .lp .hp-card h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; font-weight: 400; line-height: 1.25; margin: 6px 0 12px; }
+  .lp .hp-card__row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .lp .hp-price { font-size: 1.05rem; }
+  .lp .hp-price__old { color: var(--muted); text-decoration: line-through; margin-right: 8px; font-size: .9rem; }
+  .lp .hp-card__btn { border: 1px solid var(--text); background: transparent; padding: 9px 14px; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all .2s ease; }
+  .lp .hp-card__btn:hover { background: var(--text); color: #fff; }
+  .lp-corp { margin: 48px 0 0; padding: 22px 26px; background: #f5f3f0; font-size: 0.95rem; }
+  .lp-corp a { text-decoration: underline; text-underline-offset: 3px; }
+  .lp-more { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .lp-more__title { display: block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+  .lp-more .lp-pills { margin: 0; }
+  @media (max-width: 980px) { .lp .hp-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 640px) {
+    .lp { padding-top: 24px; }
+    .lp .hp-cards { gap: 28px 12px; }
+    .lp .hp-card__row { flex-direction: column; align-items: stretch; }
+    .lp .hp-card__btn { width: 100%; }
+  }
+"""
+
+
+def plural(n: int, one: str, few: str, many: str) -> str:
+    if n % 10 == 1 and n % 100 != 11:
+        return one
+    if 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14:
+        return few
+    return many
+
+
+def category_url(c: dict) -> str:
+    return f"/catalog/{c['slug']}/"
+
+
+def occasion_url(o: dict) -> str:
+    return f"/catalog/{OCC_PARENT}/{o['slug']}/"
+
+
+def category_items(c: dict) -> list[dict]:
+    if c['id'] == 'occasions':   # раздел «Особые поводы» — всё, что относится к любому поводу
+        return [p for p in VISIBLE if p['categoryId'] == 'occasions' or p.get('occasions')]
+    return [p for p in VISIBLE if p['categoryId'] == c['id']]
+
+
+def occasion_items(o: dict) -> list[dict]:
+    return [p for p in VISIBLE if o['id'] in (p.get('occasions') or [])]
+
+
+def occasions_sorted() -> list[dict]:
+    """Ближайший по месяцу повод — первым; «круглогодичные» (month 0) — в конце."""
+    import datetime
+    now = datetime.date.today().month
+    occ = [o for o in CATALOG.get('occasions') or [] if o.get('slug') and occasion_items(o)]
+    return sorted(occ, key=lambda o: 99 if not o.get('month') else (o['month'] - now) % 12)
+
+
+def landing_categories() -> list[dict]:
+    return [c for c in CATEGORIES if c.get('slug') and category_items(c)]
+
+
+def landing_card(p: dict) -> str:
+    img = (p.get('assetImage') or p.get('image') or '').removeprefix('./').lstrip('/')
+    base, cur = p.get('price') or 0, current_price(p)
+    price = (f'<span class="hp-price__old">{fmt_price(base)}</span>' if cur < base else '') + f'<span>{fmt_price(cur)}</span>'
+    href = f"/products/{p['slug']}/"
+    cat_name = CAT_BY_ID.get(p['categoryId'], {}).get('name', '')
+    return (f'\n        <article class="hp-card">'
+            f'\n          <a class="hp-card__media" href="{esc(href)}"><img src="/{esc(img)}" alt="{esc(p.get("imageAlt") or p["name"])}" loading="lazy"></a>'
+            f'\n          <span class="hp-card__cat">{esc(cat_name)}</span>'
+            f'\n          <h3><a href="{esc(href)}">{esc(p["name"])}</a></h3>'
+            f'\n          <div class="hp-card__row"><div class="hp-price">{price}</div>'
+            f'<button class="hp-card__btn" type="button" data-add-to-cart="{esc(p["id"])}">В корзину</button></div>'
+            f'\n        </article>')
+
+
+def landing_description(h1: str, items: list[dict]) -> str:
+    n = len(items)
+    low = min(current_price(p) for p in items)
+    count = f"{n} {plural(n, 'изделие', 'изделия', 'изделий')}"
+    variants = [
+        f'{h1} — {count} от PHICANDLES, цены от {fmt_price(low)}. Ручная работа, красивая упаковка, доставка по Москве и России.',
+        f'{h1} — {count} от PHICANDLES, цены от {fmt_price(low)}. Доставка по Москве и России.',
+        f'{h1} от PHICANDLES, цены от {fmt_price(low)}.',
+    ]
+    return next((v for v in variants if len(v) <= DESCRIPTION_MAX), variants[-1])
+
+
+def landing_title(h1: str, custom: str | None = None) -> str:
+    if custom:
+        return plain(custom)
+    for v in (f'{h1} — купить | {STORE["name"]}', f'{h1} | {STORE["name"]}'):
+        if len(v) <= TITLE_MAX:
+            return v
+    return f'{h1} | {STORE["name"]}'
+
+
+_SHELL: dict = {}
+
+
+def site_shell() -> dict:
+    """Шапка, подвал и Метрика берутся из catalog/index.html — чтобы совпадали с остальным сайтом."""
+    if _SHELL:
+        return _SHELL
+    src = read(ROOT / 'catalog' / 'index.html')
+
+    def grab(pattern: str) -> str:
+        m = re.search(pattern, src, re.S)
+        return m.group(0) if m else ''
+
+    def absolutize(s: str) -> str:
+        return re.sub(r'(href|src)="(?:\.\./)+', r'\1="/', s)
+
+    _SHELL.update(
+        metrika=grab(r'<!-- Яндекс\.Метрика -->.*?<!-- /Яндекс\.Метрика -->'),
+        header=absolutize(grab(r'<header class="site-header">.*?</header>')),
+        footer=absolutize(grab(r'<footer class="footer">.*?</footer>')),
+    )
+    return _SHELL
+
+
+def pills(links: list[tuple[str, str]], current: str = '') -> str:
+    out = []
+    for url, name in links:
+        cur = ' aria-current="page"' if url == current else ''
+        out.append(f'<li><a href="{esc(url)}"{cur}>{esc(name)}</a></li>')
+    return '<ul class="lp-pills">' + ''.join(out) + '</ul>'
+
+
+def render_landing(*, url: str, h1: str, title: str, intro: str, items: list[dict],
+                   crumbs: list[tuple[str, str]], extra_top: str = '', extra_bottom: str = '',
+                   noindex: bool = False) -> str:
+    shell = site_shell()
+    full_url = DOMAIN + url
+    desc = landing_description(h1, items)
+    image = abs_img(items[0].get('assetImage') or items[0].get('image') or '') if items else ''
+    crumb_html = []
+    for u, name in crumbs:
+        crumb_html.append(f'<a href="{esc(u)}">{esc(name)}</a><span aria-hidden="true">•</span>')
+    crumb_html.append(f'<span class="breadcrumbs-current">{esc(h1)}</span>')
+    ld = {
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'CollectionPage',
+                'name': h1,
+                'description': plain(intro),
+                'url': full_url,
+                'inLanguage': 'ru-RU',
+                'isPartOf': {'@id': DOMAIN + '/#website'},
+                'mainEntity': {
+                    '@type': 'ItemList',
+                    'numberOfItems': len(items),
+                    'itemListElement': [
+                        {'@type': 'ListItem', 'position': i, 'name': p['name'], 'url': product_url(p)}
+                        for i, p in enumerate(items, 1)
+                    ],
+                },
+            },
+            {
+                '@type': 'BreadcrumbList',
+                'itemListElement': [
+                    {'@type': 'ListItem', 'position': i, 'name': name, 'item': DOMAIN + u}
+                    for i, (u, name) in enumerate(crumbs + [(url, h1)], 1)
+                ],
+            },
+        ],
+    }
+    others = [(category_url(c), c['name']) for c in landing_categories()]
+    others.append(('/catalog/', 'Весь каталог'))
+    robots = '\n  <meta name="robots" content="noindex,follow">' if noindex else ''
+    return f"""<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {GENERATED_MARK}
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <title>{esc(title)}</title>
+  <meta name="description" content="{esc(desc)}">
+  <link rel="canonical" href="{esc(full_url)}">{robots}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{esc(STORE['name'])}">
+  <meta property="og:title" content="{esc(title)}">
+  <meta property="og:description" content="{esc(desc)}">
+  <meta property="og:url" content="{esc(full_url)}">
+  <meta property="og:image" content="{esc(image)}">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <style>{LANDING_CSS}</style>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#111111">
+  <link rel="apple-touch-icon" href="/assets/img/icon-192.png">
+{shell['metrika']}
+  <script type="application/ld+json">{ld_json(ld)}</script>
+</head>
+<body data-root-path="/" data-catalog-path="/data/catalog.json">
+  {shell['header']}
+
+  <main class="lp">
+    <div class="container">
+      <nav class="breadcrumbs breadcrumbs--guide" aria-label="Хлебные крошки">
+        {''.join(crumb_html)}
+      </nav>
+      <header class="lp-head">
+        <h1>{esc(h1)}</h1>
+        <p class="lp-intro">{esc(plain(intro))}</p>
+      </header>
+      {extra_top}
+      <div class="hp-cards">{''.join(landing_card(p) for p in items)}
+      </div>
+      {extra_bottom}
+      <nav class="lp-more" aria-label="Разделы каталога">
+        <span class="lp-more__title">Другие разделы каталога</span>
+        {pills(others, url)}
+      </nav>
+    </div>
+  </main>
+
+  {shell['footer']}
+
+  <script src="/assets/js/base.js"></script>
+  <script>
+    if (typeof loadCatalog === 'function') {{
+      loadCatalog().then(function (catalog) {{ if (typeof bindQuickAdd === 'function') bindQuickAdd(catalog); }}).catch(function () {{}});
+    }}
+  </script>
+</body>
+</html>
+"""
+
+
+LANDING_PAGES: list[tuple[str, bool]] = []   # (относительный путь, индексируется ли) — для sitemap/llms
+
+
+def build_landing_pages() -> None:
+    home, catalog = ('/', 'Главная'), ('/catalog/', 'Каталог')
+    occ_list = occasions_sorted()
+    occ_links = [(occasion_url(o), o['name']) for o in occ_list]
+    for c in landing_categories():
+        items = category_items(c)
+        url = category_url(c)
+        h1 = c.get('h1') or c['name']
+        top = pills(occ_links) if c['id'] == 'occasions' and occ_links else ''
+        page = render_landing(url=url, h1=h1, title=landing_title(h1, c.get('seoTitle')),
+                              intro=c.get('intro') or '', items=items, crumbs=[home, catalog],
+                              extra_top=top)
+        path = ROOT / url.strip('/') / 'index.html'
+        path.parent.mkdir(parents=True, exist_ok=True)
+        write_if_changed(path, page)
+        LANDING_PAGES.append((url.lstrip('/'), True))
+
+    parent = next((c for c in CATEGORIES if c['id'] == 'occasions' and c.get('slug')), None)
+    for o in occ_list:
+        items = occasion_items(o)
+        url = occasion_url(o)
+        h1 = o.get('h1') or o['name']
+        noindex = len(items) < LANDING_MIN_INDEX
+        crumbs = [home, catalog] + ([(category_url(parent), parent['name'])] if parent else [])
+        page = render_landing(url=url, h1=h1, title=landing_title(h1, o.get('seoTitle')),
+                              intro=o.get('intro') or '', items=items, crumbs=crumbs,
+                              extra_top=pills(occ_links, url), extra_bottom=CORP_LINE, noindex=noindex)
+        path = ROOT / url.strip('/') / 'index.html'
+        path.parent.mkdir(parents=True, exist_ok=True)
+        write_if_changed(path, page)
+        LANDING_PAGES.append((url.lstrip('/'), not noindex))
+
+    # Старые страницы разделов, которых больше нет в каталоге, — убрать из поиска.
+    live = {rel.split('/')[1] for rel, _ in LANDING_PAGES}
+    for d in (ROOT / 'catalog').iterdir():
+        f = d / 'index.html'
+        if d.is_dir() and d.name not in live and f.exists():
+            write_if_changed(f, set_robots(read(f), True))
+
+
 # ---------- sitemap.xml и llms.txt ----------
 
 STATIC_PAGES = ['', 'catalog/', 'guides/', 'delivery/', 'faq/', 'corporate/', 'about/', 'loyalty/']
@@ -512,6 +815,7 @@ def is_indexable(rel: str) -> bool:
 def build_sitemap() -> None:
     urls = [rel for rel in STATIC_PAGES if is_indexable(rel)]
     urls += [rel for rel, _ in guide_pages()]
+    urls += [rel for rel, indexable in LANDING_PAGES if indexable]
     urls += [f"products/{p['slug']}/" for p in VISIBLE]
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
@@ -536,6 +840,13 @@ def build_llms_txt() -> None:
               f'- [Доставка, оплата и возврат]({DOMAIN}/delivery/)',
               f'- [Вопросы и ответы]({DOMAIN}/faq/)',
               f'- [Корпоративные заказы]({DOMAIN}/corporate/)', '']
+    sections = [(f"{DOMAIN}{category_url(c)}", c.get('h1') or c['name']) for c in landing_categories()]
+    sections += [(f"{DOMAIN}{occasion_url(o)}", o.get('h1') or o['name'])
+                 for o in occasions_sorted() if len(occasion_items(o)) >= LANDING_MIN_INDEX]
+    if sections:
+        lines += ['## Разделы каталога', '']
+        lines += [f'- [{t}]({u})' for u, t in sections]
+        lines.append('')
     guides = guide_pages()
     if guides:
         lines += ['## Гид по свечам', '']
@@ -568,6 +879,7 @@ if __name__ == '__main__':
     process_orphan_product_dirs()
     process_catalog()
     process_home()
+    build_landing_pages()
     build_sitemap()
     build_llms_txt()
     print(f'SEO: товаров в каталоге {len(VISIBLE)}, скрытых {len(PRODUCTS) - len(VISIBLE)}; изменено файлов: {len(changed)}')

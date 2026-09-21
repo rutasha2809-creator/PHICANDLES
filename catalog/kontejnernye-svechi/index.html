@@ -3,10 +3,51 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
-  <title>Контейнерные свечи — PHICANDLES</title>
-  <meta name="description" content="Ароматические свечи в стеклянных и гипсовых контейнерах ручной работы.">
-  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <!-- Страница собрана tools/seo_static.py из data/catalog.json — правки вручную будут перезаписаны -->
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <title>Ароматические свечи в шкатулках и банках — купить | PHICANDLES</title>
+  <meta name="description" content="Ароматические свечи в шкатулках и банках — 11 изделий от PHICANDLES, цены от 700 ₽. Ручная работа, красивая упаковка, доставка по Москве и России.">
+  <link rel="canonical" href="https://phicandles.ru/catalog/kontejnernye-svechi/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PHICANDLES">
+  <meta property="og:title" content="Ароматические свечи в шкатулках и банках — купить | PHICANDLES">
+  <meta property="og:description" content="Ароматические свечи в шкатулках и банках — 11 изделий от PHICANDLES, цены от 700 ₽. Ручная работа, красивая упаковка, доставка по Москве и России.">
+  <meta property="og:url" content="https://phicandles.ru/catalog/kontejnernye-svechi/">
+  <meta property="og:image" content="https://phicandles.ru/assets/img/products/roza-intalia-k.jpg">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <style>
+  .lp { padding: 40px 0 96px; }
+  .lp-head { max-width: 760px; margin: 18px 0 36px; }
+  .lp-head h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1.12; margin: 0 0 16px; }
+  .lp-intro { color: var(--muted); font-size: 1rem; line-height: 1.75; margin: 0; }
+  .lp-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 36px; padding: 0; list-style: none; }
+  .lp-pills a { display: block; padding: 7px 16px; border: 1px solid var(--line); border-radius: 20px; font-size: 0.84rem; color: var(--muted); transition: all .15s; }
+  .lp-pills a:hover { border-color: var(--text); color: var(--text); }
+  .lp-pills a[aria-current] { background: var(--text); border-color: var(--text); color: #fff; }
+  .lp .hp-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 36px 20px; }
+  .lp .hp-card__media { display: block; overflow: hidden; margin-bottom: 14px; }
+  .lp .hp-card__media img { width: 100%; aspect-ratio: 4 / 5; height: auto !important; object-fit: cover; transition: transform .6s ease; }
+  .lp .hp-card:hover .hp-card__media img { transform: scale(1.04); }
+  .lp .hp-card__cat { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .lp .hp-card h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; font-weight: 400; line-height: 1.25; margin: 6px 0 12px; }
+  .lp .hp-card__row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .lp .hp-price { font-size: 1.05rem; }
+  .lp .hp-price__old { color: var(--muted); text-decoration: line-through; margin-right: 8px; font-size: .9rem; }
+  .lp .hp-card__btn { border: 1px solid var(--text); background: transparent; padding: 9px 14px; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all .2s ease; }
+  .lp .hp-card__btn:hover { background: var(--text); color: #fff; }
+  .lp-corp { margin: 48px 0 0; padding: 22px 26px; background: #f5f3f0; font-size: 0.95rem; }
+  .lp-corp a { text-decoration: underline; text-underline-offset: 3px; }
+  .lp-more { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .lp-more__title { display: block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+  .lp-more .lp-pills { margin: 0; }
+  @media (max-width: 980px) { .lp .hp-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 640px) {
+    .lp { padding-top: 24px; }
+    .lp .hp-cards { gap: 28px 12px; }
+    .lp .hp-card__row { flex-direction: column; align-items: stretch; }
+    .lp .hp-card__btn { width: 100%; }
+  }
+</style>
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#111111">
   <link rel="apple-touch-icon" href="/assets/img/icon-192.png">
@@ -14,50 +55,115 @@
 <script type="text/javascript">(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');ym(109447818,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});</script>
 <noscript><div><img src="https://mc.yandex.ru/watch/109447818" style="position:absolute;left:-9999px;" alt=""></div></noscript>
 <!-- /Яндекс.Метрика -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","name":"Ароматические свечи в шкатулках и банках","description":"Свечи, которые остаются с вами и после того, как догорят: гипсовую шкатулку, стеклянный стакан или матовую банку легко превратить в органайзер или кашпо. Внутри — натуральный воск, хлопковый или уютно потрескивающий деревянный фитиль и аромат из коллекции PHICANDLES.","url":"https://phicandles.ru/catalog/kontejnernye-svechi/","inLanguage":"ru-RU","isPartOf":{"@id":"https://phicandles.ru/#website"},"mainEntity":{"@type":"ItemList","numberOfItems":11,"itemListElement":[{"@type":"ListItem","position":1,"name":"Ароматическая свеча в шкатулке Роза Инталия","url":"https://phicandles.ru/products/roza-intalia-k/"},{"@type":"ListItem","position":2,"name":"Ароматическая свеча в шкатулке Тыква","url":"https://phicandles.ru/products/tykva-k/"},{"@type":"ListItem","position":3,"name":"Ароматическая свеча в шкатулке Изящные линии","url":"https://phicandles.ru/products/izyashnye-linii-k/"},{"@type":"ListItem","position":4,"name":"Ароматическая свеча в шкатулке Минимализм S","url":"https://phicandles.ru/products/minimalizm-k/"},{"@type":"ListItem","position":5,"name":"Ароматическая свеча в шкатулке Минимализм M","url":"https://phicandles.ru/products/minimalizm-k-m/"},{"@type":"ListItem","position":6,"name":"Ароматическая свеча в шкатулке Бабл","url":"https://phicandles.ru/products/kub/"},{"@type":"ListItem","position":7,"name":"Ароматическая свеча в шкатулке Кролик","url":"https://phicandles.ru/products/krolik/"},{"@type":"ListItem","position":8,"name":"Ароматическая свеча в стакане","url":"https://phicandles.ru/products/zalivnaya-svecha-v-stakane/"},{"@type":"ListItem","position":9,"name":"Ароматическая свеча в темном стеклянном стакане","url":"https://phicandles.ru/products/shalfei/"},{"@type":"ListItem","position":10,"name":"Ароматическая свеча в черной матовой банке","url":"https://phicandles.ru/products/soma/"},{"@type":"ListItem","position":11,"name":"Ароматическая трэвел-свеча","url":"https://phicandles.ru/products/grey-can/"}]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://phicandles.ru/"},{"@type":"ListItem","position":2,"name":"Каталог","item":"https://phicandles.ru/catalog/"},{"@type":"ListItem","position":3,"name":"Ароматические свечи в шкатулках и банках","item":"https://phicandles.ru/catalog/kontejnernye-svechi/"}]}]}</script>
 </head>
-<body data-catalog-path="../../data/catalog.json" data-root-path="../../">
+<body data-root-path="/" data-catalog-path="/data/catalog.json">
   <header class="site-header">
     <div class="container header-inner">
-      <a href="../../index.html" class="branding">
+      <a href="/index.html" class="branding">
         <div class="branding-wordmark-row">
-          <img src="../../assets/img/favicon.svg" alt="" class="brand-logo-icon" width="36" height="36" decoding="async" aria-hidden="true">
-          <img src="../../assets/img/brand-wordmark.svg" alt="PHICANDLES" class="brand-wordmark" width="560" height="48" decoding="async">
+          <img src="/assets/img/favicon.svg" alt="" class="brand-logo-icon" width="36" height="36" decoding="async" aria-hidden="true">
+          <img src="/assets/img/brand-wordmark.svg" alt="PHICANDLES" class="brand-wordmark" width="560" height="48" decoding="async">
         </div>
         <span class="branding-tagline">Ароматические свечи ручной работы</span>
       </a>
       <div class="header-actions">
-        <a class="pill" href="../../index.html">Главная</a>
-        <a class="pill" href="../../catalog/index.html">Каталог</a>
-        <a class="pill" href="../../guides/index.html">Гид по свечам</a>
+        <a class="pill" href="/index.html">Главная</a>
+        <a class="pill" href="/catalog/index.html">Каталог</a>
+        <a class="pill" href="/guides/index.html">Гид по свечам</a>
                 <a class="pill" href="/account/">Личный кабинет</a>
-        <a class="cart-toggle pill" href="../../cart/index.html">Корзина · <span data-cart-count>0</span></a>
+        <a class="cart-toggle pill" href="/cart/index.html">Корзина · <span data-cart-count>0</span></a>
       </div>
     </div>
   </header>
 
-  <main>
-    <section class="section">
-      <div class="container">
-        <nav class="breadcrumbs breadcrumbs--guide" aria-label="Хлебные крошки">
-          <a href="../../index.html">Главная</a>
-          <span aria-hidden="true">•</span>
-          <a href="../../catalog/index.html">Каталог</a>
-          <span aria-hidden="true">•</span>
-          <span class="breadcrumbs-current">Контейнерные свечи</span>
-        </nav>
-
-        <div class="catalog-hero">
-          <h1>Контейнерные свечи</h1>
-          <p>Ароматические свечи в стеклянных и гипсовых контейнерах ручной работы.</p>
-        </div>
-
-        <div class="grid" data-product-grid data-default-category="conteiner">
-        </div>
+  <main class="lp">
+    <div class="container">
+      <nav class="breadcrumbs breadcrumbs--guide" aria-label="Хлебные крошки">
+        <a href="/">Главная</a><span aria-hidden="true">•</span><a href="/catalog/">Каталог</a><span aria-hidden="true">•</span><span class="breadcrumbs-current">Ароматические свечи в шкатулках и банках</span>
+      </nav>
+      <header class="lp-head">
+        <h1>Ароматические свечи в шкатулках и банках</h1>
+        <p class="lp-intro">Свечи, которые остаются с вами и после того, как догорят: гипсовую шкатулку, стеклянный стакан или матовую банку легко превратить в органайзер или кашпо. Внутри — натуральный воск, хлопковый или уютно потрескивающий деревянный фитиль и аромат из коллекции PHICANDLES.</p>
+      </header>
+      
+      <div class="hp-cards">
+        <article class="hp-card">
+          <a class="hp-card__media" href="/products/roza-intalia-k/"><img src="/assets/img/products/roza-intalia-k.jpg" alt="Ароматическая свеча в шкатулке Роза Инталия" loading="lazy"></a>
+          <span class="hp-card__cat">Контейнерные свечи</span>
+          <h3><a href="/products/roza-intalia-k/">Ароматическая свеча в шкатулке Роза Инталия</a></h3>
+          <div class="hp-card__row"><div class="hp-price"><span>2 500 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-roza-intalia-k">В корзину</button></div>
+        </article>
+        <article class="hp-card">
+          <a class="hp-card__media" href="/products/tykva-k/"><img src="/assets/img/products/tykva-k.jpg" alt="Ароматическая свеча в шкатулке Тыква" loading="lazy"></a>
+          <span class="hp-card__cat">Контейнерные свечи</span>
+          <h3><a href="/products/tykva-k/">Ароматическая свеча в шкатулке Тыква</a></h3>
+          <div class="hp-card__row"><div class="hp-price"><span>2 000 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-tykva-k">В корзину</button></div>
+        </article>
+        <article class="hp-card">
+          <a class="hp-card__media" href="/products/izyashnye-linii-k/"><img src="/assets/img/products/izyashnye-linii-k.jpg" alt="Ароматическая свеча в шкатулке Изящные линии" loading="lazy"></a>
+          <span class="hp-card__cat">Контейнерные свечи</span>
+          <h3><a href="/products/izyashnye-linii-k/">Ароматическая свеча в шкатулке Изящные линии</a></h3>
+          <div class="hp-card__row"><div class="hp-price"><span>1 500 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-izyashnye-k">В корзину</button></div>
+        </article>
+        <article class="hp-card">
+          <a class="hp-card__media" href="/products/minimalizm-k/"><img src="/assets/img/products/minimalizm-k.jpg" alt="Ароматическая свеча в шкатулке Минимализм" loading="lazy"></a>
+          <span class="hp-card__cat">Контейнерные свечи</span>
+          <h3><a href="/products/minimalizm-k/">Ароматическая свеча в шкатулке Минимализм S</a></h3>
+          <div class="hp-card__row"><div class="hp-price"><span>1 300 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-minimalizm-k">В корзину</button></div>
+        </article>
+        <article class="hp-card">
+          <a class="hp-card__media" href="/products/minimalizm-k-m/"><img src="/assets/img/products/minimalizm-k-3.jpg" alt="Ароматическая свеча в шкатулке Минимализм M" loading="lazy"></a>
+          <span class="hp-card__cat">Контейнерные свечи</span>
+          <h3><a href="/products/minimalizm-k-m/">Ароматическая свеча в шкатулке Минимализм M</a></h3>
+          <div class="hp-card__row"><div class="hp-price"><span>1 500 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-minimalizm-k-m">В корзину</button></div>
+        </article>
+        <article class="hp-card">
+          <a class="hp-card__media" href="/products/kub/"><img src="/assets/img/products/kub.jpg" alt="Ароматическая свеча в шкатулке Бабл" loading="lazy"></a>
+          <span class="hp-card__cat">Контейнерные свечи</span>
+          <h3><a href="/products/kub/">Ароматическая свеча в шкатулке Бабл</a></h3>
+          <div class="hp-card__row"><div class="hp-price"><span>1 800 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-kub">В корзину</button></div>
+        </article>
+        <article class="hp-card">
+          <a class="hp-card__media" href="/products/krolik/"><img src="/assets/img/products/krolik-k.jpg" alt="Ароматическая свеча в шкатулке Кролик" loading="lazy"></a>
+          <span class="hp-card__cat">Контейнерные свечи</span>
+          <h3><a href="/products/krolik/">Ароматическая свеча в шкатулке Кролик</a></h3>
+          <div class="hp-card__row"><div class="hp-price"><span>2 800 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-krolik">В корзину</button></div>
+        </article>
+        <article class="hp-card">
+          <a class="hp-card__media" href="/products/zalivnaya-svecha-v-stakane/"><img src="/assets/img/products/zalivnaya-svecha-v-stakane.jpg" alt="Ароматическая свеча в стакане" loading="lazy"></a>
+          <span class="hp-card__cat">Контейнерные свечи</span>
+          <h3><a href="/products/zalivnaya-svecha-v-stakane/">Ароматическая свеча в стакане</a></h3>
+          <div class="hp-card__row"><div class="hp-price"><span>1 300 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-zalivnaya-stakane">В корзину</button></div>
+        </article>
+        <article class="hp-card">
+          <a class="hp-card__media" href="/products/shalfei/"><img src="/assets/img/products/shalfei.jpg" alt="Ароматическая свеча в темном стеклянном стакане" loading="lazy"></a>
+          <span class="hp-card__cat">Контейнерные свечи</span>
+          <h3><a href="/products/shalfei/">Ароматическая свеча в темном стеклянном стакане</a></h3>
+          <div class="hp-card__row"><div class="hp-price"><span>1 180 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-shalfei">В корзину</button></div>
+        </article>
+        <article class="hp-card">
+          <a class="hp-card__media" href="/products/soma/"><img src="/assets/img/products/soma.jpg" alt="Ароматическая свеча в черной матовой банке" loading="lazy"></a>
+          <span class="hp-card__cat">Контейнерные свечи</span>
+          <h3><a href="/products/soma/">Ароматическая свеча в черной матовой банке</a></h3>
+          <div class="hp-card__row"><div class="hp-price"><span>1 500 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-soma">В корзину</button></div>
+        </article>
+        <article class="hp-card">
+          <a class="hp-card__media" href="/products/grey-can/"><img src="/assets/img/products/grey-can.jpg" alt="Ароматическая свеча в серой матовой банке" loading="lazy"></a>
+          <span class="hp-card__cat">Контейнерные свечи</span>
+          <h3><a href="/products/grey-can/">Ароматическая трэвел-свеча</a></h3>
+          <div class="hp-card__row"><div class="hp-price"><span>700 ₽</span></div><button class="hp-card__btn" type="button" data-add-to-cart="prod-grey-can">В корзину</button></div>
+        </article>
       </div>
-    </section>
+      
+      <nav class="lp-more" aria-label="Разделы каталога">
+        <span class="lp-more__title">Другие разделы каталога</span>
+        <ul class="lp-pills"><li><a href="/catalog/kontejnernye-svechi/" aria-current="page">Контейнерные свечи</a></li><li><a href="/catalog/formovye-svechi/">Формовые свечи</a></li><li><a href="/catalog/interjernye-svechi/">Интерьерные свечи</a></li><li><a href="/catalog/svechi-v-kashpo/">Свечи в кашпо с цветочным декором</a></li><li><a href="/catalog/aromaty-dlya-doma/">Ароматы для дома</a></li><li><a href="/catalog/dekor-dlya-doma/">Декор для дома</a></li><li><a href="/catalog/podarochnye-nabory/">Подарочные наборы</a></li><li><a href="/catalog/osobye-povody/">Особые поводы</a></li><li><a href="/catalog/deserty-i-frukty/">Десерты и фрукты</a></li><li><a href="/catalog/">Весь каталог</a></li></ul>
+      </nav>
+    </div>
   </main>
 
-    <footer class="footer">
+  <footer class="footer">
     <div class="container footer-grid">
       <div>
         <strong>Контакты</strong>
@@ -74,5 +180,11 @@
     </div>
   </footer>
 
-  <script src="../../assets/js/category.js" defer></script></body>
+  <script src="/assets/js/base.js"></script>
+  <script>
+    if (typeof loadCatalog === 'function') {
+      loadCatalog().then(function (catalog) { if (typeof bindQuickAdd === 'function') bindQuickAdd(catalog); }).catch(function () {});
+    }
+  </script>
+</body>
 </html>

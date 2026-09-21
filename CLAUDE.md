@@ -47,3 +47,11 @@ PHICANDLES (phicandles.ru) — интернет-магазин свечей ру
 ## Главная страница
 
 Главная (`index.html`) свёрстана вручную (стили в блоке `<!--hp-css-->` в `<head>`). Два блока заполняет `tools/seo_static.py` из каталога: плитки коллекций между `<!--hp:cats-->…<!--/hp:cats-->` (картинка — поле `image` у категории в `catalog.json`) и «Хиты продаж» между `<!--hp:hits-->…<!--/hp:hits-->` (список slug в `catalog.json` → `homeHits`). Фото коллажа первого экрана — `assets/img/about-lifestyle.jpg` и `assets/img/covers/Main-cover-1/3/4.jpg`. Шаблон `tools/templates/home.html` устарел — `rebuild_from_catalog.py` для главной не запускать.
+
+## Страницы разделов и «Особых поводов» (с 21.09.2026)
+- `tools/seo_static.py` (build_landing_pages) собирает целиком `catalog/<slug>/index.html` для каждой категории и `catalog/osobye-povody/<slug>/index.html` для каждого повода с товарами. Руками эти файлы не править — перезапишутся.
+- Тексты — в `data/catalog.json`: `categories[]` и `occasions[]` поля `slug`, `h1`, `intro`, необязательный `seoTitle`. Description собирается автоматически (кол-во товаров, цена «от»).
+- Повод, где меньше 3 товаров, получает noindex и не попадает в sitemap/llms.txt (сейчас Хэллоуин и Новый год) — откроется сам, когда товаров станет ≥3.
+- Раздел «Особые поводы» показывает товары категории occasions + все товары с любым поводом.
+- Плитки коллекций на главной ведут на эти страницы. Старые папки catalog/sezonnye-kollekcii и catalog/specialnye-predlozheniya — noindex.
+- Тексты подборок Хэллоуин и Новый год Наталия уточнит, когда добавит товары (тыковки, шкатулки-ёлочные игрушки, лошадки, символ года).
