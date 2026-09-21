@@ -186,7 +186,7 @@ def build_home_page(catalog: dict) -> None:
         "@type": "Organization",
         "name": store['name'],
         "url": store['domain'],
-        "logo": f"{store['domain']}/assets/img/logo-placeholder.svg",
+        "logo": f"{store['domain']}/assets/img/icon-512.png",
         "email": store['email'],
         "telephone": store['phones'],
         "sameAs": [store['telegram'], store['instagram']],

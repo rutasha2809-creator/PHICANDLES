@@ -35,3 +35,7 @@ PHICANDLES (phicandles.ru) — интернет-магазин свечей ру
 - Ветка по умолчанию — `main`; есть ещё `new-changes` и `My-Vers2`. Пуш через `ОБНОВИТЬ_САЙТ.bat` идёт в `origin HEAD:main`.
 - Git remote уже настроен с embedded personal access token в URL — никогда не печатать/показывать вывод `git remote -v` пользователю или в файлах, это утечка секрета.
 - `vk_*.py` и `pinterest_*.py` в корне — синхронизация обложек/постов с VK и Pinterest, отдельная от основного сайта подсистема.
+
+## SEO-шаг: `tools/seo_static.py`
+
+Запускается в `ОБНОВИТЬ_САЙТ.bat` сразу после `propagate.py` (Step 0c). Идемпотентно вписывает данные из `data/catalog.json` прямо в HTML: в `products/<slug>/index.html` — title, meta description (поле `seoDescription` или начало `description`), canonical, og:*, JSON-LD (Product + BreadcrumbList), alt фото и текст товара внутри маркеров `<!--seo:…-->…<!--/seo:…-->`; скрытым товарам (categoryId вне `categories`) ставит noindex. Также перезаписывает карточки в `catalog/index.html`, JSON-LD главной, `sitemap.xml` и `llms.txt`. Поэтому `sitemap.xml` руками не править, а после `rebuild_from_catalog.py` обязательно запускать этот скрипт.

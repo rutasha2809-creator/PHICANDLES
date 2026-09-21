@@ -14,6 +14,12 @@ if %errorlevel% neq 0 ( echo WARNING: propagate.py finished with errors, continu
 echo Done
 
 echo.
+echo === Step 0c: SEO (texts in HTML, sitemap, llms.txt) ===
+python tools/seo_static.py
+if %errorlevel% neq 0 ( echo WARNING: seo_static.py finished with errors, continuing... )
+echo Done
+
+echo.
 echo === Step 1: Remove git lock files ===
 if exist ".git\index.lock" (
     del /f ".git\index.lock"
