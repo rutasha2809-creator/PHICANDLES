@@ -433,6 +433,13 @@ def process_home() -> None:
         'publisher': {'@id': DOMAIN + '/#organization'},
     }
     page = set_head_jsonld(page, {'@context': 'https://schema.org', '@graph': [org, site]})
+    # Заголовок и описание главной для поисковиков — из catalog.json → store.homeTitle / store.homeDescription
+    if STORE.get('homeTitle'):
+        page = set_title(page, STORE['homeTitle'])
+        page = set_meta(page, 'property', 'og:title', STORE['homeTitle'])
+    if STORE.get('homeDescription'):
+        page = set_meta(page, 'name', 'description', STORE['homeDescription'])
+        page = set_meta(page, 'property', 'og:description', STORE['homeDescription'])
     page = fill_home_sections(page)
     write_if_changed(path, page)
 
