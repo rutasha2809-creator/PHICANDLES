@@ -792,7 +792,7 @@ def build_landing_pages() -> None:
 
 # ---------- sitemap.xml и llms.txt ----------
 
-STATIC_PAGES = ['', 'catalog/', 'guides/', 'delivery/', 'faq/', 'corporate/', 'about/', 'loyalty/']
+STATIC_PAGES = ['', 'catalog/', 'guides/', 'delivery/', 'faq/', 'corporate/', 'about/', 'loyalty/', 'oferta/']
 
 
 def guide_pages() -> list[tuple[str, str]]:
@@ -812,15 +812,58 @@ def is_indexable(rel: str) -> bool:
     return f.exists() and 'noindex' not in read(f)[:20000]
 
 
+LASTMOD_FILE = ROOT / 'tools' / 'lastmod.json'
+_CATALOG_BLOCK = re.compile(r'<script id="phicandles-catalog-json"[^>]*>.*?</script>', re.S)
+
+
+def _git_date(f: Path) -> str:
+    """Дата последнего коммита файла; сегодняшняя, если файл изменён и не закоммичен."""
+    import subprocess, datetime
+    today = datetime.date.today().isoformat()
+    try:
+        rel = str(f.relative_to(ROOT))
+        if subprocess.run(['git', 'status', '--porcelain', '--', rel], cwd=ROOT,
+                          capture_output=True, text=True).stdout.strip():
+            return today
+        out = subprocess.run(['git', 'log', '-1', '--format=%cs', '--', rel], cwd=ROOT,
+                             capture_output=True, text=True).stdout.strip()
+        return out or today
+    except Exception:
+        return today
+
+
+def page_lastmods(urls: list[str]) -> dict[str, str]:
+    """lastmod страницы: меняется только когда меняется её содержимое.
+    Встроенная копия каталога (она общая для всех страниц) в сравнение не входит."""
+    import hashlib, datetime, json
+    store = json.loads(LASTMOD_FILE.read_text(encoding='utf-8')) if LASTMOD_FILE.exists() else {}
+    today = datetime.date.today().isoformat()
+    result = {}
+    for rel in urls:
+        f = ROOT / rel / 'index.html' if rel else ROOT / 'index.html'
+        digest = hashlib.sha1(_CATALOG_BLOCK.sub('', read(f)).encode('utf-8')).hexdigest()
+        rec = store.get(rel)
+        if rec is None:
+            store[rel] = {'hash': digest, 'date': _git_date(f)}
+        elif rec['hash'] != digest:
+            store[rel] = {'hash': digest, 'date': today}
+        result[rel] = store[rel]['date']
+    store = {k: v for k, v in store.items() if k in result}
+    write_if_changed(LASTMOD_FILE, json.dumps(store, ensure_ascii=False, indent=1, sort_keys=True) + '\n')
+    return result
+
+
 def build_sitemap() -> None:
     urls = [rel for rel in STATIC_PAGES if is_indexable(rel)]
     urls += [rel for rel, _ in guide_pages()]
     urls += [rel for rel, indexable in LANDING_PAGES if indexable]
     urls += [f"products/{p['slug']}/" for p in VISIBLE]
+    mods = page_lastmods(urls)
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for rel in urls:
-        lines += ['  <url>', f'    <loc>{esc(DOMAIN + "/" + rel)}</loc>', '  </url>']
+        lines += ['  <url>', f'    <loc>{esc(DOMAIN + "/" + rel)}</loc>',
+                  f'    <lastmod>{mods[rel]}</lastmod>', '  </url>']
     lines.append('</urlset>')
     write_if_changed(ROOT / 'sitemap.xml', '\n'.join(lines) + '\n')
 

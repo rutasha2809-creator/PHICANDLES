@@ -1,7 +1,13 @@
 User-agent: *
 Allow: /
+Disallow: /cart/
+Disallow: /account/
+Disallow: /orders/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /cart/
+Disallow: /account/
+Disallow: /orders/
 
 Sitemap: https://phicandles.ru/sitemap.xml
