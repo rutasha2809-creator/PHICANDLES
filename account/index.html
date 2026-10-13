@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-  <title>Личный кабинет — PHICANDLES</title>
+  <title>Личный кабинет | PHICANDLES</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="manifest" href="/manifest.json">
@@ -282,7 +282,7 @@
             <hr class="account-card__divider">
 
             <p class="account-card__ref-label">Реферальная программа</p>
-            <p class="account-card__ref-sub">Поделитесь ссылкой — и первая покупка друга принесёт бонусные баллы вам обоим</p>
+            <p class="account-card__ref-sub">Поделитесь ссылкой, и первая покупка друга принесёт бонусные баллы вам обоим</p>
             <div class="ref-link-wrap">
               <input class="ref-link-input" id="acc-ref-link" readonly placeholder="Загрузка...">
               <button class="ref-link-copy" id="acc-ref-copy" type="button">Копировать</button>
@@ -294,7 +294,7 @@
           <div class="account-history">
             <h2>История баллов</h2>
             <div id="acc-history-wrap">
-              <p class="account-history__empty">История пуста — сделайте первый заказ, чтобы начать копить баллы.</p>
+              <p class="account-history__empty">История пуста: сделайте первый заказ, чтобы начать копить баллы.</p>
             </div>
             <div class="account-actions">
               <a class="button" href="../catalog/index.html">Перейти в каталог</a>
@@ -395,14 +395,14 @@
             const el = document.getElementById('acc-ref-friends');
             el.textContent = stats.friends_count > 0
               ? 'Приглашено друзей: ' + stats.friends_count
-              : 'Пока никого не пригласили — поделитесь ссылкой!';
+              : 'Пока никого не пригласили: поделитесь ссылкой!';
           }
         }).catch(() => {});
 
       // История
       const wrap = document.getElementById('acc-history-wrap');
       if (!data.history || data.history.length === 0) {
-        wrap.innerHTML = '<p class="account-history__empty">История пуста — сделайте первый заказ, чтобы начать копить баллы.</p>';
+        wrap.innerHTML = '<p class="account-history__empty">История пуста: сделайте первый заказ, чтобы начать копить баллы.</p>';
         return;
       }
       let rows = '';

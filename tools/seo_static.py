@@ -21,7 +21,7 @@ seo_static.py — SEO-шаг для PHICANDLES (запускается из ОБ
   • sitemap.xml и llms.txt — собираются заново.
 
 Заголовок и описание для поисковиков собираются по шаблону (см. seo_title / meta_description):
-  «Свеча «Собачка» ручной работы — купить | PHICANDLES» и
+  «Свеча «Собачка» ручной работы: купить | PHICANDLES» и
   «Фигурная свеча «Собачка» из соевого воска ручной работы. Цена 800 ₽. …».
 Для отдельного товара их можно задать вручную полями "seoTitle" / "seoDescription"
 в catalog.json — на самой странице они не показываются.
@@ -117,12 +117,12 @@ def has_type(p: dict) -> bool:
 
 
 def seo_title(p: dict) -> str:
-    """Свеча «Собачка» ручной работы — купить | PHICANDLES (или поле seoTitle из каталога)."""
+    """Свеча «Собачка» ручной работы: купить | PHICANDLES (или поле seoTitle из каталога)."""
     if p.get('seoTitle'):
         return plain(p['seoTitle'])
     brand = STORE['name']
     base = p['name'] if has_type(p) else f"Свеча «{p['name']}»"
-    for variant in (f'{base} ручной работы — купить | {brand}', f'{base} — купить | {brand}', f'{base} | {brand}'):
+    for variant in (f'{base} ручной работы: купить | {brand}', f'{base}: купить | {brand}', f'{base} | {brand}'):
         if len(variant) <= TITLE_MAX:
             return variant
     return f'{base} | {brand}'
@@ -346,7 +346,7 @@ def process_product(p: dict) -> None:
     cat_name = CAT_BY_ID.get(p.get('categoryId'), {}).get('name', '')
     alt = p.get('imageAlt') or p['name']
     if alt.strip() == p['name'].strip() and cat_name:
-        alt = f"{p['name']} — {cat_name.lower()} PHICANDLES"
+        alt = f"{p['name']}, {cat_name.lower()} PHICANDLES"
 
     page = set_title(page, title)
     page = set_meta(page, 'name', 'description', desc)
@@ -433,7 +433,7 @@ def process_catalog() -> None:
     payload = {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
-        'name': 'Каталог — ' + STORE['name'],
+        'name': 'Каталог | ' + STORE['name'],
         'url': DOMAIN + '/catalog/',
         'inLanguage': 'ru-RU',
         'mainEntity': {
@@ -637,8 +637,8 @@ def landing_description(h1: str, items: list[dict]) -> str:
     low = min(current_price(p) for p in items)
     count = f"{n} {plural(n, 'изделие', 'изделия', 'изделий')}"
     variants = [
-        f'{h1} — {count} от PHICANDLES, цены от {fmt_price(low)}. Ручная работа, красивая упаковка, доставка по Москве и России.',
-        f'{h1} — {count} от PHICANDLES, цены от {fmt_price(low)}. Доставка по Москве и России.',
+        f'{h1}: {count} от PHICANDLES, цены от {fmt_price(low)}. Ручная работа, красивая упаковка, доставка по Москве и России.',
+        f'{h1}: {count} от PHICANDLES, цены от {fmt_price(low)}. Доставка по Москве и России.',
         f'{h1} от PHICANDLES, цены от {fmt_price(low)}.',
     ]
     return next((v for v in variants if len(v) <= DESCRIPTION_MAX), variants[-1])
@@ -647,7 +647,7 @@ def landing_description(h1: str, items: list[dict]) -> str:
 def landing_title(h1: str, custom: str | None = None) -> str:
     if custom:
         return plain(custom)
-    for v in (f'{h1} — купить | {STORE["name"]}', f'{h1} | {STORE["name"]}'):
+    for v in (f'{h1}: купить | {STORE["name"]}', f'{h1} | {STORE["name"]}'):
         if len(v) <= TITLE_MAX:
             return v
     return f'{h1} | {STORE["name"]}'
@@ -957,6 +957,8 @@ def build_llms_txt() -> None:
 
 
 if __name__ == '__main__':
+    import optimize_images
+    optimize_images.main()   # сжатие фото (идемпотентно), см. tools/optimize_images.py
     for prod in PRODUCTS:
         process_product(prod)
     process_orphan_product_dirs()

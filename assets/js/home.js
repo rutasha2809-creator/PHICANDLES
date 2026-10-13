@@ -530,7 +530,7 @@ function renderCart(catalog) {
     if (!heroPreview || !heroMeta) return;
     if (!cart.length) {
       heroMeta.textContent = '';
-      heroPreview.innerHTML = '<p class="muted home-cart-preview-empty">Пока пусто — добавьте товар из каталога ниже.</p>';
+      heroPreview.innerHTML = '<p class="muted home-cart-preview-empty">Пока пусто, добавьте товар из каталога ниже.</p>';
       if (heroSecondaryCta) {
         heroSecondaryCta.textContent = 'Как выбрать свечу';
         heroSecondaryCta.setAttribute('href', './guides/kak-vybrat-svechu/index.html');
@@ -618,7 +618,7 @@ function renderCart(catalog) {
                     item.lineTotalRub != null && Number.isFinite(Number(item.lineTotalRub))
                       ? Number(item.lineTotalRub)
                       : (Number(item.price) || 0) * (item.quantity || 0);
-                  return `<li>${item.productName} × ${item.quantity} — ${formatPrice(line)}</li>`;
+                  return `<li>${item.productName} × ${item.quantity}: ${formatPrice(line)}</li>`;
                 })
                 .join('')}
             </ol>

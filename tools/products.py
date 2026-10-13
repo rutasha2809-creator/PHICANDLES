@@ -66,7 +66,7 @@ def build_pages(catalog: dict, guide_urls: list[str] | None = None):
             cart_href='../../cart/index.html',
         )
         page = main.PRODUCT_TEMPLATE.format(
-            title=html.escape(f"{product['name']} — {store['name']}"),
+            title=html.escape(f"{product['name']} | {store['name']}"),
             description=html.escape(product.get('shortDescription', product['description'][:140])),
             canonical=url,
             jsonld=main.json_ld_script(jsonld),

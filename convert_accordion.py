@@ -177,7 +177,7 @@ def convert_page(fpath):
         f'            </button>\n'
         f'            <div class="phi-accordion__body" id="acc-about" hidden>\n'
         f'              <p class="product-story-inline__text" data-product-short></p>\n'
-        f'              <p class="muted">Настроение, аромат и идея — всё, что важно знать перед заказом.</p>\n'
+        f'              <p class="muted">Настроение, аромат и идея: всё, что важно знать перед заказом.</p>\n'
         f'              <p class="product-story-inline__text" data-product-description></p>\n'
         f'            </div>\n'
         f'          </div>'

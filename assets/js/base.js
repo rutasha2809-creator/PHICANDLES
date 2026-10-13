@@ -656,7 +656,7 @@ function initIosPwaBanner() {
       </div>
       <button class="pwa-banner__close" aria-label="Закрыть">✕</button>
     </div>
-    <p class="pwa-banner__text">Добавьте приложение на экран — удобнее, чем каждый раз открывать браузер</p>
+    <p class="pwa-banner__text">Добавьте приложение на экран: так удобнее, чем каждый раз открывать браузер</p>
     <p class="pwa-banner__hint">Нажмите <span class="pwa-banner__share-icon">⎙</span> затем «На экран Домой»</p>
   `;
   document.body.appendChild(banner);

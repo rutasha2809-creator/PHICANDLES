@@ -25,10 +25,10 @@ def render_popular_cards_html(catalog: dict, limit: int = main.FEATURED_PRODUCT_
 def build_not_found_page(catalog: dict) -> None:
     store = catalog['store']
     canonical = notfound_page_url(store)
-    title = f'Страница не найдена — {store["name"]}'
+    title = f'Страница не найдена | {store["name"]}'
     description = (
         f'Страница не существует или была перенесена. Популярные свечи {store["name"]} '
-        f'и ссылки на каталог — на этой странице.'
+        f'и ссылки на каталог на этой странице.'
     )
 
     popular_html = render_popular_cards_html(catalog)

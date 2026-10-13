@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-  <title>Корзина — PHICANDLES</title>
+  <title>Корзина | PHICANDLES</title>
   <meta name="robots" content="noindex,follow">
   <link rel="stylesheet" href="../assets/css/styles.css">
   <style>
@@ -310,11 +310,11 @@
               <div class="order-form__field order-form__field--full">
                 <label class="order-form__label" for="f-delivery">Способ доставки *</label>
                 <p id="fragile-notice" style="display:none;margin:0 0 8px;padding:8px 12px;background:#fdf6e3;border:1px solid #e8d8a0;font-size:0.82rem;color:#7a5c00;line-height:1.5;">
-                  В вашем заказе есть хрупкие изделия — доставка по Москве возможна только курьером.
+                  В вашем заказе есть хрупкие изделия: доставка по Москве возможна только курьером.
                 </p>
                 <div style="position:relative;">
                   <select class="order-form__select order-form__input" id="f-delivery" required>
-                    <option value="">— Выберите —</option>
+                    <option value="">Выберите</option>
                     <option value="СДЭК" id="opt-sdek">СДЭК</option>
                     <option value="Яндекс Доставка" id="opt-ya">Яндекс Доставка</option>
                     <option value="Курьер">Курьер</option>
@@ -446,7 +446,7 @@
               <h3>Заказ принят!</h3>
               <p id="order-success-number" style="font-weight:500;font-size:0.95rem;margin-bottom:6px;color:var(--text);"></p>
               <p>Подтверждение отправлено на ваш email.<br>Для оплаты отсканируйте QR-код выше.</p>
-              <p style="font-size:0.8rem;margin-top:8px;">После оплаты напишите нам в <a href="https://t.me/phi_candles" style="text-decoration:underline;">Telegram</a> — мы подтвердим получение.</p>
+              <p style="font-size:0.8rem;margin-top:8px;">После оплаты напишите нам в <a href="https://t.me/phi_candles" style="text-decoration:underline;">Telegram</a>, и мы подтвердим получение.</p>
               <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px;">
                 <a class="button" href="../catalog/index.html">Продолжить покупки</a>
                 <a class="button-secondary" href="../orders/index.html">Мои заказы</a>
@@ -661,8 +661,8 @@
       const hintEl = document.getElementById('delivery-hint');
       if (hintEl) {
         hintEl.textContent = subtotal >= 8000
-          ? 'Курьерская доставка по Москве — бесплатно. Укажите адрес доставки.'
-          : `Курьерская доставка по Москве — 200 ₽. До бесплатной доставки ещё ${formatPrice(8000 - subtotal)}.`;
+          ? 'Курьерская доставка по Москве: бесплатно. Укажите адрес доставки.'
+          : `Курьерская доставка по Москве: 200 ₽. До бесплатной доставки ещё ${formatPrice(8000 - subtotal)}.`;
       }
     }
 
@@ -813,7 +813,7 @@
     applyFragileRestriction();
 
     const deliveryHints = {
-      'Курьер':          'Курьерская доставка по Москве — 200 ₽ (бесплатно при заказе от 8 000 ₽). Укажите адрес доставки.',
+      'Курьер':          'Курьерская доставка по Москве: 200 ₽ (бесплатно при заказе от 8 000 ₽). Укажите адрес доставки.',
       'СДЭК':            'Доставка по тарифам СДЭК. Укажите удобный пункт выдачи в поле адреса.',
       'Яндекс Доставка': 'Доставка по тарифам Яндекс Доставки. Укажите удобный пункт выдачи в поле адреса.',
     };
@@ -1010,7 +1010,7 @@
             if (data && data.errors && data.errors.length) {
               errMsg = data.errors[0].message || '';
             }
-            costLine.textContent = errMsg ? 'СДЭК: ' + errMsg : 'Стоимость — по тарифам СДЭК';
+            costLine.textContent = errMsg ? 'СДЭК: ' + errMsg : 'Стоимость по тарифам СДЭК';
             costLine.style.color = 'var(--muted)';
             console.log('[CDEK calculate] no sum, errors:', errMsg);
           }

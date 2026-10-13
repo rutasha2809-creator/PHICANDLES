@@ -215,7 +215,7 @@ function setupVariantControls(variantWrap, product, onPriceChange) {
   let activePrice = variants[0].price;
 
   chipHost.innerHTML = variants
-    .map((v, i) => `<button type="button" class="option-chip${i === 0 ? ' is-active' : ''}" data-variant-chip value="${escapeAttr(String(v.price))}">${escapeHtml(v.label)}&nbsp;—&nbsp;${v.price.toLocaleString('ru-RU')}&nbsp;₽</button>`)
+    .map((v, i) => `<button type="button" class="option-chip${i === 0 ? ' is-active' : ''}" data-variant-chip value="${escapeAttr(String(v.price))}">${escapeHtml(v.label)}:&nbsp;${v.price.toLocaleString('ru-RU')}&nbsp;₽</button>`)
     .join('');
 
   chipHost.querySelectorAll('[data-variant-chip]').forEach((btn) => {

@@ -33,14 +33,14 @@ def faq_intro_html(store: dict) -> str:
     tg = store['telegram']
     return (
         f'<p>Коротко о том, как заказать свечи {name}, связаться с нами, оплатить покупку и получить посылку. '
-        f'Если не нашли ответ — напишите на <a href="mailto:{html.escape(em)}">{html.escape(em)}</a> '
+        f'Если не нашли ответ, напишите на <a href="mailto:{html.escape(em)}">{html.escape(em)}</a> '
         f'или в <a href="{html.escape(tg, quote=True)}">Telegram</a>.</p>'
     )
 
 
 def faq_cta_body_html(store: dict) -> str:
     phones = ', '.join(store['phones'])
-    return f'<p>Напишите нам — подскажем по составу заказа, срокам и доставке. Телефоны: {html.escape(phones)}.</p>'
+    return f'<p>Напишите нам, и мы подскажем по составу заказа, срокам и доставке. Телефоны: {html.escape(phones)}.</p>'
 
 
 def build_faq_page(catalog: dict, manifest: dict) -> None:

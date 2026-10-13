@@ -180,7 +180,7 @@ def render_home_blocks(catalog: dict) -> tuple[str, str, str]:
 
 def build_home_page(catalog: dict) -> None:
     store = catalog['store']
-    title = f"{store['name']} — {store['tagline']}"
+    title = f"{store['name']} | {store['tagline']}"
     org_jsonld = {
         "@context": "https://schema.org",
         "@type": "Organization",
