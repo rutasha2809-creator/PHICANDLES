@@ -353,6 +353,14 @@ def process_product(p: dict) -> None:
                         for k, v in spec_rows(p))
         page = fill(page, 'data-product-specs', specs, path)
         page = fill(page, 'data-product-materials', ''.join(f'<li>{esc(m)}</li>' for m in (p.get('materials') or []) if m), path)
+        # Варианты аромата и цвета: те же <option>, что рисует product.js, но уже в исходном HTML,
+        # чтобы их видели роботы без JavaScript. Скрипт при загрузке заменяет их своими.
+        aroma_names = {a['id']: a['name'] for a in (CATALOG.get('aromas') or [])}
+        opts = p.get('options') or {}
+        page = fill(page, 'data-option-aroma',
+                    ''.join(f'<option value="{esc(i)}">{esc(aroma_names.get(i, i))}</option>' for i in (opts.get('aroma') or [])), path)
+        page = fill(page, 'data-option-color',
+                    ''.join(f'<option value="{esc(c)}">{esc(c)}</option>' for c in (opts.get('color') or [])), path)
         page = set_img(page, 'data-product-image', '../../' + img_rel, alt)
     write_if_changed(path, page)
 
