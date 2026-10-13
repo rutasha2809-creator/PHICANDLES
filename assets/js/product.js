@@ -345,7 +345,7 @@ async function initProductPage() {
     return;
   }
 
-  document.title = `${product.name} — ${catalog.store.name}`;
+  if (!document.title) document.title = `${product.name} | ${catalog.store.name}`;
   document.querySelectorAll('[data-product-name], [data-product-breadcrumb-name]').forEach((node) => {
     node.textContent = product.name;
   });
@@ -354,7 +354,10 @@ async function initProductPage() {
     const catName = categoryMap.get(product.categoryId)?.name || '';
     breadcrumbCategory.textContent = catName;
     const rootPath = document.body.dataset.rootPath || './';
-    breadcrumbCategory.href = rootPath + 'catalog/index.html#' + product.categoryId;
+    const catInfo = categoryMap.get(product.categoryId);
+    breadcrumbCategory.href = catInfo && catInfo.slug
+      ? rootPath + 'catalog/' + catInfo.slug + '/'
+      : rootPath + 'catalog/index.html#' + product.categoryId;
   }
 
   const badgeEl = document.querySelector('[data-product-collection-badge]');

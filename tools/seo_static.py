@@ -297,13 +297,14 @@ def product_jsonld(p: dict) -> dict:
             'ratingValue': round(sum(r['rating'] for r in reviews) / len(reviews), 1),
             'reviewCount': len(reviews),
         }
+    trail = [('Главная', DOMAIN + '/'), ('Каталог', DOMAIN + '/catalog/')]
+    if cat.get('slug'):
+        trail.append((cat['name'], DOMAIN + category_url(cat)))
+    trail.append((p['name'], product_url(p)))
     crumbs = {
         '@type': 'BreadcrumbList',
-        'itemListElement': [
-            {'@type': 'ListItem', 'position': 1, 'name': 'Главная', 'item': DOMAIN + '/'},
-            {'@type': 'ListItem', 'position': 2, 'name': 'Каталог', 'item': DOMAIN + '/catalog/'},
-            {'@type': 'ListItem', 'position': 3, 'name': p['name'], 'item': product_url(p)},
-        ],
+        'itemListElement': [{'@type': 'ListItem', 'position': i, 'name': n, 'item': u}
+                            for i, (n, u) in enumerate(trail, 1)],
     }
     return {'@context': 'https://schema.org', '@graph': [product, crumbs]}
 
@@ -338,6 +339,10 @@ def process_product(p: dict) -> None:
         page = fill(page, 'data-product-name', esc(p['name']), path)
         page = fill(page, 'data-product-breadcrumb-name', esc(p['name']), path)
         page = fill(page, 'data-breadcrumb-category', esc(cat_name), path)
+        cat_slug = CAT_BY_ID.get(p.get('categoryId'), {}).get('slug')
+        if cat_slug:
+            page = re.sub(r'(<a\s[^>]*?href=")[^"]*("[^>]*\bdata-breadcrumb-category\b)',
+                          lambda m: m.group(1) + f'../../catalog/{cat_slug}/' + m.group(2), page, count=1)
         page = fill(page, 'data-product-short', esc(p.get('shortDescription') or ''), path)
         page = fill(page, 'data-product-description', esc(p.get('description') or ''), path)
         base, cur = p.get('price') or 0, current_price(p)
