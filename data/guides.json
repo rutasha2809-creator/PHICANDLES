@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-14",
+  "updatedAt": "2026-10-14",
   "index": "https://phicandles.ru/guides/",
   "description": "Покупательский гид PHICANDLES: виды воска, сравнение материалов и практические советы по выбору свечи.",
   "articles": [
@@ -30,6 +30,13 @@
       "headline": "Натуральный воск и парафин: что важно знать покупателю",
       "description": "Понятно объясняем разницу между натуральным воском и парафином: где это ощущается на практике, а где нет.",
       "image": "https://phicandles.ru/assets/img/guides/natural-vs-paraffin.jpg"
+    },
+    {
+      "slug": "olivkovyy-vosk",
+      "url": "https://phicandles.ru/guides/olivkovyy-vosk/",
+      "headline": "Оливковый воск для свечей: свойства и особенности",
+      "description": "Что такое оливковый воск, чем он отличается от соевого, как ощущается в свечах и где мы его используем: понятным языком.",
+      "image": "https://phicandles.ru/assets/img/guides/wax-types.jpg"
     }
   ]
 }

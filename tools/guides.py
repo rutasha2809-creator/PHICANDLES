@@ -102,7 +102,7 @@ def article_json_ld(
     updated: str,
     domain: str,
 ) -> dict:
-    logo = f"{domain}/assets/img/logo-placeholder.svg"
+    logo = f"{domain}/assets/img/phicandles-logo-square.png"
     return {
         '@context': 'https://schema.org',
         '@type': 'Article',

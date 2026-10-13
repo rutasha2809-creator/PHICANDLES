@@ -89,23 +89,27 @@
  },
  "guides/": {
   "date": "2026-10-13",
-  "hash": "3d47e3fa4c4e407a3d47cae65b36982b3eabe1a1"
+  "hash": "6a236a2883e3d760fda3dbca1a974222536b0390"
  },
  "guides/kak-vybrat-svechu/": {
   "date": "2026-10-13",
-  "hash": "5436aa0596c627ac6eb70c82ebeb830ec4bfc825"
+  "hash": "aa7a91c2bd3c0253b120840b3ed47167925f0d4a"
  },
  "guides/naturalnyy-vosk-i-parafin/": {
   "date": "2026-10-13",
-  "hash": "564f4dd337c844d2951252a7cf4061345ec2e819"
+  "hash": "3baf54854dffe0ec6ff6bf0e03f47d4d9be836a8"
+ },
+ "guides/olivkovyy-vosk/": {
+  "date": "2026-10-13",
+  "hash": "7e060c17d2dfddab70f2863f08ccb124eea2c34f"
  },
  "guides/soevyy-ili-pchelinyy-vosk/": {
   "date": "2026-10-13",
-  "hash": "d9f15ee4975566511808184afe8e5372b0cc090f"
+  "hash": "2040d34c64eb0e31f72c42c6ae5295a59dd7570f"
  },
  "guides/vidy-svechnogo-voska/": {
   "date": "2026-10-13",
-  "hash": "348a4c656599aa03d3b567b22757dddbe3fed585"
+  "hash": "280e88db62cde997d21a5a324d568f490fcf9da3"
  },
  "loyalty/": {
   "date": "2026-10-13",
