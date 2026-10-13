@@ -5,7 +5,7 @@
  },
  "about/": {
   "date": "2026-10-13",
-  "hash": "48b6855e6b1ee45c7678165c40acfab1c1ec632d"
+  "hash": "b6da012d05b86e134ec89639cd7dc5ccead4f376"
  },
  "catalog/": {
   "date": "2026-09-24",
@@ -77,15 +77,15 @@
  },
  "corporate/": {
   "date": "2026-10-13",
-  "hash": "518de697a6056c7787a3ade8e3b3558933203b00"
+  "hash": "0ac25dfe177b525e1ec96560d291c402bbec7f27"
  },
  "delivery/": {
   "date": "2026-10-09",
   "hash": "2993f3dba4879a0c9b43012af4e3992de159b5a2"
  },
  "faq/": {
-  "date": "2026-10-09",
-  "hash": "93962bd6ce197eebf8c12922093b67c42f5ecd61"
+  "date": "2026-10-13",
+  "hash": "c8fd4a7441b86f02cc2d5d1c00ad0abc4985f7e0"
  },
  "guides/": {
   "date": "2026-06-17",
