@@ -1520,3 +1520,8 @@ main.section[data-product-root] { padding-top: 22px; }
   border: 1px solid #bbb; border-radius: 5px;
   font-size: 1rem; color: #1a73e8;
 }
+
+.product-occasions { margin-top: 14px; font-size: 0.9rem; line-height: 1.6; }
+.product-occasions:empty { display: none; }
+.product-occasions a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(0, 0, 0, 0.3); }
+.product-occasions a:hover { text-decoration-color: currentColor; }

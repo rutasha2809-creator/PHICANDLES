@@ -309,6 +309,31 @@ def product_jsonld(p: dict) -> dict:
     return {'@context': 'https://schema.org', '@graph': [product, crumbs]}
 
 
+def occasions_line(p: dict) -> str:
+    """Строка «Входит в подборки: …» со ссылками на подборки поводов."""
+    by_id = {o['id']: o for o in (CATALOG.get('occasions') or [])}
+    parts = []
+    for oid in p.get('occasions') or []:
+        o = by_id.get(oid)
+        if not o:
+            continue
+        if o.get('slug') and occasion_items(o):
+            parts.append(f'<a href="{esc(occasion_url(o))}">{esc(o["name"])}</a>')
+        else:
+            parts.append(esc(o['name']))
+    return ('Входит в подборки: ' + ', '.join(parts)) if parts else ''
+
+
+_DESC_PARA = re.compile(r'(<p\b[^>]*\bdata-product-description\b[^>]*>.*?</p>)', re.S)
+
+
+def ensure_occasions_line(page: str) -> str:
+    """Добавляет пустой абзац для строки поводов сразу под описанием (один раз)."""
+    if 'data-product-occasions' in page:
+        return page
+    return _DESC_PARA.sub(lambda m: m.group(1) + '\n              <p class="product-occasions" data-product-occasions></p>', page, count=1)
+
+
 def process_product(p: dict) -> None:
     path = ROOT / 'products' / p['slug'] / 'index.html'
     if not path.exists():
@@ -345,6 +370,8 @@ def process_product(p: dict) -> None:
                           lambda m: m.group(1) + f'../../catalog/{cat_slug}/' + m.group(2), page, count=1)
         page = fill(page, 'data-product-short', esc(p.get('shortDescription') or ''), path)
         page = fill(page, 'data-product-description', esc(p.get('description') or ''), path)
+        page = ensure_occasions_line(page)
+        page = fill(page, 'data-product-occasions', occasions_line(p), path)
         base, cur = p.get('price') or 0, current_price(p)
         price_html = (f'<span class="product-price-old">{fmt_price(base)}</span><span class="product-price-current">{fmt_price(cur)}</span>'
                       if cur < base else f'<span class="product-price-current">{fmt_price(cur)}</span>')
