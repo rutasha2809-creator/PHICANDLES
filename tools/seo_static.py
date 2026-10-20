@@ -281,10 +281,16 @@ def product_jsonld(p: dict) -> dict:
             'availability': 'https://schema.org/PreOrder' if p.get('availability') == 'made_to_order' else 'https://schema.org/InStock',
             'url': product_url(p),
             'seller': {'@type': 'Organization', 'name': STORE['name'], 'url': DOMAIN + '/'},
+            # Условия возврата по странице «Доставка и оплата»: 7 дней, товар надлежащего качества
+            'hasMerchantReturnPolicy': {
+                '@type': 'MerchantReturnPolicy',
+                'applicableCountry': 'RU',
+                'returnPolicyCategory': 'https://schema.org/MerchantReturnFiniteReturnWindow',
+                'merchantReturnDays': 7,
+                'merchantReturnLink': DOMAIN + '/delivery/#return',
+            },
         },
     }
-    if cat.get('name'):
-        product['category'] = cat['name']
     if p.get('materials'):
         product['material'] = ', '.join(m for m in p['materials'] if m)
     props = [{'@type': 'PropertyValue', 'name': k, 'value': v} for k, v in spec_rows(p)]
