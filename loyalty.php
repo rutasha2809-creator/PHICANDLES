@@ -191,7 +191,7 @@ if ($action === 'add_points') {
     }
 
     $email   = trim(strtolower($data['email']    ?? ''));
-    $total   = (float)($data['total']   ?? 0);
+    $total   = (float)($data['total'] ?? $data['order_total'] ?? 0);
     $orderId = trim($data['order_id'] ?? '');
 
     if (!$email || $total <= 0) respond(['ok' => false, 'error' => 'Некорректные данные'], 400);

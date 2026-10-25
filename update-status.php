@@ -45,6 +45,38 @@ try {
     // Обновить статус
     $pdo->prepare('UPDATE orders SET status = ? WHERE id = ?')->execute([$status, $id]);
 
+    // PHI-клуб: баллы начисляются, когда заказ доставлен (один раз на заказ)
+    if ($status === 'Доставлен' && !empty($order['email'])) {
+        try {
+            $mEmail = trim(strtolower($order['email']));
+            $st = $pdo->prepare('SELECT * FROM loyalty_members WHERE LOWER(email) = ?');
+            $st->execute([$mEmail]);
+            $member = $st->fetch(PDO::FETCH_ASSOC);
+            if ($member) {
+                $st = $pdo->prepare("SELECT COUNT(*) FROM loyalty_transactions WHERE email = ? AND type = 'earned' AND order_id = ?");
+                $st->execute([$member['email'], $order['order_number']]);
+                if ((int)$st->fetchColumn() === 0) {
+                    // Сумма заказа без доставки: из «Итого» вычитаем строку доставки из состава
+                    $sum = (float)preg_replace('/\D+/', '', (string)$order['total']);
+                    if (preg_match('/Доставка[^\n]*?=\s*([\d\s\x{00a0}]+)\s*₽/u', (string)$order['items'], $dm)) {
+                        $sum -= (float)preg_replace('/\D+/', '', $dm[1]);
+                    }
+                    if ($sum > 0) {
+                        $spent  = (float)$member['total_spent'] + $sum;
+                        $cb     = $spent >= 10000 ? 7 : ($spent >= 3000 ? 5 : 3);
+                        $earned = (int)round($sum * $cb / 100);
+                        $pdo->prepare('UPDATE loyalty_members SET points_balance = points_balance + ?, total_spent = total_spent + ? WHERE email = ?')
+                            ->execute([$earned, $sum, $member['email']]);
+                        $pdo->prepare('INSERT INTO loyalty_transactions (email, type, points, order_id, description) VALUES (?, ?, ?, ?, ?)')
+                            ->execute([$member['email'], 'earned', $earned, $order['order_number'], 'Начислено за заказ ' . $order['order_number'] . ' (' . $cb . '%)']);
+                    }
+                }
+            }
+        } catch (Exception $e) {
+            // Баллы не начислились — статус уже обновлён, не прерываем
+        }
+    }
+
     // Отправить письмо клиенту
     $statusRu = [
         'В работе'  => 'принят в работу и сейчас изготавливается',

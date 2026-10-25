@@ -140,16 +140,7 @@ try {
             ]);
             curl_exec($ch); curl_close($ch);
         }
-        // Начислить баллы за заказ
-        if ($subtotalPts > 0) {
-            $ch = curl_init($loyaltyUrl . '?action=add_points');
-            curl_setopt_array($ch, [
-                CURLOPT_RETURNTRANSFER => true, CURLOPT_POST => true,
-                CURLOPT_POSTFIELDS     => json_encode(['email' => $loyaltyEmail, 'order_total' => $subtotalPts, 'order_id' => $orderNumber]),
-                CURLOPT_HTTPHEADER     => ['Content-Type: application/json'],
-            ]);
-            curl_exec($ch); curl_close($ch);
-        }
+        // Начисление баллов происходит в update-status.php, когда заказ отмечен «Доставлен»
     }
 
     echo json_encode(['ok' => true, 'orderNumber' => $orderNumber]);
