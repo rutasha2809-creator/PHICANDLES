@@ -8,8 +8,8 @@
   "hash": "f8ac5adc714cb8af3a2c14ff631af77a226bf73a"
  },
  "catalog/": {
-  "date": "2026-10-13",
-  "hash": "efa60ee2a9f9deed555fdba6fb4b0f1712dcefc8"
+  "date": "2026-10-25",
+  "hash": "2cffbeb5fae4bd49b68433548292d37361deb852"
  },
  "catalog/aromaty-dlya-doma/": {
   "date": "2026-10-13",
@@ -24,8 +24,8 @@
   "hash": "1923db45549ea1df5d3ffc0cfc3da093f6d71784"
  },
  "catalog/formovye-svechi/": {
-  "date": "2026-10-13",
-  "hash": "458009f3dacfbe0de23b03961208d07c8f00eca3"
+  "date": "2026-10-25",
+  "hash": "23fae7c1a137c3a549d3b573292392fd658d003d"
  },
  "catalog/interjernye-svechi/": {
   "date": "2026-10-13",
@@ -36,8 +36,8 @@
   "hash": "60a4e0fb378de89d77db53366026b1105ecd3c37"
  },
  "catalog/osobye-povody/": {
-  "date": "2026-10-13",
-  "hash": "e298fdee522f80eab4b5016553552e122346457f"
+  "date": "2026-10-25",
+  "hash": "05ac2bf39bcf7599513d973bf6febcc8189ec817"
  },
  "catalog/osobye-povody/14-fevralya/": {
   "date": "2026-10-13",
@@ -58,6 +58,10 @@
  "catalog/osobye-povody/hellouin/": {
   "date": "2026-10-13",
   "hash": "50cd7ea012d7c235d2912bc2f66a789901d878b0"
+ },
+ "catalog/osobye-povody/novyj-god/": {
+  "date": "2026-10-25",
+  "hash": "5ae58e1cce5328ea7ec0db0a8e1443a82f1e7697"
  },
  "catalog/osobye-povody/pasha/": {
   "date": "2026-10-13",
@@ -175,6 +179,10 @@
   "date": "2026-10-20",
   "hash": "98062d272d8dc2c500cabf962d3b0a933d9d1ec1"
  },
+ "products/elochnaya-igrushka/": {
+  "date": "2026-10-25",
+  "hash": "5a057c8fa9f26071c1f2845002f70fcefe26aa45"
+ },
  "products/fistashkovaya-roza/": {
   "date": "2026-10-20",
   "hash": "320ca485c5f7bf9829295cddc35c04f393914a88"
@@ -266,6 +274,14 @@
  "products/nabor-pion/": {
   "date": "2026-10-20",
   "hash": "83e529970de75710cae7bb275400c78b23c3d479"
+ },
+ "products/novogodniy-shar-elochki/": {
+  "date": "2026-10-25",
+  "hash": "de8deec40fb03ab840de560031ae0916ab2ad5fe"
+ },
+ "products/novogodniy-shar-zolotaya-liniya/": {
+  "date": "2026-10-25",
+  "hash": "c97c89a4b45113664217567424c41752246016ad"
  },
  "products/ovalnyy-podnos-podstavka/": {
   "date": "2026-10-20",
