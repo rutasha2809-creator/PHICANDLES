@@ -72,6 +72,31 @@ def png_to_jpg(path: Path) -> Path | None:
     return out
 
 
+THUMB_RE = re.compile(r'^assets/img/products/([^/]+)\.jpe?g$', re.I)
+THUMB_BOX = (640, 853)
+
+
+def thumb_rel(rel: str) -> str:
+    """Лёгкая копия фото для карточек (около 640 px). Создаётся при необходимости; если не вышло, вернёт исходный путь."""
+    rel = rel.removeprefix('./').lstrip('/')
+    m = THUMB_RE.match(rel)
+    src = ROOT / rel
+    if not m or not src.exists():
+        return rel
+    out_rel = f'assets/img/products/thumbs/{m.group(1)}.jpg'
+    out = ROOT / out_rel
+    try:
+        if not out.exists() or out.stat().st_mtime < src.stat().st_mtime:
+            out.parent.mkdir(exist_ok=True)
+            with Image.open(src) as im:
+                im = ImageOps.exif_transpose(im).convert('RGB')
+                im.thumbnail(THUMB_BOX, Image.LANCZOS)
+                im.save(out, 'JPEG', quality=78, optimize=True, progressive=True)
+        return out_rel
+    except Exception:
+        return rel
+
+
 def main() -> None:
     state = json.loads(MANIFEST.read_text(encoding='utf-8')) if MANIFEST.exists() else {}
     saved = done = 0
@@ -95,6 +120,8 @@ def main() -> None:
                     saved += size - path.stat().st_size
                     done += 1
         state[rel] = sha(path)
+    for path in referenced_images():
+        thumb_rel(path.relative_to(ROOT).as_posix())
     MANIFEST.write_text(json.dumps(state, ensure_ascii=False, indent=1, sort_keys=True) + '\n', encoding='utf-8')
     print(f'Фото: обработано {done}, сэкономлено {saved / 1e6:.1f} МБ')
 

@@ -221,6 +221,18 @@ function declension(number, forms) {
   return forms[2];
 }
 
+function cardThumb(src) {
+  return String(src || '').replace(/(assets\/img\/products\/)([^\/]+?)\.jpe?g$/i, '$1thumbs/$2.jpg');
+}
+
+function cardImgTag(src, alt, cls, extra, placeholder) {
+  const thumb = cardThumb(src);
+  const fb = thumb !== src
+    ? `if(!this.dataset.f){this.dataset.f=1;this.src='${src}';}else{this.onerror=null;this.src='${placeholder}';}`
+    : `this.onerror=null;this.src='${placeholder}';`;
+  return `<img loading="lazy" src="${thumb}" alt="${alt}" class="${cls}"${extra} onerror="${fb}">`;
+}
+
 function renderProductCard(product, categoryName = '', opts = {}) {
   const rp = opts.rootPath || './';
   const ratingBlock = '';
@@ -229,9 +241,10 @@ function renderProductCard(product, categoryName = '', opts = {}) {
   const gallery = getProductGalleryImages(product);
   const hasGallery = gallery.length > 1;
   const placeholder = `${rp}assets/img/image-placeholder.svg`;
+  const altText = product.imageAlt || product.name;
   const imagesHtml = hasGallery
-    ? gallery.map((src, index) => `<img loading="lazy" src="${src}" alt="${product.imageAlt || product.name}" class="${index === 0 ? 'is-active' : ''}" data-card-gallery-img="${index}" onerror="this.onerror=null;this.src='${placeholder}';">`).join('')
-    : `<img loading="lazy" src="${gallery[0] || placeholder}" alt="${product.imageAlt || product.name}" class="is-active" onerror="this.onerror=null;this.src='${placeholder}';">`;
+    ? gallery.map((src, index) => cardImgTag(src, altText, index === 0 ? 'is-active' : '', ` data-card-gallery-img="${index}"`, placeholder)).join('')
+    : cardImgTag(gallery[0] || placeholder, altText, 'is-active', '', placeholder);
   return `
     <article class="product-card">
       <a class="product-card-media" href="${rp}products/${product.slug}/index.html" aria-label="Перейти к товару ${product.name}" data-card-gallery="${hasGallery ? gallery.length : 1}">

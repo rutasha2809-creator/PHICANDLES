@@ -53,6 +53,15 @@ changed: list[str] = []
 
 # ---------- утилиты ----------
 
+def card_img(img: str) -> str:
+    """Лёгкая копия фото для карточки (см. tools/optimize_images.py)."""
+    try:
+        import optimize_images
+        return optimize_images.thumb_rel(img)
+    except Exception:
+        return img
+
+
 def esc(value) -> str:
     return html.escape(str(value), quote=True)
 
@@ -427,6 +436,7 @@ def process_orphan_product_dirs() -> None:
 
 def catalog_card(p: dict) -> str:
     img = (p.get('assetImage') or p.get('image') or '').removeprefix('./').lstrip('/')
+    img = card_img(img)
     href = f"../products/{p['slug']}/index.html"
     cat_name = CAT_BY_ID.get(p.get('categoryId'), {}).get('name', '')
     base, cur = p.get('price') or 0, current_price(p)
@@ -537,6 +547,7 @@ def fill_home_sections(page: str) -> str:
             print(f'  ! homeHits: товар {slug} не найден или скрыт')
             continue
         img = (p.get('assetImage') or p.get('image') or '').removeprefix('./').lstrip('/')
+        img = card_img(img)
         base, cur = p.get('price') or 0, current_price(p)
         price = (f'<span class="hp-price__old">{fmt_price(base)}</span>' if cur < base else '') + f'<span>{fmt_price(cur)}</span>'
         href = f"./products/{p['slug']}/index.html"
@@ -623,7 +634,9 @@ def category_items(c: dict) -> list[dict]:
 
 
 def occasion_items(o: dict) -> list[dict]:
-    return [p for p in VISIBLE if o['id'] in (p.get('occasions') or [])]
+    items = [p for p in VISIBLE if o['id'] in (p.get('occasions') or [])]
+    # Сначала товары с наибольшей популярностью; при равенстве сохраняется порядок каталога
+    return sorted(items, key=lambda p: -(p.get('popularity') or 0))
 
 
 def occasions_sorted() -> list[dict]:
@@ -640,6 +653,7 @@ def landing_categories() -> list[dict]:
 
 def landing_card(p: dict) -> str:
     img = (p.get('assetImage') or p.get('image') or '').removeprefix('./').lstrip('/')
+    img = card_img(img)
     base, cur = p.get('price') or 0, current_price(p)
     price = (f'<span class="hp-price__old">{fmt_price(base)}</span>' if cur < base else '') + f'<span>{fmt_price(cur)}</span>'
     href = f"/products/{p['slug']}/"

@@ -49,7 +49,7 @@
 
     return `<article class="product-card">
       <a class="product-card-media" href="${rootPath}products/${product.slug}/index.html" aria-label="Перейти к товару ${product.name}">
-        <img loading="lazy" src="${rootPath}${product.assetImage || product.image?.replace('./', '')}" alt="${product.imageAlt || product.name}" class="is-active">
+        <img loading="lazy" src="${rootPath}${(product.assetImage || product.image?.replace('./', '') || '').replace(/(assets\/img\/products\/)([^\/]+?)\.jpe?g$/i, '$1thumbs/$2.jpg')}" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='${rootPath}${product.assetImage || ''}';}" alt="${product.imageAlt || product.name}" class="is-active">
       </a>
       <div class="product-card-body">
         ${catName ? `<div class="badge-row"><span class="badge">${catName}</span></div>` : ''}

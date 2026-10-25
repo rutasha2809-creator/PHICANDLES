@@ -1,7 +1,7 @@
 {
  "": {
-  "date": "2026-10-13",
-  "hash": "34497680b19d81bc3dc583c29749d012db942753"
+  "date": "2026-10-25",
+  "hash": "3966862b771f298b739949dce386336d27061d6e"
  },
  "about/": {
   "date": "2026-10-13",
@@ -9,75 +9,75 @@
  },
  "catalog/": {
   "date": "2026-10-25",
-  "hash": "2cffbeb5fae4bd49b68433548292d37361deb852"
+  "hash": "e81ec9c976471cca8706af91a49e16a22119ccca"
  },
  "catalog/aromaty-dlya-doma/": {
-  "date": "2026-10-13",
-  "hash": "5a1d6710de0bb8144b4aa3fb6bfb54ebe412b8f4"
+  "date": "2026-10-25",
+  "hash": "ec3de7213769278cff414abb6e2fe0f7bcd6b1b1"
  },
  "catalog/dekor-dlya-doma/": {
-  "date": "2026-10-13",
-  "hash": "28d40f2194cff2b6510515b8ee14febd63693a5f"
+  "date": "2026-10-25",
+  "hash": "7bc9f02df6c39cea2e7462d30a0128bcc040d2a4"
  },
  "catalog/deserty-i-frukty/": {
-  "date": "2026-10-13",
-  "hash": "1923db45549ea1df5d3ffc0cfc3da093f6d71784"
+  "date": "2026-10-25",
+  "hash": "c78b9705bb4aa23ee0d99b4d7fc5cb9b9053d116"
  },
  "catalog/formovye-svechi/": {
   "date": "2026-10-25",
-  "hash": "23fae7c1a137c3a549d3b573292392fd658d003d"
+  "hash": "5b531ab25f6c6678ca37f49446652cc486b5a37e"
  },
  "catalog/interjernye-svechi/": {
-  "date": "2026-10-13",
-  "hash": "7d4e54dca0ff1190f91b58d2357b4d9c182f3292"
+  "date": "2026-10-25",
+  "hash": "e0ad4b633a905fec7e1d197ef134e4b51e4f971b"
  },
  "catalog/kontejnernye-svechi/": {
-  "date": "2026-10-13",
-  "hash": "60a4e0fb378de89d77db53366026b1105ecd3c37"
+  "date": "2026-10-25",
+  "hash": "0af9e03a65439ab3af242273b26f65f75986764a"
  },
  "catalog/osobye-povody/": {
   "date": "2026-10-25",
-  "hash": "05ac2bf39bcf7599513d973bf6febcc8189ec817"
+  "hash": "910b7ce999b5a2a87207e99bfcd7d6006b8059c3"
  },
  "catalog/osobye-povody/14-fevralya/": {
-  "date": "2026-10-13",
-  "hash": "fb4a37b2b7d481a1e6f7ea088d2aec52e7488bc6"
+  "date": "2026-10-25",
+  "hash": "b0a43be226a963d4c6d7c7144b4351316495a4f2"
  },
  "catalog/osobye-povody/8-marta/": {
-  "date": "2026-10-13",
-  "hash": "66c782fc6d1cdea9ade00ee8e5d570653e3dca44"
+  "date": "2026-10-25",
+  "hash": "be5fa0bc3a2cedaff3f57400ef3ea522a27e4b02"
  },
  "catalog/osobye-povody/den-materi/": {
-  "date": "2026-10-13",
-  "hash": "fc2fa5791d1b0770dfab6cdf9eacffe562815d60"
+  "date": "2026-10-25",
+  "hash": "290355c4a321c121d44873b6cb93cb12f7f39538"
  },
  "catalog/osobye-povody/den-rozhdeniya/": {
-  "date": "2026-10-13",
-  "hash": "9719d14166dbdff2d1cf2a677957b029c1c3ce19"
+  "date": "2026-10-25",
+  "hash": "332d6157d7df4b3149599549d7bea1fd425f7f7d"
  },
  "catalog/osobye-povody/hellouin/": {
-  "date": "2026-10-13",
-  "hash": "50cd7ea012d7c235d2912bc2f66a789901d878b0"
+  "date": "2026-10-25",
+  "hash": "dfedad95c5c3dcb46d4d7b64f79b04386d754f2f"
  },
  "catalog/osobye-povody/novyj-god/": {
   "date": "2026-10-25",
-  "hash": "5ae58e1cce5328ea7ec0db0a8e1443a82f1e7697"
+  "hash": "aa9af907b557f2345d264e22355064055c44cf3a"
  },
  "catalog/osobye-povody/pasha/": {
-  "date": "2026-10-13",
-  "hash": "65596af95ad305d48dc26e408a93492e3146fa3b"
+  "date": "2026-10-25",
+  "hash": "bad5f36ead441cdb03be33366c9696ef4eccc83a"
  },
  "catalog/osobye-povody/podarok-uchitelyu/": {
-  "date": "2026-10-13",
-  "hash": "15df59e3297c704aee7d323ce1c47abd3c4ae79a"
+  "date": "2026-10-25",
+  "hash": "2d2dfd58e5a2c79303f1f979702b4f87b6ea387d"
  },
  "catalog/podarochnye-nabory/": {
-  "date": "2026-10-13",
-  "hash": "0c70e67a1e3d2bd8457ed10f2b2c74400f3fb031"
+  "date": "2026-10-25",
+  "hash": "008b539e879122381d9b54b8a72913c3b0653f1a"
  },
  "catalog/svechi-v-kashpo/": {
-  "date": "2026-10-13",
-  "hash": "e9128098d7e0640e0b886f95cd2bf43afb1e381b"
+  "date": "2026-10-25",
+  "hash": "442e103ff236b04c81caadcc4d9fc5e0e95a2d79"
  },
  "corporate/": {
   "date": "2026-10-13",
