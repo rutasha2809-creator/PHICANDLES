@@ -303,6 +303,21 @@ def product_jsonld(p: dict) -> dict:
             'ratingValue': round(sum(r['rating'] for r in reviews) / len(reviews), 1),
             'reviewCount': len(reviews),
         }
+        product['review'] = []
+        for r in reviews:
+            if not r.get('text'):
+                continue
+            item = {
+                '@type': 'Review',
+                'author': {'@type': 'Person', 'name': r.get('author') or 'Покупатель'},
+                'reviewRating': {'@type': 'Rating', 'ratingValue': r['rating'], 'bestRating': 5},
+                'reviewBody': r['text'],
+            }
+            if r.get('date'):
+                item['datePublished'] = r['date']
+            product['review'].append(item)
+        if not product['review']:
+            del product['review']
     trail = [('Главная', DOMAIN + '/'), ('Каталог', DOMAIN + '/catalog/')]
     if cat.get('slug'):
         trail.append((cat['name'], DOMAIN + category_url(cat)))

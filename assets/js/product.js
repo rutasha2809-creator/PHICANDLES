@@ -346,6 +346,7 @@ async function initProductPage() {
   }
 
   if (!document.title) document.title = `${product.name} | ${catalog.store.name}`;
+  initProductReviews(product);
   document.querySelectorAll('[data-product-name], [data-product-breadcrumb-name]').forEach((node) => {
     node.textContent = product.name;
   });
@@ -515,6 +516,150 @@ async function safeInitProductPage() {
     if (root) root.innerHTML =
       '<div class="notice">Не удалось загрузить карточку товара.</div>';
   }
+}
+
+/* ——— ОТЗЫВЫ ПОКУПАТЕЛЕЙ ———
+   Показывает опубликованные отзывы из product.reviews и форму «Оставить отзыв».
+   Отзыв уходит письмом на почту через send-contact.php, на странице появляется только после проверки. */
+function reviewEsc(value) {
+  return String(value == null ? '' : value)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+function reviewStars(rating) {
+  const r = Math.max(0, Math.min(5, Math.round(Number(rating) || 0)));
+  return '★'.repeat(r) + '☆'.repeat(5 - r);
+}
+
+function reviewDateLabel(value) {
+  const d = new Date(value);
+  if (!value || isNaN(d.getTime())) return '';
+  return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+function initProductReviews(product) {
+  const accordion = document.querySelector('.phi-accordion');
+  if (!accordion || document.getElementById('acc-reviews')) return;
+
+  const reviews = (product.reviews || []).filter((r) => r && r.text);
+  const summary = reviews.length
+    ? `<p class="review-summary"><span class="review-stars" aria-hidden="true">${reviewStars(averageRating(product))}</span> ${averageRating(product)} · ${reviews.length} отзыв${declension(reviews.length, ['', 'а', 'ов'])}</p>`
+    : '';
+  const listHtml = reviews.length
+    ? reviews.map((r) => `
+        <article class="review-item">
+          <div class="review-item__head">
+            <strong>${reviewEsc(r.author || 'Покупатель')}</strong>
+            <span class="review-stars" aria-label="Оценка ${reviewEsc(r.rating)} из 5">${reviewStars(r.rating)}</span>
+            ${r.date ? `<span class="review-item__date">${reviewDateLabel(r.date)}</span>` : ''}
+          </div>
+          <p>${reviewEsc(r.text)}</p>
+        </article>`).join('')
+    : '<p class="muted">Здесь появятся отзывы наших покупателей. Мы будем рады вашему впечатлению.</p>';
+
+  const item = document.createElement('div');
+  item.className = 'phi-accordion__item';
+  item.innerHTML = `
+    <button class="phi-accordion__toggle" aria-expanded="false" aria-controls="acc-reviews" id="product-reviews">
+      Отзывы <span class="phi-accordion__icon">+</span>
+    </button>
+    <div class="phi-accordion__body" id="acc-reviews" hidden>
+      ${summary}
+      <div class="review-list">${listHtml}</div>
+      <button type="button" class="button-secondary review-open" data-review-open>Оставить отзыв</button>
+      <form class="contact-form review-form" data-review-form hidden novalidate>
+        <fieldset class="review-rating" aria-label="Ваша оценка">
+          <legend>Ваша оценка</legend>
+          <div class="review-rating__stars">
+            ${[5, 4, 3, 2, 1].map((n) => `<input type="radio" name="rating" id="rv-r${n}" value="${n}"><label for="rv-r${n}" title="${n} из 5">★</label>`).join('')}
+          </div>
+        </fieldset>
+        <input class="contact-form__input" type="text" name="name" placeholder="Имя" autocomplete="given-name" maxlength="80">
+        <input class="contact-form__input" type="email" name="email" placeholder="Email (не публикуется, нужен только для связи)" autocomplete="email" maxlength="120">
+        <textarea class="contact-form__input contact-form__textarea" name="message" rows="4" placeholder="Ваш отзыв" maxlength="2000"></textarea>
+        <input type="text" name="website" class="review-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="review-consent">
+          <input type="checkbox" name="consent">
+          <span>Я согласен(на) на <a href="/soglasie/" target="_blank" rel="noopener">обработку персональных данных</a></span>
+        </label>
+        <button class="button contact-form__submit" type="submit">Отправить отзыв</button>
+        <p class="contact-form__status" data-review-status role="status"></p>
+      </form>
+    </div>`;
+  accordion.appendChild(item);
+
+  const toggle = item.querySelector('.phi-accordion__toggle');
+  const body = item.querySelector('#acc-reviews');
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+    body.hidden = open;
+  });
+  // Переход по ссылке #product-reviews раскрывает блок
+  if (location.hash === '#product-reviews') {
+    toggle.setAttribute('aria-expanded', 'true');
+    body.hidden = false;
+  }
+
+  const form = item.querySelector('[data-review-form]');
+  const openBtn = item.querySelector('[data-review-open]');
+  const status = item.querySelector('[data-review-status]');
+  const submit = form.querySelector('.contact-form__submit');
+  const setStatus = (text, kind) => {
+    status.textContent = text;
+    status.className = 'contact-form__status' + (kind ? ` contact-form__status--${kind}` : '');
+  };
+  openBtn.addEventListener('click', () => {
+    form.hidden = false;
+    openBtn.hidden = true;
+    form.name.focus();
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (form.website.value) return; // ловушка для ботов
+    const ratingEl = form.querySelector('input[name="rating"]:checked');
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const text = form.message.value.trim();
+    if (!ratingEl || !name || !email || !text) {
+      setStatus('Пожалуйста, поставьте оценку и заполните все поля.', 'error');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setStatus('Проверьте, пожалуйста, адрес электронной почты.', 'error');
+      return;
+    }
+    if (!form.consent.checked) {
+      setStatus('Нужно согласие на обработку персональных данных.', 'error');
+      return;
+    }
+    const message = 'ОТЗЫВ О ТОВАРЕ\n'
+      + `Товар: ${product.name}\n`
+      + `Ссылка: https://phicandles.ru/products/${product.slug}/\n`
+      + `Оценка: ${ratingEl.value} из 5\n\n`
+      + text;
+    submit.disabled = true;
+    submit.textContent = 'Отправляем…';
+    setStatus('', '');
+    try {
+      const res = await fetch('https://api.phicandles.ru/send-contact.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      });
+      const json = await res.json();
+      if (!json.ok) throw new Error(json.error || 'Ошибка');
+      form.reset();
+      setStatus('Спасибо! Отзыв отправлен на проверку и появится на странице после публикации.', 'ok');
+    } catch (err) {
+      setStatus('Не удалось отправить. Напишите нам на orders@phicandles.ru', 'error');
+    } finally {
+      submit.disabled = false;
+      submit.textContent = 'Отправить отзыв';
+    }
+  });
 }
 
 document.addEventListener('DOMContentLoaded', safeInitProductPage);
