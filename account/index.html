@@ -328,6 +328,13 @@
   <script>
     const API = 'https://api.phicandles.ru/loyalty.php';
 
+    // Хранилище браузера может быть недоступно (приватный режим, блокировка данных сайтов):
+    // тогда страница продолжает работать, просто не запоминает вход.
+    function lsGet(key)      { try { return localStorage.getItem(key); } catch (e) { return null; } }
+    function lsSet(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
+    function lsRemove(key)   { try { localStorage.removeItem(key); } catch (e) {} }
+
+
     const TYPE_LABELS = {
       earned:                'Начислено за заказ',
       spent:                 'Списано при заказе',
@@ -425,7 +432,7 @@
     }
 
     // Автовход если email сохранён
-    const savedEmail = localStorage.getItem('phi-loyalty-email');
+    const savedEmail = lsGet('phi-loyalty-email');
     if (savedEmail) {
       loadMember(savedEmail).then(data => {
         if (data.ok) renderDashboard(data);
@@ -440,7 +447,7 @@
       err.textContent = 'Загружаем...';
       const data = await loadMember(email);
       if (data.ok) {
-        localStorage.setItem('phi-loyalty-email', email);
+        lsSet('phi-loyalty-email', email);
         renderDashboard(data);
       } else {
         err.textContent = data.error || 'Участник не найден';
@@ -448,4 +455,13 @@
     });
 
     // Выход
-    document.getE
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      lsRemove('phi-loyalty-email');
+      location.reload();
+    });
+  </script>
+
+  <script src="../assets/js/base.js" defer></script>
+  <script src="//code.jivo.ru/widget/eOs8CTiXXr" async></script>
+</body>
+</html>
