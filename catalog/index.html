@@ -192,8 +192,8 @@
       const catName = catMap.get(p.categoryId) || '';
       return '<article class="product-card">'
         + '<a class="product-card-media" href="' + ROOT + 'products/' + p.slug + '/index.html" aria-label="' + p.name + '">'
-        + '<img loading="lazy" src="' + ROOT + img + '" alt="' + (p.imageAlt || p.name) + '" class="is-active"'
-        + ' onerror="this.onerror=null;this.src=\'' + ROOT + 'assets/img/image-placeholder.svg\'">'
+        + '<img loading="lazy" src="' + ROOT + img.replace(/(assets\/img\/products\/)([^\/]+?)\.jpe?g$/i, '$1thumbs/$2.jpg') + '" alt="' + (p.imageAlt || p.name) + '" class="is-active"'
+        + ' onerror="if(!this.dataset.f){this.dataset.f=1;this.src=\'' + ROOT + img + '\';}else{this.onerror=null;this.src=\'' + ROOT + 'assets/img/image-placeholder.svg\';}">'
         + '</a>'
         + '<div class="product-card-body">'
         + (catName ? '<div class="badge-row"><span class="badge">' + catName + '</span></div>' : '')
@@ -228,6 +228,11 @@
           : catId.indexOf('occasions/') === 0
             ? products.filter(p => (p.occasions || []).indexOf(catId.slice(10)) !== -1 && visibleCats.has(p.categoryId))
             : products.filter(p => p.categoryId === catId);
+
+      if (catId === 'occasions' || catId.indexOf('occasions/') === 0) {
+        // Сначала самые популярные (при равенстве порядок каталога сохраняется)
+        items = items.slice().sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
+      }
 
       if (aromaFilter === 'yes') {
         items = items.filter(p => p.options && p.options.aroma && p.options.aroma.length > 0);
