@@ -170,13 +170,13 @@ def build_guides(catalog: dict, manifest: dict) -> list[str]:
         html_in = replace_first_json_ld(html_in, main.json_ld_script(coll))
         index_path.write_text(html_in, encoding='utf-8')
     else:
-        print('Warning: guides/index.html not found, skipped head patch')
+        print('Warning: guides/ not found, skipped head patch')
 
     for art in articles_in:
         slug = art['slug']
         page_path = main.ROOT / 'guides' / slug / 'index.html'
         if not page_path.is_file():
-            print(f'Warning: guides/{slug}/index.html not found, skipped')
+            print(f'Warning: guides/{slug}/ not found, skipped')
             continue
         page_url = f'{domain}/guides/{slug}/'
         image_url = asset_url(domain, art['image'])

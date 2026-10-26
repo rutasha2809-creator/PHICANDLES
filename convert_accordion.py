@@ -85,7 +85,7 @@ PRICE_HERO = """        <div class="product-price-hero">
 
 CTA_ROW = """        <div class="product-cta-row">
           <button class="button button--cta-primary" type="button" data-add-product>Добавить в корзину</button>
-          <a class="button-secondary button-secondary--cart" href="../../cart/index.html">Перейти в корзину</a>
+          <a class="button-secondary button-secondary--cart" href="../../cart/">Перейти в корзину</a>
         </div>"""
 
 TRUST_STRIP = """        <div class="trust-strip" aria-label="Условия заказа">

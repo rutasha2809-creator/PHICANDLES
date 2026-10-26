@@ -54,16 +54,16 @@ def build_pages(catalog: dict, guide_urls: list[str] | None = None):
 
         image_src, image_alt = product_page_image_attrs(product)
         product_header_html = main.HOME_HEADER_TEMPLATE.format(
-            index_href='../../index.html',
+            index_href='../../',
             logo_src='../../logo.svg',
             wordmark_src='../../assets/img/brand-wordmark.svg',
             store_name=html.escape(store['name']),
             tagline=html.escape(store['tagline']),
-            catalog_href='../../catalog/index.html',
-            guides_href='../../guides/index.html',
-            faq_href='../../faq/index.html',
+            catalog_href='../../catalog/',
+            guides_href='../../guides/',
+            faq_href='../../faq/',
             faq_extra='',
-            cart_href='../../cart/index.html',
+            cart_href='../../cart/',
         )
         page = main.PRODUCT_TEMPLATE.format(
             title=html.escape(f"{product['name']} | {store['name']}"),

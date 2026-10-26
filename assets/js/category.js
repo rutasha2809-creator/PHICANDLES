@@ -48,16 +48,16 @@
       : `<span>${price.toLocaleString('ru-RU')} ₽</span>`;
 
     return `<article class="product-card">
-      <a class="product-card-media" href="${rootPath}products/${product.slug}/index.html" aria-label="Перейти к товару ${product.name}">
+      <a class="product-card-media" href="${rootPath}products/${product.slug}/" aria-label="Перейти к товару ${product.name}">
         <img loading="lazy" src="${rootPath}${(product.assetImage || product.image?.replace('./', '') || '').replace(/(assets\/img\/products\/)([^\/]+?)\.jpe?g$/i, '$1thumbs/$2.jpg')}" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='${rootPath}${product.assetImage || ''}';}" alt="${product.imageAlt || product.name}" class="is-active">
       </a>
       <div class="product-card-body">
         ${catName ? `<div class="badge-row"><span class="badge">${catName}</span></div>` : ''}
-        <h3><a href="${rootPath}products/${product.slug}/index.html">${product.name}</a></h3>
+        <h3><a href="${rootPath}products/${product.slug}/">${product.name}</a></h3>
         <div class="card-price">${priceHtml}</div>
         <div class="card-dims muted">${(product.dimensions || '').replace(/,?\s*Вес:[^,]*/gi, '').trim().replace(/,\s*$/, '')}</div>
         <div class="card-actions">
-          <a class="button-secondary" href="${rootPath}products/${product.slug}/index.html">Подробнее</a>
+          <a class="button-secondary" href="${rootPath}products/${product.slug}/">Подробнее</a>
           <button class="button" type="button" data-add-to-cart="${product.id}">В корзину</button>
         </div>
       </div>

@@ -1,410 +1,410 @@
 {
  "": {
   "date": "2026-10-26",
-  "hash": "8146560381a2744aff8d3d8af6ed2c09e4c4d780"
+  "hash": "9c288138ec5992e141a181d7616f5cd538475ef0"
  },
  "about/": {
-  "date": "2026-10-13",
-  "hash": "f8ac5adc714cb8af3a2c14ff631af77a226bf73a"
+  "date": "2026-10-26",
+  "hash": "8c3d2cb644d23fe3d7c097c34a157eb08b79e318"
  },
  "catalog/": {
   "date": "2026-10-26",
-  "hash": "23d0b9fcf6609777ab2373530e370b7bca025380"
+  "hash": "7e187a55a58297caa4f6828e72f02363f8606859"
  },
  "catalog/aromaty-dlya-doma/": {
   "date": "2026-10-26",
-  "hash": "73df556f2a61fac3a1245206a0e1d8c433f3fc45"
+  "hash": "e83049573bbf60caa6149af70bd34e47e6474435"
  },
  "catalog/dekor-dlya-doma/": {
   "date": "2026-10-26",
-  "hash": "c2e85a9dacf7a5f8d0d8568e48fdccea30cf1d6c"
+  "hash": "b0e4eb5b6b7acde3591857f3f25f85033e70bc0e"
  },
  "catalog/deserty-i-frukty/": {
-  "date": "2026-10-25",
-  "hash": "c78b9705bb4aa23ee0d99b4d7fc5cb9b9053d116"
+  "date": "2026-10-26",
+  "hash": "ef4054f64bc83c0fae1329aaa2578dbe5374c0ab"
  },
  "catalog/formovye-svechi/": {
   "date": "2026-10-26",
-  "hash": "844bd1abda208004305daa61fc90828fa09214ff"
+  "hash": "e47285730a8d9a74d55d88bef3938e5c78fddc92"
  },
  "catalog/interjernye-svechi/": {
   "date": "2026-10-26",
-  "hash": "b802300bc03286eb1e48a272ec71c3425196f621"
+  "hash": "98df5a7fff0343c7fd2bd3f8025149f703459c08"
  },
  "catalog/kontejnernye-svechi/": {
   "date": "2026-10-26",
-  "hash": "66fadf8974a5d03e97b20fe753fdaf110a93018f"
+  "hash": "8eaac6def0585a4b280e6af07a94fffc9bc63a9a"
  },
  "catalog/osobye-povody/": {
   "date": "2026-10-26",
-  "hash": "5cd37e5ba0b3c2237377384e8f4412c926cbcb60"
+  "hash": "264f398d563f198da1b3d658f23237a291de19de"
  },
  "catalog/osobye-povody/14-fevralya/": {
   "date": "2026-10-26",
-  "hash": "5087921b0da31cbc93655df1e9927db2f9184789"
+  "hash": "6022f52b9ba4253ed1657eaae81e1567549efe5d"
  },
  "catalog/osobye-povody/8-marta/": {
   "date": "2026-10-26",
-  "hash": "a837632111683aaf8b62626fe0cca7a9a4a49fe7"
+  "hash": "b80d73eae09504d493d80686ae93e3424210eff5"
  },
  "catalog/osobye-povody/den-materi/": {
   "date": "2026-10-26",
-  "hash": "c5c37b92f0cfa1d07eca8e608e74585b809b340d"
+  "hash": "cbe0f756a7d7b11056cb7c558bc23b703d8e3cec"
  },
  "catalog/osobye-povody/den-rozhdeniya/": {
   "date": "2026-10-26",
-  "hash": "94abebdf7fab14c0e5f4c095d61a60a3adcbbd37"
+  "hash": "81ea96ab2649f38a3189c3d07b1f40e1eaec82b6"
  },
  "catalog/osobye-povody/hellouin/": {
   "date": "2026-10-26",
-  "hash": "d1f0601472d453d5bc82b91ca705069ec5bb8d44"
+  "hash": "e9d91b5ee4f4b11febf72dc121f8b9b54c81788f"
  },
  "catalog/osobye-povody/novyj-god/": {
   "date": "2026-10-26",
-  "hash": "70109c7967a169768b4e47461a2111803751093b"
+  "hash": "959e42d109535a9c49a490e9cc346ed66960daeb"
  },
  "catalog/osobye-povody/pasha/": {
-  "date": "2026-10-25",
-  "hash": "bad5f36ead441cdb03be33366c9696ef4eccc83a"
+  "date": "2026-10-26",
+  "hash": "5d46ec18a7ee6ceb016e51f1fc1e052a7fc129e9"
  },
  "catalog/osobye-povody/podarok-uchitelyu/": {
-  "date": "2026-10-25",
-  "hash": "2d2dfd58e5a2c79303f1f979702b4f87b6ea387d"
+  "date": "2026-10-26",
+  "hash": "5ea1f7431bce48478c63248b3aec3235122d39bb"
  },
  "catalog/podarochnye-nabory/": {
-  "date": "2026-10-25",
-  "hash": "008b539e879122381d9b54b8a72913c3b0653f1a"
+  "date": "2026-10-26",
+  "hash": "ee080613bdd345641821b53f21ac5cd41fa66230"
  },
  "catalog/svechi-v-kashpo/": {
   "date": "2026-10-26",
-  "hash": "9cfb9ab81487577c7ac7d40fb63cd21617dacb11"
+  "hash": "83f94a91c2fb4d090f11f77a281bedacf7e3ab85"
  },
  "corporate/": {
-  "date": "2026-10-13",
-  "hash": "f55eae2ca90e4aaf548c6da0210c5ed038c43339"
+  "date": "2026-10-26",
+  "hash": "60c5c43464cdc582ff1864dfeeb97948e2a8b612"
  },
  "delivery/": {
-  "date": "2026-10-13",
-  "hash": "859cae7ab36edf2c83df3e67818d32bbe2c12184"
+  "date": "2026-10-26",
+  "hash": "d9a96507462ee7350824151727a3718781c1f9b4"
  },
  "faq/": {
-  "date": "2026-10-13",
-  "hash": "7353b0a1f7e15392f8666b5b18f7e6ac7a1969be"
+  "date": "2026-10-26",
+  "hash": "70fcb4e0975526ebe8b2e5e669654921b016b07d"
  },
  "guides/": {
-  "date": "2026-10-13",
-  "hash": "157301848f4c87181c243a097dc74c8c4cda1d50"
+  "date": "2026-10-26",
+  "hash": "0a362f648b5c948b600bfab8181c1e9e6d4060e5"
  },
  "guides/kak-vybrat-svechu/": {
-  "date": "2026-10-13",
-  "hash": "aa7a91c2bd3c0253b120840b3ed47167925f0d4a"
+  "date": "2026-10-26",
+  "hash": "bd23c9cca4622d7559b0be27540d73fb4f959d27"
  },
  "guides/naturalnyy-vosk-i-parafin/": {
-  "date": "2026-10-13",
-  "hash": "3baf54854dffe0ec6ff6bf0e03f47d4d9be836a8"
+  "date": "2026-10-26",
+  "hash": "d91f78362c40c45552c1c08f46e34eed5ee97941"
  },
  "guides/olivkovyy-vosk/": {
-  "date": "2026-10-13",
-  "hash": "a3d89a2dc3d3821092adcea6a81590082119c5b5"
+  "date": "2026-10-26",
+  "hash": "4e66f8dcf1865ede7a8ecf34cdf7eaa82c4a7e72"
  },
  "guides/soevyy-ili-pchelinyy-vosk/": {
-  "date": "2026-10-13",
-  "hash": "2040d34c64eb0e31f72c42c6ae5295a59dd7570f"
+  "date": "2026-10-26",
+  "hash": "28aa7ce05fd50e379973d9c3ca48d4e0e25b0770"
  },
  "guides/vidy-svechnogo-voska/": {
-  "date": "2026-10-13",
-  "hash": "280e88db62cde997d21a5a324d568f490fcf9da3"
+  "date": "2026-10-26",
+  "hash": "a06fbd7b1ec47821e374087f9994402c5de8514c"
  },
  "loyalty/": {
-  "date": "2026-10-13",
-  "hash": "81c2f044cd91b5c275a424e4f88b93fc9daa5a81"
+  "date": "2026-10-26",
+  "hash": "810145f47c7a902ff5d53de7a0a7f80a68226eac"
  },
  "oferta/": {
   "date": "2026-06-17",
   "hash": "a9db359530f8c9bdd866e53ae8e12fdff608ff08"
  },
  "products/antichnaya-kolonna-f/": {
-  "date": "2026-10-20",
-  "hash": "3d4ab284c662b8645740b8979a35d7d57754c87e"
+  "date": "2026-10-26",
+  "hash": "675e75e88c297bf835ba367185cff5a1bd91f283"
  },
  "products/aromalampa-arka/": {
-  "date": "2026-10-20",
-  "hash": "7a4e25b3a88cf0076a4ebc5a008233f1fb9fb0cc"
+  "date": "2026-10-26",
+  "hash": "b9d0e07c41e083f44daeb3fea1777ff7b87daecd"
  },
  "products/aromalampa-minimalizm/": {
-  "date": "2026-10-20",
-  "hash": "bd66ae8332cb6501f4ecafff8f806902b9310be7"
+  "date": "2026-10-26",
+  "hash": "0c1dc5e6312a76f63798ca04f670fd39bcfe2dbf"
  },
  "products/aromameltsy-s/": {
   "date": "2026-10-26",
-  "hash": "ad5a67c787367c658ea6fcd53b6f5e9c352534f6"
+  "hash": "36a726c5b3d547eb649f20bf8598484ea060f588"
  },
  "products/aromaticheskoe-sashe/": {
   "date": "2026-10-26",
-  "hash": "faa892051bd33e9c7e57c371d1b0f3eadb45b171"
+  "hash": "3f08b7df078de536f40e4e6491b23ef2fdcb538b"
  },
  "products/art-deco/": {
-  "date": "2026-10-20",
-  "hash": "551486c2b9d41b692d6c294df38f1a16f5822169"
+  "date": "2026-10-26",
+  "hash": "f05dc84800ac01e214199f494c49d10edc017a05"
  },
  "products/bubl/": {
   "date": "2026-10-26",
-  "hash": "25d2ae28373233185c3fb898b34b8b7596701b90"
+  "hash": "588120f1cfce7ffa006b748e873ab0084c433f35"
  },
  "products/buket-fialok/": {
-  "date": "2026-10-20",
-  "hash": "e3863b433e892df55aa43d636b025f38a2ebaeb5"
+  "date": "2026-10-26",
+  "hash": "8c27c3a18121407a19f87183cb0b8f3f421726b2"
  },
  "products/buket-roz-mini/": {
-  "date": "2026-10-20",
-  "hash": "2cdd139f0733d8e3e866f6667c9d63344e08597a"
+  "date": "2026-10-26",
+  "hash": "cce8b3f5638a759c399356d63dae6f9f454d0e5a"
  },
  "products/buket-roz/": {
-  "date": "2026-10-20",
-  "hash": "b89a8cd6a8770a7837817fcbfb68aa216a47f2db"
+  "date": "2026-10-26",
+  "hash": "26b2378f4361a2da88cf06d925617e13b11a6ed6"
  },
  "products/buton-rozy/": {
   "date": "2026-10-26",
-  "hash": "048ec7b143d88539fe3310a296dbc9ced8296796"
+  "hash": "345337f86ab2c476f8f35a1160d2fe8201ed4fcb"
  },
  "products/candlehold-midi/": {
   "date": "2026-10-26",
-  "hash": "ecddab6379098291c9143f1c60fcba402ec7f7dd"
+  "hash": "21c3abc43c821e09bf2f73f4b6d0e94969bb2d11"
  },
  "products/candlehold-mini/": {
   "date": "2026-10-26",
-  "hash": "b81b1aad03edbe66076ead7ba52ebcd5ad19f6ce"
+  "hash": "7aea7d6c812209dc8833385eb56fd9bd6b7ef2ff"
  },
  "products/candlehold-zvezda/": {
   "date": "2026-10-26",
-  "hash": "192937799d7b4c5c6c9141375c17a7d8606dff0a"
+  "hash": "612990a709c9a264df65e12443cf7bce4f4fc33a"
  },
  "products/dekorativnyy-podnos/": {
   "date": "2026-10-26",
-  "hash": "636c0b65faae6d911e605de0c3d396a925a35ef1"
+  "hash": "fd560a2ff907688a2dd7ff927693e6b320d5a9dc"
  },
  "products/devochka-s-loshadkoy/": {
   "date": "2026-10-26",
-  "hash": "98b71cec2c2ae7d37441bc3e3840664185c5d89a"
+  "hash": "12fe00cebd7393c49e5c9e6b87dc1a19ad6998aa"
  },
  "products/elochnaya-igrushka/": {
   "date": "2026-10-26",
-  "hash": "0a29067ea905163cf275308a279fd2eb9ce3246b"
+  "hash": "b54bb81f6b555afde7250868a34765bb11a5a6a4"
  },
  "products/fistashkovaya-roza/": {
-  "date": "2026-10-20",
-  "hash": "320ca485c5f7bf9829295cddc35c04f393914a88"
+  "date": "2026-10-26",
+  "hash": "349209b9365bcadee7d4ee368c7afc5f105af37d"
  },
  "products/grani-svecheniya-l/": {
-  "date": "2026-10-20",
-  "hash": "85b6c9579bb8c56a1d029d4dc48d9bbb6bcdebf2"
+  "date": "2026-10-26",
+  "hash": "4707168988c6f7d8884bfbcab97f31293cd46e9e"
  },
  "products/grani-svecheniya-m/": {
-  "date": "2026-10-20",
-  "hash": "247338663b346f7b17af45f0a2d346e6de7717ba"
+  "date": "2026-10-26",
+  "hash": "dd0a0345fb5e505843649079f2cfb1817f98d211"
  },
  "products/grani-svecheniya-s/": {
-  "date": "2026-10-20",
-  "hash": "36f0eb32d5d634a894f86ebcb4a6fe78031a8408"
+  "date": "2026-10-26",
+  "hash": "65413c1b1bb712f5f48e76ccb4a26814b5fff2e8"
  },
  "products/grey-can/": {
-  "date": "2026-10-20",
-  "hash": "bbbb7bb1972dc9e505e4f5468e8acdca01ad2bc7"
+  "date": "2026-10-26",
+  "hash": "a99ffb47065860df0de366dd21c6ce2e7094f609"
  },
  "products/interernyy-nabor-minimalizm/": {
-  "date": "2026-10-20",
-  "hash": "2bf98b0bcb32d4fb68a3eeecf17c712200513876"
+  "date": "2026-10-26",
+  "hash": "f81c25e5b30ba81b2e11e29fdefab37190d33580"
  },
  "products/izyashnye-linii-k/": {
-  "date": "2026-10-20",
-  "hash": "dbd7fff1c3632c036f62460171293f0f80bbfb19"
+  "date": "2026-10-26",
+  "hash": "aae4eaf6e83221ca92e7cb738d0581452e9cd6af"
  },
  "products/krolik/": {
   "date": "2026-10-26",
-  "hash": "a671204eea56f8375d93c191d3b64f294ed1f953"
+  "hash": "6dae4a4a46bf16fa5195720d9132adfa3a698a30"
  },
  "products/kruglyy-podnos-podstavka-m/": {
   "date": "2026-10-26",
-  "hash": "5158d77ba7c3234a3fbf7541f821642fd497382f"
+  "hash": "0d1503470e2fc7c6ce06b2e26dd20e8ee1fae1f4"
  },
  "products/kruglyy-podnos-podstavka-s/": {
   "date": "2026-10-26",
-  "hash": "12fee05c9f5d8ca7219ab42f200cb1f095ee22bf"
+  "hash": "ff4ffea1b3684ae31a9ed6559ee16e3226b5585b"
  },
  "products/kruglyy-podnos-podstavka/": {
   "date": "2026-10-26",
-  "hash": "ef8f63ae7c802e65e6f6bb7c865c2ab0c298ca28"
+  "hash": "2010f90300ccb7498e30a2fe6486689662a57e55"
  },
  "products/kub/": {
   "date": "2026-10-26",
-  "hash": "807baad1a041ba7a0dc6b889518d1160de8378e1"
+  "hash": "8de6c2f5023dd806496a6db85866f66ac0aca306"
  },
  "products/kuvshinka-k/": {
-  "date": "2026-10-20",
-  "hash": "be46ab7fb4e819203a67258dd52546e2eb287849"
+  "date": "2026-10-26",
+  "hash": "ea71f9f6616d8cc9627042d3c0210f582fc6ce1c"
  },
  "products/limon/": {
-  "date": "2026-10-20",
-  "hash": "0412959f1ecc3dd9d10f275642eb2036656a2c0e"
+  "date": "2026-10-26",
+  "hash": "1a0c559bc92eb8c946773fcc5b1df45dbbf06345"
  },
  "products/loshadka-kachalka/": {
   "date": "2026-10-26",
-  "hash": "357394474cd7d2eb6e0bef5d9c0950018940c591"
+  "hash": "9b72a3acb86a2f9470b8a3ca22bf69e92de30094"
  },
  "products/mini-tykva/": {
-  "date": "2026-10-20",
-  "hash": "efad81e5f2771fcd42136d0a830e3ffa9e961dac"
+  "date": "2026-10-26",
+  "hash": "5d89577ebfb68ff71aac6dca7e503ae0c152c3c4"
  },
  "products/minimalizm-k-m/": {
-  "date": "2026-10-20",
-  "hash": "8b05c4179efba0d23c1644ac1c5028ed6fef1eb9"
+  "date": "2026-10-26",
+  "hash": "fafe18e3e0480e66108dcf633734a75bcbcdb8af"
  },
  "products/minimalizm-k/": {
-  "date": "2026-10-20",
-  "hash": "9e6e14db9a401cb621aa89ca14cc17a999442806"
+  "date": "2026-10-26",
+  "hash": "abe2592ee586791912ef8a1bf22f1649c22526ac"
  },
  "products/mishka-f/": {
   "date": "2026-10-26",
-  "hash": "b65e987faf55c4038f83cffd3dba1f83cfade585"
+  "hash": "a995249a8233fd72656225b2e0786438ccbe173d"
  },
  "products/mishka-s-serdtsem-f/": {
-  "date": "2026-10-20",
-  "hash": "1af7c2b9c83e279cee223e25bd7e05b4394c79f7"
+  "date": "2026-10-26",
+  "hash": "0232053c2feb988e200c2f1a9d5e7c8db11bc98c"
  },
  "products/nabor-hellouin-mini/": {
-  "date": "2026-10-20",
-  "hash": "466fbbb1bcf8f82296955ad8ea52d8f962e8ccd9"
+  "date": "2026-10-26",
+  "hash": "c13b1d9b9e57ea7676177bc06028411048a0bfb8"
  },
  "products/nabor-klubnika/": {
-  "date": "2026-10-20",
-  "hash": "d003b942d886a143e258a01ef18001c51592025e"
+  "date": "2026-10-26",
+  "hash": "9be2e3fef2cf3b76a3cab8623b4f7ca75c474c95"
  },
  "products/nabor-limon/": {
-  "date": "2026-10-20",
-  "hash": "7998f1db5d366a561c53e272ab9d5681ec11a720"
+  "date": "2026-10-26",
+  "hash": "adfa9823eaf80c0d4c570f93a75b869323947de2"
  },
  "products/nabor-pion/": {
-  "date": "2026-10-20",
-  "hash": "83e529970de75710cae7bb275400c78b23c3d479"
+  "date": "2026-10-26",
+  "hash": "d69615416836a18c144a74f33708e613cac76aab"
  },
  "products/novogodniy-shar-elochki/": {
   "date": "2026-10-26",
-  "hash": "44c44cca0db4c26a95a225cf7cd48f45db6a68c7"
+  "hash": "479c727df8f925a694d2e84e4aa1a0798c4f2c73"
  },
  "products/novogodniy-shar-zolotaya-liniya/": {
   "date": "2026-10-26",
-  "hash": "87280598bec951faffcb26c3e5f4c3800a5942c9"
+  "hash": "0a7772697bc84543d6d98e9bf46bf953255dff5a"
  },
  "products/ovalnyy-podnos-podstavka/": {
   "date": "2026-10-26",
-  "hash": "8bc979e7f691e9ec940c3b2f230797d13d257759"
+  "hash": "2652f2818fbfb098f762b86089f17036aa3b69c8"
  },
  "products/paskhalnyy-zayats-belyy/": {
-  "date": "2026-10-20",
-  "hash": "5ae50e21b684cef4caaf369322f9d7d22ee6ca21"
+  "date": "2026-10-26",
+  "hash": "da9d33762be75f847314e33b92f7abe21325d996"
  },
  "products/pion/": {
-  "date": "2026-10-20",
-  "hash": "d73c7e0f9ee289a672c72b04acae681154d2efc9"
+  "date": "2026-10-26",
+  "hash": "7fb82d434289c18c5ab56ed21bf80e2818475162"
  },
  "products/plombir/": {
-  "date": "2026-10-25",
-  "hash": "30b922f6baa485ce872e5f2305a3c172a004bd9c"
+  "date": "2026-10-26",
+  "hash": "eacdc7ccc7fb3deb06107b4450f917791db7918e"
  },
  "products/podarochnyy-nabor-aromameltsy/": {
-  "date": "2026-10-20",
-  "hash": "34267d825df571d859c46a02f5037455e485fff3"
+  "date": "2026-10-26",
+  "hash": "25584cf12ae58b4414bcb0bea4f4468e6fb18db5"
  },
  "products/podarochnyy-nabor-zvezdnyy-uyut/": {
-  "date": "2026-10-20",
-  "hash": "41df5c71d87ac2ca55aca3efdf7abfa8a5ec0023"
+  "date": "2026-10-26",
+  "hash": "d1df95f93df8765aabb599c84b5486ca76b505bf"
  },
  "products/podstavka-dlya-yaits/": {
-  "date": "2026-10-20",
-  "hash": "b73a95d842e54304989e574dadebc749ff17382e"
+  "date": "2026-10-26",
+  "hash": "2b91f2143e95d571f0b0a73a6e55326b264ab4b7"
  },
  "products/podsvechnik-tykva/": {
   "date": "2026-10-26",
-  "hash": "0f14d7fa5ecec6059a4cf216c4e2af7dcd5f800d"
+  "hash": "2c1d94e350976011b7b2f750fdb7535d0a54c3f5"
  },
  "products/romashka/": {
   "date": "2026-10-26",
-  "hash": "f190a9659b4f8b861eb488a35cd424c35d752663"
+  "hash": "9444207de088a260628593eed9ad24f7d1bdc0a4"
  },
  "products/roza-f/": {
-  "date": "2026-10-20",
-  "hash": "0ac8cc44cccb7d06f8000a633a0894b8e1168177"
+  "date": "2026-10-26",
+  "hash": "8e58ced131b4e410715e4597f8bf90ad877999ae"
  },
  "products/roza-intalia-k/": {
   "date": "2026-10-26",
-  "hash": "674f003b38edb15fdc21492c19fd9cc1bf052fc7"
+  "hash": "d9d66f323e6db0448c29fdcf81cc202225e94621"
  },
  "products/salfetnica-bubl/": {
-  "date": "2026-10-20",
-  "hash": "893ce23d43caabd96ba59d829a3e365700a68d33"
+  "date": "2026-10-26",
+  "hash": "9cc674914ebae180a7a331cc0352dcde5c5758e1"
  },
  "products/serdtse/": {
-  "date": "2026-10-20",
-  "hash": "cd5e9a71c0999d2522cb2d3cd5409827f7b78199"
+  "date": "2026-10-26",
+  "hash": "50808987040c745a11a5b022d85d1c2250d481e4"
  },
  "products/shalfei/": {
   "date": "2026-10-26",
-  "hash": "74c9bdbbe3b771df62258c687371b4ba17452780"
+  "hash": "1b7239299350bd4d615b53062905ff4cc157fd9a"
  },
  "products/sobachka/": {
   "date": "2026-10-26",
-  "hash": "2fdff20e6aa52af857cb40e95cbb1f782206ddfc"
+  "hash": "7746a59bf340a9822eb756ae3472f03765398391"
  },
  "products/soma/": {
-  "date": "2026-10-20",
-  "hash": "453464b23651e0adfe0455ac435b5d88219bb44d"
+  "date": "2026-10-26",
+  "hash": "fe661962065e752e41eac0d14972480d969c3e81"
  },
  "products/spiral/": {
   "date": "2026-10-26",
-  "hash": "4f94da0291f3688de50a5816d781403fce1cfaf5"
+  "hash": "eed7ff947456b18add264fffab12b02277cb06d7"
  },
  "products/svecha-tykva/": {
-  "date": "2026-10-20",
-  "hash": "e2afc915aaa1519d58518963928f87ffecaa2d29"
+  "date": "2026-10-26",
+  "hash": "63838fe62a78be78dbe39370e821d0342f233a29"
  },
  "products/svecha-v-shkatulke-tykva/": {
-  "date": "2026-10-20",
-  "hash": "a9083ec119f1df6e320e6eeb8af4f66a68463d27"
+  "date": "2026-10-26",
+  "hash": "6e68155642c00a64d18e1c404a8a33bbfd7b5126"
  },
  "products/tsvetochnaya-kolonna/": {
   "date": "2026-10-26",
-  "hash": "4b803f6a50262ffc89effba0bcc721f149cf2e6b"
+  "hash": "f15fb90696131a6cd2ebb54cc8dd180a9754b252"
  },
  "products/tsvetochnoe-serdtse-f/": {
   "date": "2026-10-26",
-  "hash": "c4fa445fb007bcb8e33b5d09a314fbde38743a3c"
+  "hash": "e58247894ef33b45240ef56a00da2df85cb1221c"
  },
  "products/tulip/": {
   "date": "2026-10-26",
-  "hash": "dad9ef3e27d2336c74c8b24044562ad62b98e32d"
+  "hash": "3bdc0568fdebaef05a4b90637ae6805ee802da74"
  },
  "products/tykva-k/": {
   "date": "2026-10-26",
-  "hash": "66716781bdaac71637037ce16bec5dfce5942287"
+  "hash": "690881e7075ea4cd1f215296c8d6db8179b6c2d8"
  },
  "products/tykvennyy-boks/": {
-  "date": "2026-10-20",
-  "hash": "b63c2ba79cf74723e897d606aae653f211160108"
+  "date": "2026-10-26",
+  "hash": "61a93f0a99c3116e35f10cca87498103d6413e22"
  },
  "products/varenie/": {
-  "date": "2026-10-20",
-  "hash": "b3c3d1ad635c0b642893ba0e9834b59738150c9a"
+  "date": "2026-10-26",
+  "hash": "77b628301f79bbe39df1a53c841cd468b31cc16c"
  },
  "products/yaytso-klassik/": {
-  "date": "2026-10-20",
-  "hash": "9a99c9bc722970c6e9f4677500aad1961134f45b"
+  "date": "2026-10-26",
+  "hash": "816eb645d626c4c353e23f593694b5c6d702ff28"
  },
  "products/zalivnaya-svecha-v-stakane/": {
-  "date": "2026-10-20",
-  "hash": "3030339a3f0e445061c89ee4d7367f8b8e537a43"
+  "date": "2026-10-26",
+  "hash": "f1839203edd2e02c799bf4f89c791beff51a73b8"
  },
  "products/zefirnaya-roza/": {
-  "date": "2026-10-20",
-  "hash": "64565c5e6113621189faf02ce02c91131cc82610"
+  "date": "2026-10-26",
+  "hash": "d52c73ca6040868239bd9136b07081d185ae3b32"
  }
 }

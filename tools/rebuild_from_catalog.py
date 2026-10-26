@@ -16,9 +16,9 @@ rebuild_from_catalog.py — статическая сборка сайта PHICA
   • Каталог (catalog.json) — товары, категории, store (магазин: домен, телефоны, валюта).
 
 Что создаётся при запуске:
-  • index.html — главная; products/<slug>/index.html — каждый товар.
+  • index.html — главная; products/<slug>/ — каждый товар.
   • data/guides.json + правки <head> в guides/** — если есть data/guides_manifest.json.
-  • faq/index.html — если есть data/faq_manifest.json.
+  • faq/ — если есть data/faq_manifest.json.
   • 404.html — шапка из tools/templates/home_header.html, популярные товары из каталога.
   • sitemap.xml — список URL для поисковиков.
 

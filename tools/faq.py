@@ -61,16 +61,16 @@ def build_faq_page(catalog: dict, manifest: dict) -> None:
     faq_jsonld = {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': main_entity}
 
     header_html = main.HOME_HEADER_TEMPLATE.format(
-        index_href='../index.html',
+        index_href='../',
         logo_src='../logo.svg',
         wordmark_src='../assets/img/brand-wordmark.svg',
         store_name=html.escape(store['name']),
         tagline=html.escape(store['tagline']),
-        catalog_href='../catalog/index.html',
-        guides_href='../guides/index.html',
-        faq_href='./index.html',
+        catalog_href='../catalog/',
+        guides_href='../guides/',
+        faq_href='./',
         faq_extra=' aria-current="page"',
-        cart_href='../cart/index.html',
+        cart_href='../cart/',
     )
 
     title = manifest['title']

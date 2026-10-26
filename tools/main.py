@@ -110,16 +110,16 @@ def render_popular_section(
 def home_header_html(store: dict) -> str:
     """Та же шапка, что на главной: относительные пути от корня сайта."""
     return HOME_HEADER_TEMPLATE.format(
-        index_href='./index.html',
+        index_href='./',
         logo_src='./logo.svg',
         wordmark_src='./assets/img/brand-wordmark.svg',
         store_name=html.escape(store['name']),
         tagline=html.escape(store['tagline']),
-        catalog_href='./catalog/index.html',
-        guides_href='./guides/index.html',
-        faq_href='./faq/index.html',
+        catalog_href='./catalog/',
+        guides_href='./guides/',
+        faq_href='./faq/',
         faq_extra='',
-        cart_href='./cart/index.html',
+        cart_href='./cart/',
     )
 
 
@@ -139,12 +139,12 @@ def render_product_card(product: dict, category_name: str = '') -> str:
     product_id = html.escape(product['id'])
     return f"""
     <article class="product-card">
-      <a class="product-card-media" href="./products/{slug}/index.html" aria-label="Перейти к товару {name}">
+      <a class="product-card-media" href="./products/{slug}/" aria-label="Перейти к товару {name}">
         <img loading="lazy" src="{image}" alt="{image_alt}">
       </a>
       <div class="product-card-body">
         <div class="badge-row">{featured_badge}{category_badge}</div>
-        <h3><a href="./products/{slug}/index.html">{name}</a></h3>
+        <h3><a href="./products/{slug}/">{name}</a></h3>
         <p>{short}</p>
         <div class="price-row">
           <div>
@@ -154,7 +154,7 @@ def render_product_card(product: dict, category_name: str = '') -> str:
           <div class="muted">{dimensions}</div>
         </div>
         <div class="card-actions">
-          <a class="button-secondary" href="./products/{slug}/index.html">Подробнее</a>
+          <a class="button-secondary" href="./products/{slug}/">Подробнее</a>
           <button class="button" type="button" data-add-to-cart="{product_id}">В корзину</button>
         </div>
       </div>

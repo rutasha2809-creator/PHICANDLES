@@ -10,10 +10,10 @@ const STORAGE_KEY = 'phicandles-cart-v1';
 const CLIENT_ID_STORAGE_KEY = 'phicandles-client-id';
 const CLIENT_ID_COOKIE_NAME = 'phicid';
 
-/** Главная страница с явным index.html (нужно для file:// и предсказуемых переходов с вложенных URL). */
+/** Адрес главной страницы без index.html (чтобы не плодить дубли в поиске). */
 function homePageUrl(suffix = '') {
   const root = document.body.dataset.rootPath || './';
-  return `${root}index.html${suffix}`;
+  return `${root}${suffix}`;
 }
 
 async function loadCatalog() {
@@ -247,7 +247,7 @@ function renderProductCard(product, categoryName = '', opts = {}) {
     : cardImgTag(gallery[0] || placeholder, altText, 'is-active', '', placeholder);
   return `
     <article class="product-card">
-      <a class="product-card-media" href="${rp}products/${product.slug}/index.html" aria-label="Перейти к товару ${product.name}" data-card-gallery="${hasGallery ? gallery.length : 1}">
+      <a class="product-card-media" href="${rp}products/${product.slug}/" aria-label="Перейти к товару ${product.name}" data-card-gallery="${hasGallery ? gallery.length : 1}">
         ${imagesHtml}
         ${hasGallery ? `
         <div class="card-gallery-dots" aria-hidden="true">
@@ -258,11 +258,11 @@ function renderProductCard(product, categoryName = '', opts = {}) {
       </a>
       <div class="product-card-body">
         <div class="badge-row">${featuredBadge}${categoryBadge}</div>
-        <h3><a href="${rp}products/${product.slug}/index.html">${product.name}</a></h3>
+        <h3><a href="${rp}products/${product.slug}/">${product.name}</a></h3>
         <div class="card-price">${renderPriceHtml(product)}</div>
         <div class="card-dims muted">${formatDimensionsLines((product.dimensions || '').replace(/,?\s*Вес:[^,]*/gi, '').trim().replace(/,\s*$/, ''))}</div>
         <div class="card-actions">
-          <a class="button-secondary" href="${rp}products/${product.slug}/index.html">Подробнее</a>
+          <a class="button-secondary" href="${rp}products/${product.slug}/">Подробнее</a>
           <button class="button" type="button" data-add-to-cart="${product.id}">В корзину</button>
         </div>
       </div>
@@ -612,7 +612,7 @@ function initMobileNav() {
   // Ссылка на корзину (всегда видна)
   const cartMobile = document.createElement('a');
   cartMobile.className = 'nav-cart-mobile';
-  cartMobile.href = root + 'cart/index.html';
+  cartMobile.href = root + 'cart/';
   cartMobile.innerHTML = 'Корзина&nbsp;·&nbsp;<span data-cart-count>0</span>';
   mobileGroup.appendChild(cartMobile);
 

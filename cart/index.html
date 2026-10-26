@@ -263,7 +263,7 @@
 <body data-catalog-path="../data/catalog.json" data-root-path="../">
   <header class="site-header">
     <div class="container header-inner">
-      <a href="../index.html" class="branding">
+      <a href="../" class="branding">
         <div class="branding-wordmark-row">
           <img src="../assets/img/favicon.svg" alt="" class="brand-logo-icon" width="36" height="36" decoding="async" aria-hidden="true">
           <img src="../assets/img/brand-wordmark.svg" alt="PHICANDLES" class="brand-wordmark" width="560" height="48" decoding="async">
@@ -271,9 +271,9 @@
         <span class="branding-tagline">Ароматические свечи ручной работы</span>
       </a>
       <div class="header-actions">
-        <a class="pill" href="../index.html">Главная</a>
-        <a class="pill" href="../catalog/index.html">Каталог</a>
-        <a class="pill" href="../guides/index.html">Гид по свечам</a>
+        <a class="pill" href="../">Главная</a>
+        <a class="pill" href="../catalog/">Каталог</a>
+        <a class="pill" href="../guides/">Гид по свечам</a>
         <a class="pill" href="/account/">Личный кабинет</a>
         <button class="cart-toggle" data-cart-link>Корзина · <span data-cart-count>0</span></button>
       </div>
@@ -448,8 +448,8 @@
               <p>Подтверждение отправлено на ваш email.<br>Для оплаты отсканируйте QR-код выше.</p>
               <p style="font-size:0.8rem;margin-top:8px;">После оплаты напишите нам в <a href="https://t.me/phi_candles" style="text-decoration:underline;">Telegram</a>, и мы подтвердим получение.</p>
               <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px;">
-                <a class="button" href="../catalog/index.html">Продолжить покупки</a>
-                <a class="button-secondary" href="../orders/index.html">Мои заказы</a>
+                <a class="button" href="../catalog/">Продолжить покупки</a>
+                <a class="button-secondary" href="../orders/">Мои заказы</a>
               </div>
             </div>
           </div>
@@ -618,7 +618,7 @@
         <div class="cart-empty">
           <h2>Корзина пуста</h2>
           <p>Добавьте товары из каталога, чтобы оформить заказ.</p>
-          <a class="button" href="../catalog/index.html">Перейти в каталог</a>
+          <a class="button" href="../catalog/">Перейти в каталог</a>
         </div>`;
       sidebar.style.display = 'none';
       if (formWrap) formWrap.style.display = 'none';
@@ -635,7 +635,7 @@
           <img src="${(item.image || '').replace(/^(\.\/|\.\.\/\.\.\/|\.\.\/)/,'../') || '../assets/img/image-placeholder.svg'}" alt="${item.name}">
         </div>
         <div class="cart-item__info">
-          <a class="cart-item__name" href="../products/${item.slug}/index.html">${item.name}</a>
+          <a class="cart-item__name" href="../products/${item.slug}/">${item.name}</a>
           ${item.selectedOptions && Object.values(item.selectedOptions).filter(Boolean).length
             ? `<span class="cart-item__opts">${Object.entries(item.selectedOptions).filter(([,v])=>v).map(([k,v])=>`${k}: ${v}`).join(' · ')}</span>`
             : ''}

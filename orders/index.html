@@ -81,7 +81,7 @@
 <body data-catalog-path="../data/catalog.json" data-root-path="../">
   <header class="site-header">
     <div class="container header-inner">
-      <a href="../index.html" class="branding">
+      <a href="../" class="branding">
         <div class="branding-wordmark-row">
           <img src="../assets/img/favicon.svg" alt="" class="brand-logo-icon" width="36" height="36" decoding="async" aria-hidden="true">
           <img src="../assets/img/brand-wordmark.svg" alt="PHICANDLES" class="brand-wordmark" width="560" height="48" decoding="async">
@@ -89,9 +89,9 @@
         <span class="branding-tagline">Ароматические свечи ручной работы</span>
       </a>
       <div class="header-actions">
-        <a class="pill" href="../index.html">Главная</a>
-        <a class="pill" href="../catalog/index.html">Каталог</a>
-        <a class="pill" href="../guides/index.html">Гид по свечам</a>
+        <a class="pill" href="../">Главная</a>
+        <a class="pill" href="../catalog/">Каталог</a>
+        <a class="pill" href="../guides/">Гид по свечам</a>
         <button class="cart-toggle" data-cart-link>Корзина · <span data-cart-count>0</span></button>
       </div>
     </div>
@@ -148,7 +148,7 @@
     if (!orders.length) {
       root.innerHTML = `<div class="orders-empty">
         <p>Заказы не найдены.<br>
-        <a href="../catalog/index.html">Перейти в каталог</a></p>
+        <a href="../catalog/">Перейти в каталог</a></p>
       </div>`;
       return;
     }

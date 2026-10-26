@@ -320,7 +320,7 @@ function renderHomeReviews(catalog) {
       </div>
       <p>${review.text}</p>
       <p class="muted review-meta">
-        <a href="./products/${review.productSlug}/index.html">${review.productName}</a>
+        <a href="./products/${review.productSlug}/">${review.productName}</a>
         · ${new Date(review.date).toLocaleDateString('ru-RU')}
       </p>
     </article>
@@ -533,7 +533,7 @@ function renderCart(catalog) {
       heroPreview.innerHTML = '<p class="muted home-cart-preview-empty">Пока пусто, добавьте товар из каталога ниже.</p>';
       if (heroSecondaryCta) {
         heroSecondaryCta.textContent = 'Как выбрать свечу';
-        heroSecondaryCta.setAttribute('href', './guides/kak-vybrat-svechu/index.html');
+        heroSecondaryCta.setAttribute('href', './guides/kak-vybrat-svechu/');
       }
       return;
     }
@@ -554,7 +554,7 @@ function renderCart(catalog) {
             )
             .join(' · ')
         : '';
-      const productUrl = product.slug ? `./products/${product.slug}/index.html` : '#';
+      const productUrl = product.slug ? `./products/${product.slug}/` : '#';
       return `
         <div class="home-cart-preview-row">
           <a class="home-cart-preview-thumb" href="${productUrl}" aria-label="Перейти к товару ${product.name}">
@@ -647,7 +647,7 @@ function renderCart(catalog) {
       cartSummaryRoot.innerHTML = `
         <div class="cart-empty-actions">
           <a class="button" href="#catalog">К каталогу</a>
-          <a class="button-secondary" href="./guides/kak-vybrat-svechu/index.html">Как выбрать свечу</a>
+          <a class="button-secondary" href="./guides/kak-vybrat-svechu/">Как выбрать свечу</a>
         </div>
       `;
       cartStatus.textContent = '0 товаров';
@@ -671,7 +671,7 @@ function renderCart(catalog) {
             )
             .join(' · ')
         : '';
-      const productUrl = product.slug ? `./products/${product.slug}/index.html` : '#';
+      const productUrl = product.slug ? `./products/${product.slug}/` : '#';
       return `
         <div class="cart-item">
           <a class="cart-item-thumb" href="${productUrl}" aria-label="Перейти к товару ${product.name}">

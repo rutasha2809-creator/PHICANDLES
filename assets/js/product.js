@@ -362,7 +362,7 @@ async function initProductPage() {
     const catInfo = categoryMap.get(product.categoryId);
     breadcrumbCategory.href = catInfo && catInfo.slug
       ? rootPath + 'catalog/' + catInfo.slug + '/'
-      : rootPath + 'catalog/index.html#' + product.categoryId;
+      : rootPath + 'catalog/#' + product.categoryId;
   }
 
   const badgeEl = document.querySelector('[data-product-collection-badge]');

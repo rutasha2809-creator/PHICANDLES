@@ -7,12 +7,12 @@ seo_static.py — SEO-шаг для PHICANDLES (запускается из ОБ
 блоки теми же данными — внешне для покупателя ничего не меняется.
 
 Что делает (идемпотентно — можно запускать сколько угодно раз):
-  • products/<slug>/index.html — <title>, meta description, canonical, og:*, JSON-LD
+  • products/<slug>/ — <title>, meta description, canonical, og:*, JSON-LD
     (Product + хлебные крошки), alt главного фото; текст товара (название, описание, цена,
     характеристики, материалы) прямо в HTML.
   • Скрытые товары (categoryId, которого нет в categories, например "hidden") и лишние папки
     в products/ получают <meta name="robots" content="noindex,follow"> и не попадают в sitemap.
-  • catalog/index.html — карточки всех товаров прямо в HTML + JSON-LD списка товаров.
+  • catalog/ — карточки всех товаров прямо в HTML + JSON-LD списка товаров.
   • index.html — JSON-LD организации (логотип) и сайта.
   • catalog/<раздел>/ и catalog/osobye-povody/<повод>/ — отдельные страницы разделов и поводов
     (заголовок, вводный текст, товары, JSON-LD). Тексты — в catalog.json: categories[] и
@@ -437,7 +437,7 @@ def process_orphan_product_dirs() -> None:
 def catalog_card(p: dict) -> str:
     img = (p.get('assetImage') or p.get('image') or '').removeprefix('./').lstrip('/')
     img = card_img(img)
-    href = f"../products/{p['slug']}/index.html"
+    href = f"../products/{p['slug']}/"
     cat_name = CAT_BY_ID.get(p.get('categoryId'), {}).get('name', '')
     base, cur = p.get('price') or 0, current_price(p)
     price = (f'<span class="price-current">{fmt_price(cur)}</span><span class="price-old">{fmt_price(base)}</span>'
@@ -533,7 +533,7 @@ def fill_home_sections(page: str) -> str:
         if not c.get('image') or not any(p['categoryId'] == c['id'] for p in VISIBLE):
             continue
         tiles.append(
-            f'\n          <a class="hp-cat" href="{esc(category_url(c) if c.get("slug") else "./catalog/index.html#" + c["id"])}">'
+            f'\n          <a class="hp-cat" href="{esc(category_url(c) if c.get("slug") else "./catalog/#" + c["id"])}">'
             f'\n            <img src="./{esc(c["image"].lstrip("./"))}" alt="{esc(c["name"])}" loading="lazy">'
             f'\n            <span class="hp-cat__name">{esc(c["name"])}</span>'
             f'\n          </a>')
@@ -550,7 +550,7 @@ def fill_home_sections(page: str) -> str:
         img = card_img(img)
         base, cur = p.get('price') or 0, current_price(p)
         price = (f'<span class="hp-price__old">{fmt_price(base)}</span>' if cur < base else '') + f'<span>{fmt_price(cur)}</span>'
-        href = f"./products/{p['slug']}/index.html"
+        href = f"./products/{p['slug']}/"
         cat_name = CAT_BY_ID.get(p['categoryId'], {}).get('name', '')
         cards.append(
             f'\n          <article class="hp-card">'
@@ -692,7 +692,7 @@ _SHELL: dict = {}
 
 
 def site_shell() -> dict:
-    """Шапка, подвал и Метрика берутся из catalog/index.html — чтобы совпадали с остальным сайтом."""
+    """Шапка, подвал и Метрика берутся из catalog/ — чтобы совпадали с остальным сайтом."""
     if _SHELL:
         return _SHELL
     src = read(ROOT / 'catalog' / 'index.html')
