@@ -5,3 +5,7 @@ pinterest_synced.json
 __pycache__/
 *.pyc
 .DS_Store
+
+# служебные файлы Claude
+Claude outputs/_to_delete/
+Claude outputs/ЗАГРУЗИТЬ_НА_REG_RU/

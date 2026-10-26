@@ -342,6 +342,7 @@ function bindQuickAdd(catalog) {
       const selectedOptions = {};
       if ((product.options?.aroma || []).length) selectedOptions.aroma = product.options.aroma[0];
       if ((product.options?.color || []).length) selectedOptions.color = product.options.color[0];
+      if ((product.variants || []).length) selectedOptions.size = product.variants[0].label;
       addToCart(product, selectedOptions);
     });
   });

@@ -25,6 +25,7 @@ $isAdmin = !empty($_SESSION['admin']);
 // ——— Программа лояльности ———
 $loyaltyMembers = [];
 $loyaltyError   = '';
+$loyaltyFlash   = '';
 if ($isAdmin) {
     try {
         $pdo2 = new PDO(
@@ -32,6 +33,16 @@ if ($isAdmin) {
             DB_USER, DB_PASS,
             [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
         );
+        // Удаление участника клуба (вместе с историей его баллов)
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_member'])) {
+            $dEmail = trim($_POST['delete_member']);
+            if ($dEmail !== '') {
+                $pdo2->prepare('DELETE FROM loyalty_transactions WHERE email = ?')->execute([$dEmail]);
+                $del = $pdo2->prepare('DELETE FROM loyalty_members WHERE email = ?');
+                $del->execute([$dEmail]);
+                $loyaltyFlash = $del->rowCount() ? 'Участник ' . $dEmail . ' удалён.' : 'Участник не найден.';
+            }
+        }
         // Ручное начисление баллов
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['loyalty_email'])) {
             $lEmail  = trim($_POST['loyalty_email']);
@@ -42,6 +53,7 @@ if ($isAdmin) {
                      ->execute([$lPoints, $lEmail]);
                 $pdo2->prepare('INSERT INTO loyalty_transactions (email, type, points, description) VALUES (?, ?, ?, ?)')
                      ->execute([$lEmail, 'manual', $lPoints, $lDesc]);
+                $loyaltyFlash = 'Баллы изменены: ' . ($lPoints > 0 ? '+' : '') . $lPoints . ' для ' . $lEmail . '.';
             }
         }
         $loyaltyMembers = $pdo2->query(
@@ -296,6 +308,10 @@ function statusColor($s) {
     <p style="color:#8b2e2e"><?= htmlspecialchars($loyaltyError) ?></p>
   <?php else: ?>
 
+  <?php if ($loyaltyFlash): ?>
+    <p style="background:#e8f3ea;color:#2f6b3a;padding:10px 14px;margin:0 0 14px;border:1px solid #bcd8c1;"><?= htmlspecialchars($loyaltyFlash) ?></p>
+  <?php endif; ?>
+
   <!-- Ручное начисление -->
   <form class="loyalty-adjust" method="POST">
     <div>
@@ -325,6 +341,7 @@ function statusColor($s) {
         <th>Потрачено</th>
         <th>Реферальный код</th>
         <th>Дата вступления</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -342,6 +359,12 @@ function statusColor($s) {
         <td><?= number_format($m['total_spent'], 0, '.', ' ') ?> ₽</td>
         <td style="font-family:monospace;font-size:0.85rem;"><?= htmlspecialchars($m['referral_code']) ?></td>
         <td style="color:#888;font-size:0.82rem;"><?= date('d.m.Y', strtotime($m['created_at'])) ?></td>
+        <td>
+          <form method="POST" onsubmit="return confirm('Удалить участника <?= htmlspecialchars(addslashes($m['email']), ENT_QUOTES) ?>? Баллы и история будут удалены безвозвратно.');">
+            <input type="hidden" name="delete_member" value="<?= htmlspecialchars($m['email']) ?>">
+            <button type="submit" style="background:none;border:1px solid #c9a0a0;color:#8b2e2e;padding:5px 12px;cursor:pointer;font-size:0.78rem;">Удалить</button>
+          </form>
+        </td>
       </tr>
     <?php endforeach; ?>
     </tbody>

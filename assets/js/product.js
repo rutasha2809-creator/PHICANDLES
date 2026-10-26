@@ -213,9 +213,10 @@ function setupVariantControls(variantWrap, product, onPriceChange) {
   if (!chipHost) return null;
 
   let activePrice = variants[0].price;
+  let activeLabel = variants[0].label;
 
   chipHost.innerHTML = variants
-    .map((v, i) => `<button type="button" class="option-chip${i === 0 ? ' is-active' : ''}" data-variant-chip value="${escapeAttr(String(v.price))}">${escapeHtml(v.label)}:&nbsp;${v.price.toLocaleString('ru-RU')}&nbsp;₽</button>`)
+    .map((v, i) => `<button type="button" class="option-chip${i === 0 ? ' is-active' : ''}" data-variant-chip data-label="${escapeAttr(v.label)}" value="${escapeAttr(String(v.price))}">${escapeHtml(v.label)}:&nbsp;${v.price.toLocaleString('ru-RU')}&nbsp;₽</button>`)
     .join('');
 
   chipHost.querySelectorAll('[data-variant-chip]').forEach((btn) => {
@@ -223,12 +224,15 @@ function setupVariantControls(variantWrap, product, onPriceChange) {
       chipHost.querySelectorAll('[data-variant-chip]').forEach((b) => b.classList.remove('is-active'));
       btn.classList.add('is-active');
       activePrice = Number(btn.value);
+      activeLabel = btn.dataset.label || '';
       onPriceChange(activePrice);
     });
   });
 
   onPriceChange(activePrice);
-  return () => activePrice;
+  const getter = () => activePrice;
+  getter.label = () => activeLabel;
+  return getter;
 }
 
 function setupFinishControls(finishWrap, finishSelect, product) {
@@ -445,6 +449,7 @@ async function initProductPage() {
     if (!colorWrap.classList.contains('hidden')) options.color = colorSelect.value;
     if (finishWrap && !finishWrap.classList.contains('hidden')) options.finish = finishSelect.value;
     const variantPrice = getVariantPrice ? getVariantPrice() : null;
+    if (getVariantPrice && getVariantPrice.label) options.size = getVariantPrice.label();
     const productToAdd = variantPrice ? { ...product, price: variantPrice, salePrice: null } : product;
     addToCart({ ...productToAdd, image: '../../' + product.assetImage }, options);
   });
